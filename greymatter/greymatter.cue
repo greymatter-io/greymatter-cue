@@ -352,7 +352,7 @@ package greymatter
 #FileAccessLog: {
 	path?:   string
 	format?: string
-	json_format?: [string]: string
+	json_format?: [string]:       string
 	typed_json_format?: [string]: string
 }
 
