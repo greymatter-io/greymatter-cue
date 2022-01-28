@@ -475,3 +475,40 @@ package greymatter
 	case_sensitive?: true
 	invert?:         true
 }
+
+// Shared Rules
+
+#AllConstraints: {
+	light?: [...#ClusterConstraint] | *null
+	dark?:  [...#ClusterConstraint] | *null
+	tap?:   [...#ClusterConstraint] | *null
+}
+
+#Constraints: {
+	light?: [...#ClusterConstraint]
+	dark?: [...#ClusterConstraint]
+	tap?: [...#ClusterConstraint]
+}
+
+#ClusterConstraint: {
+	constraint_key?: string
+	cluster_key:     string
+	metadata?:       [...#Metadata] | *null
+	properties?:     [...#Metadata] | *null
+	response_data?:  #ResponseData
+	// We probably do not want to default the weight value
+	weight: uint32
+}
+
+#SharedRules: {
+	shared_rules_key: string
+	name?:            string
+	zone_key:         string
+	default:          #AllConstraints
+	rules:            [...#Rule] | *null
+	response_data:    #ResponseData
+	cohort_seed?:     string | *null
+	properties?:      [...#Metadata] | *null
+	retry_policy?:    #RetryPolicy | *null
+	org_key?:         string
+}
