@@ -146,8 +146,8 @@ package greymatter
 	response_headers_to_add?: [...#Metadatum]
 	request_headers_to_remove?: [...string]
 	response_headers_to_remove?: [...string]
-
 	redirects: [...#Redirect]
+	shared_rules_key?: string
 }
 
 #RouteMatch: {
