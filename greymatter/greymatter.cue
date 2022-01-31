@@ -84,7 +84,7 @@ package greymatter
 	max_requests?:         int64
 	max_retries?:          int64
 	max_connection_pools?: int64
-	track_remaining?:      true
+	track_remaining?:      bool
 }
 
 #RingHashLbConfig: {
@@ -93,7 +93,7 @@ package greymatter
 	maximum_ring_size?: uint64
 }
 
-#OriginalDstLbConfig: use_http_header?: true
+#OriginalDstLbConfig: use_http_header?: bool
 
 #LeastRequestLbConfig: choice_count?: uint32
 
@@ -103,8 +103,8 @@ package greymatter
 	locality_weighted_lb_conf?:            #LocalityWeightedLbConfig
 	consistent_hashing_lb_conf?:           #ConsistentHashingLbConfig
 	update_merge_window?:                  #Duration
-	ignore_new_hosts_until_first_hc?:      true
-	close_connections_on_host_set_change?: true
+	ignore_new_hosts_until_first_hc?:      bool
+	close_connections_on_host_set_change?: bool
 }
 
 #Percent: value?: float64
@@ -112,13 +112,13 @@ package greymatter
 #ZoneAwareLbConfig: {
 	routing_enabled?:       #Percent
 	min_cluster_size?:      uint64
-	fail_traffic_on_panic?: true
+	fail_traffic_on_panic?: bool
 }
 
 #LocalityWeightedLbConfig: {
 }
 
-#ConsistentHashingLbConfig: use_hostname_for_hashing?: true
+#ConsistentHashingLbConfig: use_hostname_for_hashing?: bool
 
 #Duration: {
 	seconds?: int64
@@ -133,7 +133,7 @@ package greymatter
 	zone_key:        string
 	prefix_rewrite?: string
 	cohort_seed?:    string
-	high_priority?:  true
+	high_priority?:  bool
 	timeout?:        string
 	idle_timeout?:   string
 	rules: [...#Rule]
@@ -194,7 +194,7 @@ package greymatter
 #ResponseDatum: {
 	name?:             string
 	value?:            string
-	value_is_literal?: true
+	value_is_literal?: bool
 }
 
 #CookieDatum: {
@@ -202,8 +202,8 @@ package greymatter
 	expires_in_sec?: uint32
 	domain?:         string
 	path?:           string
-	secure?:         true
-	http_only?:      true
+	secure?:         bool
+	http_only?:      bool
 	same_site?:      string
 }
 
@@ -232,10 +232,10 @@ package greymatter
 	regex_match?:      string
 	safe_regex_match?: #RegexMatcher
 	range_match?:      #RangeMatch
-	present_match?:    true
+	present_match?:    bool
 	prefix_match?:     string
 	suffix_match?:     string
-	invert_match?:     true
+	invert_match?:     bool
 }
 
 #RegexMatcher: {
@@ -257,7 +257,7 @@ package greymatter
 	zone_key:     string
 	name:         string
 	port:         int32
-	force_https?: true
+	force_https?: bool
 	cors_config?: #CorsConfig
 	aliases?: [...string]
 
@@ -269,7 +269,7 @@ package greymatter
 
 #CorsConfig: {
 	allowed_origins?: [...#AllowOriginStringMatchItem]
-	allow_credentials?: true
+	allow_credentials?: bool
 	exposed_headers?: [...string]
 	max_age?: int64
 	allowed_methods?: [...string]
@@ -299,7 +299,7 @@ package greymatter
 	request_timeout?:       string
 	drain_timeout?:         string
 	delayed_close_timeout?: string
-	use_remote_address?:    true
+	use_remote_address?:    bool
 	tracing_config?:        #TracingConfig
 	access_loggers?:        #AccessLoggers
 
@@ -334,7 +334,7 @@ package greymatter
 }
 
 #TracingConfig: {
-	ingress?: true
+	ingress?: bool
 	request_headers_for_tags?: [...string]
 }
 
@@ -344,7 +344,7 @@ package greymatter
 }
 
 #Loggers: {
-	disabled?: true
+	disabled?: bool
 	file_loggers?: [...#FileAccessLog]
 	h_ttpgrpc_access_loggers?: [...#HTTPGRPCAccessLog]
 }
@@ -415,13 +415,13 @@ package greymatter
 	set_current_client_cert_details?: #SetCurrentClientCertDetails
 }
 
-#SetCurrentClientCertDetails: uri: true
+#SetCurrentClientCertDetails: uri: bool
 
 #SSLConfig: {
 	cipher_filter?: string
 	protocols?: [...string]
 	cert_key_pairs?: [...#CertKeyPathPair]
-	require_client_certs?: true
+	require_client_certs?: bool
 	trust_file?:           string
 	sni?: [...string]
 	crl?: #DataSource
@@ -438,27 +438,27 @@ package greymatter
 }
 
 #HTTPProtocolOptions: {
-	allow_absolute_url?:      true
-	accept_http10?:           true
+	allow_absolute_url?:      bool
+	accept_http10?:           bool
 	default_host_for_http10?: string
 	header_key_format?:       #HeaderKeyFormat
-	enable_trailers?:         true
+	enable_trailers?:         bool
 }
 
-#HeaderKeyFormat: proper_case_words?: true
+#HeaderKeyFormat: proper_case_words?: bool
 
 #HTTP2ProtocolOptions: {
 	hpack_table_size?:                                     uint32
 	max_concurrent_streams?:                               uint32
 	initial_stream_window_size?:                           uint32
 	initial_connection_window_size?:                       uint32
-	allow_connect?:                                        true
+	allow_connect?:                                        bool
 	max_outbound_frames?:                                  uint32
 	max_outbound_control_frames?:                          uint32
 	max_consecutive_inbound_frames_with_empty_payload?:    uint32
 	max_inbound_priority_frames_per_stream?:               uint32
 	max_inbound_window_update_frames_per_data_frame_sent?: uint32
-	stream_error_on_invalid_http_messaging?:               true
+	stream_error_on_invalid_http_messaging?:               bool
 }
 
 #Redirect: {
@@ -472,8 +472,8 @@ package greymatter
 #HeaderConstraint: {
 	name?:           string
 	value?:          string
-	case_sensitive?: true
-	invert?:         true
+	case_sensitive?: bool
+	invert?:         bool
 }
 
 // Shared Rules
