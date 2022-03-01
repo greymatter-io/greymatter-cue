@@ -1,8 +1,10 @@
 package v3
 
 import (
-	v3 "envoyproxy.io/type/v3"
 	v31 "envoyproxy.io/deps/cncf/xds/go/xds/core/v3"
+	v3 "envoyproxy.io/type/v3"
+	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
+	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
 )
 
 // Envoy supports :ref:`upstream priority routing
@@ -71,7 +73,7 @@ HeaderValueOption_HeaderAppendAction_OVERWRITE_IF_EXISTS_OR_ADD: "OVERWRITE_IF_E
 	version?: v3.#SemanticVersion
 	// Free-form build information.
 	// Envoy defines several well known keys in the source/common/version/version.h file
-	metadata?: _
+	metadata?: _struct.#Struct
 }
 
 // Version and identification for an Envoy extension.
@@ -125,7 +127,7 @@ HeaderValueOption_HeaderAppendAction_OVERWRITE_IF_EXISTS_OR_ADD: "OVERWRITE_IF_E
 	cluster?: string
 	// Opaque metadata extending the node identifier. Envoy will pass this
 	// directly to the management server.
-	metadata?: _
+	metadata?: _struct.#Struct
 	// Map from xDS resource type URL to dynamic context parameters. These may vary at runtime (unlike
 	// other fields in this message). For example, the xDS client may have a shard identifier that
 	// changes during the lifetime of the xDS client. In Envoy, this would be achieved by updating the
@@ -188,14 +190,14 @@ HeaderValueOption_HeaderAppendAction_OVERWRITE_IF_EXISTS_OR_ADD: "OVERWRITE_IF_E
 	// :ref:`typed_filter_metadata <envoy_v3_api_field_config.core.v3.Metadata.typed_filter_metadata>`
 	// fields are present in the metadata with same keys,
 	// only *typed_filter_metadata* field will be parsed.
-	filter_metadata?: [string]: _
+	filter_metadata?: [string]: _struct.#Struct
 	// Key is the reverse DNS filter name, e.g. com.acme.widget. The envoy.*
 	// namespace is reserved for Envoy's built-in filters.
 	// The value is encoded as google.protobuf.Any.
 	// If both :ref:`filter_metadata <envoy_v3_api_field_config.core.v3.Metadata.filter_metadata>`
 	// and *typed_filter_metadata* fields are present in the metadata with same keys,
 	// only *typed_filter_metadata* field will be parsed.
-	typed_filter_metadata?: [string]: _
+	typed_filter_metadata?: [string]: any.#Any
 }
 
 // Runtime derived uint32 with a default when not specified.
@@ -325,7 +327,7 @@ HeaderValueOption_HeaderAppendAction_OVERWRITE_IF_EXISTS_OR_ADD: "OVERWRITE_IF_E
 	// The name of the transport socket to instantiate. The name must match a supported transport
 	// socket implementation.
 	name?:         string
-	typed_config?: _
+	typed_config?: any.#Any
 }
 
 // Runtime derived FractionalPercent with defaults for when the numerator or denominator is not

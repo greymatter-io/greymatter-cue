@@ -1,8 +1,10 @@
 package v2
 
 import (
-	core "envoyproxy.io/api/v2/core"
 	matcher "envoyproxy.io/type/matcher"
+	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
+	core "envoyproxy.io/api/v2/core"
+	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
 )
 
 // Configuration for pluggable stats sinks.
@@ -18,8 +20,8 @@ import (
 	// Sinks optionally support tagged/multiple dimensional metrics.
 	name?: string
 	// Deprecated: Do not use.
-	config?:       _
-	typed_config?: _
+	config?:       _struct.#Struct
+	typed_config?: any.#Any
 }
 
 // Statistics configuration such as tagging.

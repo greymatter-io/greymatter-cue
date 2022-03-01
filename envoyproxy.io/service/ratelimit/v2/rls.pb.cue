@@ -1,8 +1,8 @@
 package v2
 
 import (
-	ratelimit "envoyproxy.io/api/v2/ratelimit"
 	core "envoyproxy.io/api/v2/core"
+	ratelimit "envoyproxy.io/api/v2/ratelimit"
 )
 
 #RateLimitResponse_Code: "UNKNOWN" | "OK" | "OVER_LIMIT"

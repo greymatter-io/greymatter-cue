@@ -1,9 +1,10 @@
 package v3
 
 import (
-	status "envoyproxy.io/deps/genproto/googleapis/rpc/status"
+	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
 	v31 "envoyproxy.io/config/core/v3"
 	v3 "envoyproxy.io/type/v3"
+	status "envoyproxy.io/deps/genproto/googleapis/rpc/status"
 )
 
 #CheckRequest: {
@@ -58,7 +59,7 @@ import (
 	// <envoy_v3_api_field_service.auth.v3.CheckResponse.dynamic_metadata>`.
 	//
 	// Deprecated: Do not use.
-	dynamic_metadata?: _
+	dynamic_metadata?: _struct.#Struct
 	// This field allows the authorization service to send HTTP response headers
 	// to the downstream client on success. Note that the :ref:`append field in HeaderValueOption <envoy_v3_api_field_config.core.v3.HeaderValueOption.append>`
 	// defaults to false when used in this message.
@@ -88,7 +89,7 @@ import (
 	//
 	// - :ref:`envoy.filters.http.ext_authz <config_http_filters_ext_authz_dynamic_metadata>` for HTTP filter.
 	// - :ref:`envoy.filters.network.ext_authz <config_network_filters_ext_authz_dynamic_metadata>` for network filter.
-	dynamic_metadata?: _
+	dynamic_metadata?: _struct.#Struct
 }
 
 // AuthorizationClient is the client API for Authorization service.

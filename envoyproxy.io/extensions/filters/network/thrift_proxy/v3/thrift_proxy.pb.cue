@@ -1,5 +1,9 @@
 package v3
 
+import (
+	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
+)
+
 // Thrift transport types supported by Envoy.
 #TransportType: "AUTO_TRANSPORT" | "FRAMED" | "UNFRAMED" | "HEADER"
 
@@ -53,7 +57,7 @@ ProtocolType_TWITTER:       "TWITTER"
 	// * :ref:`envoy.filters.thrift.router <config_thrift_filters_router>`
 	// * :ref:`envoy.filters.thrift.rate_limit <config_thrift_filters_rate_limit>`
 	name?:         string
-	typed_config?: _
+	typed_config?: any.#Any
 }
 
 // ThriftProtocolOptions specifies Thrift upstream protocol options. This object is used in

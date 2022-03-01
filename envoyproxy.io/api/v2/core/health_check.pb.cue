@@ -1,8 +1,10 @@
 package core
 
 import (
-	matcher "envoyproxy.io/type/matcher"
 	_type "envoyproxy.io/type"
+	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
+	matcher "envoyproxy.io/type/matcher"
+	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
 )
 
 // Endpoint health status.
@@ -200,8 +202,8 @@ HealthStatus_DEGRADED:  "DEGRADED"
 	// The registered name of the custom health checker.
 	name?: string
 	// Deprecated: Do not use.
-	config?:       _
-	typed_config?: _
+	config?:       _struct.#Struct
+	typed_config?: any.#Any
 }
 
 // Health checks occur over the transport socket specified for the cluster. This implies that if a

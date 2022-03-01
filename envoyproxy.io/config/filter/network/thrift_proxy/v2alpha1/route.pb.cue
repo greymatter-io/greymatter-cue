@@ -1,8 +1,8 @@
 package v2alpha1
 
 import (
-	route "envoyproxy.io/api/v2/route"
 	core "envoyproxy.io/api/v2/core"
+	route "envoyproxy.io/api/v2/route"
 )
 
 #RouteConfiguration: {

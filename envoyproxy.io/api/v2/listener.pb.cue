@@ -1,10 +1,10 @@
 package v2
 
 import (
-	v21 "envoyproxy.io/config/filter/accesslog/v2"
+	v2 "envoyproxy.io/config/listener/v2"
 	core "envoyproxy.io/api/v2/core"
 	listener "envoyproxy.io/api/v2/listener"
-	v2 "envoyproxy.io/config/listener/v2"
+	v21 "envoyproxy.io/config/filter/accesslog/v2"
 )
 
 #Listener_DrainType: "DEFAULT" | "MODIFY_ONLY"

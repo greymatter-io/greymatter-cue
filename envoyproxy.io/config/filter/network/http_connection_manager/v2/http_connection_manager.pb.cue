@@ -1,12 +1,14 @@
 package v2
 
 import (
-	v22 "envoyproxy.io/type/tracing/v2"
-	v21 "envoyproxy.io/api/v2"
-	v2 "envoyproxy.io/config/filter/accesslog/v2"
-	v23 "envoyproxy.io/config/trace/v2"
 	_type "envoyproxy.io/type"
+	v22 "envoyproxy.io/type/tracing/v2"
+	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
+	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
 	core "envoyproxy.io/api/v2/core"
+	v2 "envoyproxy.io/config/filter/accesslog/v2"
+	v21 "envoyproxy.io/api/v2"
+	v23 "envoyproxy.io/config/trace/v2"
 )
 
 #HttpConnectionManager_CodecType: "AUTO" | "HTTP1" | "HTTP2" | "HTTP3"
@@ -331,13 +333,13 @@ HttpConnectionManager_Tracing_OperationName_EGRESS:  "EGRESS"
 	// :ref:`supported filter <config_http_filters>`.
 	name?: string
 	// Deprecated: Do not use.
-	config?:       _
-	typed_config?: _
+	config?:       _struct.#Struct
+	typed_config?: any.#Any
 }
 
 #RequestIDExtension: {
 	// Request ID extension specific configuration.
-	typed_config?: _
+	typed_config?: any.#Any
 }
 
 // [#next-free-field: 10]

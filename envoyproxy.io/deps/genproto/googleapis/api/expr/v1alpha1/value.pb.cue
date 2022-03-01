@@ -1,6 +1,7 @@
 package v1alpha1
 
 import (
+	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
 )
 
@@ -26,7 +27,7 @@ import (
 	// An enum value.
 	enum_value?: #EnumValue
 	// The proto message backing an object value.
-	object_value?: _
+	object_value?: any.#Any
 	// Map value.
 	map_value?: #MapValue
 	// List value.

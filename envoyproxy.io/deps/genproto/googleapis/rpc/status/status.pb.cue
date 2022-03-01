@@ -1,5 +1,9 @@
 package status
 
+import (
+	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
+)
+
 // The `Status` type defines a logical error model that is suitable for
 // different programming environments, including REST APIs and RPC APIs. It is
 // used by [gRPC](https://github.com/grpc). Each `Status` message contains
@@ -16,5 +20,5 @@ package status
 	message?: string
 	// A list of messages that carry the error details.  There is a common set of
 	// message types for APIs to use.
-	details?: [...]
+	details?: [...any.#Any]
 }

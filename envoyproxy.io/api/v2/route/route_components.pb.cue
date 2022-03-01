@@ -1,10 +1,12 @@
 package route
 
 import (
-	matcher "envoyproxy.io/type/matcher"
-	v2 "envoyproxy.io/type/tracing/v2"
+	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
 	core "envoyproxy.io/api/v2/core"
 	_type "envoyproxy.io/type"
+	matcher "envoyproxy.io/type/matcher"
+	v2 "envoyproxy.io/type/tracing/v2"
+	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 )
 
 #VirtualHost_TlsRequirementType: "NONE" | "EXTERNAL_ONLY" | "ALL"
@@ -102,13 +104,13 @@ RedirectAction_RedirectResponseCode_PERMANENT_REDIRECT: "PERMANENT_REDIRECT"
 	// for if and how it is utilized.
 	//
 	// Deprecated: Do not use.
-	per_filter_config?: [string]: _
+	per_filter_config?: [string]: _struct.#Struct
 	// The per_filter_config field can be used to provide virtual host-specific
 	// configurations for filters. The key should match the filter name, such as
 	// *envoy.filters.http.buffer* for the HTTP buffer filter. Use of this field is filter
 	// specific; see the :ref:`HTTP filter documentation <config_http_filters>`
 	// for if and how it is utilized.
-	typed_per_filter_config?: [string]: _
+	typed_per_filter_config?: [string]: any.#Any
 	// Decides whether the :ref:`x-envoy-attempt-count
 	// <config_http_filters_router_x-envoy-attempt-count>` header should be included
 	// in the upstream request. Setting this option will cause it to override any existing header
@@ -138,7 +140,7 @@ RedirectAction_RedirectResponseCode_PERMANENT_REDIRECT: "PERMANENT_REDIRECT"
 	// will take precedence over this config and it'll be treated independently (e.g.: values are not
 	// inherited). :ref:`Retry policy <envoy_api_field_route.VirtualHost.retry_policy>` should not be
 	// set if this field is used.
-	retry_policy_typed_config?: _
+	retry_policy_typed_config?: any.#Any
 	// Indicates the hedge policy for all routes in this virtual host. Note that setting a
 	// route level entry will take precedence over this config and it'll be treated
 	// independently (e.g.: values are not inherited).
@@ -151,7 +153,7 @@ RedirectAction_RedirectResponseCode_PERMANENT_REDIRECT: "PERMANENT_REDIRECT"
 
 // A filter-defined action type.
 #FilterAction: {
-	action?: _
+	action?: any.#Any
 }
 
 // A route is both a specification of how to match a request as well as an indication of what to do
@@ -192,13 +194,13 @@ RedirectAction_RedirectResponseCode_PERMANENT_REDIRECT: "PERMANENT_REDIRECT"
 	// if and how it is utilized.
 	//
 	// Deprecated: Do not use.
-	per_filter_config?: [string]: _
+	per_filter_config?: [string]: _struct.#Struct
 	// The typed_per_filter_config field can be used to provide route-specific
 	// configurations for filters. The key should match the filter name, such as
 	// *envoy.filters.http.buffer* for the HTTP buffer filter. Use of this field is filter
 	// specific; see the :ref:`HTTP filter documentation <config_http_filters>` for
 	// if and how it is utilized.
-	typed_per_filter_config?: [string]: _
+	typed_per_filter_config?: [string]: any.#Any
 	// Specifies a set of headers that will be added to requests matching this
 	// route. Headers specified at this level are applied before headers from the
 	// enclosing :ref:`envoy_api_msg_route.VirtualHost` and
@@ -554,7 +556,7 @@ RedirectAction_RedirectResponseCode_PERMANENT_REDIRECT: "PERMANENT_REDIRECT"
 	// precedence over the virtual host level retry policy entirely (e.g.: policies are not merged,
 	// most internal one becomes the enforced policy). :ref:`Retry policy <envoy_api_field_route.VirtualHost.retry_policy>`
 	// should not be set if this field is used.
-	retry_policy_typed_config?: _
+	retry_policy_typed_config?: any.#Any
 	// Indicates that the route has a request mirroring policy.
 	//
 	// .. attention::
@@ -1064,13 +1066,13 @@ RedirectAction_RedirectResponseCode_PERMANENT_REDIRECT: "PERMANENT_REDIRECT"
 	// for if and how it is utilized.
 	//
 	// Deprecated: Do not use.
-	per_filter_config?: [string]: _
+	per_filter_config?: [string]: _struct.#Struct
 	// The per_filter_config field can be used to provide weighted cluster-specific
 	// configurations for filters. The key should match the filter name, such as
 	// *envoy.filters.http.buffer* for the HTTP buffer filter. Use of this field is filter
 	// specific; see the :ref:`HTTP filter documentation <config_http_filters>`
 	// for if and how it is utilized.
-	typed_per_filter_config?: [string]: _
+	typed_per_filter_config?: [string]: any.#Any
 }
 
 #RouteMatch_GrpcRouteMatchOptions: {
@@ -1238,15 +1240,15 @@ RedirectAction_RedirectResponseCode_PERMANENT_REDIRECT: "PERMANENT_REDIRECT"
 #RetryPolicy_RetryPriority: {
 	name?: string
 	// Deprecated: Do not use.
-	config?:       _
-	typed_config?: _
+	config?:       _struct.#Struct
+	typed_config?: any.#Any
 }
 
 #RetryPolicy_RetryHostPredicate: {
 	name?: string
 	// Deprecated: Do not use.
-	config?:       _
-	typed_config?: _
+	config?:       _struct.#Struct
+	typed_config?: any.#Any
 }
 
 #RetryPolicy_RetryBackOff: {

@@ -2,6 +2,7 @@ package v3
 
 import (
 	v3 "envoyproxy.io/config/core/v3"
+	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
 )
 
 // These are stats Envoy reports to the management server at a frequency defined by
@@ -41,7 +42,7 @@ import (
 	address?: v3.#Address
 	// Opaque and implementation dependent metadata of the
 	// endpoint. Envoy will pass this directly to the management server.
-	metadata?: _
+	metadata?: _struct.#Struct
 	// The total number of requests successfully completed by the endpoints in the
 	// locality. These include non-5xx responses for HTTP, where errors
 	// originate at the client and the endpoint responded successfully. For gRPC,

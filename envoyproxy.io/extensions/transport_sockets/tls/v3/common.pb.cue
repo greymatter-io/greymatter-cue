@@ -3,6 +3,7 @@ package v3
 import (
 	v3 "envoyproxy.io/config/core/v3"
 	v31 "envoyproxy.io/type/matcher/v3"
+	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 )
 
 #TlsParameters_TlsProtocol: "TLS_AUTO" | "TLSv1_0" | "TLSv1_1" | "TLSv1_2" | "TLSv1_3"
@@ -119,7 +120,7 @@ CertificateValidationContext_TrustChainVerification_ACCEPT_UNTRUSTED:   "ACCEPT_
 	// Private key method provider name. The name must match a
 	// supported private key method provider type.
 	provider_name?: string
-	typed_config?:  _
+	typed_config?:  any.#Any
 }
 
 // [#next-free-field: 9]

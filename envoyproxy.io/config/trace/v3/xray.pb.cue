@@ -2,6 +2,7 @@ package v3
 
 import (
 	v3 "envoyproxy.io/config/core/v3"
+	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
 )
 
 // [#extension: envoy.tracers.xray]
@@ -27,5 +28,5 @@ import (
 	origin?: string
 	// AWS resource metadata dictionary.
 	// See: `X-Ray Segment Document documentation <https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html#api-segmentdocuments-aws>`__
-	aws?: _
+	aws?: _struct.#Struct
 }

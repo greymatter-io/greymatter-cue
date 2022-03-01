@@ -2,7 +2,9 @@ package v3
 
 import (
 	v31 "envoyproxy.io/type/matcher/v3"
+	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 	v3 "envoyproxy.io/type/v3"
+	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
 )
 
 // Endpoint health status.
@@ -143,7 +145,7 @@ HealthStatus_DEGRADED:  "DEGRADED"
 	// :ref:`transport socket matches <envoy_v3_api_field_config.cluster.v3.Cluster.transport_socket_matches>`,
 	// the cluster's :ref:`transport socket <envoy_v3_api_field_config.cluster.v3.Cluster.transport_socket>`
 	// will be used for health check socket configuration.
-	transport_socket_match_criteria?: _
+	transport_socket_match_criteria?: _struct.#Struct
 }
 
 // Describes the encoding of the payload bytes in the payload.
@@ -240,7 +242,7 @@ HealthStatus_DEGRADED:  "DEGRADED"
 #HealthCheck_CustomHealthCheck: {
 	// The registered name of the custom health checker.
 	name?:         string
-	typed_config?: _
+	typed_config?: any.#Any
 }
 
 // Health checks occur over the transport socket specified for the cluster. This implies that if a

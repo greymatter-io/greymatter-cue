@@ -1,9 +1,9 @@
 package v3
 
 import (
+	v32 "envoyproxy.io/config/core/v3"
 	v3 "envoyproxy.io/config/route/v3"
 	v31 "envoyproxy.io/type/matcher/v3"
-	v32 "envoyproxy.io/config/core/v3"
 	v33 "envoyproxy.io/type/v3"
 	v1alpha1 "envoyproxy.io/deps/genproto/googleapis/api/expr/v1alpha1"
 )

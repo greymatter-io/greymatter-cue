@@ -1,8 +1,8 @@
 package v2
 
 import (
-	core "envoyproxy.io/api/v2/core"
 	_go "envoyproxy.io/deps/prometheus/client_model/go"
+	core "envoyproxy.io/api/v2/core"
 )
 
 #StreamMetricsResponse: {

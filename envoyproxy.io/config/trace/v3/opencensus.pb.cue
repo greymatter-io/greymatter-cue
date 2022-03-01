@@ -1,8 +1,8 @@
 package v3
 
 import (
-	v1 "envoyproxy.io/deps/census-instrumentation/opencensus-proto/gen-go/trace/v1"
 	v3 "envoyproxy.io/config/core/v3"
+	v1 "envoyproxy.io/deps/census-instrumentation/opencensus-proto/gen-go/trace/v1"
 )
 
 #OpenCensusConfig_TraceContext: "NONE" | "TRACE_CONTEXT" | "GRPC_TRACE_BIN" | "CLOUD_TRACE_CONTEXT" | "B3"

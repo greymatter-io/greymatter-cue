@@ -2,6 +2,8 @@ package core
 
 import (
 	_type "envoyproxy.io/type"
+	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
+	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
 )
 
 // Envoy supports :ref:`upstream priority routing
@@ -63,7 +65,7 @@ TrafficDirection_OUTBOUND:    "OUTBOUND"
 	version?: _type.#SemanticVersion
 	// Free-form build information.
 	// Envoy defines several well known keys in the source/common/version/version.h file
-	metadata?: _
+	metadata?: _struct.#Struct
 }
 
 // Version and identification for an Envoy extension.
@@ -117,7 +119,7 @@ TrafficDirection_OUTBOUND:    "OUTBOUND"
 	cluster?: string
 	// Opaque metadata extending the node identifier. Envoy will pass this
 	// directly to the management server.
-	metadata?: _
+	metadata?: _struct.#Struct
 	// Locality specifying where the Envoy instance is running.
 	locality?: #Locality
 	// This is motivated by informing a management server during canary which
@@ -175,7 +177,7 @@ TrafficDirection_OUTBOUND:    "OUTBOUND"
 #Metadata: {
 	// Key is the reverse DNS filter name, e.g. com.acme.widget. The envoy.*
 	// namespace is reserved for Envoy's built-in filters.
-	filter_metadata?: [string]: _
+	filter_metadata?: [string]: _struct.#Struct
 }
 
 // Runtime derived uint32 with a default when not specified.
@@ -278,8 +280,8 @@ TrafficDirection_OUTBOUND:    "OUTBOUND"
 	// socket implementation.
 	name?: string
 	// Deprecated: Do not use.
-	config?:       _
-	typed_config?: _
+	config?:       _struct.#Struct
+	typed_config?: any.#Any
 }
 
 // Runtime derived FractionalPercent with defaults for when the numerator or denominator is not

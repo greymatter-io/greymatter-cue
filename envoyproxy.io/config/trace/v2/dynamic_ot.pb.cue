@@ -1,5 +1,9 @@
 package v2
 
+import (
+	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
+)
+
 // DynamicOtConfig is used to dynamically load a tracer from a shared library
 // that implements the `OpenTracing dynamic loading API
 // <https://github.com/opentracing/opentracing-cpp>`_.
@@ -10,5 +14,5 @@ package v2
 	library?: string
 	// The configuration to use when creating a tracer from the given dynamic
 	// library.
-	config?: _
+	config?: _struct.#Struct
 }

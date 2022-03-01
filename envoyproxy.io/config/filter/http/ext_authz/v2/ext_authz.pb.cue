@@ -1,9 +1,9 @@
 package v2
 
 import (
+	core "envoyproxy.io/api/v2/core"
 	_type "envoyproxy.io/type"
 	matcher "envoyproxy.io/type/matcher"
-	core "envoyproxy.io/api/v2/core"
 )
 
 // [#next-free-field: 12]

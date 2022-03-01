@@ -1,13 +1,14 @@
 package v3
 
 import (
-	v32 "envoyproxy.io/config/route/v3"
-	v33 "envoyproxy.io/type/v3"
 	v35 "envoyproxy.io/config/trace/v3"
-	v34 "envoyproxy.io/type/tracing/v3"
-	v3 "envoyproxy.io/config/core/v3"
-	v31 "envoyproxy.io/config/accesslog/v3"
 	v36 "envoyproxy.io/type/http/v3"
+	v33 "envoyproxy.io/type/v3"
+	v3 "envoyproxy.io/config/core/v3"
+	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
+	v34 "envoyproxy.io/type/tracing/v3"
+	v31 "envoyproxy.io/config/accesslog/v3"
+	v32 "envoyproxy.io/config/route/v3"
 )
 
 #HttpConnectionManager_CodecType: "AUTO" | "HTTP1" | "HTTP2" | "HTTP3"
@@ -517,7 +518,7 @@ HttpConnectionManager_Tracing_OperationName_EGRESS:  "EGRESS"
 	// :ref:`ExtensionWithMatcher <envoy_v3_api_msg_extensions.common.matching.v3.ExtensionWithMatcher>`
 	// with the desired HTTP filter.
 	// [#extension-category: envoy.filters.http]
-	typed_config?: _
+	typed_config?: any.#Any
 	// Configuration source specifier for an extension configuration discovery service.
 	// In case of a failure and without the default configuration, the HTTP listener responds with code 500.
 	// Extension configs delivered through this mechanism are not expected to require warming (see https://github.com/envoyproxy/envoy/issues/12061).
@@ -536,7 +537,7 @@ HttpConnectionManager_Tracing_OperationName_EGRESS:  "EGRESS"
 
 #RequestIDExtension: {
 	// Request ID extension specific configuration.
-	typed_config?: _
+	typed_config?: any.#Any
 }
 
 // [#protodoc-title: Envoy Mobile HTTP connection manager]

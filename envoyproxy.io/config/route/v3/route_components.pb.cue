@@ -1,11 +1,12 @@
 package v3
 
 import (
-	v3 "envoyproxy.io/deps/cncf/xds/go/xds/type/matcher/v3"
-	v32 "envoyproxy.io/type/matcher/v3"
 	v35 "envoyproxy.io/type/metadata/v3"
 	v34 "envoyproxy.io/type/tracing/v3"
+	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
+	v3 "envoyproxy.io/deps/cncf/xds/go/xds/type/matcher/v3"
 	v31 "envoyproxy.io/config/core/v3"
+	v32 "envoyproxy.io/type/matcher/v3"
 	v33 "envoyproxy.io/type/v3"
 )
 
@@ -123,7 +124,7 @@ RateLimit_Action_MetaData_Source_ROUTE_ENTRY: "ROUTE_ENTRY"
 	// [#comment: An entry's value may be wrapped in a
 	// :ref:`FilterConfig<envoy_v3_api_msg_config.route.v3.FilterConfig>`
 	// message to specify additional options.]
-	typed_per_filter_config?: [string]: _
+	typed_per_filter_config?: [string]: any.#Any
 	// Decides whether the :ref:`x-envoy-attempt-count
 	// <config_http_filters_router_x-envoy-attempt-count>` header should be included
 	// in the upstream request. Setting this option will cause it to override any existing header
@@ -153,7 +154,7 @@ RateLimit_Action_MetaData_Source_ROUTE_ENTRY: "ROUTE_ENTRY"
 	// will take precedence over this config and it'll be treated independently (e.g.: values are not
 	// inherited). :ref:`Retry policy <envoy_v3_api_field_config.route.v3.VirtualHost.retry_policy>` should not be
 	// set if this field is used.
-	retry_policy_typed_config?: _
+	retry_policy_typed_config?: any.#Any
 	// Indicates the hedge policy for all routes in this virtual host. Note that setting a
 	// route level entry will take precedence over this config and it'll be treated
 	// independently (e.g.: values are not inherited).
@@ -166,7 +167,7 @@ RateLimit_Action_MetaData_Source_ROUTE_ENTRY: "ROUTE_ENTRY"
 
 // A filter-defined action type.
 #FilterAction: {
-	action?: _
+	action?: any.#Any
 }
 
 // A route is both a specification of how to match a request as well as an indication of what to do
@@ -215,7 +216,7 @@ RateLimit_Action_MetaData_Source_ROUTE_ENTRY: "ROUTE_ENTRY"
 	// [#comment: An entry's value may be wrapped in a
 	// :ref:`FilterConfig<envoy_v3_api_msg_config.route.v3.FilterConfig>`
 	// message to specify additional options.]
-	typed_per_filter_config?: [string]: _
+	typed_per_filter_config?: [string]: any.#Any
 	// Specifies a set of headers that will be added to requests matching this
 	// route. Headers specified at this level are applied before headers from the
 	// enclosing :ref:`envoy_v3_api_msg_config.route.v3.VirtualHost` and
@@ -601,7 +602,7 @@ RateLimit_Action_MetaData_Source_ROUTE_ENTRY: "ROUTE_ENTRY"
 	// precedence over the virtual host level retry policy entirely (e.g.: policies are not merged,
 	// most internal one becomes the enforced policy). :ref:`Retry policy <envoy_v3_api_field_config.route.v3.VirtualHost.retry_policy>`
 	// should not be set if this field is used.
-	retry_policy_typed_config?: _
+	retry_policy_typed_config?: any.#Any
 	// Indicates that the route has request mirroring policies.
 	request_mirror_policies?: [...#RouteAction_RequestMirrorPolicy]
 	// Optionally specifies the :ref:`routing priority <arch_overview_http_routing_priority>`.
@@ -1143,7 +1144,7 @@ RateLimit_Action_MetaData_Source_ROUTE_ENTRY: "ROUTE_ENTRY"
 // [#not-implemented-hide:]
 #FilterConfig: {
 	// The filter config.
-	config?: _
+	config?: any.#Any
 	// If true, the filter is optional, meaning that if the client does
 	// not support the specified filter, it may ignore the map entry rather
 	// than rejecting the config.
@@ -1214,7 +1215,7 @@ RateLimit_Action_MetaData_Source_ROUTE_ENTRY: "ROUTE_ENTRY"
 	// [#comment: An entry's value may be wrapped in a
 	// :ref:`FilterConfig<envoy_v3_api_msg_config.route.v3.FilterConfig>`
 	// message to specify additional options.]
-	typed_per_filter_config?: [string]: _
+	typed_per_filter_config?: [string]: any.#Any
 	// Indicates that during forwarding, the host header will be swapped with
 	// this value.
 	host_rewrite_literal?: string
@@ -1411,12 +1412,12 @@ RateLimit_Action_MetaData_Source_ROUTE_ENTRY: "ROUTE_ENTRY"
 
 #RetryPolicy_RetryPriority: {
 	name?:         string
-	typed_config?: _
+	typed_config?: any.#Any
 }
 
 #RetryPolicy_RetryHostPredicate: {
 	name?:         string
-	typed_config?: _
+	typed_config?: any.#Any
 }
 
 #RetryPolicy_RetryBackOff: {

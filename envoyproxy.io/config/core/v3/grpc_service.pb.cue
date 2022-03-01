@@ -1,5 +1,11 @@
 package v3
 
+import (
+	emptypb "envoyproxy.io/deps/protobuf/types/known/emptypb"
+	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
+	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
+)
+
 // gRPC service configuration. This is used by :ref:`ApiConfigSource
 // <envoy_v3_api_msg_config.core.v3.ApiConfigSource>` and filter configurations.
 // [#next-free-field: 6]
@@ -59,7 +65,7 @@ package v3
 	credentials_factory_name?: string
 	// Additional configuration for site-specific customizations of the Google
 	// gRPC library.
-	config?: _
+	config?: _struct.#Struct
 	// How many bytes each stream can buffer internally.
 	// If not set an implementation defined default is applied (1MiB).
 	per_stream_buffer_limit_bytes?: uint32
@@ -87,7 +93,7 @@ package v3
 #GrpcService_GoogleGrpc_ChannelCredentials: {
 	ssl_credentials?: #GrpcService_GoogleGrpc_SslCredentials
 	// https://grpc.io/grpc/cpp/namespacegrpc.html#a6beb3ac70ff94bd2ebbd89b8f21d1f61
-	google_default?: {}
+	google_default?:    emptypb.#Empty
 	local_credentials?: #GrpcService_GoogleGrpc_GoogleLocalCredentials
 }
 
@@ -98,7 +104,7 @@ package v3
 	access_token?: string
 	// Google Compute Engine credentials.
 	// https://grpc.io/grpc/cpp/namespacegrpc.html#a6beb3ac70ff94bd2ebbd89b8f21d1f61
-	google_compute_engine?: {}
+	google_compute_engine?: emptypb.#Empty
 	// Google refresh token credentials.
 	// https://grpc.io/grpc/cpp/namespacegrpc.html#a96901c997b91bc6513b08491e0dca37c.
 	google_refresh_token?: string
@@ -136,7 +142,7 @@ package v3
 
 #GrpcService_GoogleGrpc_CallCredentials_MetadataCredentialsFromPlugin: {
 	name?:         string
-	typed_config?: _
+	typed_config?: any.#Any
 }
 
 // Security token service configuration that allows Google gRPC to

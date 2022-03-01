@@ -1,8 +1,8 @@
 package v2
 
 import (
-	v2 "envoyproxy.io/config/ratelimit/v2"
 	ratelimit "envoyproxy.io/api/v2/ratelimit"
+	v2 "envoyproxy.io/config/ratelimit/v2"
 )
 
 // [#next-free-field: 7]

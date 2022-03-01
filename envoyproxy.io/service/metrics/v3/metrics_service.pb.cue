@@ -1,8 +1,8 @@
 package v3
 
 import (
-	v3 "envoyproxy.io/config/core/v3"
 	_go "envoyproxy.io/deps/prometheus/client_model/go"
+	v3 "envoyproxy.io/config/core/v3"
 )
 
 #StreamMetricsResponse: {

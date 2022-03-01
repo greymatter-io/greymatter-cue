@@ -1,6 +1,7 @@
 package v3
 
 import (
+	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
 	v3 "envoyproxy.io/extensions/common/ratelimit/v3"
 	v31 "envoyproxy.io/config/core/v3"
 )
@@ -64,7 +65,7 @@ RateLimitResponse_RateLimit_Unit_DAY:     "DAY"
 	// - :ref:`envoy.filters.http.ratelimit <config_http_filters_ratelimit_dynamic_metadata>` for HTTP filter.
 	// - :ref:`envoy.filters.network.ratelimit <config_network_filters_ratelimit_dynamic_metadata>` for network filter.
 	// - :ref:`envoy.filters.thrift.rate_limit <config_thrift_filters_rate_limit_dynamic_metadata>` for Thrift filter.
-	dynamic_metadata?: _
+	dynamic_metadata?: _struct.#Struct
 	// Quota is available for a request if its entire descriptor set has cached quota available.
 	// This is a union of all descriptors in the descriptor set. Clients can use the quota for future matches if and only if the descriptor set matches what was sent in the request that originated this response.
 	//

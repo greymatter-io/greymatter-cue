@@ -1,8 +1,8 @@
 package v2
 
 import (
-	v2 "envoyproxy.io/data/accesslog/v2"
 	core "envoyproxy.io/api/v2/core"
+	v2 "envoyproxy.io/data/accesslog/v2"
 )
 
 // Empty response for the StreamAccessLogs API. Will never be sent. See below.

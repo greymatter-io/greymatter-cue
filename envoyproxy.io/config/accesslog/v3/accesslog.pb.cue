@@ -1,10 +1,11 @@
 package v3
 
 import (
+	v32 "envoyproxy.io/config/route/v3"
+	v31 "envoyproxy.io/type/v3"
+	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 	v3 "envoyproxy.io/config/core/v3"
 	v33 "envoyproxy.io/type/matcher/v3"
-	v31 "envoyproxy.io/type/v3"
-	v32 "envoyproxy.io/config/route/v3"
 )
 
 #ComparisonFilter_Op: "EQ" | "GE" | "LE"
@@ -40,7 +41,7 @@ GrpcStatusFilter_Status_UNAUTHENTICATED:     "UNAUTHENTICATED"
 	name?: string
 	// Filter which is used to determine if the access log needs to be written.
 	filter?:       #AccessLogFilter
-	typed_config?: _
+	typed_config?: any.#Any
 }
 
 // [#next-free-field: 13]
@@ -193,5 +194,5 @@ GrpcStatusFilter_Status_UNAUTHENTICATED:     "UNAUTHENTICATED"
 	// The name of the filter implementation to instantiate. The name must
 	// match a statically registered filter.
 	name?:         string
-	typed_config?: _
+	typed_config?: any.#Any
 }

@@ -1,5 +1,10 @@
 package v2
 
+import (
+	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
+	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
+)
+
 // The tracing configuration specifies settings for an HTTP tracer provider used by Envoy.
 //
 // Envoy may support other tracers in the future, but right now the HTTP tracer is the only one
@@ -32,6 +37,6 @@ package v2
 	// - *envoy.tracers.xray*
 	name?: string
 	// Deprecated: Do not use.
-	config?:       _
-	typed_config?: _
+	config?:       _struct.#Struct
+	typed_config?: any.#Any
 }

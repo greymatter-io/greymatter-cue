@@ -3,6 +3,8 @@ package auth
 import (
 	core "envoyproxy.io/api/v2/core"
 	matcher "envoyproxy.io/type/matcher"
+	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
+	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
 )
 
 #TlsParameters_TlsProtocol: "TLS_AUTO" | "TLSv1_0" | "TLSv1_1" | "TLSv1_2" | "TLSv1_3"
@@ -90,8 +92,8 @@ CertificateValidationContext_TrustChainVerification_ACCEPT_UNTRUSTED:   "ACCEPT_
 	// supported private key method provider type.
 	provider_name?: string
 	// Deprecated: Do not use.
-	config?:       _
-	typed_config?: _
+	config?:       _struct.#Struct
+	typed_config?: any.#Any
 }
 
 // [#next-free-field: 7]

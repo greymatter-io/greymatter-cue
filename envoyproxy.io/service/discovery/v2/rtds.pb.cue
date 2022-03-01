@@ -1,5 +1,9 @@
 package v2
 
+import (
+	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
+)
+
 // [#not-implemented-hide:] Not configuration. Workaround c++ protobuf issue with importing
 // services: https://github.com/google/protobuf/issues/4221
 #RtdsDummy: {
@@ -10,7 +14,7 @@ package v2
 	// Runtime resource name. This makes the Runtime a self-describing xDS
 	// resource.
 	name?:  string
-	layer?: _
+	layer?: _struct.#Struct
 }
 
 // RuntimeDiscoveryServiceClient is the client API for RuntimeDiscoveryService service.

@@ -2,6 +2,7 @@ package v3
 
 import (
 	v3 "envoyproxy.io/config/core/v3"
+	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 )
 
 // [#not-implemented-hide:]
@@ -18,7 +19,7 @@ import (
 	//
 	// * :ref:`HealthCheckEvent <envoy_v3_api_msg_data.core.v3.HealthCheckEvent>`
 	// * :ref:`OutlierDetectionEvent <envoy_v3_api_msg_data.cluster.v3.OutlierDetectionEvent>`
-	events?: [...]
+	events?: [...any.#Any]
 }
 
 // [#not-implemented-hide:]

@@ -2,6 +2,7 @@ package v3
 
 import (
 	v3 "envoyproxy.io/config/core/v3"
+	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 )
 
 // HTTP version
@@ -133,7 +134,7 @@ TLSProperties_TLSVersion_TLSv1_3:             "TLSv1_3"
 	// Map of filter state in stream info that have been configured to be logged. If the filter
 	// state serialized to any message other than `google.protobuf.Any` it will be packed into
 	// `google.protobuf.Any`.
-	filter_state_objects?: [string]: _
+	filter_state_objects?: [string]: any.#Any
 	// A list of custom tags, which annotate logs with additional information.
 	// To configure this value, users should configure
 	// :ref:`custom_tags <envoy_v3_api_field_extensions.access_loggers.grpc.v3.CommonGrpcAccessLogConfig.custom_tags>`.

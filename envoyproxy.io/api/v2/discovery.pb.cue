@@ -1,8 +1,9 @@
 package v2
 
 import (
-	status "envoyproxy.io/deps/genproto/googleapis/rpc/status"
 	core "envoyproxy.io/api/v2/core"
+	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
+	status "envoyproxy.io/deps/genproto/googleapis/rpc/status"
 )
 
 // A DiscoveryRequest requests a set of versioned resources of the same type for
@@ -49,7 +50,7 @@ import (
 	// The version of the response data.
 	version_info?: string
 	// The response resources. These resources are typed and depend on the API being called.
-	resources?: [...]
+	resources?: [...any.#Any]
 	// [#not-implemented-hide:]
 	// Canary is used to support two Envoy command line flags:
 	//
@@ -192,5 +193,5 @@ import (
 	// resources.
 	version?: string
 	// The resource being tracked.
-	resource?: _
+	resource?: any.#Any
 }

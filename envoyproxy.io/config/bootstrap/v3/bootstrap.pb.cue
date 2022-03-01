@@ -1,14 +1,15 @@
 package v3
 
 import (
-	v32 "envoyproxy.io/config/trace/v3"
 	v3 "envoyproxy.io/config/core/v3"
-	v33 "envoyproxy.io/config/overload/v3"
 	v36 "envoyproxy.io/config/listener/v3"
-	v31 "envoyproxy.io/config/metrics/v3"
+	v33 "envoyproxy.io/config/overload/v3"
 	v35 "envoyproxy.io/type/v3"
+	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
 	v34 "envoyproxy.io/config/accesslog/v3"
 	v37 "envoyproxy.io/config/cluster/v3"
+	v31 "envoyproxy.io/config/metrics/v3"
+	v32 "envoyproxy.io/config/trace/v3"
 	v38 "envoyproxy.io/extensions/transport_sockets/tls/v3"
 )
 
@@ -361,7 +362,7 @@ CustomInlineHeader_InlineHeaderType_RESPONSE_TRAILER: "RESPONSE_TRAILER"
 	// <config_runtime_layering>` by other runtime layers, e.g.
 	// disk or admin. This follows the :ref:`runtime protobuf JSON representation
 	// encoding <config_runtime_proto_json>`.
-	base?: _
+	base?: _struct.#Struct
 }
 
 // [#next-free-field: 6]
@@ -373,7 +374,7 @@ CustomInlineHeader_InlineHeaderType_RESPONSE_TRAILER: "RESPONSE_TRAILER"
 	// This follows the :ref:`runtime protobuf JSON representation encoding
 	// <config_runtime_proto_json>`. Unlike static xDS resources, this static
 	// layer is overridable by later layers in the runtime virtual filesystem.
-	static_layer?: _
+	static_layer?: _struct.#Struct
 	disk_layer?:   #RuntimeLayer_DiskLayer
 	admin_layer?:  #RuntimeLayer_AdminLayer
 	rtds_layer?:   #RuntimeLayer_RtdsLayer

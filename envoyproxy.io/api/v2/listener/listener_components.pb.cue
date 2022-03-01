@@ -1,9 +1,11 @@
 package listener
 
 import (
-	core "envoyproxy.io/api/v2/core"
-	auth "envoyproxy.io/api/v2/auth"
 	_type "envoyproxy.io/type"
+	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
+	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
+	auth "envoyproxy.io/api/v2/auth"
+	core "envoyproxy.io/api/v2/core"
 )
 
 #FilterChainMatch_ConnectionSourceType: "ANY" | "LOCAL" | "EXTERNAL"
@@ -17,8 +19,8 @@ FilterChainMatch_ConnectionSourceType_EXTERNAL: "EXTERNAL"
 	// :ref:`supported filter <config_network_filters>`.
 	name?: string
 	// Deprecated: Do not use.
-	config?:       _
-	typed_config?: _
+	config?:       _struct.#Struct
+	typed_config?: any.#Any
 }
 
 // Specifies the match criteria for selecting a specific filter chain for a
@@ -209,8 +211,8 @@ FilterChainMatch_ConnectionSourceType_EXTERNAL: "EXTERNAL"
 	// :ref:`supported filter <config_listener_filters>`.
 	name?: string
 	// Deprecated: Do not use.
-	config?:       _
-	typed_config?: _
+	config?:       _struct.#Struct
+	typed_config?: any.#Any
 	// Optional match predicate used to disable the filter. The filter is enabled when this field is empty.
 	// See :ref:`ListenerFilterChainMatchPredicate <envoy_api_msg_listener.ListenerFilterChainMatchPredicate>`
 	// for further examples.

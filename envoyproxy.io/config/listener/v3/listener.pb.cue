@@ -2,8 +2,8 @@ package v3
 
 import (
 	v3 "envoyproxy.io/deps/cncf/xds/go/xds/core/v3"
-	v31 "envoyproxy.io/config/core/v3"
 	v32 "envoyproxy.io/config/accesslog/v3"
+	v31 "envoyproxy.io/config/core/v3"
 )
 
 #Listener_DrainType: "DEFAULT" | "MODIFY_ONLY"

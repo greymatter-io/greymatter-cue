@@ -1,5 +1,9 @@
 package v2
 
+import (
+	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
+)
+
 // [#next-free-field: 6]
 #Squash: {
 	// The name of the cluster that hosts the Squash server.
@@ -23,7 +27,7 @@ package v2
 	//  }
 	//
 	// (where POD_NAME, POD_NAMESPACE are configured in the pod via the Downward API)
-	attachment_template?: _
+	attachment_template?: _struct.#Struct
 	// The timeout for individual requests sent to the Squash cluster. Defaults to 1 second.
 	request_timeout?: string
 	// The total timeout Squash will delay a request and wait for it to be attached. Defaults to 60

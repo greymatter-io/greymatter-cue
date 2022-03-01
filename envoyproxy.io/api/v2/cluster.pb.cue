@@ -1,10 +1,12 @@
 package v2
 
 import (
-	cluster "envoyproxy.io/api/v2/cluster"
-	core "envoyproxy.io/api/v2/core"
 	auth "envoyproxy.io/api/v2/auth"
+	core "envoyproxy.io/api/v2/core"
 	_type "envoyproxy.io/type"
+	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
+	cluster "envoyproxy.io/api/v2/cluster"
+	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 )
 
 // Refer to :ref:`service discovery type <arch_overview_service_discovery_types>`
@@ -220,12 +222,12 @@ Cluster_RingHashLbConfig_HashFunction_MURMUR_HASH_2: "MURMUR_HASH_2"
 	// specific options.
 	//
 	// Deprecated: Do not use.
-	extension_protocol_options?: [string]: _
+	extension_protocol_options?: [string]: _struct.#Struct
 	// The extension_protocol_options field is used to provide extension-specific protocol options
 	// for upstream connections. The key should match the extension filter name, such as
 	// "envoy.filters.network.thrift_proxy". See the extension's documentation for details on
 	// specific options.
-	typed_extension_protocol_options?: [string]: _
+	typed_extension_protocol_options?: [string]: any.#Any
 	// If the DNS refresh rate is specified and the cluster type is either
 	// :ref:`STRICT_DNS<envoy_api_enum_value_Cluster.DiscoveryType.STRICT_DNS>`,
 	// or :ref:`LOGICAL_DNS<envoy_api_enum_value_Cluster.DiscoveryType.LOGICAL_DNS>`,
@@ -418,7 +420,7 @@ Cluster_RingHashLbConfig_HashFunction_MURMUR_HASH_2: "MURMUR_HASH_2"
 	// will use the transport socket configuration specified here.
 	// The endpoint's metadata entry in *envoy.transport_socket_match* is used to match
 	// against the values specified in this field.
-	match?: _
+	match?: _struct.#Struct
 	// The configuration of the transport socket.
 	transport_socket?: core.#TransportSocket
 }
@@ -429,7 +431,7 @@ Cluster_RingHashLbConfig_HashFunction_MURMUR_HASH_2: "MURMUR_HASH_2"
 	name?: string
 	// Cluster specific configuration which depends on the cluster being instantiated.
 	// See the supported cluster for further documentation.
-	typed_config?: _
+	typed_config?: any.#Any
 }
 
 // Only valid when discovery type is EDS.
@@ -458,7 +460,7 @@ Cluster_RingHashLbConfig_HashFunction_MURMUR_HASH_2: "MURMUR_HASH_2"
 	// namespace. It is valid for no hosts to match, in which case the behavior
 	// is the same as a fallback_policy of
 	// :ref:`NO_FALLBACK<envoy_api_enum_value_Cluster.LbSubsetConfig.LbSubsetFallbackPolicy.NO_FALLBACK>`.
-	default_subset?: _
+	default_subset?: _struct.#Struct
 	// For each entry, LbEndpoint.Metadata's
 	// *envoy.lb* namespace is traversed and a subset is created for each unique
 	// combination of key and value. For example:
@@ -672,6 +674,6 @@ Cluster_RingHashLbConfig_HashFunction_MURMUR_HASH_2: "MURMUR_HASH_2"
 	// No more than one of these two fields may be populated.
 	//
 	// Deprecated: Do not use.
-	config?:       _
-	typed_config?: _
+	config?:       _struct.#Struct
+	typed_config?: any.#Any
 }

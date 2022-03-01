@@ -1,5 +1,9 @@
 package v3
 
+import (
+	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
+)
+
 #Filter: {
 	// The name of the filter to instantiate. The name must match a
 	// supported upstream filter. Note that Envoy's :ref:`downstream network
@@ -7,5 +11,5 @@ package v3
 	name?: string
 	// Filter specific configuration which depends on the filter being
 	// instantiated. See the supported filters for further documentation.
-	typed_config?: _
+	typed_config?: any.#Any
 }

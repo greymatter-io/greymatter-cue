@@ -1,5 +1,9 @@
 package v3
 
+import (
+	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
+)
+
 // Configuration to use multiple :ref:`command operators <config_access_log_command_operators>`
 // to generate a new string in either plain text or JSON format.
 // [#next-free-field: 7]
@@ -46,7 +50,7 @@ package v3
 	//    "message": "My error message"
 	//  }
 	//
-	json_format?: _
+	json_format?: _struct.#Struct
 	// Specify a format with command operators to form a text string.
 	// Its details is described in :ref:`format string<config_access_log_format_strings>`.
 	//

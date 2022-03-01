@@ -1,12 +1,13 @@
 package v2
 
 import (
-	v2 "envoyproxy.io/config/metrics/v2"
-	v22 "envoyproxy.io/api/v2"
-	core "envoyproxy.io/api/v2/core"
-	v21 "envoyproxy.io/config/trace/v2"
 	auth "envoyproxy.io/api/v2/auth"
+	core "envoyproxy.io/api/v2/core"
 	v2alpha "envoyproxy.io/config/overload/v2alpha"
+	v22 "envoyproxy.io/api/v2"
+	v2 "envoyproxy.io/config/metrics/v2"
+	v21 "envoyproxy.io/config/trace/v2"
+	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
 )
 
 // Bootstrap :ref:`configuration overview <config_overview_bootstrap>`.
@@ -178,7 +179,7 @@ import (
 	// <config_runtime_layering>` by other runtime layers, e.g.
 	// disk or admin. This follows the :ref:`runtime protobuf JSON representation
 	// encoding <config_runtime_proto_json>`.
-	base?: _
+	base?: _struct.#Struct
 }
 
 // [#next-free-field: 6]
@@ -190,7 +191,7 @@ import (
 	// This follows the :ref:`runtime protobuf JSON representation encoding
 	// <config_runtime_proto_json>`. Unlike static xDS resources, this static
 	// layer is overridable by later layers in the runtime virtual filesystem.
-	static_layer?: _
+	static_layer?: _struct.#Struct
 	disk_layer?:   #RuntimeLayer_DiskLayer
 	admin_layer?:  #RuntimeLayer_AdminLayer
 	rtds_layer?:   #RuntimeLayer_RtdsLayer

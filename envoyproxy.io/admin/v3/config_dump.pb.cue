@@ -2,6 +2,7 @@ package v3
 
 import (
 	v3 "envoyproxy.io/config/bootstrap/v3"
+	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 )
 
 // Resource status from the view of a xDS client, which tells the synchronization
@@ -38,13 +39,13 @@ ClientResourceStatus_NACKED:         "NACKED"
 	// :ref:`/config_dump?mask={} <operations_admin_interface_config_dump_by_mask>`,
 	// or :ref:`/config_dump?resource={},mask={}
 	// <operations_admin_interface_config_dump_by_resource_and_mask>` for more information.
-	configs?: [...]
+	configs?: [...any.#Any]
 }
 
 #UpdateFailureState: {
 	// What the component configuration would have been if the update had succeeded.
 	// This field may not be populated by xDS clients due to storage overhead.
-	failed_configuration?: _
+	failed_configuration?: any.#Any
 	// Time of the latest failed update attempt.
 	last_update_attempt?: string
 	// Details about the last failed update attempt.
@@ -146,7 +147,7 @@ ClientResourceStatus_NACKED:         "NACKED"
 // Describes a statically loaded listener.
 #ListenersConfigDump_StaticListener: {
 	// The listener config.
-	listener?: _
+	listener?: any.#Any
 	// The timestamp when the Listener was last successfully updated.
 	last_updated?: string
 }
@@ -158,7 +159,7 @@ ClientResourceStatus_NACKED:         "NACKED"
 	// by the API.
 	version_info?: string
 	// The listener config.
-	listener?: _
+	listener?: any.#Any
 	// The timestamp when the Listener was last successfully updated.
 	last_updated?: string
 }
@@ -194,7 +195,7 @@ ClientResourceStatus_NACKED:         "NACKED"
 // Describes a statically loaded cluster.
 #ClustersConfigDump_StaticCluster: {
 	// The cluster config.
-	cluster?: _
+	cluster?: any.#Any
 	// The timestamp when the Cluster was last updated.
 	last_updated?: string
 }
@@ -208,7 +209,7 @@ ClientResourceStatus_NACKED:         "NACKED"
 	// the API.
 	version_info?: string
 	// The cluster config.
-	cluster?: _
+	cluster?: any.#Any
 	// The timestamp when the Cluster was last updated.
 	last_updated?: string
 	// Set if the last update failed, cleared after the next successful update.
@@ -224,7 +225,7 @@ ClientResourceStatus_NACKED:         "NACKED"
 
 #RoutesConfigDump_StaticRouteConfig: {
 	// The route config.
-	route_config?: _
+	route_config?: any.#Any
 	// The timestamp when the Route was last updated.
 	last_updated?: string
 }
@@ -236,7 +237,7 @@ ClientResourceStatus_NACKED:         "NACKED"
 	// the route configuration was loaded.
 	version_info?: string
 	// The route config.
-	route_config?: _
+	route_config?: any.#Any
 	// The timestamp when the Route was last updated.
 	last_updated?: string
 	// Set if the last update failed, cleared after the next successful update.
@@ -254,7 +255,7 @@ ClientResourceStatus_NACKED:         "NACKED"
 	// The name assigned to the scoped route configurations.
 	name?: string
 	// The scoped route configurations.
-	scoped_route_configs?: [...]
+	scoped_route_configs?: [...any.#Any]
 	// The timestamp when the scoped route config set was last updated.
 	last_updated?: string
 }
@@ -268,7 +269,7 @@ ClientResourceStatus_NACKED:         "NACKED"
 	// the scoped routes configuration was loaded.
 	version_info?: string
 	// The scoped route configurations.
-	scoped_route_configs?: [...]
+	scoped_route_configs?: [...any.#Any]
 	// The timestamp when the scoped route config set was last updated.
 	last_updated?: string
 	// Set if the last update failed, cleared after the next successful update.
@@ -294,7 +295,7 @@ ClientResourceStatus_NACKED:         "NACKED"
 	// The actual secret information.
 	// Security sensitive information is redacted (replaced with "[redacted]") for
 	// private keys and passwords in TLS certificates.
-	secret?: _
+	secret?: any.#Any
 	// Set if the last update failed, cleared after the next successful update.
 	// The *error_state* field contains the rejected version of this particular
 	// resource along with the reason and timestamp. For successfully updated or
@@ -315,12 +316,12 @@ ClientResourceStatus_NACKED:         "NACKED"
 	// The actual secret information.
 	// Security sensitive information is redacted (replaced with "[redacted]") for
 	// private keys and passwords in TLS certificates.
-	secret?: _
+	secret?: any.#Any
 }
 
 #EndpointsConfigDump_StaticEndpointConfig: {
 	// The endpoint config.
-	endpoint_config?: _
+	endpoint_config?: any.#Any
 	// [#not-implemented-hide:] The timestamp when the Endpoint was last updated.
 	last_updated?: string
 }
@@ -332,7 +333,7 @@ ClientResourceStatus_NACKED:         "NACKED"
 	// the endpoint configuration was loaded.
 	version_info?: string
 	// The endpoint config.
-	endpoint_config?: _
+	endpoint_config?: any.#Any
 	// [#not-implemented-hide:] The timestamp when the Endpoint was last updated.
 	last_updated?: string
 	// Set if the last update failed, cleared after the next successful update.

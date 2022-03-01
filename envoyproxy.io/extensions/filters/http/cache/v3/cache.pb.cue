@@ -3,13 +3,14 @@ package v3
 import (
 	v31 "envoyproxy.io/config/route/v3"
 	v3 "envoyproxy.io/type/matcher/v3"
+	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 )
 
 // [#extension: envoy.filters.http.cache]
 #CacheConfig: {
 	// Config specific to the cache storage implementation.
 	// [#extension-category: envoy.filters.http.cache]
-	typed_config?: _
+	typed_config?: any.#Any
 	// List of matching rules that defines allowed *Vary* headers.
 	//
 	// The *vary* response header holds a list of header names that affect the

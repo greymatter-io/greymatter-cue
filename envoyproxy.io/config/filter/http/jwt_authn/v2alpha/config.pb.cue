@@ -1,8 +1,9 @@
 package v2alpha
 
 import (
-	route "envoyproxy.io/api/v2/route"
 	core "envoyproxy.io/api/v2/core"
+	route "envoyproxy.io/api/v2/route"
+	emptypb "envoyproxy.io/deps/protobuf/types/known/emptypb"
 )
 
 // Please see following for JWT authentication flow:
@@ -264,12 +265,12 @@ import (
 	// verification fails. A typical usage is: this filter is used to only verify
 	// JWTs and pass the verified JWT payloads to another filter, the other filter
 	// will make decision. In this mode, all JWT tokens will be verified.
-	allow_missing_or_failed?: {}
+	allow_missing_or_failed?: emptypb.#Empty
 	// The requirement is satisfied if JWT is missing, but failed if JWT is
 	// presented but invalid. Similar to allow_missing_or_failed, this is used
 	// to only verify JWTs and pass the verified payload to another filter. The
 	// different is this mode will reject requests with invalid tokens.
-	allow_missing?: {}
+	allow_missing?: emptypb.#Empty
 }
 
 // This message specifies a list of RequiredProvider.

@@ -1,8 +1,8 @@
 package v2
 
 import (
-	endpoint "envoyproxy.io/api/v2/endpoint"
 	_type "envoyproxy.io/type"
+	endpoint "envoyproxy.io/api/v2/endpoint"
 )
 
 // Each route from RDS will map to a single cluster or traffic split across

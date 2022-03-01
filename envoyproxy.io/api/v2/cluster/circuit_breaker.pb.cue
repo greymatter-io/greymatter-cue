@@ -1,8 +1,8 @@
 package cluster
 
 import (
-	_type "envoyproxy.io/type"
 	core "envoyproxy.io/api/v2/core"
+	_type "envoyproxy.io/type"
 )
 
 // :ref:`Circuit breaking<arch_overview_circuit_break>` settings can be

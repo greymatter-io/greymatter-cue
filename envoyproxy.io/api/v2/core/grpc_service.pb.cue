@@ -1,5 +1,11 @@
 package core
 
+import (
+	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
+	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
+	emptypb "envoyproxy.io/deps/protobuf/types/known/emptypb"
+)
+
 // gRPC service configuration. This is used by :ref:`ApiConfigSource
 // <envoy_api_msg_core.ApiConfigSource>` and filter configurations.
 // [#next-free-field: 6]
@@ -54,7 +60,7 @@ package core
 	credentials_factory_name?: string
 	// Additional configuration for site-specific customizations of the Google
 	// gRPC library.
-	config?: _
+	config?: _struct.#Struct
 }
 
 // See https://grpc.io/grpc/cpp/structgrpc_1_1_ssl_credentials_options.html.
@@ -77,7 +83,7 @@ package core
 #GrpcService_GoogleGrpc_ChannelCredentials: {
 	ssl_credentials?: #GrpcService_GoogleGrpc_SslCredentials
 	// https://grpc.io/grpc/cpp/namespacegrpc.html#a6beb3ac70ff94bd2ebbd89b8f21d1f61
-	google_default?: {}
+	google_default?:    emptypb.#Empty
 	local_credentials?: #GrpcService_GoogleGrpc_GoogleLocalCredentials
 }
 
@@ -88,7 +94,7 @@ package core
 	access_token?: string
 	// Google Compute Engine credentials.
 	// https://grpc.io/grpc/cpp/namespacegrpc.html#a6beb3ac70ff94bd2ebbd89b8f21d1f61
-	google_compute_engine?: {}
+	google_compute_engine?: emptypb.#Empty
 	// Google refresh token credentials.
 	// https://grpc.io/grpc/cpp/namespacegrpc.html#a96901c997b91bc6513b08491e0dca37c.
 	google_refresh_token?: string
@@ -121,8 +127,8 @@ package core
 #GrpcService_GoogleGrpc_CallCredentials_MetadataCredentialsFromPlugin: {
 	name?: string
 	// Deprecated: Do not use.
-	config?:       _
-	typed_config?: _
+	config?:       _struct.#Struct
+	typed_config?: any.#Any
 }
 
 // Security token service configuration that allows Google gRPC to

@@ -1,8 +1,8 @@
 package v2alpha
 
 import (
-	_type "envoyproxy.io/type"
 	core "envoyproxy.io/api/v2/core"
+	_type "envoyproxy.io/type"
 )
 
 // Admin endpoint uses this wrapper for `/clusters` to display cluster status information.

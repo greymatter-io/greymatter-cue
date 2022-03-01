@@ -1,9 +1,10 @@
 package v3
 
 import (
-	v3 "envoyproxy.io/extensions/filters/http/ext_proc/v3"
-	v31 "envoyproxy.io/config/core/v3"
 	v32 "envoyproxy.io/type/v3"
+	v3 "envoyproxy.io/extensions/filters/http/ext_proc/v3"
+	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
+	v31 "envoyproxy.io/config/core/v3"
 )
 
 #CommonResponse_ResponseStatus: "CONTINUE" | "CONTINUE_AND_REPLACE"
@@ -94,7 +95,7 @@ CommonResponse_ResponseStatus_CONTINUE_AND_REPLACE: "CONTINUE_AND_REPLACE"
 	// [#not-implemented-hide:]
 	// Optional metadata that will be emitted as dynamic metadata to be consumed by the next
 	// filter. This metadata will be placed in the namespace "envoy.filters.http.ext_proc".
-	dynamic_metadata?: _
+	dynamic_metadata?: _struct.#Struct
 	// Override how parts of the HTTP request and response are processed
 	// for the duration of this particular request/response only. Servers
 	// may use this to intelligently control how requests are processed
@@ -114,7 +115,7 @@ CommonResponse_ResponseStatus_CONTINUE_AND_REPLACE: "CONTINUE_AND_REPLACE"
 	// in the list is populated
 	// from the standard :ref:`attributes <arch_overview_attributes>`
 	// supported across Envoy.
-	attributes?: [string]: _
+	attributes?: [string]: _struct.#Struct
 	// If true, then there is no message body associated with this
 	// request or response.
 	end_of_stream?: bool

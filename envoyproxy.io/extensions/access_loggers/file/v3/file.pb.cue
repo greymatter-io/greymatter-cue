@@ -2,6 +2,7 @@ package v3
 
 import (
 	v3 "envoyproxy.io/config/core/v3"
+	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
 )
 
 // Custom configuration for an :ref:`AccessLog <envoy_v3_api_msg_config.accesslog.v3.AccessLog>`
@@ -25,7 +26,7 @@ import (
 	// Please use :ref:`log_format <envoy_v3_api_field_extensions.access_loggers.file.v3.FileAccessLog.log_format>`.
 	//
 	// Deprecated: Do not use.
-	json_format?: _
+	json_format?: _struct.#Struct
 	// Access log :ref:`format dictionary<config_access_log_format_dictionaries>`. Values are
 	// rendered as strings, numbers, or boolean values as appropriate. Nested JSON objects may
 	// be produced by some command operators (e.g.FILTER_STATE or DYNAMIC_METADATA). See the
@@ -34,7 +35,7 @@ import (
 	// Please use :ref:`log_format <envoy_v3_api_field_extensions.access_loggers.file.v3.FileAccessLog.log_format>`.
 	//
 	// Deprecated: Do not use.
-	typed_json_format?: _
+	typed_json_format?: _struct.#Struct
 	// Configuration to form access log data and format.
 	// If not specified, use :ref:`default format <config_access_log_default_format>`.
 	log_format?: v3.#SubstitutionFormatString

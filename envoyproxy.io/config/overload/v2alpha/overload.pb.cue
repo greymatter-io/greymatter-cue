@@ -1,5 +1,10 @@
 package v2alpha
 
+import (
+	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
+	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
+)
+
 #ResourceMonitor: {
 	// The name of the resource monitor to instantiate. Must match a registered
 	// resource monitor type. The built-in resource monitors are:
@@ -10,8 +15,8 @@ package v2alpha
 	//   <envoy_api_msg_config.resource_monitor.injected_resource.v2alpha.InjectedResourceConfig>`
 	name?: string
 	// Deprecated: Do not use.
-	config?:       _
-	typed_config?: _
+	config?:       _struct.#Struct
+	typed_config?: any.#Any
 }
 
 #ThresholdTrigger: {

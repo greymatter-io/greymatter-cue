@@ -1,5 +1,9 @@
 package v3
 
+import (
+	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
+)
+
 #CollectionEntry: {
 	locator?:      #ResourceLocator
 	inline_entry?: #CollectionEntry_InlineEntry
@@ -8,5 +12,5 @@ package v3
 #CollectionEntry_InlineEntry: {
 	name?:     string
 	version?:  string
-	resource?: _
+	resource?: any.#Any
 }

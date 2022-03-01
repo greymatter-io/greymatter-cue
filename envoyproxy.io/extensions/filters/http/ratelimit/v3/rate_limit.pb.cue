@@ -1,10 +1,10 @@
 package v3
 
 import (
-	v3 "envoyproxy.io/config/ratelimit/v3"
-	v33 "envoyproxy.io/type/metadata/v3"
 	v31 "envoyproxy.io/config/core/v3"
+	v3 "envoyproxy.io/config/ratelimit/v3"
 	v32 "envoyproxy.io/config/route/v3"
+	v33 "envoyproxy.io/type/metadata/v3"
 )
 
 // Defines the version of the standard to use for X-RateLimit headers.

@@ -1,8 +1,8 @@
 package v2alpha
 
 import (
-	core "envoyproxy.io/api/v2/core"
 	v2alpha "envoyproxy.io/data/tap/v2alpha"
+	core "envoyproxy.io/api/v2/core"
 )
 
 // [#not-implemented-hide:] Stream message for the Tap API. Envoy will open a stream to the server

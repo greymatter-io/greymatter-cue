@@ -1,5 +1,9 @@
 package v3
 
+import (
+	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
+)
+
 // Message type for extension configuration.
 // [#next-major-version: revisit all existing typed_config that doesn't use this wrapper.].
 #TypedExtensionConfig: {
@@ -12,7 +16,7 @@ package v3
 	// URL of *TypedStruct* will be utilized. See the
 	// :ref:`extension configuration overview
 	// <config_overview_extension_configuration>` for further details.
-	typed_config?: _
+	typed_config?: any.#Any
 }
 
 // Configuration source specifier for a late-bound extension configuration. The
@@ -31,7 +35,7 @@ package v3
 	// Optional default configuration to use as the initial configuration if
 	// there is a failure to receive the initial extension configuration or if
 	// `apply_default_config_without_warming` flag is set.
-	default_config?: _
+	default_config?: any.#Any
 	// Use the default config as the initial configuration without warming and
 	// waiting for the first discovery response. Requires the default configuration
 	// to be supplied.

@@ -1,5 +1,9 @@
 package v2alpha1
 
+import (
+	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
+)
+
 // Dubbo Protocol types supported by Envoy.
 #ProtocolType: "Dubbo"
 
@@ -34,5 +38,5 @@ SerializationType_Hessian2: "Hessian2"
 	name?: string
 	// Filter specific configuration which depends on the filter being
 	// instantiated. See the supported filters for further documentation.
-	config?: _
+	config?: any.#Any
 }

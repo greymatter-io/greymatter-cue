@@ -1,5 +1,10 @@
 package v2alpha1
 
+import (
+	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
+	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
+)
+
 // Thrift transport types supported by Envoy.
 #TransportType: "AUTO_TRANSPORT" | "FRAMED" | "UNFRAMED" | "HEADER"
 
@@ -46,8 +51,8 @@ ProtocolType_TWITTER:       "TWITTER"
 	// * :ref:`envoy.filters.thrift.rate_limit <config_thrift_filters_rate_limit>`
 	name?: string
 	// Deprecated: Do not use.
-	config?:       _
-	typed_config?: _
+	config?:       _struct.#Struct
+	typed_config?: any.#Any
 }
 
 // ThriftProtocolOptions specifies Thrift upstream protocol options. This object is used in

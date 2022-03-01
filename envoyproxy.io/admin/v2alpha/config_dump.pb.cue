@@ -2,6 +2,7 @@ package v2alpha
 
 import (
 	v2 "envoyproxy.io/config/bootstrap/v2"
+	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 )
 
 // The :ref:`/config_dump <operations_admin_interface_config_dump>` admin endpoint uses this wrapper
@@ -23,12 +24,12 @@ import (
 	// :ref:`/config_dump?mask={} <operations_admin_interface_config_dump_by_mask>`,
 	// or :ref:`/config_dump?resource={},mask={}
 	// <operations_admin_interface_config_dump_by_resource_and_mask>` for more information.
-	configs?: [...]
+	configs?: [...any.#Any]
 }
 
 #UpdateFailureState: {
 	// What the component configuration would have been if the update had succeeded.
-	failed_configuration?: _
+	failed_configuration?: any.#Any
 	// Time of the latest failed update attempt.
 	last_update_attempt?: string
 	// Details about the last failed update attempt.
@@ -117,7 +118,7 @@ import (
 // Describes a statically loaded listener.
 #ListenersConfigDump_StaticListener: {
 	// The listener config.
-	listener?: _
+	listener?: any.#Any
 	// The timestamp when the Listener was last successfully updated.
 	last_updated?: string
 }
@@ -129,7 +130,7 @@ import (
 	// by the API.
 	version_info?: string
 	// The listener config.
-	listener?: _
+	listener?: any.#Any
 	// The timestamp when the Listener was last successfully updated.
 	last_updated?: string
 }
@@ -159,7 +160,7 @@ import (
 // Describes a statically loaded cluster.
 #ClustersConfigDump_StaticCluster: {
 	// The cluster config.
-	cluster?: _
+	cluster?: any.#Any
 	// The timestamp when the Cluster was last updated.
 	last_updated?: string
 }
@@ -172,14 +173,14 @@ import (
 	// the API.
 	version_info?: string
 	// The cluster config.
-	cluster?: _
+	cluster?: any.#Any
 	// The timestamp when the Cluster was last updated.
 	last_updated?: string
 }
 
 #RoutesConfigDump_StaticRouteConfig: {
 	// The route config.
-	route_config?: _
+	route_config?: any.#Any
 	// The timestamp when the Route was last updated.
 	last_updated?: string
 }
@@ -190,7 +191,7 @@ import (
 	// the route configuration was loaded.
 	version_info?: string
 	// The route config.
-	route_config?: _
+	route_config?: any.#Any
 	// The timestamp when the Route was last updated.
 	last_updated?: string
 }
@@ -199,7 +200,7 @@ import (
 	// The name assigned to the scoped route configurations.
 	name?: string
 	// The scoped route configurations.
-	scoped_route_configs?: [...]
+	scoped_route_configs?: [...any.#Any]
 	// The timestamp when the scoped route config set was last updated.
 	last_updated?: string
 }
@@ -212,7 +213,7 @@ import (
 	// the scoped routes configuration was loaded.
 	version_info?: string
 	// The scoped route configurations.
-	scoped_route_configs?: [...]
+	scoped_route_configs?: [...any.#Any]
 	// The timestamp when the scoped route config set was last updated.
 	last_updated?: string
 }
@@ -228,7 +229,7 @@ import (
 	// The actual secret information.
 	// Security sensitive information is redacted (replaced with "[redacted]") for
 	// private keys and passwords in TLS certificates.
-	secret?: _
+	secret?: any.#Any
 }
 
 // StaticSecret specifies statically loaded secret in bootstrap.
@@ -240,5 +241,5 @@ import (
 	// The actual secret information.
 	// Security sensitive information is redacted (replaced with "[redacted]") for
 	// private keys and passwords in TLS certificates.
-	secret?: _
+	secret?: any.#Any
 }

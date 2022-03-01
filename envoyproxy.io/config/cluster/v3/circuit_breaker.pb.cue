@@ -1,8 +1,8 @@
 package v3
 
 import (
-	v31 "envoyproxy.io/type/v3"
 	v3 "envoyproxy.io/config/core/v3"
+	v31 "envoyproxy.io/type/v3"
 )
 
 // :ref:`Circuit breaking<arch_overview_circuit_break>` settings can be
