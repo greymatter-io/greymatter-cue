@@ -1,10 +1,10 @@
 package v3
 
 import (
-	v31 "envoyproxy.io/deps/cncf/xds/go/xds/core/v3"
-	v3 "envoyproxy.io/type/v3"
-	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
+	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
+	v3 "envoyproxy.io/type/v3"
+	v31 "envoyproxy.io/deps/cncf/xds/go/xds/core/v3"
 )
 
 // Envoy supports :ref:`upstream priority routing

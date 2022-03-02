@@ -1,8 +1,8 @@
 package v2alpha
 
 import (
-	core "envoyproxy.io/api/v2/core"
 	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
+	core "envoyproxy.io/api/v2/core"
 )
 
 // [#not-implemented-hide:]

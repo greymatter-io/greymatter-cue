@@ -1,10 +1,10 @@
 package v2
 
 import (
-	matcher "envoyproxy.io/type/matcher"
+	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
 	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 	core "envoyproxy.io/api/v2/core"
-	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
+	matcher "envoyproxy.io/type/matcher"
 )
 
 // Configuration for pluggable stats sinks.

@@ -1,9 +1,9 @@
 package v2
 
 import (
+	_type "envoyproxy.io/type"
 	route "envoyproxy.io/api/v2/route"
 	v2 "envoyproxy.io/config/filter/fault/v2"
-	_type "envoyproxy.io/type"
 )
 
 #FaultAbort: {

@@ -1,9 +1,9 @@
 package core
 
 import (
+	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
 	_type "envoyproxy.io/type"
 	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
-	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
 )
 
 // Envoy supports :ref:`upstream priority routing

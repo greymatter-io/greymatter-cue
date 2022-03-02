@@ -2,8 +2,8 @@ package v3
 
 import (
 	v3 "envoyproxy.io/config/core/v3"
-	v32 "envoyproxy.io/config/cluster/v3"
 	v31 "envoyproxy.io/config/endpoint/v3"
+	v32 "envoyproxy.io/config/cluster/v3"
 )
 
 // Different Envoy instances may have different capabilities (e.g. Redis)

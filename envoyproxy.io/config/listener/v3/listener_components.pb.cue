@@ -1,9 +1,9 @@
 package v3
 
 import (
+	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 	v3 "envoyproxy.io/config/core/v3"
 	v31 "envoyproxy.io/type/v3"
-	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 )
 
 #FilterChainMatch_ConnectionSourceType: "ANY" | "SAME_IP_OR_LOOPBACK" | "EXTERNAL"

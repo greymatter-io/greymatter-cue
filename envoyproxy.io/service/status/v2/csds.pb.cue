@@ -1,9 +1,9 @@
 package v2
 
 import (
-	v2alpha "envoyproxy.io/admin/v2alpha"
 	core "envoyproxy.io/api/v2/core"
 	matcher "envoyproxy.io/type/matcher"
+	v2alpha "envoyproxy.io/admin/v2alpha"
 )
 
 // Status of a config.

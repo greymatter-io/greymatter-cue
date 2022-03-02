@@ -1,8 +1,8 @@
 package v2alpha
 
 import (
-	matcher "envoyproxy.io/type/matcher"
 	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
+	matcher "envoyproxy.io/type/matcher"
 	route "envoyproxy.io/api/v2/route"
 )
 

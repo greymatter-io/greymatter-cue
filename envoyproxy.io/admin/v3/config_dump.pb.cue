@@ -1,8 +1,8 @@
 package v3
 
 import (
-	v3 "envoyproxy.io/config/bootstrap/v3"
 	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
+	v3 "envoyproxy.io/config/bootstrap/v3"
 )
 
 // Resource status from the view of a xDS client, which tells the synchronization

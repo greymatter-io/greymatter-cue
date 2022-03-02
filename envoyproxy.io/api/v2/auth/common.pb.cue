@@ -1,10 +1,10 @@
 package auth
 
 import (
+	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
+	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 	core "envoyproxy.io/api/v2/core"
 	matcher "envoyproxy.io/type/matcher"
-	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
-	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
 )
 
 #TlsParameters_TlsProtocol: "TLS_AUTO" | "TLSv1_0" | "TLSv1_1" | "TLSv1_2" | "TLSv1_3"

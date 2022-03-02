@@ -1,11 +1,11 @@
 package v2
 
 import (
-	core "envoyproxy.io/api/v2/core"
-	_type "envoyproxy.io/type"
 	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
-	route "envoyproxy.io/api/v2/route"
+	_type "envoyproxy.io/type"
 	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
+	core "envoyproxy.io/api/v2/core"
+	route "envoyproxy.io/api/v2/route"
 )
 
 #ComparisonFilter_Op: "EQ" | "GE" | "LE"

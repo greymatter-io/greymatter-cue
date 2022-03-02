@@ -1,9 +1,9 @@
 package listener
 
 import (
+	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
 	_type "envoyproxy.io/type"
 	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
-	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
 	auth "envoyproxy.io/api/v2/auth"
 	core "envoyproxy.io/api/v2/core"
 )

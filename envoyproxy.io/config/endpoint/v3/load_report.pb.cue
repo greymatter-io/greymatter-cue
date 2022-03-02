@@ -1,8 +1,8 @@
 package v3
 
 import (
-	v3 "envoyproxy.io/config/core/v3"
 	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
+	v3 "envoyproxy.io/config/core/v3"
 )
 
 // These are stats Envoy reports to the management server at a frequency defined by

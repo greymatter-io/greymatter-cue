@@ -1,8 +1,8 @@
 package v3
 
 import (
-	v31 "envoyproxy.io/config/core/v3"
 	v3 "envoyproxy.io/extensions/common/tap/v3"
+	v31 "envoyproxy.io/config/core/v3"
 )
 
 // Configuration for tap transport socket. This wraps another transport socket, providing the

@@ -1,8 +1,8 @@
 package v3
 
 import (
-	v31 "envoyproxy.io/config/core/v3"
 	v3 "envoyproxy.io/type/v3"
+	v31 "envoyproxy.io/config/core/v3"
 )
 
 // Configuration parameters for the gradient controller.

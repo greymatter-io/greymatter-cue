@@ -1,8 +1,8 @@
 package v3
 
 import (
-	v31 "envoyproxy.io/config/core/v3"
 	v3 "envoyproxy.io/data/tap/v3"
+	v31 "envoyproxy.io/config/core/v3"
 )
 
 // [#not-implemented-hide:] Stream message for the Tap API. Envoy will open a stream to the server

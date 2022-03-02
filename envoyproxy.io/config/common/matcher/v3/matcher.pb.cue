@@ -1,8 +1,8 @@
 package v3
 
 import (
-	v31 "envoyproxy.io/config/core/v3"
 	v3 "envoyproxy.io/config/route/v3"
+	v31 "envoyproxy.io/config/core/v3"
 	v32 "envoyproxy.io/type/matcher/v3"
 )
 

@@ -1,9 +1,9 @@
 package v3
 
 import (
-	v3 "envoyproxy.io/config/core/v3"
 	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 	status "envoyproxy.io/deps/genproto/googleapis/rpc/status"
+	v3 "envoyproxy.io/config/core/v3"
 )
 
 // A DiscoveryRequest requests a set of versioned resources of the same type for

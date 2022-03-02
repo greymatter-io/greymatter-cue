@@ -1,8 +1,8 @@
 package v2
 
 import (
-	v1 "envoyproxy.io/deps/census-instrumentation/opencensus-proto/gen-go/trace/v1"
 	core "envoyproxy.io/api/v2/core"
+	v1 "envoyproxy.io/deps/census-instrumentation/opencensus-proto/gen-go/trace/v1"
 )
 
 #StreamTracesResponse: {

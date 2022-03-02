@@ -1,8 +1,8 @@
 package v2alpha
 
 import (
-	v2 "envoyproxy.io/config/bootstrap/v2"
 	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
+	v2 "envoyproxy.io/config/bootstrap/v2"
 )
 
 // The :ref:`/config_dump <operations_admin_interface_config_dump>` admin endpoint uses this wrapper

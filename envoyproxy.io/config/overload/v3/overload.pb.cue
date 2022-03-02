@@ -1,8 +1,8 @@
 package v3
 
 import (
-	v3 "envoyproxy.io/type/v3"
 	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
+	v3 "envoyproxy.io/type/v3"
 )
 
 #ScaleTimersOverloadActionConfig_TimerType: "UNSPECIFIED" | "HTTP_DOWNSTREAM_CONNECTION_IDLE" | "HTTP_DOWNSTREAM_STREAM_IDLE" | "TRANSPORT_SOCKET_CONNECT"

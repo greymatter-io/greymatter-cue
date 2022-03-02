@@ -1,13 +1,13 @@
 package v2
 
 import (
-	_type "envoyproxy.io/type"
-	v22 "envoyproxy.io/type/tracing/v2"
-	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
+	_type "envoyproxy.io/type"
+	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 	core "envoyproxy.io/api/v2/core"
 	v2 "envoyproxy.io/config/filter/accesslog/v2"
 	v21 "envoyproxy.io/api/v2"
+	v22 "envoyproxy.io/type/tracing/v2"
 	v23 "envoyproxy.io/config/trace/v2"
 )
 

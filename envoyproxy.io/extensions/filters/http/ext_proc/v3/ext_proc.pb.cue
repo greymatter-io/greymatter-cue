@@ -1,8 +1,8 @@
 package v3
 
 import (
-	v31 "envoyproxy.io/config/common/mutation_rules/v3"
 	v3 "envoyproxy.io/config/core/v3"
+	v31 "envoyproxy.io/config/common/mutation_rules/v3"
 )
 
 // [#next-free-field: 10]

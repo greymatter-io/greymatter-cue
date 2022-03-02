@@ -1,8 +1,8 @@
 package listener
 
 import (
-	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
+	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 )
 
 #UdpListenerConfig: {

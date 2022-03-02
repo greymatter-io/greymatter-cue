@@ -1,14 +1,14 @@
 package v3
 
 import (
-	v35 "envoyproxy.io/config/trace/v3"
-	v36 "envoyproxy.io/type/http/v3"
-	v33 "envoyproxy.io/type/v3"
-	v3 "envoyproxy.io/config/core/v3"
 	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
-	v34 "envoyproxy.io/type/tracing/v3"
+	v3 "envoyproxy.io/config/core/v3"
 	v31 "envoyproxy.io/config/accesslog/v3"
 	v32 "envoyproxy.io/config/route/v3"
+	v33 "envoyproxy.io/type/v3"
+	v34 "envoyproxy.io/type/tracing/v3"
+	v35 "envoyproxy.io/config/trace/v3"
+	v36 "envoyproxy.io/type/http/v3"
 )
 
 #HttpConnectionManager_CodecType: "AUTO" | "HTTP1" | "HTTP2" | "HTTP3"

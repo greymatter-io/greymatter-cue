@@ -1,13 +1,13 @@
 package v3
 
 import (
-	v35 "envoyproxy.io/type/metadata/v3"
-	v34 "envoyproxy.io/type/tracing/v3"
 	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 	v3 "envoyproxy.io/deps/cncf/xds/go/xds/type/matcher/v3"
 	v31 "envoyproxy.io/config/core/v3"
 	v32 "envoyproxy.io/type/matcher/v3"
 	v33 "envoyproxy.io/type/v3"
+	v34 "envoyproxy.io/type/tracing/v3"
+	v35 "envoyproxy.io/type/metadata/v3"
 )
 
 #VirtualHost_TlsRequirementType: "NONE" | "EXTERNAL_ONLY" | "ALL"

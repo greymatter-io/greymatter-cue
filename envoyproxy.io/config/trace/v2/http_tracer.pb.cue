@@ -1,8 +1,8 @@
 package v2
 
 import (
-	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
+	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 )
 
 // The tracing configuration specifies settings for an HTTP tracer provider used by Envoy.

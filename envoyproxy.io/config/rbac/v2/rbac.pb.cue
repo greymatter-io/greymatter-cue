@@ -2,8 +2,8 @@ package v2
 
 import (
 	core "envoyproxy.io/api/v2/core"
-	route "envoyproxy.io/api/v2/route"
 	matcher "envoyproxy.io/type/matcher"
+	route "envoyproxy.io/api/v2/route"
 	v1alpha1 "envoyproxy.io/deps/genproto/googleapis/api/expr/v1alpha1"
 )
 

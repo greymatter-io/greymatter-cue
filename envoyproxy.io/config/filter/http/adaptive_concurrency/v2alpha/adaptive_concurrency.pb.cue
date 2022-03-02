@@ -1,8 +1,8 @@
 package v2alpha
 
 import (
-	core "envoyproxy.io/api/v2/core"
 	_type "envoyproxy.io/type"
+	core "envoyproxy.io/api/v2/core"
 )
 
 // Configuration parameters for the gradient controller.

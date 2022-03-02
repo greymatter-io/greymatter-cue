@@ -1,8 +1,8 @@
 package v3
 
 import (
-	v3 "envoyproxy.io/extensions/access_loggers/grpc/v3"
 	v1 "envoyproxy.io/deps/proto/otlp/common/v1"
+	v3 "envoyproxy.io/extensions/access_loggers/grpc/v3"
 )
 
 // Configuration for the built-in *envoy.access_loggers.open_telemetry*

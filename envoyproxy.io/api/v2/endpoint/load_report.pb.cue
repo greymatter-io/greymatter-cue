@@ -1,8 +1,8 @@
 package endpoint
 
 import (
-	core "envoyproxy.io/api/v2/core"
 	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
+	core "envoyproxy.io/api/v2/core"
 )
 
 // These are stats Envoy reports to GLB every so often. Report frequency is

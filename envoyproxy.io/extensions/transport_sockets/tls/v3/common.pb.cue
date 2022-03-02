@@ -1,9 +1,9 @@
 package v3
 
 import (
+	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 	v3 "envoyproxy.io/config/core/v3"
 	v31 "envoyproxy.io/type/matcher/v3"
-	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 )
 
 #TlsParameters_TlsProtocol: "TLS_AUTO" | "TLSv1_0" | "TLSv1_1" | "TLSv1_2" | "TLSv1_3"

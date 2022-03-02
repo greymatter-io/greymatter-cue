@@ -1,8 +1,8 @@
 package v3
 
 import (
-	v3 "envoyproxy.io/config/core/v3"
 	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
+	v3 "envoyproxy.io/config/core/v3"
 )
 
 // [#not-implemented-hide:]

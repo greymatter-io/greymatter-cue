@@ -1,8 +1,8 @@
 package v2
 
 import (
-	core "envoyproxy.io/api/v2/core"
 	_type "envoyproxy.io/type"
+	core "envoyproxy.io/api/v2/core"
 	matcher "envoyproxy.io/type/matcher"
 )
 

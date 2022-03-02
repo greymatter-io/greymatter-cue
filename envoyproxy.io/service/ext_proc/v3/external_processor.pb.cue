@@ -1,10 +1,10 @@
 package v3
 
 import (
-	v32 "envoyproxy.io/type/v3"
-	v3 "envoyproxy.io/extensions/filters/http/ext_proc/v3"
 	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
+	v3 "envoyproxy.io/extensions/filters/http/ext_proc/v3"
 	v31 "envoyproxy.io/config/core/v3"
+	v32 "envoyproxy.io/type/v3"
 )
 
 #CommonResponse_ResponseStatus: "CONTINUE" | "CONTINUE_AND_REPLACE"

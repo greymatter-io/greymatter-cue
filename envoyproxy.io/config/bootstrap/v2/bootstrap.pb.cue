@@ -1,13 +1,13 @@
 package v2
 
 import (
+	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
 	auth "envoyproxy.io/api/v2/auth"
 	core "envoyproxy.io/api/v2/core"
-	v2alpha "envoyproxy.io/config/overload/v2alpha"
-	v22 "envoyproxy.io/api/v2"
 	v2 "envoyproxy.io/config/metrics/v2"
 	v21 "envoyproxy.io/config/trace/v2"
-	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
+	v22 "envoyproxy.io/api/v2"
+	v2alpha "envoyproxy.io/config/overload/v2alpha"
 )
 
 // Bootstrap :ref:`configuration overview <config_overview_bootstrap>`.

@@ -2,8 +2,8 @@ package v2alpha
 
 import (
 	core "envoyproxy.io/api/v2/core"
-	route "envoyproxy.io/api/v2/route"
 	emptypb "envoyproxy.io/deps/protobuf/types/known/emptypb"
+	route "envoyproxy.io/api/v2/route"
 )
 
 // Please see following for JWT authentication flow:

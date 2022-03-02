@@ -1,9 +1,9 @@
 package v3
 
 import (
-	emptypb "envoyproxy.io/deps/protobuf/types/known/emptypb"
 	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
 	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
+	emptypb "envoyproxy.io/deps/protobuf/types/known/emptypb"
 )
 
 // gRPC service configuration. This is used by :ref:`ApiConfigSource

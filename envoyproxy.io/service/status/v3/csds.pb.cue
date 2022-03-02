@@ -2,9 +2,9 @@ package v3
 
 import (
 	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
-	v32 "envoyproxy.io/admin/v3"
 	v3 "envoyproxy.io/type/matcher/v3"
 	v31 "envoyproxy.io/config/core/v3"
+	v32 "envoyproxy.io/admin/v3"
 )
 
 // Status of a config from a management server view.

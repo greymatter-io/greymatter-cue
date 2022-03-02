@@ -1,8 +1,8 @@
 package v3
 
 import (
-	v3 "envoyproxy.io/config/core/v3"
 	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
+	v3 "envoyproxy.io/config/core/v3"
 )
 
 // Custom configuration for an :ref:`AccessLog <envoy_v3_api_msg_config.accesslog.v3.AccessLog>`

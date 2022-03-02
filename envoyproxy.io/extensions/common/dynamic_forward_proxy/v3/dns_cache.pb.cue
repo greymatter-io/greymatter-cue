@@ -2,8 +2,8 @@ package v3
 
 import (
 	v3 "envoyproxy.io/config/cluster/v3"
-	v32 "envoyproxy.io/config/common/key_value/v3"
 	v31 "envoyproxy.io/config/core/v3"
+	v32 "envoyproxy.io/config/common/key_value/v3"
 )
 
 // Configuration of circuit breakers for resolver.

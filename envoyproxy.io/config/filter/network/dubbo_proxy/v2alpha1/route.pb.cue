@@ -1,9 +1,9 @@
 package v2alpha1
 
 import (
+	_type "envoyproxy.io/type"
 	matcher "envoyproxy.io/type/matcher"
 	route "envoyproxy.io/api/v2/route"
-	_type "envoyproxy.io/type"
 )
 
 // [#next-free-field: 6]

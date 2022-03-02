@@ -1,15 +1,15 @@
 package v3
 
 import (
-	v3 "envoyproxy.io/config/core/v3"
-	v36 "envoyproxy.io/config/listener/v3"
-	v33 "envoyproxy.io/config/overload/v3"
-	v35 "envoyproxy.io/type/v3"
 	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
-	v34 "envoyproxy.io/config/accesslog/v3"
-	v37 "envoyproxy.io/config/cluster/v3"
+	v3 "envoyproxy.io/config/core/v3"
 	v31 "envoyproxy.io/config/metrics/v3"
 	v32 "envoyproxy.io/config/trace/v3"
+	v33 "envoyproxy.io/config/overload/v3"
+	v34 "envoyproxy.io/config/accesslog/v3"
+	v35 "envoyproxy.io/type/v3"
+	v36 "envoyproxy.io/config/listener/v3"
+	v37 "envoyproxy.io/config/cluster/v3"
 	v38 "envoyproxy.io/extensions/transport_sockets/tls/v3"
 )
 

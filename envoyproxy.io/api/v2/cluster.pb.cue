@@ -1,12 +1,12 @@
 package v2
 
 import (
-	auth "envoyproxy.io/api/v2/auth"
-	core "envoyproxy.io/api/v2/core"
-	_type "envoyproxy.io/type"
 	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
-	cluster "envoyproxy.io/api/v2/cluster"
+	_type "envoyproxy.io/type"
 	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
+	auth "envoyproxy.io/api/v2/auth"
+	cluster "envoyproxy.io/api/v2/cluster"
+	core "envoyproxy.io/api/v2/core"
 )
 
 // Refer to :ref:`service discovery type <arch_overview_service_discovery_types>`

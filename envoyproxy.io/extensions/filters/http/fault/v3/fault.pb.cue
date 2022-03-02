@@ -1,9 +1,9 @@
 package v3
 
 import (
-	v32 "envoyproxy.io/config/route/v3"
-	v31 "envoyproxy.io/extensions/filters/common/fault/v3"
 	v3 "envoyproxy.io/type/v3"
+	v31 "envoyproxy.io/extensions/filters/common/fault/v3"
+	v32 "envoyproxy.io/config/route/v3"
 )
 
 // [#next-free-field: 6]

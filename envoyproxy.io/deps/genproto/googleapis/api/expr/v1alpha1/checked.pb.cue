@@ -1,8 +1,8 @@
 package v1alpha1
 
 import (
-	empty "envoyproxy.io/deps/golang/protobuf/ptypes/empty"
 	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
+	empty "envoyproxy.io/deps/golang/protobuf/ptypes/empty"
 )
 
 // CEL primitive types.

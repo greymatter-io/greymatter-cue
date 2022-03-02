@@ -2,11 +2,11 @@ package route
 
 import (
 	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
-	core "envoyproxy.io/api/v2/core"
 	_type "envoyproxy.io/type"
+	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
+	core "envoyproxy.io/api/v2/core"
 	matcher "envoyproxy.io/type/matcher"
 	v2 "envoyproxy.io/type/tracing/v2"
-	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 )
 
 #VirtualHost_TlsRequirementType: "NONE" | "EXTERNAL_ONLY" | "ALL"

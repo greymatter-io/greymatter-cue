@@ -1,10 +1,10 @@
 package core
 
 import (
+	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
 	_type "envoyproxy.io/type"
 	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 	matcher "envoyproxy.io/type/matcher"
-	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
 )
 
 // Endpoint health status.

@@ -1,8 +1,8 @@
 package v3
 
 import (
-	v31 "envoyproxy.io/deps/cncf/xds/go/xds/type/matcher/v3"
 	v3 "envoyproxy.io/config/common/matcher/v3"
+	v31 "envoyproxy.io/deps/cncf/xds/go/xds/type/matcher/v3"
 	v32 "envoyproxy.io/config/core/v3"
 )
 

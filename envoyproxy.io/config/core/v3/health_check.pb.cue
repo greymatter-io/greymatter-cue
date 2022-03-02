@@ -1,10 +1,10 @@
 package v3
 
 import (
-	v31 "envoyproxy.io/type/matcher/v3"
+	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
 	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 	v3 "envoyproxy.io/type/v3"
-	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
+	v31 "envoyproxy.io/type/matcher/v3"
 )
 
 // Endpoint health status.
