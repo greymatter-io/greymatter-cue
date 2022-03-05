@@ -236,6 +236,11 @@ HealthStatus_DEGRADED:  "DEGRADED"
 	// with will be used. The authority header can be customized for a specific endpoint by setting
 	// the :ref:`hostname <envoy_v3_api_field_config.endpoint.v3.Endpoint.HealthCheckConfig.hostname>` field.
 	authority?: string
+	// Specifies a list of key-value pairs that should be added to the metadata of each GRPC call
+	// that is sent to the health checked cluster. For more information, including details on header value syntax,
+	// see the documentation on :ref:`custom request headers
+	// <config_http_conn_man_headers_custom_request_headers>`.
+	initial_metadata?: [...#HeaderValueOption]
 }
 
 // Custom health check.
