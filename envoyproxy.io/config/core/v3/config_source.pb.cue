@@ -1,6 +1,7 @@
 package v3
 
 import (
+	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 	v3 "envoyproxy.io/deps/cncf/xds/go/xds/core/v3"
 )
 
@@ -24,7 +25,7 @@ ApiConfigSource_ApiType_AGGREGATED_DELTA_GRPC:                 "AGGREGATED_DELTA
 
 // API configuration source. This identifies the API type and cluster that Envoy
 // will use to fetch an xDS API.
-// [#next-free-field: 9]
+// [#next-free-field: 10]
 #ApiConfigSource: {
 	// API type (gRPC, REST, delta gRPC)
 	api_type?: #ApiConfigSource_ApiType
@@ -52,6 +53,15 @@ ApiConfigSource_ApiType_AGGREGATED_DELTA_GRPC:                 "AGGREGATED_DELTA
 	rate_limit_settings?: #RateLimitSettings
 	// Skip the node identifier in subsequent discovery requests for streaming gRPC config types.
 	set_node_on_first_message_only?: bool
+	// A list of config validators that will be executed when a new update is
+	// received from the ApiConfigSource. Note that each validator handles a
+	// specific xDS service type, and only the validators corresponding to the
+	// type url (in `:ref: DiscoveryResponse` or `:ref: DeltaDiscoveryResponse`)
+	// will be invoked.
+	// If the validator returns false or throws an exception, the config will be rejected by
+	// the client, and a NACK will be sent.
+	// [#extension-category: envoy.config.validators]
+	config_validators?: [...#TypedExtensionConfig]
 }
 
 // Aggregated Discovery Service (ADS) options. This is currently empty, but when
@@ -163,4 +173,30 @@ ApiConfigSource_ApiType_AGGREGATED_DELTA_GRPC:                 "AGGREGATED_DELTA
 	// will request for resources and the resource type that the client will in
 	// turn expect to be delivered.
 	resource_api_version?: #ApiVersion
+}
+
+// Configuration source specifier for a late-bound extension configuration. The
+// parent resource is warmed until all the initial extension configurations are
+// received, unless the flag to apply the default configuration is set.
+// Subsequent extension updates are atomic on a per-worker basis. Once an
+// extension configuration is applied to a request or a connection, it remains
+// constant for the duration of processing. If the initial delivery of the
+// extension configuration fails, due to a timeout for example, the optional
+// default configuration is applied. Without a default configuration, the
+// extension is disabled, until an extension configuration is received. The
+// behavior of a disabled extension depends on the context. For example, a
+// filter chain with a disabled extension filter rejects all incoming streams.
+#ExtensionConfigSource: {
+	config_source?: #ConfigSource
+	// Optional default configuration to use as the initial configuration if
+	// there is a failure to receive the initial extension configuration or if
+	// `apply_default_config_without_warming` flag is set.
+	default_config?: any.#Any
+	// Use the default config as the initial configuration without warming and
+	// waiting for the first discovery response. Requires the default configuration
+	// to be supplied.
+	apply_default_config_without_warming?: bool
+	// A set of permitted extension type URLs. Extension configuration updates are rejected
+	// if they do not match any type URL in the set.
+	type_urls?: [...string]
 }
