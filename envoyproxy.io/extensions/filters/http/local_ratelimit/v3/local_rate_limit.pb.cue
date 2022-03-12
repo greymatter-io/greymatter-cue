@@ -6,7 +6,7 @@ import (
 	v32 "envoyproxy.io/extensions/common/ratelimit/v3"
 )
 
-// [#next-free-field: 12]
+// [#next-free-field: 13]
 #LocalRateLimit: {
 	// The human readable prefix to use when emitting stats.
 	stat_prefix?: string
@@ -82,4 +82,8 @@ import (
 	// one to rate limit requests on a per connection basis.
 	// If unspecified, the default value is false.
 	local_rate_limit_per_downstream_connection?: bool
+	// Defines the standard version to use for X-RateLimit headers emitted by the filter.
+	//
+	// Disabled by default.
+	enable_x_ratelimit_headers?: v32.#XRateLimitHeadersRFCVersion
 }

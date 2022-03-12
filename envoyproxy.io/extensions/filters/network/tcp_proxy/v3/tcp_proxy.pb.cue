@@ -6,7 +6,7 @@ import (
 	v32 "envoyproxy.io/type/v3"
 )
 
-// [#next-free-field: 14]
+// [#next-free-field: 15]
 #TcpProxy: {
 	// The prefix to use when emitting :ref:`statistics
 	// <config_network_filters_tcp_proxy_stats>`.
@@ -17,6 +17,13 @@ import (
 	// request is routed to one of the upstream clusters based on weights
 	// assigned to each cluster.
 	weighted_clusters?: #TcpProxy_WeightedCluster
+	// The on demand policy for the upstream cluster.
+	// It applies to both
+	// :ref:`TcpProxy.cluster <envoy_v3_api_field_extensions.filters.network.tcp_proxy.v3.TcpProxy.cluster`
+	// and
+	// :ref:`TcpProxy.weighted_clusters <envoy_v3_api_field_extensions.filters.network.tcp_proxy.v3.TcpProxy.weighted_clusters`.
+	// [#not-implemented-hide:]
+	on_demand?: #TcpProxy_OnDemand
 	// Optional endpoint metadata match criteria. Only endpoints in the upstream
 	// cluster with metadata matching that set in metadata_match will be
 	// considered. The filter name should be specified as *envoy.lb*.
@@ -82,6 +89,23 @@ import (
 	//
 	// Neither *:-prefixed* pseudo-headers nor the Host: header can be overridden.
 	headers_to_add?: [...v3.#HeaderValueOption]
+}
+
+#TcpProxy_OnDemand: {
+	// An optional configuration for on-demand cluster discovery
+	// service. If not specified, the on-demand cluster discovery will
+	// be disabled. When it's specified, the filter will pause a request
+	// to an unknown cluster and will begin a cluster discovery
+	// process. When the discovery is finished (successfully or not),
+	// the request will be resumed.
+	odcds_config?: v3.#ConfigSource
+	// xdstp:// resource locator for on-demand cluster collection.
+	// [#not-implemented-hide:]
+	resources_locator?: string
+	// The timeout for on demand cluster lookup. If the CDS cannot return the required cluster,
+	// the downstream request will be closed with the error code detail NO_CLUSTER_FOUND.
+	// [#not-implemented-hide:]
+	timeout?: string
 }
 
 #TcpProxy_WeightedCluster_ClusterWeight: {

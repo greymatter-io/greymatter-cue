@@ -17,6 +17,11 @@ HealthStatus_DRAINING:  "DRAINING"
 HealthStatus_TIMEOUT:   "TIMEOUT"
 HealthStatus_DEGRADED:  "DEGRADED"
 
+#HealthStatusSet: {
+	// An order-independent set of health status.
+	statuses?: [...#HealthStatus]
+}
+
 // [#next-free-field: 25]
 #HealthCheck: {
 	// The time to wait for a health check response. If the timeout is reached the
