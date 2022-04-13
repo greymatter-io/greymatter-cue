@@ -639,12 +639,16 @@ Cluster_RingHashLbConfig_HashFunction_MURMUR_HASH_2: "MURMUR_HASH_2"
 	// By tuning the parameter, is possible to achieve polynomial or exponential shape of ramp-up curve.
 	//
 	// During slow start window, effective weight of an endpoint would be scaled with time factor and aggression:
-	// `new_weight = weight * time_factor ^ (1 / aggression)`,
+	// `new_weight = weight * max(min_weight_percent, time_factor ^ (1 / aggression))`,
 	// where `time_factor=(time_since_start_seconds / slow_start_time_seconds)`.
 	//
 	// As time progresses, more and more traffic would be sent to endpoint, which is in slow start window.
 	// Once host exits slow start, time_factor and aggression no longer affect its weight.
 	aggression?: v32.#RuntimeDouble
+	// Configures the minimum percentage of origin weight that avoids too small new weight,
+	// which may cause endpoints in slow start mode receive no traffic in slow start window.
+	// If not specified, the default is 10%.
+	min_weight_percent?: v33.#Percent
 }
 
 // Specific configuration for the RoundRobin load balancing policy.
@@ -736,7 +740,7 @@ Cluster_RingHashLbConfig_HashFunction_MURMUR_HASH_2: "MURMUR_HASH_2"
 }
 
 // Common configuration for all load balancer implementations.
-// [#next-free-field: 8]
+// [#next-free-field: 9]
 #Cluster_CommonLbConfig: {
 	// Configures the :ref:`healthy panic threshold <arch_overview_load_balancing_panic_threshold>`.
 	// If not specified, the default is 50%.
@@ -771,6 +775,13 @@ Cluster_RingHashLbConfig_HashFunction_MURMUR_HASH_2: "MURMUR_HASH_2"
 	close_connections_on_host_set_change?: bool
 	// Common Configuration for all consistent hashing load balancers (MaglevLb, RingHashLb, etc.)
 	consistent_hashing_lb_config?: #Cluster_CommonLbConfig_ConsistentHashingLbConfig
+	// This controls what hosts are considered valid when using
+	// :ref:`host overrides <arch_overview_load_balancing_override_host>`, which is used by some
+	// filters to modify the load balancing decision.
+	//
+	// If this is unset then [UNKNOWN, HEALTHY, DEGRADED] will be applied by default. If this is
+	// set with an empty set of statuses then host overrides will be ignored by the load balancing.
+	override_host_status?: v32.#HealthStatusSet
 }
 
 #Cluster_RefreshRate: {

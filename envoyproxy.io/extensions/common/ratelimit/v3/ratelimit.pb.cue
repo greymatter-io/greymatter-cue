@@ -4,6 +4,12 @@ import (
 	v3 "envoyproxy.io/type/v3"
 )
 
+// Defines the version of the standard to use for X-RateLimit headers.
+#XRateLimitHeadersRFCVersion: "OFF" | "DRAFT_VERSION_03"
+
+XRateLimitHeadersRFCVersion_OFF:              "OFF"
+XRateLimitHeadersRFCVersion_DRAFT_VERSION_03: "DRAFT_VERSION_03"
+
 // A RateLimitDescriptor is a list of hierarchical entries that are used by the service to
 // determine the final rate limit key and overall allowed limit. Here are some examples of how
 // they might be used for the domain "envoy".
