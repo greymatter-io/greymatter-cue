@@ -507,9 +507,7 @@ HttpConnectionManager_Tracing_OperationName_EGRESS:  "EGRESS"
 
 // [#next-free-field: 7]
 #HttpFilter: {
-	// The name of the filter configuration. The name is used as a fallback to
-	// select an extension if the type of the configuration proto is not
-	// sufficient. It also serves as a resource name in ExtensionConfigDS.
+	// The name of the filter configuration. It also serves as a resource name in ExtensionConfigDS.
 	name?: string
 	// Filter specific configuration which depends on the filter being instantiated. See the supported
 	// filters for further documentation.
@@ -598,6 +596,9 @@ HttpConnectionManager_Tracing_OperationName_EGRESS:  "EGRESS"
 #HttpConnectionManager_InternalAddressConfig: {
 	// Whether unix socket addresses should be considered internal.
 	unix_sockets?: bool
+	// List of CIDR ranges that are treated as internal. If unset, then RFC1918 / RFC4193
+	// IP addresses will be considered internal.
+	cidr_ranges?: [...v3.#CidrRange]
 }
 
 // [#next-free-field: 7]

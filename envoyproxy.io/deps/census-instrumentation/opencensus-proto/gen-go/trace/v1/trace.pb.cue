@@ -6,14 +6,26 @@ import (
 
 // Type of span. Can be used to specify additional relationships between spans
 // in addition to a parent/child relationship.
-#Span_SpanKind: int32
+#Span_SpanKind: "SPAN_KIND_UNSPECIFIED" | "SERVER" | "CLIENT"
+
+Span_SpanKind_SPAN_KIND_UNSPECIFIED: "SPAN_KIND_UNSPECIFIED"
+Span_SpanKind_SERVER:                "SERVER"
+Span_SpanKind_CLIENT:                "CLIENT"
 
 // Indicates whether the message was sent or received.
-#Span_TimeEvent_MessageEvent_Type: int32
+#Span_TimeEvent_MessageEvent_Type: "TYPE_UNSPECIFIED" | "SENT" | "RECEIVED"
+
+Span_TimeEvent_MessageEvent_Type_TYPE_UNSPECIFIED: "TYPE_UNSPECIFIED"
+Span_TimeEvent_MessageEvent_Type_SENT:             "SENT"
+Span_TimeEvent_MessageEvent_Type_RECEIVED:         "RECEIVED"
 
 // The relationship of the current span relative to the linked span: child,
 // parent, or unspecified.
-#Span_Link_Type: int32
+#Span_Link_Type: "TYPE_UNSPECIFIED" | "CHILD_LINKED_SPAN" | "PARENT_LINKED_SPAN"
+
+Span_Link_Type_TYPE_UNSPECIFIED:   "TYPE_UNSPECIFIED"
+Span_Link_Type_CHILD_LINKED_SPAN:  "CHILD_LINKED_SPAN"
+Span_Link_Type_PARENT_LINKED_SPAN: "PARENT_LINKED_SPAN"
 
 // A span represents a single operation within a trace. Spans can be
 // nested to form a trace tree. Spans may also be linked to other spans
@@ -115,6 +127,75 @@ import (
 	child_span_count?: uint32
 }
 
+// The `Status` type defines a logical error model that is suitable for different
+// programming environments, including REST APIs and RPC APIs. This proto's fields
+// are a subset of those of
+// [google.rpc.Status](https://github.com/googleapis/googleapis/blob/master/google/rpc/status.proto),
+// which is used by [gRPC](https://github.com/grpc).
+#Status: {
+	// The status code. This is optional field. It is safe to assume 0 (OK)
+	// when not set.
+	code?: int32
+	// A developer-facing error message, which should be in English.
+	message?: string
+}
+
+// The value of an Attribute.
+#AttributeValue: {
+	// A string up to 256 bytes long.
+	string_value?: #TruncatableString
+	// A 64-bit signed integer.
+	int_value?: int64
+	// A Boolean value represented by `true` or `false`.
+	bool_value?: bool
+	// A double value.
+	double_value?: float64
+}
+
+// The call stack which originated this span.
+#StackTrace: {
+	// Stack frames in this stack trace.
+	stack_frames?: #StackTrace_StackFrames
+	// The hash ID is used to conserve network bandwidth for duplicate
+	// stack traces within a single trace.
+	//
+	// Often multiple spans will have identical stack traces.
+	// The first occurrence of a stack trace should contain both
+	// `stack_frames` and a value in `stack_trace_hash_id`.
+	//
+	// Subsequent spans within the same request can refer
+	// to that stack trace by setting only `stack_trace_hash_id`.
+	//
+	// TODO: describe how to deal with the case where stack_trace_hash_id is
+	// zero because it was not set.
+	stack_trace_hash_id?: uint64
+}
+
+// A description of a binary module.
+#Module: {
+	// TODO: document the meaning of this field.
+	// For example: main binary, kernel modules, and dynamic libraries
+	// such as libc.so, sharedlib.so.
+	module?: #TruncatableString
+	// A unique identifier for the module, usually a hash of its
+	// contents.
+	build_id?: #TruncatableString
+}
+
+// A string that might be shortened to a specified length.
+#TruncatableString: {
+	// The shortened string. For example, if the original string was 500 bytes long and
+	// the limit of the string was 128 bytes, then this value contains the first 128
+	// bytes of the 500-byte string. Note that truncation always happens on a
+	// character boundary, to ensure that a truncated string is still valid UTF-8.
+	// Because it may contain multi-byte characters, the size of the truncated string
+	// may be less than the truncation limit.
+	value?: string
+	// The number of bytes removed from the original string. If this
+	// value is 0, then the string was not shortened.
+	truncated_byte_count?: int32
+}
+
 // This field conveys information about request position in multiple distributed tracing graphs.
 // It is a list of Tracestate.Entry with a maximum of 32 members in the list.
 //
@@ -122,17 +203,6 @@ import (
 #Span_Tracestate: {
 	// A list of entries that represent the Tracestate.
 	entries?: [...#Span_Tracestate_Entry]
-}
-
-#Span_Tracestate_Entry: {
-	// The key must begin with a lowercase letter, and can only contain
-	// lowercase letters 'a'-'z', digits '0'-'9', underscores '_', dashes
-	// '-', asterisks '*', and forward slashes '/'.
-	key?: string
-	// The value is opaque string up to 256 characters printable ASCII
-	// RFC0020 characters (i.e., the range 0x20 to 0x7E) except ',' and '='.
-	// Note that this also excludes tabs, newlines, carriage returns, etc.
-	value?: string
 }
 
 // A set of attributes, each with a key and a value.
@@ -155,34 +225,11 @@ import (
 // A time-stamped annotation or message event in the Span.
 #Span_TimeEvent: {
 	// The time the event occurred.
-	time?:          string
-	annotation?:    #Span_TimeEvent_Annotation
+	time?: string
+	// A text annotation with a set of attributes.
+	annotation?: #Span_TimeEvent_Annotation
+	// An event describing a message sent/received between Spans.
 	message_event?: #Span_TimeEvent_MessageEvent
-}
-
-// A text annotation with a set of attributes.
-#Span_TimeEvent_Annotation: {
-	// A user-supplied message describing the event.
-	description?: #TruncatableString
-	// A set of attributes on the annotation.
-	attributes?: #Span_Attributes
-}
-
-// An event describing a message sent/received between Spans.
-#Span_TimeEvent_MessageEvent: {
-	// The type of MessageEvent. Indicates whether the message was sent or
-	// received.
-	type?: #Span_TimeEvent_MessageEvent_Type
-	// An identifier for the MessageEvent's message that can be used to match
-	// SENT and RECEIVED MessageEvents. For example, this field could
-	// represent a sequence ID for a streaming RPC. It is recommended to be
-	// unique within a Span.
-	id?: uint64
-	// The number of uncompressed bytes sent or received.
-	uncompressed_size?: uint64
-	// The number of compressed bytes sent or received. If zero, assumed to
-	// be the same size as uncompressed.
-	compressed_size?: uint64
 }
 
 // A collection of `TimeEvent`s. A `TimeEvent` is a time-stamped annotation
@@ -227,44 +274,40 @@ import (
 	dropped_links_count?: int32
 }
 
-// The `Status` type defines a logical error model that is suitable for different
-// programming environments, including REST APIs and RPC APIs. This proto's fields
-// are a subset of those of
-// [google.rpc.Status](https://github.com/googleapis/googleapis/blob/master/google/rpc/status.proto),
-// which is used by [gRPC](https://github.com/grpc).
-#Status: {
-	// The status code. This is optional field. It is safe to assume 0 (OK)
-	// when not set.
-	code?: int32
-	// A developer-facing error message, which should be in English.
-	message?: string
+#Span_Tracestate_Entry: {
+	// The key must begin with a lowercase letter, and can only contain
+	// lowercase letters 'a'-'z', digits '0'-'9', underscores '_', dashes
+	// '-', asterisks '*', and forward slashes '/'.
+	key?: string
+	// The value is opaque string up to 256 characters printable ASCII
+	// RFC0020 characters (i.e., the range 0x20 to 0x7E) except ',' and '='.
+	// Note that this also excludes tabs, newlines, carriage returns, etc.
+	value?: string
 }
 
-// The value of an Attribute.
-#AttributeValue: {
-	string_value?: #TruncatableString
-	int_value?:    int64
-	bool_value?:   bool
-	double_value?: float64
+// A text annotation with a set of attributes.
+#Span_TimeEvent_Annotation: {
+	// A user-supplied message describing the event.
+	description?: #TruncatableString
+	// A set of attributes on the annotation.
+	attributes?: #Span_Attributes
 }
 
-// The call stack which originated this span.
-#StackTrace: {
-	// Stack frames in this stack trace.
-	stack_frames?: #StackTrace_StackFrames
-	// The hash ID is used to conserve network bandwidth for duplicate
-	// stack traces within a single trace.
-	//
-	// Often multiple spans will have identical stack traces.
-	// The first occurrence of a stack trace should contain both
-	// `stack_frames` and a value in `stack_trace_hash_id`.
-	//
-	// Subsequent spans within the same request can refer
-	// to that stack trace by setting only `stack_trace_hash_id`.
-	//
-	// TODO: describe how to deal with the case where stack_trace_hash_id is
-	// zero because it was not set.
-	stack_trace_hash_id?: uint64
+// An event describing a message sent/received between Spans.
+#Span_TimeEvent_MessageEvent: {
+	// The type of MessageEvent. Indicates whether the message was sent or
+	// received.
+	type?: #Span_TimeEvent_MessageEvent_Type
+	// An identifier for the MessageEvent's message that can be used to match
+	// SENT and RECEIVED MessageEvents. For example, this field could
+	// represent a sequence ID for a streaming RPC. It is recommended to be
+	// unique within a Span.
+	id?: uint64
+	// The number of uncompressed bytes sent or received.
+	uncompressed_size?: uint64
+	// The number of compressed bytes sent or received. If zero, assumed to
+	// be the same size as uncompressed.
+	compressed_size?: uint64
 }
 
 // A single stack frame in a stack trace.
@@ -297,29 +340,4 @@ import (
 	// were too many stack frames.
 	// If this value is 0, then no stack frames were dropped.
 	dropped_frames_count?: int32
-}
-
-// A description of a binary module.
-#Module: {
-	// TODO: document the meaning of this field.
-	// For example: main binary, kernel modules, and dynamic libraries
-	// such as libc.so, sharedlib.so.
-	module?: #TruncatableString
-	// A unique identifier for the module, usually a hash of its
-	// contents.
-	build_id?: #TruncatableString
-}
-
-// A string that might be shortened to a specified length.
-#TruncatableString: {
-	// The shortened string. For example, if the original string was 500 bytes long and
-	// the limit of the string was 128 bytes, then this value contains the first 128
-	// bytes of the 500-byte string. Note that truncation always happens on a
-	// character boundary, to ensure that a truncated string is still valid UTF-8.
-	// Because it may contain multi-byte characters, the size of the truncated string
-	// may be less than the truncation limit.
-	value?: string
-	// The number of bytes removed from the original string. If this
-	// value is 0, then the string was not shortened.
-	truncated_byte_count?: int32
 }

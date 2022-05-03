@@ -67,8 +67,21 @@ DownstreamTlsContext_OcspStaplePolicy_MUST_STAPLE:      "MUST_STAPLE"
 	ocsp_staple_policy?: #DownstreamTlsContext_OcspStaplePolicy
 }
 
+// TLS key log configuration.
+// The key log file format is "format used by NSS for its SSLKEYLOGFILE debugging output" (text taken from openssl man page)
+#TlsKeyLog: {
+	// The path to save the TLS key log.
+	path?: string
+	// The local IP address that will be used to filter the connection which should save the TLS key log
+	// If it is not set, any local IP address  will be matched.
+	local_address_range?: [...v3.#CidrRange]
+	// The remote IP address that will be used to filter the connection which should save the TLS key log
+	// If it is not set, any remote IP address will be matched.
+	remote_address_range?: [...v3.#CidrRange]
+}
+
 // TLS context shared by both client and server TLS contexts.
-// [#next-free-field: 15]
+// [#next-free-field: 16]
 #CommonTlsContext: {
 	// TLS protocol versions, cipher suites etc.
 	tls_params?: #TlsParameters
@@ -150,6 +163,8 @@ DownstreamTlsContext_OcspStaplePolicy_MUST_STAPLE:      "MUST_STAPLE"
 	// Custom TLS handshaker. If empty, defaults to native TLS handshaking
 	// behavior.
 	custom_handshaker?: v3.#TypedExtensionConfig
+	// TLS key log configuration
+	key_log?: #TlsKeyLog
 }
 
 // Config for Certificate provider to get certificates. This provider should allow certificates to be

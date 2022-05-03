@@ -8,4 +8,7 @@ package v3
 	filename?: string
 	// The interval at which the key value store should be flushed to the file.
 	flush_interval?: string
+	// The maximum number of entries to cache, or 0 to allow for unlimited entries.
+	// Defaults to 1000 if not present.
+	max_entries?: uint32
 }

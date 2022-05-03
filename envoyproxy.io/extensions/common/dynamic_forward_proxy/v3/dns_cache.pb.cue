@@ -15,7 +15,7 @@ import (
 
 // Configuration for the dynamic forward proxy DNS cache. See the :ref:`architecture overview
 // <arch_overview_http_dynamic_forward_proxy>` for more information.
-// [#next-free-field: 14]
+// [#next-free-field: 15]
 #DnsCacheConfig: {
 	// The name of the cache. Multiple named caches allow independent dynamic forward proxy
 	// configurations to operate within a single Envoy process using different configurations. All
@@ -37,8 +37,12 @@ import (
 	// The refresh rate is rounded to the closest millisecond, and must be at least 1ms.
 	//
 	// Once a host has been resolved, the refresh rate will be the DNS TTL, capped
-	// at a minimum of 5s.
+	// at a minimum of `dns_min_refresh_rate`.
 	dns_refresh_rate?: string
+	// The minimum rate that DNS resolution will occur. Per `dns_refresh_rate`, once a host is
+	// resolved, the DNS TTL will be used, with a minimum set by `dns_min_refresh_rate`.
+	// `dns_min_refresh_rate` defaults to 5s and must also be >= 5s.
+	dns_min_refresh_rate?: string
 	// The TTL for hosts that are unused. Hosts that have not been used in the configured time
 	// interval will be purged. If not specified defaults to 5m.
 	//

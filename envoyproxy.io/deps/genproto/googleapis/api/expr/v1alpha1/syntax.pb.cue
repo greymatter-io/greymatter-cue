@@ -1,7 +1,9 @@
 package v1alpha1
 
 import (
-	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
+	durationpb "envoyproxy.io/deps/protobuf/types/known/durationpb"
+	structpb "envoyproxy.io/deps/protobuf/types/known/structpb"
+	timestamppb "envoyproxy.io/deps/protobuf/types/known/timestamppb"
 )
 
 // An expression together with source information as returned by the parser.
@@ -63,7 +65,7 @@ import (
 // `true`, `null`.
 #Constant: {
 	// null value.
-	null_value?: _struct.#NullValue
+	null_value?: structpb.#NullValue
 	// boolean value.
 	bool_value?: bool
 	// int64 value.
@@ -81,13 +83,13 @@ import (
 	// Deprecated: duration is no longer considered a builtin cel type.
 	//
 	// Deprecated: Do not use.
-	duration_value?: string
+	duration_value?: durationpb.#Duration
 	// protobuf.Timestamp value.
 	//
 	// Deprecated: timestamp is no longer considered a builtin cel type.
 	//
 	// Deprecated: Do not use.
-	timestamp_value?: string
+	timestamp_value?: timestamppb.#Timestamp
 }
 
 // Source information collected at parse time.
@@ -100,14 +102,15 @@ import (
 	// The location could be a file, UI element, or similar. For example,
 	// `acme/app/AnvilPolicy.cel`.
 	location?: string
-	// Monotonically increasing list of character offsets where newlines appear.
+	// Monotonically increasing list of code point offsets where newlines
+	// `\n` appear.
 	//
 	// The line number of a given position is the index `i` where for a given
 	// `id` the `line_offsets[i] < id_positions[id] < line_offsets[i+1]`. The
 	// column may be derivd from `id_positions[id] - line_offsets[i]`.
 	line_offsets?: [...int32]
-	// A map from the parse node id (e.g. `Expr.id`) to the character offset
-	// within source.
+	// A map from the parse node id (e.g. `Expr.id`) to the code point offset
+	// within the source.
 	positions?: [int64]: int32
 	// A map from the parse node id where a macro replacement was made to the
 	// call `Expr` that resulted in a macro expansion.
@@ -124,7 +127,7 @@ import (
 #SourcePosition: {
 	// The soucre location name (e.g. file name).
 	location?: string
-	// The character offset.
+	// The UTF-8 code unit offset.
 	offset?: int32
 	// The 1-based index of the starting line in the source text
 	// where the issue occurs, or 0 if unknown.
@@ -176,7 +179,7 @@ import (
 
 // A list creation expression.
 //
-// Lists may either be homogenous, e.g. `[1, 2, 3]`, or heterogenous, e.g.
+// Lists may either be homogenous, e.g. `[1, 2, 3]`, or heterogeneous, e.g.
 // `dyn([1, 'hello', 2.0])`
 #Expr_CreateList: {
 	// The elements part of the list.

@@ -14,8 +14,7 @@ FilterChainMatch_ConnectionSourceType_EXTERNAL:            "EXTERNAL"
 
 // [#next-free-field: 6]
 #Filter: {
-	// The name of the filter to instantiate. The name must match a
-	// :ref:`supported filter <config_network_filters>`.
+	// The name of the filter configuration.
 	name?: string
 	// Filter specific configuration which depends on the filter being
 	// instantiated. See the supported filters for further documentation.
@@ -183,9 +182,10 @@ FilterChainMatch_ConnectionSourceType_EXTERNAL:            "EXTERNAL"
 	// transport socket negotiations. If this expires before the transport reports connection
 	// establishment, the connection is summarily closed.
 	transport_socket_connect_timeout?: string
-	// [#not-implemented-hide:] The unique name (or empty) by which this filter chain is known. If no
-	// name is provided, Envoy will allocate an internal UUID for the filter chain. If the filter
-	// chain is to be dynamically updated or removed via FCDS a unique name must be provided.
+	// The unique name (or empty) by which this filter chain is known.
+	// Note: :ref:`filter_chain_matcher
+	// <envoy_v3_api_field_config.listener.v3.Listener.filter_chain_matcher>`
+	// requires that filter chains are uniquely named within a listener.
 	name?: string
 	// [#not-implemented-hide:] The configuration to specify whether the filter chain will be built on-demand.
 	// If this field is not empty, the filter chain will be built on-demand.
@@ -238,8 +238,7 @@ FilterChainMatch_ConnectionSourceType_EXTERNAL:            "EXTERNAL"
 
 // [#next-free-field: 6]
 #ListenerFilter: {
-	// The name of the filter to instantiate. The name must match a
-	// :ref:`supported filter <config_listener_filters>`.
+	// The name of the filter configuration.
 	name?: string
 	// Filter specific configuration which depends on the filter being
 	// instantiated. See the supported filters for further documentation.

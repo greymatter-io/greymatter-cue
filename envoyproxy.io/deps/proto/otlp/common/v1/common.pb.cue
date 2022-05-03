@@ -10,6 +10,7 @@ package v1
 	double_value?: float64
 	array_value?:  #ArrayValue
 	kvlist_value?: #KeyValueList
+	bytes_value?:  bytes
 }
 
 // ArrayValue is a list of AnyValue messages. We need ArrayValue as a message
@@ -27,6 +28,8 @@ package v1
 #KeyValueList: {
 	// A collection of key/value pairs of key-value pairs. The list may be empty (may
 	// contain 0 elements).
+	// The keys MUST be unique (it is not allowed to have more than one
+	// value with the same key).
 	values?: [...#KeyValue]
 }
 
@@ -37,17 +40,23 @@ package v1
 	value?: #AnyValue
 }
 
-// StringKeyValue is a pair of key/value strings. This is the simpler (and faster) version
-// of KeyValue that only supports string values.
-#StringKeyValue: {
-	key?:   string
-	value?: string
-}
-
 // InstrumentationLibrary is a message representing the instrumentation library information
 // such as the fully qualified name and version.
+// InstrumentationLibrary is wire-compatible with InstrumentationScope for binary
+// Protobuf format.
+// This message is deprecated and will be removed on June 15, 2022.
+//
+// Deprecated: Do not use.
 #InstrumentationLibrary: {
 	// An empty instrumentation library name means the name is unknown.
+	name?:    string
+	version?: string
+}
+
+// InstrumentationScope is a message representing the instrumentation scope information
+// such as the fully qualified name and version.
+#InstrumentationScope: {
+	// An empty instrumentation scope name means the name is unknown.
 	name?:    string
 	version?: string
 }

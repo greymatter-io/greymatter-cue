@@ -43,7 +43,9 @@ Cluster_LbPolicy_LOAD_BALANCING_POLICY_CONFIG: "LOAD_BALANCING_POLICY_CONFIG"
 // IPv4 family and fallback to a lookup for addresses in the IPv6 family. i.e., the callback
 // target will only get v6 addresses if there were NO v4 addresses to return.
 // If ALL is specified, the DNS resolver will perform a lookup for both IPv4 and IPv6 families,
-// and return all resolved addresses.
+// and return all resolved addresses. When this is used, Happy Eyeballs will be enabled for
+// upstream connections. Refer to :ref:`Happy Eyeballs Support <arch_overview_happy_eyeballs>`
+// for more information.
 // For cluster types other than
 // :ref:`STRICT_DNS<envoy_v3_api_enum_value_config.cluster.v3.Cluster.DiscoveryType.STRICT_DNS>` and
 // :ref:`LOGICAL_DNS<envoy_v3_api_enum_value_config.cluster.v3.Cluster.DiscoveryType.LOGICAL_DNS>`,
@@ -514,6 +516,10 @@ Cluster_RingHashLbConfig_HashFunction_MURMUR_HASH_2: "MURMUR_HASH_2"
 #UpstreamConnectionOptions: {
 	// If set then set SO_KEEPALIVE on the socket to enable TCP Keepalives.
 	tcp_keepalive?: v32.#TcpKeepalive
+	// If enabled, associates the interface name of the local address with the upstream connection.
+	// This can be used by extensions during processing of requests. The association mechanism is
+	// implementation specific. Defaults to false due to performance concerns.
+	set_local_interface_name_on_upstream_connections?: bool
 }
 
 #TrackClusterStats: {
@@ -723,9 +729,8 @@ Cluster_RingHashLbConfig_HashFunction_MURMUR_HASH_2: "MURMUR_HASH_2"
 // :ref:`Original Destination <arch_overview_load_balancing_types_original_destination>`
 // load balancing policy.
 #Cluster_OriginalDstLbConfig: {
-	// When true, :ref:`x-envoy-original-dst-host
-	// <config_http_conn_man_headers_x-envoy-original-dst-host>` can be used to override destination
-	// address.
+	// When true, a HTTP header can be used to override the original dst address. The default header is
+	// :ref:`x-envoy-original-dst-host <config_http_conn_man_headers_x-envoy-original-dst-host>`.
 	//
 	// .. attention::
 	//
@@ -737,6 +742,9 @@ Cluster_RingHashLbConfig_HashFunction_MURMUR_HASH_2: "MURMUR_HASH_2"
 	//
 	//   If the header appears multiple times only the first value is used.
 	use_http_header?: bool
+	// The http header to override destination address if :ref:`use_http_header <envoy_v3_api_field_config.cluster.v3.Cluster.OriginalDstLbConfig.use_http_header>`.
+	// is set to true. If the value is empty, :ref:`x-envoy-original-dst-host <config_http_conn_man_headers_x-envoy-original-dst-host>` will be used.
+	http_header_name?: string
 }
 
 // Common configuration for all load balancer implementations.

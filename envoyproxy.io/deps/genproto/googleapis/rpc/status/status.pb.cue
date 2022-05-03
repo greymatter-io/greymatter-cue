@@ -1,7 +1,7 @@
 package status
 
 import (
-	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
+	anypb "envoyproxy.io/deps/protobuf/types/known/anypb"
 )
 
 // The `Status` type defines a logical error model that is suitable for
@@ -20,5 +20,5 @@ import (
 	message?: string
 	// A list of messages that carry the error details.  There is a common set of
 	// message types for APIs to use.
-	details?: [...any.#Any]
+	details?: [...anypb.#Any]
 }

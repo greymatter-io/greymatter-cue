@@ -4,7 +4,7 @@ import (
 	v3 "envoyproxy.io/config/core/v3"
 )
 
-// [#next-free-field: 13]
+// [#next-free-field: 14]
 #RouteConfiguration: {
 	// The name of the route configuration. For example, it might match
 	// :ref:`route_config_name
@@ -82,17 +82,13 @@ import (
 	//   is not subject to data plane buffering controls.
 	//
 	max_direct_response_body_size_bytes?: uint32
-	// [#not-implemented-hide:]
 	// A list of plugins and their configurations which may be used by a
-	// :ref:`envoy_v3_api_field_config.route.v3.RouteAction.cluster_specifier_plugin`
+	// :ref:`cluster specifier plugin name <envoy_v3_api_field_config.route.v3.RouteAction.cluster_specifier_plugin>`
 	// within the route. All *extension.name* fields in this list must be unique.
 	cluster_specifier_plugins?: [...#ClusterSpecifierPlugin]
-}
-
-// Configuration for a cluster specifier plugin.
-#ClusterSpecifierPlugin: {
-	// The name of the plugin and its opaque configuration.
-	extension?: v3.#TypedExtensionConfig
+	// Specify a set of default request mirroring policies which apply to all routes under its virtual hosts.
+	// Note that policies are not merged, the most specific non-empty one becomes the mirror policies.
+	request_mirror_policies?: [...#RouteAction_RequestMirrorPolicy]
 }
 
 #Vhds: {

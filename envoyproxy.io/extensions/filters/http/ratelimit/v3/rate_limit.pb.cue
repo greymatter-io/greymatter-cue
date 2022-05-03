@@ -2,9 +2,10 @@ package v3
 
 import (
 	v3 "envoyproxy.io/config/ratelimit/v3"
-	v31 "envoyproxy.io/config/core/v3"
-	v32 "envoyproxy.io/config/route/v3"
-	v33 "envoyproxy.io/type/metadata/v3"
+	v31 "envoyproxy.io/type/v3"
+	v32 "envoyproxy.io/config/core/v3"
+	v33 "envoyproxy.io/config/route/v3"
+	v34 "envoyproxy.io/type/metadata/v3"
 )
 
 // Defines the version of the standard to use for X-RateLimit headers.
@@ -35,7 +36,7 @@ RateLimitPerRoute_OverrideOptions_OVERRIDE_POLICY: "OVERRIDE_POLICY"
 RateLimitPerRoute_OverrideOptions_INCLUDE_POLICY:  "INCLUDE_POLICY"
 RateLimitPerRoute_OverrideOptions_IGNORE_POLICY:   "IGNORE_POLICY"
 
-// [#next-free-field: 10]
+// [#next-free-field: 11]
 #RateLimit: {
 	// The rate limit domain to use when calling the rate limit service.
 	domain?: string
@@ -98,6 +99,13 @@ RateLimitPerRoute_OverrideOptions_IGNORE_POLICY:   "IGNORE_POLICY"
 	// in case of rate limiting (i.e. 429 responses).
 	// Having this header not present potentially makes the request retriable.
 	disable_x_envoy_ratelimited_header?: bool
+	// This field allows for a custom HTTP response status code to the downstream client when
+	// the request has been rate limited.
+	// Defaults to 429 (TooManyRequests).
+	//
+	// .. note::
+	//   If this is set to < 400, 429 will be used instead.
+	rate_limited_status?: v31.#HttpStatus
 }
 
 // Global rate limiting :ref:`architecture overview <arch_overview_global_rate_limit>`.
@@ -159,7 +167,7 @@ RateLimitPerRoute_OverrideOptions_IGNORE_POLICY:   "IGNORE_POLICY"
 	metadata?: #RateLimitConfig_Action_MetaData
 	// Rate limit descriptor extension. See the rate limit descriptor extensions documentation.
 	// [#extension-category: envoy.rate_limit_descriptors]
-	extension?: v31.#TypedExtensionConfig
+	extension?: v32.#TypedExtensionConfig
 }
 
 #RateLimitConfig_Override: {
@@ -255,7 +263,7 @@ RateLimitPerRoute_OverrideOptions_IGNORE_POLICY:   "IGNORE_POLICY"
 	// specified headers in the config. A match will happen if all the
 	// headers in the config are present in the request with the same values
 	// (or based on presence if the value field is not in the config).
-	headers?: [...v32.#HeaderMatcher]
+	headers?: [...v33.#HeaderMatcher]
 }
 
 // The following descriptor entry is appended when the metadata contains a key value:
@@ -268,7 +276,7 @@ RateLimitPerRoute_OverrideOptions_IGNORE_POLICY:   "IGNORE_POLICY"
 	descriptor_key?: string
 	// Metadata struct that defines the key and path to retrieve the string value. A match will
 	// only happen if the value in the metadata is of type string.
-	metadata_key?: v33.#MetadataKey
+	metadata_key?: v34.#MetadataKey
 	// An optional value to use if *metadata_key* is empty. If not set and
 	// no value is present under the metadata_key then no descriptor is generated.
 	default_value?: string
@@ -282,5 +290,5 @@ RateLimitPerRoute_OverrideOptions_IGNORE_POLICY:   "IGNORE_POLICY"
 	// The value must be a struct containing an integer "requests_per_unit" property
 	// and a "unit" property with a value parseable to :ref:`RateLimitUnit
 	// enum <envoy_v3_api_enum_type.v3.RateLimitUnit>`
-	metadata_key?: v33.#MetadataKey
+	metadata_key?: v34.#MetadataKey
 }

@@ -1,18 +1,22 @@
 package v3
 
 // Specifies that matching should be performed by the destination IP address.
+// [#extension: envoy.matching.inputs.destination_ip]
 #DestinationIPInput: {
 }
 
 // Specifies that matching should be performed by the destination port.
+// [#extension: envoy.matching.inputs.destination_port]
 #DestinationPortInput: {
 }
 
 // Specifies that matching should be performed by the source IP address.
+// [#extension: envoy.matching.inputs.source_ip]
 #SourceIPInput: {
 }
 
 // Specifies that matching should be performed by the source port.
+// [#extension: envoy.matching.inputs.source_port]
 #SourcePortInput: {
 }
 
@@ -20,6 +24,7 @@ package v3
 // will only be different from the source IP address when using a listener
 // filter that overrides the source address, such as the :ref:`Proxy Protocol
 // listener filter <config_listener_filters_proxy_protocol>`).
+// [#extension: envoy.matching.inputs.direct_source_ip]
 #DirectSourceIPInput: {
 }
 
@@ -27,6 +32,7 @@ package v3
 // Specifies the source IP match type. The values include:
 //
 // * ``local`` - matches a connection originating from the same host,
+// [#extension: envoy.matching.inputs.source_type]
 #SourceTypeInput: {
 }
 
@@ -34,6 +40,7 @@ package v3
 //
 // :ref:`TLS Inspector <config_listener_filters_tls_inspector>` provides the requested server name based on SNI,
 // when TLS protocol is detected.
+// [#extension: envoy.matching.inputs.server_name]
 #ServerNameInput: {
 }
 
@@ -44,6 +51,7 @@ package v3
 // * ``raw_buffer`` - default, used when no transport protocol is detected,
 // * ``tls`` - set by :ref:`envoy.filters.listener.tls_inspector <config_listener_filters_tls_inspector>`
 //   when TLS protocol is detected.
+// [#extension: envoy.matching.inputs.transport_protocol]
 #TransportProtocolInput: {
 }
 
@@ -72,5 +80,6 @@ package v3
 //   However, the use of ALPN is pretty much limited to the HTTP/2 traffic on the Internet,
 //   and matching on values other than ``h2`` is going to lead to a lot of false negatives,
 //   unless all connecting clients are known to use ALPN.
+// [#extension: envoy.matching.inputs.application_protocol]
 #ApplicationProtocolInput: {
 }

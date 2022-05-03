@@ -2,15 +2,24 @@ package v3
 
 import (
 	v3 "envoyproxy.io/config/core/v3"
+	v31 "envoyproxy.io/config/accesslog/v3"
+	v32 "envoyproxy.io/deps/cncf/xds/go/xds/type/matcher/v3"
 )
 
 // Configuration for the UDP proxy filter.
-// [#next-free-field: 8]
+// [#next-free-field: 10]
 #UdpProxyConfig: {
 	// The stat prefix used when emitting UDP proxy filter stats.
 	stat_prefix?: string
 	// The upstream cluster to connect to.
+	// This field is deprecated in favor of
+	// :ref:`matcher <envoy_v3_api_field_extensions.filters.udp.udp_proxy.v3.UdpProxyConfig.matcher>`.
+	//
+	// Deprecated: Do not use.
 	cluster?: string
+	// The match tree to use when resolving route actions for incoming requests.
+	// See :ref:`Routing <config_udp_listener_filters_udp_proxy_routing>` for more information.
+	matcher?: v32.#Matcher
 	// The idle timeout for sessions. Idle is defined as no datagrams between received or sent by
 	// the session. The default if not specified is 1 minute.
 	idle_timeout?: string
@@ -41,6 +50,8 @@ import (
 	// The default if not specified is false, that means each data chunk is forwarded
 	// to upstream host selected on first chunk receival for that "session" (identified by source IP/port and local IP/port).
 	use_per_packet_load_balancing?: bool
+	// Configuration for access logs emitted by the UDP proxy. Note that certain UDP specific data is emitted as :ref:`Dynamic Metadata <config_access_log_format_dynamic_metadata>`.
+	access_log?: [...v31.#AccessLog]
 }
 
 // Specifies the UDP hash policy.

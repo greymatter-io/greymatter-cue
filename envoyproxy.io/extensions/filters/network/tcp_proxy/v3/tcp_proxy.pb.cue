@@ -19,10 +19,9 @@ import (
 	weighted_clusters?: #TcpProxy_WeightedCluster
 	// The on demand policy for the upstream cluster.
 	// It applies to both
-	// :ref:`TcpProxy.cluster <envoy_v3_api_field_extensions.filters.network.tcp_proxy.v3.TcpProxy.cluster`
+	// :ref:`TcpProxy.cluster <envoy_v3_api_field_extensions.filters.network.tcp_proxy.v3.TcpProxy.cluster>`
 	// and
-	// :ref:`TcpProxy.weighted_clusters <envoy_v3_api_field_extensions.filters.network.tcp_proxy.v3.TcpProxy.weighted_clusters`.
-	// [#not-implemented-hide:]
+	// :ref:`TcpProxy.weighted_clusters <envoy_v3_api_field_extensions.filters.network.tcp_proxy.v3.TcpProxy.weighted_clusters>`.
 	on_demand?: #TcpProxy_OnDemand
 	// Optional endpoint metadata match criteria. Only endpoints in the upstream
 	// cluster with metadata matching that set in metadata_match will be

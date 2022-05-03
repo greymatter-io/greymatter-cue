@@ -220,7 +220,9 @@ HttpProtocolOptions_HeadersWithUnderscoresAction_DROP_HEADER:    "DROP_HEADER"
 	// If this is zero, interval PINGs will not be sent.
 	interval?: string
 	// How long to wait for a response to a keepalive PING. If a response is not received within this
-	// time period, the connection will be aborted.
+	// time period, the connection will be aborted. Note that in order to prevent the influence of
+	// Head-of-line (HOL) blocking the timeout period is extended when *any* frame is received on
+	// the connection, under the assumption that if a frame is received the connection is healthy.
 	timeout?: string
 	// A random jitter amount as a percentage of interval that will be added to each interval.
 	// A value of zero means there will be no jitter.

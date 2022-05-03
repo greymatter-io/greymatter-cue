@@ -5,6 +5,7 @@ package v3
 // e.g. if the request contains two 'foo' headers with value 'bar' and 'baz', the input
 // string will be 'bar,baz'.
 // [#comment:TODO(snowp): Link to unified matching docs.]
+// [#extension: envoy.matching.inputs.request_headers]
 #HttpRequestHeaderMatchInput: {
 	// The request header to match on.
 	header_name?: string
@@ -15,6 +16,7 @@ package v3
 // e.g. if the request contains two 'foo' headers with value 'bar' and 'baz', the input
 // string will be 'bar,baz'.
 // [#comment:TODO(snowp): Link to unified matching docs.]
+// [#extension: envoy.matching.inputs.request_trailers]
 #HttpRequestTrailerMatchInput: {
 	// The request trailer to match on.
 	header_name?: string
@@ -25,6 +27,7 @@ package v3
 // e.g. if the response contains two 'foo' headers with value 'bar' and 'baz', the input
 // string will be 'bar,baz'.
 // [#comment:TODO(snowp): Link to unified matching docs.]
+// [#extension: envoy.matching.inputs.response_headers]
 #HttpResponseHeaderMatchInput: {
 	// The response header to match on.
 	header_name?: string
@@ -35,6 +38,7 @@ package v3
 // e.g. if the request contains two 'foo' headers with value 'bar' and 'baz', the input
 // string will be 'bar,baz'.
 // [#comment:TODO(snowp): Link to unified matching docs.]
+// [#extension: envoy.matching.inputs.response_trailers]
 #HttpResponseTrailerMatchInput: {
 	// The response trailer to match on.
 	header_name?: string

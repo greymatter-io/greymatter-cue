@@ -53,7 +53,7 @@ RateLimit_Action_MetaData_Source_ROUTE_ENTRY: "ROUTE_ENTRY"
 // host header. This allows a single listener to service multiple top level domain path trees. Once
 // a virtual host is selected based on the domain, the routes are processed in order to see which
 // upstream cluster to route to or whether to perform a redirect.
-// [#next-free-field: 22]
+// [#next-free-field: 23]
 #VirtualHost: {
 	// The logical name of the virtual host. This is used when emitting certain
 	// statistics but is not relevant for routing.
@@ -163,6 +163,10 @@ RateLimit_Action_MetaData_Source_ROUTE_ENTRY: "ROUTE_ENTRY"
 	// If set and a route-specific limit is not set, the bytes actually buffered will be the minimum
 	// value of this and the listener per_connection_buffer_limit_bytes.
 	per_request_buffer_limit_bytes?: uint32
+	// Specify a set of default request mirroring policies for every route under this virtual host.
+	// It takes precedence over the route config mirror policy entirely.
+	// That is, policies are not merged, the most specific non-empty one becomes the mirror policies.
+	request_mirror_policies?: [...#RouteAction_RequestMirrorPolicy]
 }
 
 // A filter-defined action type.
@@ -275,7 +279,19 @@ RateLimit_Action_MetaData_Source_ROUTE_ENTRY: "ROUTE_ENTRY"
 	header_name?: string
 }
 
-// [#next-free-field: 14]
+// Configuration for a cluster specifier plugin.
+#ClusterSpecifierPlugin: {
+	// The name of the plugin and its opaque configuration.
+	extension?: v31.#TypedExtensionConfig
+	// If is_optional is not set or is set to false and the plugin defined by this message is not a
+	// supported type, the containing resource is NACKed. If is_optional is set to true, the resource
+	// would not be NACKed for this reason. In this case, routes referencing this plugin's name would
+	// not be treated as an illegal configuration, but would result in a failure if the route is
+	// selected.
+	is_optional?: bool
+}
+
+// [#next-free-field: 15]
 #RouteMatch: {
 	// If specified, the route is a prefix rule meaning that the prefix must
 	// match the beginning of the *:path* header.
@@ -306,6 +322,16 @@ RateLimit_Action_MetaData_Source_ROUTE_ENTRY: "ROUTE_ENTRY"
 	// Note that CONNECT support is currently considered alpha in Envoy.
 	// [#comment: TODO(htuch): Replace the above comment with an alpha tag.]
 	connect_matcher?: #RouteMatch_ConnectMatcher
+	// If specified, the route is a path-separated prefix rule meaning that the
+	// ``:path`` header (without the query string) must either exactly match the
+	// ``path_separated_prefix`` or have it as a prefix, followed by ``/``
+	//
+	// For example, ``/api/dev`` would match
+	// ``/api/dev``, ``/api/dev/``, ``/api/dev/v1``, and ``/api/dev?param=true``
+	// but would not match ``/api/developer``
+	//
+	// Expect the value to not contain ``?`` or ``#`` and not to end in ``/``
+	path_separated_prefix?: string
 	// Indicates that prefix/path matching should be case sensitive. The default
 	// is true. Ignored for safe_regex matching.
 	case_sensitive?: bool
@@ -397,7 +423,7 @@ RateLimit_Action_MetaData_Source_ROUTE_ENTRY: "ROUTE_ENTRY"
 	shadow_enabled?: v31.#RuntimeFractionalPercent
 }
 
-// [#next-free-field: 39]
+// [#next-free-field: 40]
 #RouteAction: {
 	// Indicates the upstream cluster to which the request should be routed
 	// to.
@@ -422,13 +448,14 @@ RateLimit_Action_MetaData_Source_ROUTE_ENTRY: "ROUTE_ENTRY"
 	// :ref:`traffic splitting <config_http_conn_man_route_table_traffic_splitting_split>`
 	// for additional documentation.
 	weighted_clusters?: #WeightedCluster
-	// [#not-implemented-hide:]
-	// Name of the cluster specifier plugin to use to determine the cluster for
-	// requests on this route. The plugin name must be defined in the associated
-	// :ref:`envoy_v3_api_field_config.route.v3.RouteConfiguration.cluster_specifier_plugins`
-	// in the
-	// :ref:`envoy_v3_api_field_config.core.v3.TypedExtensionConfig.name` field.
+	// Name of the cluster specifier plugin to use to determine the cluster for requests on this route.
+	// The cluster specifier plugin name must be defined in the associated
+	// :ref:`cluster specifier plugins <envoy_v3_api_field_config.route.v3.RouteConfiguration.cluster_specifier_plugins>`
+	// in the :ref:`name <envoy_v3_api_field_config.core.v3.TypedExtensionConfig.name>` field.
 	cluster_specifier_plugin?: string
+	// Custom cluster specifier plugin configuration to use to determine the cluster for requests
+	// on this route.
+	inline_cluster_specifier_plugin?: #ClusterSpecifierPlugin
 	// The HTTP status code to use when configured cluster is not found.
 	// The default response code is 503 Service Unavailable.
 	cluster_not_found_response_code?: #RouteAction_ClusterNotFoundResponseCode
@@ -603,7 +630,9 @@ RateLimit_Action_MetaData_Source_ROUTE_ENTRY: "ROUTE_ENTRY"
 	// most internal one becomes the enforced policy). :ref:`Retry policy <envoy_v3_api_field_config.route.v3.VirtualHost.retry_policy>`
 	// should not be set if this field is used.
 	retry_policy_typed_config?: any.#Any
-	// Indicates that the route has request mirroring policies.
+	// Specify a set of route request mirroring policies.
+	// It takes precedence over the virtual host and route config mirror policy entirely.
+	// That is, policies are not merged, the most specific non-empty one becomes the mirror policies.
 	request_mirror_policies?: [...#RouteAction_RequestMirrorPolicy]
 	// Optionally specifies the :ref:`routing priority <arch_overview_http_routing_priority>`.
 	priority?: v31.#RoutingPriority
@@ -1608,6 +1637,8 @@ RateLimit_Action_MetaData_Source_ROUTE_ENTRY: "ROUTE_ENTRY"
 //
 //   ("header_match", "<descriptor_value>")
 #RateLimit_Action_HeaderValueMatch: {
+	// The key to use in the descriptor entry. Defaults to `header_match`.
+	descriptor_key?: string
 	// The value to use in the descriptor entry.
 	descriptor_value?: string
 	// If set to true, the action will append a descriptor entry when the

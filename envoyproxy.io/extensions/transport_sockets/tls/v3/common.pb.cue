@@ -236,7 +236,7 @@ CertificateValidationContext_TrustChainVerification_ACCEPT_UNTRUSTED:   "ACCEPT_
 	matcher?: v31.#StringMatcher
 }
 
-// [#next-free-field: 16]
+// [#next-free-field: 17]
 #CertificateValidationContext: {
 	// TLS certificate data containing certificate authority certificates to use in verifying
 	// a presented peer certificate (e.g. server certificate for clusters or client certificate
@@ -368,8 +368,12 @@ CertificateValidationContext_TrustChainVerification_ACCEPT_UNTRUSTED:   "ACCEPT_
 	//   therefore this option must be used together with :ref:`trusted_ca
 	//   <envoy_v3_api_field_extensions.transport_sockets.tls.v3.CertificateValidationContext.trusted_ca>`.
 	match_typed_subject_alt_names?: [...#SubjectAltNameMatcher]
-	// This field is deprecated in favor of ref:`match_typed_subject_alt_names
+	// This field is deprecated in favor of
+	// :ref:`match_typed_subject_alt_names
+	// <envoy_v3_api_field_extensions.transport_sockets.tls.v3.CertificateValidationContext.match_typed_subject_alt_names>`.
+	// Note that if both this field and :ref:`match_typed_subject_alt_names
 	// <envoy_v3_api_field_extensions.transport_sockets.tls.v3.CertificateValidationContext.match_typed_subject_alt_names>`
+	// are specified, the former (deprecated field) is ignored.
 	//
 	// Deprecated: Do not use.
 	match_subject_alt_names?: [...v31.#StringMatcher]
@@ -400,4 +404,10 @@ CertificateValidationContext_TrustChainVerification_ACCEPT_UNTRUSTED:   "ACCEPT_
 	// If this option is set to true, only the certificate at the end of the
 	// certificate chain will be subject to validation by :ref:`CRL <envoy_v3_api_field_extensions.transport_sockets.tls.v3.CertificateValidationContext.crl>`.
 	only_verify_leaf_cert_crl?: bool
+	// Config for the max number of intermediate certificates in chain that are parsed during verification.
+	// This does not include the leaf certificate. If configured, and the certificate chain is longer than allowed, the certificates
+	// above the limit are ignored, and certificate validation will fail. The default limit is 100,
+	// though this can be system-dependent.
+	// https://www.openssl.org/docs/man1.1.1/man3/SSL_CTX_set_verify_depth.html
+	max_verify_depth?: uint32
 }

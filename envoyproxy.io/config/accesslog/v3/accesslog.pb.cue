@@ -35,9 +35,7 @@ GrpcStatusFilter_Status_DATA_LOSS:           "DATA_LOSS"
 GrpcStatusFilter_Status_UNAUTHENTICATED:     "UNAUTHENTICATED"
 
 #AccessLog: {
-	// The name of the access log extension to instantiate.
-	// The name must match one of the compiled in loggers.
-	// See the :ref:`extensions listed in typed_config below <extension_category_envoy.access_loggers>` for the default list of available loggers.
+	// The name of the access log extension configuration.
 	name?: string
 	// Filter which is used to determine if the access log needs to be written.
 	filter?:       #AccessLogFilter

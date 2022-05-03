@@ -6,7 +6,7 @@ import (
 	v32 "envoyproxy.io/type/matcher/v3"
 )
 
-// [#next-free-field: 16]
+// [#next-free-field: 17]
 #ExtAuthz: {
 	// gRPC service configuration (default timeout: 200ms).
 	grpc_service?: v3.#GrpcService
@@ -47,7 +47,7 @@ import (
 	// filter and the authorization server. The default status is HTTP 403 Forbidden.
 	status_on_error?: v31.#HttpStatus
 	// Specifies a list of metadata namespaces whose values, if present, will be passed to the
-	// ext_authz service as an opaque *protobuf::Struct*.
+	// ext_authz service. :ref:`filter_metadata <envoy_v3_api_field_config.core.v3.Metadata.filter_metadata>` is passed as an opaque *protobuf::Struct*.
 	//
 	// For example, if the *jwt_authn* filter is used and :ref:`payload_in_metadata
 	// <envoy_v3_api_field_extensions.filters.http.jwt_authn.v3.JwtProvider.payload_in_metadata>` is set,
@@ -59,6 +59,13 @@ import (
 	//    - envoy.filters.http.jwt_authn
 	//
 	metadata_context_namespaces?: [...string]
+	// Specifies a list of metadata namespaces whose values, if present, will be passed to the
+	// ext_authz service. :ref:`typed_filter_metadata <envoy_v3_api_field_config.core.v3.Metadata.typed_filter_metadata>` is passed as an *protobuf::Any*.
+	//
+	// It works in a way similar to `metadata_context_namespaces` but allows envoy and external authz server to share the protobuf message definition
+	// in order to do a safe parsing.
+	//
+	typed_metadata_context_namespaces?: [...string]
 	// Specifies if the filter is enabled.
 	//
 	// If :ref:`runtime_key <envoy_v3_api_field_config.core.v3.RuntimeFractionalPercent.runtime_key>` is specified,

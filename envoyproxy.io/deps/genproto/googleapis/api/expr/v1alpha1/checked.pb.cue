@@ -1,8 +1,8 @@
 package v1alpha1
 
 import (
-	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
-	empty "envoyproxy.io/deps/golang/protobuf/ptypes/empty"
+	emptypb "envoyproxy.io/deps/protobuf/types/known/emptypb"
+	structpb "envoyproxy.io/deps/protobuf/types/known/structpb"
 )
 
 // CEL primitive types.
@@ -51,6 +51,14 @@ Type_WellKnownType_DURATION:                    "DURATION"
 	// The source info derived from input that generated the parsed `expr` and
 	// any optimizations made during the type-checking pass.
 	source_info?: #SourceInfo
+	// The expr version indicates the major / minor version number of the `expr`
+	// representation.
+	//
+	// The most common reason for a version change will be to indicate to the CEL
+	// runtimes that transformations have been performed on the expr during static
+	// analysis. In some cases, this will save the runtime the work of applying
+	// the same or similar transformations prior to evaluation.
+	expr_version?: string
 	// The checked expression. Semantically equivalent to the parsed `expr`, but
 	// may have structural differences.
 	expr?: #Expr
@@ -59,9 +67,9 @@ Type_WellKnownType_DURATION:                    "DURATION"
 // Represents a CEL type.
 #Type: {
 	// Dynamic type.
-	dyn?: empty.#Empty
+	dyn?: emptypb.#Empty
 	// Null value.
-	null?: _struct.#NullValue
+	null?: structpb.#NullValue
 	// Primitive types: `true`, `1u`, `-2.0`, `'string'`, `b'bytes'`.
 	primitive?: #Type_PrimitiveType
 	// Wrapper of a primitive type, e.g. `google.protobuf.Int64Value`.
@@ -95,7 +103,7 @@ Type_WellKnownType_DURATION:                    "DURATION"
 	// During type-checking if an expression is an error, its type is propagated
 	// as the `ERROR` type. This permits the type-checker to discover other
 	// errors present in the expression.
-	error?: empty.#Empty
+	error?: emptypb.#Empty
 	// Abstract, application defined type.
 	abstract_type?: #Type_AbstractType
 }
@@ -185,8 +193,7 @@ Type_WellKnownType_DURATION:                    "DURATION"
 }
 
 // Function declaration specifies one or more overloads which indicate the
-// function's parameter types and return type, and may optionally specify a
-// function definition in terms of CEL expressions.
+// function's parameter types and return type.
 //
 // Functions have no observable side-effects (there may be side-effects like
 // logging which are not observable from CEL).
