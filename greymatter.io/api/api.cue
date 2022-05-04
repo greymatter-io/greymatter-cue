@@ -310,27 +310,27 @@ package api
 }
 
 #HTTPFilters: {
-	gm_metrics?: {
-		metrics_host:                               string
-		metrics_port:                               int
-		metrics_dashboard_uri_path:                 string
-		metrics_prometheus_uri_path:                string
-		metrics_ring_buffer_size:                   int
-		prometheus_system_metrics_interval_seconds: int
-		metrics_key_function:                       string
-		metrics_key_depth:                          string
-		metrics_receiver?: {
-			redis_connection_string?: string
-			nats_connection_string?:  string
-			push_interval_seconds:    int
-		}
-	}
-	gm_observables?: topic: string
+	gm_metrics?:			 #MetricsConfig
+	gm_impersonation?:       #ImpersonationConfig
+	gm_inheaders?:           #InheadersConfig
+	gm_listauth?:            #ListAuthConfig
+	gm_observables?:         #ObservablesConfig
+	gm_ensure_variables?:    #EnsureVariablesConfig
+	gm_keycloak?:            #GmJwtKeycloakConfig
+	gm_oauth?:               #OauthConfig
+	gm_oidc_authenticaiton?: #AuthenticationConfig
+	gm_oidc_validation?:     #ValidationConfig
 }
 
-#NetworkFilters: envoy_tcp_proxy?: {
-	cluster:     string
-	stat_prefix: string
+#NetworkFilters: {
+	envoy_tcp_proxy?: {
+		cluster:     string
+		stat_prefix: string
+	}
+	gm_tcp_metrics?: 		#tcpMetricsConfig
+	gm_tcp_logger?: 		#tcpLoggerConfig
+	gm_tcp_observables?: 	#ObservablesTCPConfig
+	gm_tcp_jwt_security?: 	#jwtSecurityTcpConfig
 }
 
 #TracingConfig: {
@@ -511,4 +511,476 @@ package api
 	properties?:      [...#Metadata] | *null
 	retry_policy?:    #RetryPolicy | *null
 	org_key?:         string
+}
+
+#LocationType: {"header", #enumValue: 0} |
+	{"cookie", #enumValue: 1} |
+	{"queryString", #enumValue: 2} |
+	{"metadata", #enumValue: 3}
+
+#LocationType_value: {
+	"header":      0
+	"cookie":      1
+	"queryString": 2
+	"metadata":    3
+}
+
+#CookieOptions: {
+	httpOnly?: bool   @protobuf(1,bool)
+	secure?:   bool   @protobuf(2,bool)
+	domain?:   string @protobuf(3,string)
+	path?:     string @protobuf(4,string)
+	maxAge?:   string @protobuf(5,string)
+}
+
+#EnsureVariablesConfig: {
+
+	#Rule: {
+
+		#Value: {
+			#MatchType: {"exact", #enumValue: 0} |
+				{"prefix", #enumValue: 1} |
+				{"suffix", #enumValue: 2} |
+				{"regex", #enumValue: 3}
+
+			#MatchType_value: {
+				"exact":  0
+				"prefix": 1
+				"suffix": 2
+				"regex":  3
+			}
+			matchType?:   #MatchType @protobuf(1,MatchType)
+			matchString?: string     @protobuf(2,string)
+		}
+
+		#CopyTo: {
+			location?: #LocationType @protobuf(1,LocationType)
+			key?:      string        @protobuf(2,string)
+
+			#Direction: {"default", #enumValue: 0} |
+				{"request", #enumValue: 1} |
+				{"response", #enumValue: 2} |
+				{"both", #enumValue: 3}
+
+			#Direction_value: {
+				"default":  0
+				"request":  1
+				"response": 2
+				"both":     3
+			}
+			direction?:     #Direction     @protobuf(3,Direction)
+			cookieOptions?: #CookieOptions @protobuf(4,CookieOptions)
+		}
+		key?:                 string        @protobuf(1,string)
+		location?:            #LocationType @protobuf(2,LocationType)
+		metadataFilter?:      string        @protobuf(3,string)
+		enforce?:             bool          @protobuf(4,bool)
+		enforceResponseCode?: int32         @protobuf(5,int32)
+		removeOriginal?:      bool          @protobuf(6,bool)
+		value?:               #Value        @protobuf(7,Value)
+		copyTo?: [...#CopyTo] @protobuf(8,CopyTo)
+	}
+	rules?: [...#Rule] @protobuf(1,Rule)
+}
+
+#GmJwtKeycloakConfig: {
+	clientSecret?:    string @protobuf(1,string)
+	endpoint?:        string @protobuf(2,string)
+	authnHeaderName?: string @protobuf(3,string)
+
+	// tls
+	useTLS?:             bool   @protobuf(4,bool)
+	certPath?:           string @protobuf(5,string)
+	keyPath?:            string @protobuf(6,string)
+	caPath?:             string @protobuf(7,string)
+	insecureSkipVerify?: bool   @protobuf(8,bool)
+
+	// request config
+	timeoutMs?:    int32 @protobuf(9,int32)
+	maxRetries?:   int32 @protobuf(10,int32)
+	retryDelayMs?: int32 @protobuf(11,int32)
+
+	// cache config
+	cachedTokenExp?: int32 @protobuf(12,int32)
+	cacheLimit?:     int32 @protobuf(13,int32)
+
+	// keycloak-specifc
+	writeBody?:               bool   @protobuf(14,bool)
+	fetchFullToken?:          bool   @protobuf(15,bool)
+	clientID?:                string @protobuf(16,string)
+	realm?:                   string @protobuf(17,string)
+	jwtPrivateKeyPath?:       string @protobuf(18,string)
+	authzHeaderName?:         string @protobuf(19,string)
+	jwks?:                    string @protobuf(20,string)
+	authenticateOnly?:        bool   @protobuf(21,bool)
+	sharedJwtKeycloakSecret?: string @protobuf(22,string)
+}
+
+#GmJwtSecurityConfig: {
+	apiKey?:        string @protobuf(1,string)
+	endpoint?:      string @protobuf(2,string)
+	jwtHeaderName?: string @protobuf(3,string)
+
+	// tls
+	useTls?:             bool   @protobuf(4,bool)
+	certPath?:           string @protobuf(5,string)
+	keyPath?:            string @protobuf(6,string)
+	caPath?:             string @protobuf(7,string)
+	insecureSkipVerify?: bool   @protobuf(8,bool)
+
+	// request config
+	timeoutMs?:    int32 @protobuf(9,int32)
+	maxRetries?:   int32 @protobuf(10,int32)
+	retryDelayMs?: int32 @protobuf(11,int32)
+
+	// cache config
+	cachedTokenExp?: int32 @protobuf(12,int32)
+	cacheLimit?:     int32 @protobuf(13,int32)
+}
+
+#ImpersonationConfig: {
+	servers?:       string @protobuf(1,string)
+	caseSensitive?: bool   @protobuf(2,bool)
+}
+
+#InheadersConfig: {
+	debug?: bool @protobuf(1,bool)
+}
+
+#ListAuthConfig: {
+	blacklist?: string @protobuf(1,string)
+	whitelist?: string @protobuf(2,string)
+	denylist?:  string @protobuf(3,string)
+	allowlist?: string @protobuf(4,string)
+}
+
+#MetricsConfig: {
+	metricsPort?:                            int32  @protobuf(1,int32,name=metrics_port)
+	metricsHost?:                            string @protobuf(2,string,name=metrics_host)
+	metricsDashboardUriPath?:                string @protobuf(3,string,name=metrics_dashboard_uri_path)
+	metricsPrometheusUriPath?:               string @protobuf(4,string,name=metrics_prometheus_uri_path)
+	prometheusSystemMetricsIntervalSeconds?: int32  @protobuf(5,int32,name=prometheus_system_metrics_interval_seconds)
+	metricsRingBufferSize?:                  int32  @protobuf(6,int32,name=metrics_ring_buffer_size)
+	metricsKeyFunction?:                     string @protobuf(7,string,name=metrics_key_function)
+	metricsKeyDepth?:                        string @protobuf(8,string,name=metrics_key_depth)
+	throughputTimeoutDuration?:              string @protobuf(9,string,name=throughput_timeout_duration)
+	useMetricsTls?:                          bool   @protobuf(10,bool,name=use_metrics_tls)
+	serverCaCertPath?:                       string @protobuf(11,string,name=server_ca_cert_path)
+	serverCertPath?:                         string @protobuf(12,string,name=server_cert_path)
+	serverKeyPath?:                          string @protobuf(13,string,name=server_key_path)
+	enableCloudwatch?:                       bool   @protobuf(14,bool,name=enable_cloudwatch)
+	cwNamespace?:                            string @protobuf(15,string,name=cw_namespace)
+	cwDimensions?:                           string @protobuf(16,string,name=cw_dimensions)
+	cwMetricsRoutes?:                        string @protobuf(17,string,name=cw_metrics_routes)
+	cwMetricsValues?:                        string @protobuf(18,string,name=cw_metrics_values)
+	cwDebug?:                                bool   @protobuf(19,bool,name=cw_debug)
+	cwReportingIntervalSeconds?:             int32  @protobuf(20,int32,name=cw_reporting_interval_seconds)
+	awsRegion?:                              string @protobuf(21,string,name=aws_region)
+	awsAccessKeyId?:                         string @protobuf(22,string,name=aws_access_key_id)
+	awsSecretAccessKey?:                     string @protobuf(23,string,name=aws_secret_access_key)
+	awsSessionToken?:                        string @protobuf(24,string,name=aws_session_token)
+	awsProfile?:                             string @protobuf(25,string,name=aws_profile)
+	awsConfigFile?:                          string @protobuf(26,string,name=aws_config_file)
+
+	#MetricsReceiver: {
+		redisConnectionString?: string @protobuf(1,string,name=redis_connection_string)
+		natsConnectionString?:  string @protobuf(2,string,name=nats_connection_string)
+		pushIntervalSeconds?:   int32  @protobuf(3,int32,name=push_interval_seconds)
+	}
+	metricsReceiver?: #MetricsReceiver @protobuf(27,MetricsReceiver,name=metrics_receiver)
+}
+
+#MetricsRouteConfig: {
+	metricsKeyFunction?: string @protobuf(1,string,name=metrics_key_function)
+	metricsKeyDepth?:    string @protobuf(2,string,name=metrics_key_depth)
+}
+
+#OauthConfig: {
+	provider?:       string @protobuf(1,string)
+	clientId?:       string @protobuf(2,string,name=client_id)
+	clientSecret?:   string @protobuf(3,string,name=client_secret)
+	serverName?:     string @protobuf(4,string,name=server_name)
+	serverInsecure?: bool   @protobuf(5,bool,name=server_insecure)
+	sessionSecret?:  string @protobuf(6,string,name=session_secret)
+	domain?:         string @protobuf(7,string)
+}
+
+#OauthRouteConfig: {
+	domain?: string @protobuf(1,string)
+}
+
+#ObservablesConfig: {
+	emitFullResponse?: bool @protobuf(1,bool)
+	useKafka?:         bool @protobuf(2,bool)
+
+	// Kafka TLS configuration
+	useKafkaTLS?:           bool   @protobuf(3,bool)
+	kafkaCAs?:              string @protobuf(4,string)
+	kafkaCertificate?:      string @protobuf(5,string)
+	kafkaCertificateKey?:   string @protobuf(6,string)
+	kafkaServerName?:       string @protobuf(7,string)
+	enforceAudit?:          bool   @protobuf(8,bool)
+	topic?:                 string @protobuf(9,string)
+	eventTopic?:            string @protobuf(10,string)
+	kafkaZKDiscover?:       bool   @protobuf(11,bool)
+	kafkaServerConnection?: string @protobuf(12,string)
+	fileName?:              string @protobuf(13,string)
+	logLevel?:              string @protobuf(14,string)
+	encryptionAlgorithm?:   string @protobuf(15,string)
+
+	// Bas64 encrypted bytes
+	encryptionKey?:   string @protobuf(16,string)
+	encryptionKeyID?: uint32 @protobuf(17,uint32)
+
+	// Kafka timeout
+	timeoutMs?: int32 @protobuf(18,int32)
+}
+
+#ObservablesRouteConfig: {
+	emitFullResponse?: bool @protobuf(1,bool)
+}
+
+#LocationType: {"header", #enumValue: 0} |
+	{"cookie", #enumValue: 1} |
+	{"queryString", #enumValue: 2} |
+	{"metadata", #enumValue: 3}
+
+#LocationType_value: {
+	"header":      0
+	"cookie":      1
+	"queryString": 2
+	"metadata":    3
+}
+
+#CookieOptions: {
+	httpOnly?: bool   @protobuf(1,bool)
+	secure?:   bool   @protobuf(2,bool)
+	domain?:   string @protobuf(3,string)
+	path?:     string @protobuf(4,string)
+	maxAge?:   string @protobuf(5,string)
+}
+
+#AuthenticationConfig: {
+
+	#TokenStorage: {
+		location?:       #LocationType  @protobuf(1,LocationType)
+		key?:            string         @protobuf(2,string)
+		cookieOptions?:  #CookieOptions @protobuf(3,CookieOptions)
+		metadataFilter?: string         @protobuf(4,string)
+	}
+	accessToken?:  #TokenStorage @protobuf(1,TokenStorage)
+	idToken?:      #TokenStorage @protobuf(2,TokenStorage)
+	serviceUrl?:   string        @protobuf(3,string)
+	callbackPath?: string        @protobuf(4,string)
+	provider?:     string        @protobuf(5,string)
+	clientId?:     string        @protobuf(6,string)
+	clientSecret?: string        @protobuf(7,string)
+	additionalScopes?: [...string] @protobuf(8,string)
+
+	#TokenRefreshConfig: {
+		enabled?:            bool   @protobuf(1,bool)
+		endpoint?:           string @protobuf(2,string)
+		realm?:              string @protobuf(3,string)
+		useTLS?:             bool   @protobuf(4,bool)
+		certPath?:           string @protobuf(5,string)
+		keyPath?:            string @protobuf(6,string)
+		caPath?:             string @protobuf(7,string)
+		insecureSkipVerify?: bool   @protobuf(8,bool)
+		timeoutMs?:          int32  @protobuf(9,int32)
+	}
+	tokenRefresh?: #TokenRefreshConfig @protobuf(9,TokenRefreshConfig)
+}
+
+#LocationType: {"header", #enumValue: 0} |
+	{"cookie", #enumValue: 1} |
+	{"queryString", #enumValue: 2} |
+	{"metadata", #enumValue: 3}
+
+#LocationType_value: {
+	"header":      0
+	"cookie":      1
+	"queryString": 2
+	"metadata":    3
+}
+
+#CookieOptions: {
+	httpOnly?: bool   @protobuf(1,bool)
+	secure?:   bool   @protobuf(2,bool)
+	domain?:   string @protobuf(3,string)
+	path?:     string @protobuf(4,string)
+	maxAge?:   string @protobuf(5,string)
+}
+
+#ValidationConfig: {
+	provider?:            string @protobuf(1,string)
+	enforce?:             bool   @protobuf(2,bool)
+	enforceResponseCode?: int32  @protobuf(3,int32)
+
+	#AccessToken: {
+		location?:       #LocationType @protobuf(1,LocationType)
+		key?:            string        @protobuf(2,string)
+		metadataFilter?: string        @protobuf(3,string)
+	}
+	accessToken?: #AccessToken @protobuf(4,AccessToken)
+
+	#UserInfo: {
+		claims?: [...string] @protobuf(1,string)
+		location?:      #LocationType  @protobuf(2,LocationType)
+		key?:           string         @protobuf(3,string)
+		cookieOptions?: #CookieOptions @protobuf(4,CookieOptions)
+	}
+	userInfo?: #UserInfo @protobuf(5,UserInfo)
+
+	#FilterTLSConfig: {
+		useTLS?:             bool   @protobuf(1,bool)
+		certPath?:           string @protobuf(2,string)
+		keyPath?:            string @protobuf(3,string)
+		caPath?:             string @protobuf(4,string)
+		insecureSkipVerify?: bool   @protobuf(5,bool)
+	}
+	TLSConfig?: #FilterTLSConfig @protobuf(6,FilterTLSConfig)
+}
+
+#ValidationRouteConfig: {
+	enforce?:             bool  @protobuf(1,bool)
+	enforceResponseCode?: int32 @protobuf(2,int32)
+	userInfoClaims?: [...string] @protobuf(3,string)
+	overwriteClaims?: bool @protobuf(4,bool)
+}
+
+#PolicyConfig: {
+	inboundPolicy?:     string @protobuf(1,string)
+	outboundPolicy?:    string @protobuf(2,string)
+	inboundPolicyRaw?:  string @protobuf(13,string)
+	outboundPolicyRaw?: string @protobuf(4,string)
+}
+
+#DemoConfig: {
+	message?: string @protobuf(1,string)
+}
+
+#jwtSecurityTcpConfig: {
+	apiKey?:   string @protobuf(1,string)
+	endpoint?: string @protobuf(2,string)
+
+	// tls
+	useTls?:             bool   @protobuf(3,bool)
+	certPath?:           string @protobuf(4,string)
+	keyPath?:            string @protobuf(5,string)
+	caPath?:             string @protobuf(6,string)
+	insecureSkipVerify?: bool   @protobuf(7,bool)
+
+	// request config
+	timeoutMs?:    int32 @protobuf(8,int32)
+	maxRetries?:   int32 @protobuf(9,int32)
+	retryDelayMs?: int32 @protobuf(10,int32)
+
+	// cache config
+	cachedTokenExp?: int32 @protobuf(11,int32)
+	cacheLimit?:     int32 @protobuf(12,int32)
+
+	// Connection handling
+	closeOnFail?: bool @protobuf(13,bool)
+
+	// jwt decode
+	skipDecode?: bool   @protobuf(14,bool)
+	jwks?:       string @protobuf(15,string)
+	issuer?:     string @protobuf(16,string)
+}
+
+#ObservablesTCPConfig: {
+	// Whether to emit response (or otherwise just request)
+	emitFullResponse?: bool @protobuf(1,bool)
+
+	// Whether to use Kafka
+	useKafka?: bool @protobuf(2,bool)
+
+	// Kafka TLS configuration
+	// -----------------------
+	// Whether to use TLS when connecting to Kafka
+	useKafkaTLS?: bool @protobuf(3,bool)
+
+	// Kafka Certificate Authorities
+	kafkaCAs?: string @protobuf(4,string)
+
+	// Kafka TLC cert key
+	kafkaCertificate?: string @protobuf(5,string)
+
+	// Kafka TLC cert key
+	kafkaCertificateKey?: string @protobuf(6,string)
+
+	// Name of Kafka server
+	kafkaServerName?: string @protobuf(7,string)
+
+	// The topic name to embed in the event.
+	topic?: string @protobuf(8,string)
+
+	// Kafka topic to publish to.
+	eventTopic?: string @protobuf(9,string)
+
+	// Whether to use Zookeeper for Kafka discovery (if not using file storage)
+	kafkaZKDiscover?: bool @protobuf(10,bool)
+
+	// Kafka connection string (if not using file storage)
+	kafkaServerConnection?: string @protobuf(11,string)
+
+	// File to store event to use (if not using Kafka)
+	fileName?: string @protobuf(12,string)
+
+	// Log level to use ("warn", "debug" or "info")
+	logLevel?: string @protobuf(13,string)
+
+	// Algorithm used to encrypt
+	encryptionAlgorithm?: string @protobuf(14,string)
+
+	// Key to encrypt event
+	encryptionKey?:   string @protobuf(15,string)
+	encryptionKeyID?: uint32 @protobuf(16,uint32)
+
+	// Kafka timeout
+	timeoutMs?:    int32 @protobuf(17,int32)
+	enforceAudit?: bool  @protobuf(18,bool)
+
+	// Decode
+	decodeToProtocol?: string @protobuf(19,string)
+	decodeSkipFail?:   bool   @protobuf(20,bool)
+}
+
+#tcpLoggerConfig: {
+	warnWindow?:        string @protobuf(1,string)
+	logConnect?:        bool   @protobuf(2,bool)
+	omitSSLFailure?:    bool   @protobuf(3,bool)
+	logRawTcp?:         bool   @protobuf(4,bool)
+	failureCheckDelay?: string @protobuf(5,string)
+}
+
+#tcpMetricsConfig: {
+	metricsPort?:                            int32  @protobuf(1,int32,name=metrics_port)
+	metricsHost?:                            string @protobuf(2,string,name=metrics_host)
+	metricsDashboardUriPath?:                string @protobuf(3,string,name=metrics_dashboard_uri_path)
+	metricsPrometheusUriPath?:               string @protobuf(4,string,name=metrics_prometheus_uri_path)
+	prometheusSystemMetricsIntervalSeconds?: int32  @protobuf(5,int32,name=prometheus_system_metrics_interval_seconds)
+	metricsRingBufferSize?:                  int32  @protobuf(6,int32,name=metrics_ring_buffer_size)
+	metricsKeyFunction?:                     string @protobuf(7,string,name=metrics_key_function)
+	metricsKeyDepth?:                        string @protobuf(8,string,name=metrics_key_depth)
+	throughputTimeoutDuration?:              string @protobuf(9,string,name=throughput_timeout_duration)
+	useMetricsTls?:                          bool   @protobuf(10,bool,name=use_metrics_tls)
+	serverCaCertPath?:                       string @protobuf(11,string,name=server_ca_cert_path)
+	serverCertPath?:                         string @protobuf(12,string,name=server_cert_path)
+	serverKeyPath?:                          string @protobuf(13,string,name=server_key_path)
+	enableCloudwatch?:                       bool   @protobuf(14,bool,name=enable_cloudwatch)
+	cwNamespace?:                            string @protobuf(15,string,name=cw_namespace)
+	cwDimensions?:                           string @protobuf(16,string,name=cw_dimensions)
+	cwMetricsRoutes?:                        string @protobuf(17,string,name=cw_metrics_routes)
+	cwMetricsValues?:                        string @protobuf(18,string,name=cw_metrics_values)
+	cwDebug?:                                bool   @protobuf(19,bool,name=cw_debug)
+	cwReportingIntervalSeconds?:             int32  @protobuf(20,int32,name=cw_reporting_interval_seconds)
+	awsRegion?:                              string @protobuf(21,string,name=aws_region)
+	awsAccessKeyId?:                         string @protobuf(22,string,name=aws_access_key_id)
+	awsSecretAccessKey?:                     string @protobuf(23,string,name=aws_secret_access_key)
+	awsSessionToken?:                        string @protobuf(24,string,name=aws_session_token)
+	awsProfile?:                             string @protobuf(25,string,name=aws_profile)
+	awsConfigFile?:                          string @protobuf(26,string,name=aws_config_file)
+	decodeToProtocol?:                       string @protobuf(27,string,name=decode_to_protocol)
+	internalTopics?:                         bool   @protobuf(28,bool,name=internal_topics)
 }
