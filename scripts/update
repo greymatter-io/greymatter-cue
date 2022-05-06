@@ -1,0 +1,37 @@
+#!/bin/bash
+set -e
+
+(
+    cd greymatter.io && \
+    go mod tidy && \
+    go mod vendor
+)
+
+# We require this to be set so we can fetch against a private repo.
+export GITHUB_OAUTH_TOKEN=$GITHUB_OAUTH_TOKEN
+
+# Retrieve the latest filter definitions from 1.7
+# See guide here: https://github.com/gruntwork-io/fetch#examples
+fetch --progress --repo="https://github.com/greymatter-io/gm-proxy" \
+    --github-oauth-token=$GITHUB_OAUTH_TOKEN \
+    --tag=">=1.7.0" --source-path="/source/filters/http/proto" \
+    ./greymatter.io/api/filters/http
+
+fetch --progress --repo="https://github.com/greymatter-io/gm-proxy" \
+    --github-oauth-token=$GITHUB_OAUTH_TOKEN \
+    --tag=">=1.7.0" --source-path="/source/filters/network/proto" \
+    ./greymatter.io/api/filters/network
+
+
+# Clean up our fetched artifacts
+(
+    cd greymatter.io/api/filters/http
+    rm -r *.proto
+    rm -r *.bazel
+)
+
+(
+    cd greymatter.io/api/filters/network
+    rm -r *.proto
+    rm -r *.bazel
+)
