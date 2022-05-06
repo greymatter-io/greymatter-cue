@@ -6,9 +6,28 @@ import (
 	v3 "envoyproxy.io/config/core/v3"
 )
 
+// Specifies a resource to be subscribed to.
+#ResourceLocator: {
+	// The resource name to subscribe to.
+	name?: string
+	// A set of dynamic parameters used to match against the dynamic parameter
+	// constraints on the resource. This allows clients to select between
+	// multiple variants of the same resource.
+	dynamic_parameters?: [string]: string
+}
+
+// Specifies a concrete resource name.
+#ResourceName: {
+	// The name of the resource.
+	name?: string
+	// Dynamic parameter constraints associated with this resource. To be used by client-side caches
+	// (including xDS proxies) when matching subscribed resource locators.
+	dynamic_parameter_constraints?: #DynamicParameterConstraints
+}
+
 // A DiscoveryRequest requests a set of versioned resources of the same type for
 // a given Envoy node on some API.
-// [#next-free-field: 7]
+// [#next-free-field: 8]
 #DiscoveryRequest: {
 	// The version_info provided in the request messages will be the version_info
 	// received with the most recent successfully processed response or empty on
@@ -27,6 +46,14 @@ import (
 	// will then imply a number of resources that need to be fetched via EDS/RDS,
 	// which will be explicitly enumerated in resource_names.
 	resource_names?: [...string]
+	// [#not-implemented-hide:]
+	// Alternative to *resource_names* field that allows specifying dynamic
+	// parameters along with each resource name. Clients that populate this
+	// field must be able to handle responses from the server where resources
+	// are wrapped in a Resource message.
+	// Note that it is legal for a request to have some resources listed
+	// in *resource_names* and others in *resource_locators*.
+	resource_locators?: [...#ResourceLocator]
 	// Type of the resource that is being requested, e.g.
 	// "type.googleapis.com/envoy.api.v2.ClusterLoadAssignment". This is implicit
 	// in requests made via singleton xDS APIs such as CDS, LDS, etc. but is
@@ -114,7 +141,7 @@ import (
 // In particular, initial_resource_versions being sent at the "start" of every
 // gRPC stream actually entails a message for each type_url, each with its own
 // initial_resource_versions.
-// [#next-free-field: 8]
+// [#next-free-field: 10]
 #DeltaDiscoveryRequest: {
 	// The node making the request.
 	node?: v3.#Node
@@ -147,6 +174,18 @@ import (
 	resource_names_subscribe?: [...string]
 	// A list of Resource names to remove from the list of tracked resources.
 	resource_names_unsubscribe?: [...string]
+	// [#not-implemented-hide:]
+	// Alternative to *resource_names_subscribe* field that allows specifying dynamic parameters
+	// along with each resource name.
+	// Note that it is legal for a request to have some resources listed
+	// in *resource_names_subscribe* and others in *resource_locators_subscribe*.
+	resource_locators_subscribe?: [...#ResourceLocator]
+	// [#not-implemented-hide:]
+	// Alternative to *resource_names_unsubscribe* field that allows specifying dynamic parameters
+	// along with each resource name.
+	// Note that it is legal for a request to have some resources listed
+	// in *resource_names_unsubscribe* and others in *resource_locators_unsubscribe*.
+	resource_locators_unsubscribe?: [...#ResourceLocator]
 	// Informs the server of the versions of the resources the xDS client knows of, to enable the
 	// client to continue the same logical xDS session even in the face of gRPC stream reconnection.
 	// It will not be populated: [1] in the very first stream of a session, since the client will
@@ -167,7 +206,7 @@ import (
 	error_detail?: status.#Status
 }
 
-// [#next-free-field: 8]
+// [#next-free-field: 9]
 #DeltaDiscoveryResponse: {
 	// The version of the response data (used for debugging).
 	system_version_info?: string
@@ -180,6 +219,10 @@ import (
 	// Resources names of resources that have be deleted and to be removed from the xDS Client.
 	// Removed resources for missing resources can be ignored.
 	removed_resources?: [...string]
+	// Alternative to removed_resources that allows specifying which variant of
+	// a resource is being removed. This variant must be used for any resource
+	// for which dynamic parameter constraints were sent to the client.
+	removed_resource_names?: [...#ResourceName]
 	// The nonce provides a way for DeltaDiscoveryRequests to uniquely
 	// reference a DeltaDiscoveryResponse when (N)ACKing. The nonce is required.
 	nonce?: string
@@ -188,10 +231,34 @@ import (
 	control_plane?: v3.#ControlPlane
 }
 
-// [#next-free-field: 8]
+// A set of dynamic parameter constraints associated with a variant of an individual xDS resource.
+// These constraints determine whether the resource matches a subscription based on the set of
+// dynamic parameters in the subscription, as specified in the
+// :ref:`ResourceLocator.dynamic_parameters<envoy_v3_api_field_service.discovery.v3.ResourceLocator.dynamic_parameters>`
+// field. This allows xDS implementations (clients, servers, and caching proxies) to determine
+// which variant of a resource is appropriate for a given client.
+#DynamicParameterConstraints: {
+	// A single constraint to evaluate.
+	constraint?: #DynamicParameterConstraints_SingleConstraint
+	// A list of constraints that match if any one constraint in the list
+	// matches.
+	or_constraints?: #DynamicParameterConstraints_ConstraintList
+	// A list of constraints that must all match.
+	and_constraints?: #DynamicParameterConstraints_ConstraintList
+	// The inverse (NOT) of a set of constraints.
+	not_constraints?: #DynamicParameterConstraints
+}
+
+// [#next-free-field: 9]
 #Resource: {
 	// The resource's name, to distinguish it from others of the same type of resource.
+	// Only one of *name* or *resource_name* may be set.
 	name?: string
+	// Alternative to the *name* field, to be used when the server supports
+	// multiple variants of the named resource that are differentiated by
+	// dynamic parameter constraints.
+	// Only one of *name* or *resource_name* may be set.
+	resource_name?: #ResourceName
 	// The aliases are a list of other names that this resource can go by.
 	aliases?: [...string]
 	// The resource level version. It allows xDS to track the state of individual
@@ -216,6 +283,26 @@ import (
 	// Cache control properties for the resource.
 	// [#not-implemented-hide:]
 	cache_control?: #Resource_CacheControl
+}
+
+// A single constraint for a given key.
+#DynamicParameterConstraints_SingleConstraint: {
+	// The key to match against.
+	key?: string
+	// Matches this exact value.
+	value?: string
+	// Key is present (matches any value except for the key being absent).
+	// This allows setting a default constraint for clients that do
+	// not send a key at all, while there may be other clients that need
+	// special configuration based on that key.
+	exists?: #DynamicParameterConstraints_SingleConstraint_Exists
+}
+
+#DynamicParameterConstraints_ConstraintList: {
+	constraints?: [...#DynamicParameterConstraints]
+}
+
+#DynamicParameterConstraints_SingleConstraint_Exists: {
 }
 
 // Cache control properties for the resource.

@@ -1528,7 +1528,7 @@ RateLimit_Action_MetaData_Source_ROUTE_ENTRY: "ROUTE_ENTRY"
 	max_interval?: string
 }
 
-// [#next-free-field: 10]
+// [#next-free-field: 11]
 #RateLimit_Action: {
 	// Rate limit on source cluster.
 	source_cluster?: #RateLimit_Action_SourceCluster
@@ -1554,6 +1554,8 @@ RateLimit_Action_MetaData_Source_ROUTE_ENTRY: "ROUTE_ENTRY"
 	// Rate limit descriptor extension. See the rate limit descriptor extensions documentation.
 	// [#extension-category: envoy.rate_limit_descriptors]
 	extension?: v31.#TypedExtensionConfig
+	// Rate limit on masked remote address.
+	masked_remote_address?: #RateLimit_Action_MaskedRemoteAddress
 }
 
 #RateLimit_Override: {
@@ -1616,6 +1618,27 @@ RateLimit_Action_MetaData_Source_ROUTE_ENTRY: "ROUTE_ENTRY"
 //
 //   ("remote_address", "<trusted address from x-forwarded-for>")
 #RateLimit_Action_RemoteAddress: {
+}
+
+// The following descriptor entry is appended to the descriptor and is populated using the
+// masked address from :ref:`x-forwarded-for <config_http_conn_man_headers_x-forwarded-for>`:
+//
+// .. code-block:: cpp
+//
+//   ("masked_remote_address", "<masked address from x-forwarded-for>")
+#RateLimit_Action_MaskedRemoteAddress: {
+	// Length of prefix mask len for IPv4 (e.g. 0, 32).
+	// Defaults to 32 when unset.
+	// For example, trusted address from x-forwarded-for is `192.168.1.1`,
+	// the descriptor entry is ("masked_remote_address", "192.168.1.1/32");
+	// if mask len is 24, the descriptor entry is ("masked_remote_address", "192.168.1.0/24").
+	v4_prefix_mask_len?: uint32
+	// Length of prefix mask len for IPv6 (e.g. 0, 128).
+	// Defaults to 128 when unset.
+	// For example, trusted address from x-forwarded-for is `2001:abcd:ef01:2345:6789:abcd:ef01:234`,
+	// the descriptor entry is ("masked_remote_address", "2001:abcd:ef01:2345:6789:abcd:ef01:234/128");
+	// if mask len is 64, the descriptor entry is ("masked_remote_address", "2001:abcd:ef01:2345::/64").
+	v6_prefix_mask_len?: uint32
 }
 
 // The following descriptor entry is appended to the descriptor:

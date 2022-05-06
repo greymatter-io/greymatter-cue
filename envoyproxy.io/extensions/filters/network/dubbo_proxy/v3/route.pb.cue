@@ -65,6 +65,13 @@ import (
 	params_match?: [uint32]: #MethodMatch_ParameterMatchSpecifier
 }
 
+#MultipleRouteConfiguration: {
+	// The name of the named route configurations. This name is used in asynchronous route discovery.
+	name?: string
+	// The route table of the dubbo connection manager.
+	route_config?: [...#RouteConfiguration]
+}
+
 // The parameter matching type.
 #MethodMatch_ParameterMatchSpecifier: {
 	// If specified, header match will be performed based on the value of the header.
