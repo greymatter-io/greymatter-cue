@@ -1,8 +1,8 @@
 package v1alpha1
 
 import (
-	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
-	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
+	anypb "envoyproxy.io/deps/protobuf/types/known/anypb"
+	structpb "envoyproxy.io/deps/protobuf/types/known/structpb"
 )
 
 // Represents a CEL value.
@@ -11,7 +11,7 @@ import (
 // range of values.
 #Value: {
 	// Null value.
-	null_value?: _struct.#NullValue
+	null_value?: structpb.#NullValue
 	// Boolean value.
 	bool_value?: bool
 	// Signed integer value.
@@ -27,7 +27,7 @@ import (
 	// An enum value.
 	enum_value?: #EnumValue
 	// The proto message backing an object value.
-	object_value?: any.#Any
+	object_value?: anypb.#Any
 	// Map value.
 	map_value?: #MapValue
 	// List value.

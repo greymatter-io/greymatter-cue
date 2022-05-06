@@ -75,6 +75,7 @@ import (
 }
 
 // Overrides that may be set on a per-route basis
+// [#next-free-field: 6]
 #ExtProcOverrides: {
 	// Set a different processing mode for this route than the default.
 	processing_mode?: #ProcessingMode
@@ -89,4 +90,6 @@ import (
 	// Set different optional properties than the default setting of the
 	// ``response_attributes`` field.
 	response_attributes?: [...string]
+	// Set a different gRPC service for this route than the default.
+	grpc_service?: v3.#GrpcService
 }

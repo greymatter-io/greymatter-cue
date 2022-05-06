@@ -3,7 +3,8 @@ package v3
 import (
 	v3 "envoyproxy.io/deps/cncf/xds/go/xds/core/v3"
 	v31 "envoyproxy.io/config/core/v3"
-	v32 "envoyproxy.io/config/accesslog/v3"
+	v32 "envoyproxy.io/deps/cncf/xds/go/xds/type/matcher/v3"
+	v33 "envoyproxy.io/config/accesslog/v3"
 )
 
 #Listener_DrainType: "DEFAULT" | "MODIFY_ONLY"
@@ -17,7 +18,7 @@ Listener_DrainType_MODIFY_ONLY: "MODIFY_ONLY"
 	entries?: [...v3.#CollectionEntry]
 }
 
-// [#next-free-field: 32]
+// [#next-free-field: 33]
 #Listener: {
 	// The unique name by which this listener is known. If no name is provided,
 	// Envoy will allocate an internal UUID for the listener. If the listener is to be dynamically
@@ -39,6 +40,23 @@ Listener_DrainType_MODIFY_ONLY: "MODIFY_ONLY"
 	// Example using SNI for filter chain selection can be found in the
 	// :ref:`FAQ entry <faq_how_to_setup_sni>`.
 	filter_chains?: [...#FilterChain]
+	// :ref:`Matcher API <arch_overview_matching_listener>` resolving the filter chain name from the
+	// network properties. This matcher is used as a replacement for the filter chain match condition
+	// :ref:`filter_chain_match
+	// <envoy_v3_api_field_config.listener.v3.FilterChain.filter_chain_match>`. If specified, all
+	// :ref:`filter_chains <envoy_v3_api_field_config.listener.v3.Listener.filter_chains>` must have a
+	// non-empty and unique :ref:`name <envoy_v3_api_field_config.listener.v3.FilterChain.name>` field
+	// and not specify :ref:`filter_chain_match
+	// <envoy_v3_api_field_config.listener.v3.FilterChain.filter_chain_match>` field.
+	//
+	// .. note::
+	//
+	//  Once matched, each connection is permanently bound to its filter chain.
+	//  If the matcher changes but the filter chain remains the same, the
+	//  connections bound to the filter chain are not drained. If, however, the
+	//  filter chain is removed or structurally modified, then the drain for its
+	//  connections is initiated.
+	filter_chain_matcher?: v32.#Matcher
 	// If a connection is redirected using *iptables*, the port on which the proxy
 	// receives it might be different from the original destination address. When this flag is set to
 	// true, the listener hands off redirected connections to the listener associated with the
@@ -184,7 +202,7 @@ Listener_DrainType_MODIFY_ONLY: "MODIFY_ONLY"
 	enable_reuse_port?: bool
 	// Configuration for :ref:`access logs <arch_overview_access_logs>`
 	// emitted by this listener.
-	access_log?: [...v32.#AccessLog]
+	access_log?: [...v33.#AccessLog]
 	// The maximum length a tcp listener's pending connections queue can grow to. If no value is
 	// provided net.core.somaxconn will be used on Linux and 128 otherwise.
 	tcp_backlog_size?: uint32

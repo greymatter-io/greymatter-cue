@@ -4,7 +4,8 @@ package v3
 #RegexMatcher: {
 	// Google's RE2 regex engine.
 	google_re2?: #RegexMatcher_GoogleRE2
-	// The regex match string. The string must be supported by the configured engine.
+	// The regex match string. The string must be supported by the configured engine. The regex is matched
+	// against the full string, not as a partial match.
 	regex?: string
 }
 

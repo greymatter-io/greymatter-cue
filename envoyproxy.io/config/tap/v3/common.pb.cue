@@ -124,6 +124,7 @@ OutputSink_Format_PROTO_TEXT:                    "PROTO_TEXT"
 }
 
 // Tap output sink configuration.
+// [#next-free-field: 6]
 #OutputSink: {
 	// Sink output format.
 	format?: #OutputSink_Format
@@ -142,10 +143,35 @@ OutputSink_Format_PROTO_TEXT:                    "PROTO_TEXT"
 	// GrpcService to stream data to. The format argument must be PROTO_BINARY.
 	// [#comment: TODO(samflattery): remove cleanup in uber_per_filter.cc once implemented]
 	streaming_grpc?: #StreamingGrpcSink
+	// Tap output will be buffered in a single block before flushing to the :http:post:`/tap` admin endpoint
+	//
+	// .. attention::
+	//
+	//   It is only allowed to specify the buffered admin output sink if the tap is being
+	//   configured from the :http:post:`/tap` admin endpoint. Thus, if an extension has
+	//   been configured to receive tap configuration from some other source (e.g., static
+	//   file, XDS, etc.) configuring the buffered admin output type will fail.
+	buffered_admin?: #BufferedAdminSink
 }
 
 // Streaming admin sink configuration.
 #StreamingAdminSink: {
+}
+
+// BufferedAdminSink configures a tap output to collect traces without returning them until
+// one of multiple criteria are satisfied.
+// Similar to StreamingAdminSink, it is only allowed to specify the buffered admin output
+// sink if the tap is being configured from the `/tap` admin endpoint.
+#BufferedAdminSink: {
+	// Stop collecting traces when the specified number are collected.
+	// If other criteria for ending collection are reached first, this value will not be used.
+	max_traces?: uint64
+	// Acts as a fallback to prevent the client from waiting for long periods of time.
+	// After timeout has occurred, a buffer flush will be triggered, returning the traces buffered so far.
+	// This may result in returning fewer traces than were requested, and in the case that no traces are
+	// buffered during this time, no traces will be returned.
+	// Specifying 0 for the timeout value (or not specifying a value at all) indicates an infinite timeout.
+	timeout?: string
 }
 
 // The file per tap sink outputs a discrete file for every tapped stream.

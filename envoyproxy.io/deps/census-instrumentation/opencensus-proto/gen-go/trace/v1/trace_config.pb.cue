@@ -4,7 +4,11 @@ package v1
 // - Always off
 // - Always on
 // - Always follow the parent Span's decision (off if no parent).
-#ConstantSampler_ConstantDecision: int32
+#ConstantSampler_ConstantDecision: "ALWAYS_OFF" | "ALWAYS_ON" | "ALWAYS_PARENT"
+
+ConstantSampler_ConstantDecision_ALWAYS_OFF:    "ALWAYS_OFF"
+ConstantSampler_ConstantDecision_ALWAYS_ON:     "ALWAYS_ON"
+ConstantSampler_ConstantDecision_ALWAYS_PARENT: "ALWAYS_PARENT"
 
 // Global configuration of the trace service. All fields must be specified, or
 // the default (zero) values will be used for each type.

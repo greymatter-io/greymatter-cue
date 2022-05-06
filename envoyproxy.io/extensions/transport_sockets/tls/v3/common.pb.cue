@@ -42,6 +42,8 @@ CertificateValidationContext_TrustChainVerification_ACCEPT_UNTRUSTED:   "ACCEPT_
 	//
 	// If not specified, a default list will be used. Defaults are different for server (downstream) and
 	// client (upstream) TLS configurations.
+	// Defaults will change over time in response to security considerations; If you care, configure
+	// it instead of using the default.
 	//
 	// In non-FIPS builds, the default server cipher list is:
 	//
@@ -51,14 +53,10 @@ CertificateValidationContext_TrustChainVerification_ACCEPT_UNTRUSTED:   "ACCEPT_
 	//   [ECDHE-RSA-AES128-GCM-SHA256|ECDHE-RSA-CHACHA20-POLY1305]
 	//   ECDHE-ECDSA-AES128-SHA
 	//   ECDHE-RSA-AES128-SHA
-	//   AES128-GCM-SHA256
-	//   AES128-SHA
 	//   ECDHE-ECDSA-AES256-GCM-SHA384
 	//   ECDHE-RSA-AES256-GCM-SHA384
 	//   ECDHE-ECDSA-AES256-SHA
 	//   ECDHE-RSA-AES256-SHA
-	//   AES256-GCM-SHA384
-	//   AES256-SHA
 	//
 	// In builds using :ref:`BoringSSL FIPS <arch_overview_ssl_fips>`, the default server cipher list is:
 	//
@@ -68,14 +66,10 @@ CertificateValidationContext_TrustChainVerification_ACCEPT_UNTRUSTED:   "ACCEPT_
 	//   ECDHE-RSA-AES128-GCM-SHA256
 	//   ECDHE-ECDSA-AES128-SHA
 	//   ECDHE-RSA-AES128-SHA
-	//   AES128-GCM-SHA256
-	//   AES128-SHA
 	//   ECDHE-ECDSA-AES256-GCM-SHA384
 	//   ECDHE-RSA-AES256-GCM-SHA384
 	//   ECDHE-ECDSA-AES256-SHA
 	//   ECDHE-RSA-AES256-SHA
-	//   AES256-GCM-SHA384
-	//   AES256-SHA
 	//
 	// In non-FIPS builds, the default client cipher list is:
 	//
@@ -236,7 +230,7 @@ CertificateValidationContext_TrustChainVerification_ACCEPT_UNTRUSTED:   "ACCEPT_
 	matcher?: v31.#StringMatcher
 }
 
-// [#next-free-field: 16]
+// [#next-free-field: 17]
 #CertificateValidationContext: {
 	// TLS certificate data containing certificate authority certificates to use in verifying
 	// a presented peer certificate (e.g. server certificate for clusters or client certificate
@@ -368,8 +362,12 @@ CertificateValidationContext_TrustChainVerification_ACCEPT_UNTRUSTED:   "ACCEPT_
 	//   therefore this option must be used together with :ref:`trusted_ca
 	//   <envoy_v3_api_field_extensions.transport_sockets.tls.v3.CertificateValidationContext.trusted_ca>`.
 	match_typed_subject_alt_names?: [...#SubjectAltNameMatcher]
-	// This field is deprecated in favor of ref:`match_typed_subject_alt_names
+	// This field is deprecated in favor of
+	// :ref:`match_typed_subject_alt_names
+	// <envoy_v3_api_field_extensions.transport_sockets.tls.v3.CertificateValidationContext.match_typed_subject_alt_names>`.
+	// Note that if both this field and :ref:`match_typed_subject_alt_names
 	// <envoy_v3_api_field_extensions.transport_sockets.tls.v3.CertificateValidationContext.match_typed_subject_alt_names>`
+	// are specified, the former (deprecated field) is ignored.
 	//
 	// Deprecated: Do not use.
 	match_subject_alt_names?: [...v31.#StringMatcher]
@@ -400,4 +398,10 @@ CertificateValidationContext_TrustChainVerification_ACCEPT_UNTRUSTED:   "ACCEPT_
 	// If this option is set to true, only the certificate at the end of the
 	// certificate chain will be subject to validation by :ref:`CRL <envoy_v3_api_field_extensions.transport_sockets.tls.v3.CertificateValidationContext.crl>`.
 	only_verify_leaf_cert_crl?: bool
+	// Config for the max number of intermediate certificates in chain that are parsed during verification.
+	// This does not include the leaf certificate. If configured, and the certificate chain is longer than allowed, the certificates
+	// above the limit are ignored, and certificate validation will fail. The default limit is 100,
+	// though this can be system-dependent.
+	// https://www.openssl.org/docs/man1.1.1/man3/SSL_CTX_set_verify_depth.html
+	max_verify_depth?: uint32
 }

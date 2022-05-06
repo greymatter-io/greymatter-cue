@@ -15,9 +15,9 @@ SocketAddress_Protocol_UDP: "UDP"
 	mode?: uint32
 }
 
-// [#not-implemented-hide:] The address represents an envoy internal listener.
-// TODO(lambdai): Make this address available for listener and endpoint.
-// TODO(asraa): When address available, remove workaround from test/server/server_fuzz_test.cc:30.
+// The address represents an envoy internal listener.
+// [#comment: TODO(lambdai): Make this address available for listener and endpoint.
+// TODO(asraa): When address available, remove workaround from test/server/server_fuzz_test.cc:30.]
 #EnvoyInternalAddress: {
 	// [#not-implemented-hide:] The :ref:`listener name <envoy_v3_api_field_config.listener.v3.Listener.name>` of the destination internal listener.
 	server_listener_name?: string

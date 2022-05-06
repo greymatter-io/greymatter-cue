@@ -6,11 +6,29 @@ import (
 )
 
 #RouteConfiguration: {
-	// The name of the route configuration. Reserved for future use in asynchronous route discovery.
+	// The name of the route configuration. This name is used in asynchronous route discovery.
+	// For example, it might match
+	// :ref:`route_config_name
+	// <envoy_v3_api_field_extensions.filters.network.thrift_proxy.v3.Trds.route_config_name>` in
+	// :ref:`envoy_v3_api_msg_extensions.filters.network.thrift_proxy.v3.Trds`.
 	name?: string
 	// The list of routes that will be matched, in order, against incoming requests. The first route
 	// that matches will be used.
 	routes?: [...#Route]
+	// An optional boolean that specifies whether the clusters that the route
+	// table refers to will be validated by the cluster manager. If set to true
+	// and a route refers to a non-existent cluster, the route table will not
+	// load. If set to false and a route refers to a non-existent cluster, the
+	// route table will load and the router filter will return a INTERNAL_ERROR
+	// if the route is selected at runtime. This setting defaults to true if the route table
+	// is statically defined via the :ref:`route_config
+	// <envoy_v3_api_field_extensions.filters.network.thrift_proxy.v3.ThriftProxy.route_config>`
+	// option. This setting default to false if the route table is loaded dynamically via the
+	// :ref:`trds
+	// <envoy_v3_api_field_extensions.filters.network.thrift_proxy.v3.ThriftProxy.trds>`
+	// option. Users may wish to override the default behavior in certain cases (for example when
+	// using CDS with a static route table).
+	validate_clusters?: bool
 }
 
 #Route: {

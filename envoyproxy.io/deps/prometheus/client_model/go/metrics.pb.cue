@@ -12,7 +12,8 @@ package go
 }
 
 #Counter: {
-	value?: float64
+	value?:    float64
+	exemplar?: #Exemplar
 }
 
 #Quantile: {
@@ -39,6 +40,13 @@ package go
 #Bucket: {
 	cumulative_count?: uint64
 	upper_bound?:      float64
+	exemplar?:         #Exemplar
+}
+
+#Exemplar: {
+	label?: [...#LabelPair]
+	value?:     float64
+	timestamp?: string
 }
 
 #Metric: {

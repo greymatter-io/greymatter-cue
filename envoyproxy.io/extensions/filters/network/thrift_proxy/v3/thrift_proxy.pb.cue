@@ -2,6 +2,7 @@ package v3
 
 import (
 	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
+	v3 "envoyproxy.io/config/core/v3"
 )
 
 // Thrift transport types supported by Envoy.
@@ -21,7 +22,17 @@ ProtocolType_LAX_BINARY:    "LAX_BINARY"
 ProtocolType_COMPACT:       "COMPACT"
 ProtocolType_TWITTER:       "TWITTER"
 
-// [#next-free-field: 8]
+#Trds: {
+	// Configuration source specifier.
+	// In case of *api_config_source* only aggregated *api_type* is supported.
+	config_source?: v3.#ConfigSource
+	// The name of the route configuration. This allows to use different route
+	// configurations. Tells which route configuration should be fetched from the configuration source.
+	// Leave unspecified is also valid and means the unnamed route configuration.
+	route_config_name?: string
+}
+
+// [#next-free-field: 9]
 #ThriftProxy: {
 	// Supplies the type of transport that the Thrift proxy should use. Defaults to
 	// :ref:`AUTO_TRANSPORT<envoy_v3_api_enum_value_extensions.filters.network.thrift_proxy.v3.TransportType.AUTO_TRANSPORT>`.
@@ -32,7 +43,10 @@ ProtocolType_TWITTER:       "TWITTER"
 	// The human readable prefix to use when emitting statistics.
 	stat_prefix?: string
 	// The route table for the connection manager is static and is specified in this property.
+	// It is invalid to define both *route_config* and *trds*.
 	route_config?: #RouteConfiguration
+	// Use xDS to fetch the route configuration. It is invalid to define both *route_config* and *trds*.
+	trds?: #Trds
 	// A list of individual Thrift filters that make up the filter chain for requests made to the
 	// Thrift proxy. Order matters as the filters are processed sequentially. For backwards
 	// compatibility, if no thrift_filters are specified, a default Thrift router filter
