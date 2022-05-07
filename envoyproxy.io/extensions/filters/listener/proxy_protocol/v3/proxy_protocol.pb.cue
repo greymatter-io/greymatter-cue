@@ -3,6 +3,22 @@ package v3
 #ProxyProtocol: {
 	// The list of rules to apply to requests.
 	rules?: [...#ProxyProtocol_Rule]
+	// Allow requests through that don't use proxy protocol. Defaults to false.
+	//
+	// .. attention::
+	//
+	//   This breaks conformance with the specification.
+	//   Only enable if ALL traffic to the listener comes from a trusted source.
+	//   For more information on the security implications of this feature, see
+	//   https://www.haproxy.org/download/2.1/doc/proxy-protocol.txt
+	//
+	// .. attention::
+	//
+	//   Requests of 12 or fewer bytes that match the proxy protocol v2 signature
+	//   and requests of 6 or fewer bytes that match the proxy protocol v1
+	//   signature will timeout (Envoy is unable to differentiate these requests
+	//   from incomplete proxy protocol requests).
+	allow_requests_without_proxy_protocol?: bool
 }
 
 #ProxyProtocol_KeyValuePair: {
