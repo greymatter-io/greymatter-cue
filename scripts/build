@@ -2,6 +2,9 @@
 set -e
 
 (
-    cd greymatter.io && \
+    cd _gen && \
     go run gen.go
 )
+
+cue fmt ./greymatter.io/api/filters/http
+cue fmt ./greymatter.io/api/filters/network
