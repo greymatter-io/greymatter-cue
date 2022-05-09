@@ -1,5 +1,10 @@
 package api
 
+import (
+	"greymatter.io/api/filters/http"
+	"greymatter.io/api/filters/network"
+)
+
 // Cluster
 
 #Cluster: {
@@ -292,9 +297,9 @@ package api
 	protocol:     string
 	domain_keys: [...string]
 	active_http_filters?: [...string]
-	http_filters?: {...}
+	http_filters?: #HTTPFilters
 	active_network_filters?: [...string]
-	network_filters?: {...}
+	network_filters?:       #NetworkFilters
 	stream_idle_timeout?:   string
 	request_timeout?:       string
 	drain_timeout?:         string
@@ -307,6 +312,30 @@ package api
 	secret?:                 #Secret
 	http_protocol_options?:  #HTTPProtocolOptions
 	http2_protocol_options?: #HTTP2ProtocolOptions
+}
+
+#HTTPFilters: {
+	gm_metrics?:             http.#MetricsConfig
+	gm_impersonation?:       http.#ImpersonationConfig
+	gm_inheaders?:           http.#InheadersConfig
+	gm_listauth?:            http.#ListAuthConfig
+	gm_observables?:         http.#ObservablesConfig
+	gm_ensure_variables?:    http.#EnsureVariablesConfig
+	gm_keycloak?:            http.#GmJwtKeycloakConfig
+	gm_oauth?:               http.#OauthConfig
+	gm_oidc_authenticaiton?: http.#AuthenticationConfig
+	gm_oidc_validation?:     http.#ValidationConfig
+}
+
+#NetworkFilters: {
+	envoy_tcp_proxy?: {
+		cluster:     string
+		stat_prefix: string
+	}
+	gm_tcp_metrics?:      network.#tcpMetricsConfig
+	gm_tcp_logger?:       network.#tcpLoggerConfig
+	gm_tcp_observables?:  network.#ObservablesTCPConfig
+	gm_tcp_jwt_security?: network.#jwtSecurityTcpConfig
 }
 
 #TracingConfig: {
