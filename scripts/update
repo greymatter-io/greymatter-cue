@@ -2,7 +2,7 @@
 set -e
 
 (
-    cd greymatter.io && \
+    cd _gen && \
     go mod tidy && \
     go mod vendor
 )

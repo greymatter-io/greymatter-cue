@@ -5,7 +5,6 @@ import (
 	"go/ast"
 	"log"
 	"os"
-	"os/exec"
 	"path/filepath"
 	"strings"
 
@@ -14,7 +13,7 @@ import (
 )
 
 var (
-	filterDirPath = "/api/filters"
+	filterDirPath = "/filters"
 )
 
 // Generates CUE schemas for Grey Matter filters fetched from the gm-proxy repo
@@ -22,7 +21,7 @@ func main() {
 	wd, _ := os.Getwd()
 
 	// Identify the absolute path to the filter directory to instruct the Go package loader to load packages directly from the path instead of from the GOPATH.
-	// i.e. /home/you/go/src/github.com/greymatter-io/greymatter-cue/greymatter.io/api/filters
+	// i.e. /home/you/go/src/github.com/greymatter-io/greymatter-cue/_gen/filters
 	absDirPath := filepath.Join(wd, filterDirPath)
 
 	// Load the Go packages in the filter subdirectories
@@ -46,8 +45,11 @@ func main() {
 		// Use the subdirectory name as the CUE package name, rather than "proto".
 		cuePkgName := filepath.Base(pkg.PkgPath)
 
+		// Determine the destination dir path from the CUE package name.
+		destDirPath, _ := filepath.Abs(filepath.Join("../greymatter.io/api", filterDirPath, cuePkgName))
+
 		for i := 0; i < len(pkg.Syntax); i++ {
-			outputFilePath := strings.Replace(pkg.CompiledGoFiles[i], ".pb.go", ".cue", 1)
+			outputFilePath := filepath.Join(destDirPath, strings.Replace(filepath.Base(pkg.CompiledGoFiles[i]), ".pb.go", ".cue", 1))
 			fmt.Println("Generating", outputFilePath)
 
 			// Generate a ToAST File from a .pb.go file.
@@ -57,12 +59,6 @@ func main() {
 			if err := os.WriteFile(outputFilePath, []byte(file.CUE()), 0644); err != nil {
 				log.Fatal(err)
 			}
-		}
-
-		// Format generated CUE files
-		fmtDirPath := "." + filepath.Join(filterDirPath, cuePkgName)
-		if out, err := exec.Command("cue", "fmt", fmtDirPath).CombinedOutput(); err != nil {
-			log.Fatal("cue fmt failed:", string(out))
 		}
 	}
 }
