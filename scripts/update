@@ -15,23 +15,22 @@ export GITHUB_OAUTH_TOKEN=$GITHUB_OAUTH_TOKEN
 fetch --progress --repo="https://github.com/greymatter-io/gm-proxy" \
     --github-oauth-token=$GITHUB_OAUTH_TOKEN \
     --tag=">=1.7.0" --source-path="/source/filters/http/proto" \
-    ./greymatter.io/api/filters/http
+    ./_gen/filters/http
 
 fetch --progress --repo="https://github.com/greymatter-io/gm-proxy" \
     --github-oauth-token=$GITHUB_OAUTH_TOKEN \
     --tag=">=1.7.0" --source-path="/source/filters/network/proto" \
-    ./greymatter.io/api/filters/network
-
+    ./_gen/filters/network
 
 # Clean up our fetched artifacts
 (
-    cd greymatter.io/api/filters/http
+    cd _gen/filters/http
     rm -r *.proto
     rm -r *.bazel
 )
 
 (
-    cd greymatter.io/api/filters/network
+    cd _gen/filters/network
     rm -r *.proto
     rm -r *.bazel
 )
