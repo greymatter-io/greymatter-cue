@@ -3,6 +3,7 @@ package v3
 import (
 	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 	v3 "envoyproxy.io/config/core/v3"
+	v31 "envoyproxy.io/config/accesslog/v3"
 )
 
 // Thrift transport types supported by Envoy.
@@ -32,7 +33,7 @@ ProtocolType_TWITTER:       "TWITTER"
 	route_config_name?: string
 }
 
-// [#next-free-field: 9]
+// [#next-free-field: 10]
 #ThriftProxy: {
 	// Supplies the type of transport that the Thrift proxy should use. Defaults to
 	// :ref:`AUTO_TRANSPORT<envoy_v3_api_enum_value_extensions.filters.network.thrift_proxy.v3.TransportType.AUTO_TRANSPORT>`.
@@ -60,6 +61,9 @@ ProtocolType_TWITTER:       "TWITTER"
 	payload_passthrough?: bool
 	// Optional maximum requests for a single downstream connection. If not specified, there is no limit.
 	max_requests_per_connection?: uint32
+	// Configuration for :ref:`access logs <arch_overview_access_logs>`
+	// emitted by Thrift proxy.
+	access_log?: [...v31.#AccessLog]
 }
 
 // ThriftFilter configures a Thrift filter.
