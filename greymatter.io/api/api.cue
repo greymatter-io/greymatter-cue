@@ -403,7 +403,7 @@ import (
 
 // Common
 
-#Metadata: metadata?: [...#Metadatum]
+#Metadata: [...#Metadatum]
 
 #Metadatum: {
 	key:   string
