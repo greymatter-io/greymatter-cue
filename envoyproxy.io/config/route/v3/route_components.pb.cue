@@ -1277,10 +1277,28 @@ RateLimit_Action_MetaData_Source_ROUTE_ENTRY: "ROUTE_ENTRY"
 // .. note::
 //
 //   Shadowing will not be triggered if the primary cluster does not exist.
+// [#next-free-field: 6]
 #RouteAction_RequestMirrorPolicy: {
+	// Only one of *cluster* and *cluster_header* can be specified.
+	// [#next-major-version: Need to add back the validation rule: (validate.rules).string = {min_len: 1}]
 	// Specifies the cluster that requests will be mirrored to. The cluster must
 	// exist in the cluster manager configuration.
 	cluster?: string
+	// Only one of *cluster* and *cluster_header* can be specified.
+	// Envoy will determine the cluster to route to by reading the value of the
+	// HTTP header named by cluster_header from the request headers. Only the first value in header is used,
+	// and no shadow request will happen if the value is not found in headers. Envoy will not wait for
+	// the shadow cluster to respond before returning the response from the primary cluster.
+	//
+	// .. attention::
+	//
+	//   Internally, Envoy always uses the HTTP/2 *:authority* header to represent the HTTP/1
+	//   *Host* header. Thus, if attempting to match on *Host*, match on *:authority* instead.
+	//
+	// .. note::
+	//
+	//   If the header appears multiple times only the first value is used.
+	cluster_header?: string
 	// If not specified, all requests to the target cluster will be mirrored.
 	//
 	// If specified, this field takes precedence over the `runtime_key` field and requests must also
@@ -1552,6 +1570,12 @@ RateLimit_Action_MetaData_Source_ROUTE_ENTRY: "ROUTE_ENTRY"
 	// Rate limit on metadata.
 	metadata?: #RateLimit_Action_MetaData
 	// Rate limit descriptor extension. See the rate limit descriptor extensions documentation.
+	//
+	// :ref:`HTTP matching input functions <arch_overview_matching_api>` are
+	// permitted as descriptor extensions. The input functions are only
+	// looked up if there is no rate limit descriptor extension matching
+	// the type URL.
+	//
 	// [#extension-category: envoy.rate_limit_descriptors]
 	extension?: v31.#TypedExtensionConfig
 	// Rate limit on masked remote address.
