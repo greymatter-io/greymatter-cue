@@ -27,6 +27,7 @@ Listener_DrainType_MODIFY_ONLY: "MODIFY_ONLY"
 	// The address that the listener should listen on. In general, the address must be unique, though
 	// that is governed by the bind rules of the OS. E.g., multiple listeners can listen on port 0 on
 	// Linux as the actual port will be allocated by the OS.
+	// Required unless *api_listener* or *listener_specifier* is populated.
 	address?: v31.#Address
 	// Optional prefix to use on listener stats. If empty, the stats will be rooted at
 	// `listener.<address as string>.`. If non-empty, stats will be rooted at

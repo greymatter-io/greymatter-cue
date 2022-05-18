@@ -55,10 +55,9 @@ import (
 	// Logger will call `FilterState::Object::serializeAsProto` to serialize the filter state object.
 	filter_state_objects_to_log?: [...string]
 	// Sets the retry policy when the establishment of a gRPC stream fails.
-	// If the stream succeeds once in establishing If the stream succeeds
-	// at least once in establishing itself, no retry will be performed
-	// no matter what gRPC status is received. Note that only
-	// :ref:`num_retries <envoy_v3_api_field_config.core.v3.RetryPolicy.num_retries>`
+	// If the stream succeeds at least once in establishing itself,
+	// no retry will be performed no matter what gRPC status is received.
+	// Note that only :ref:`num_retries <envoy_v3_api_field_config.core.v3.RetryPolicy.num_retries>`
 	// will be used in this configuration. This feature is used only when you are using
 	// :ref:`Envoy gRPC client <envoy_v3_api_field_config.core.v3.GrpcService.envoy_grpc>`.
 	grpc_stream_retry_policy?: v3.#RetryPolicy
