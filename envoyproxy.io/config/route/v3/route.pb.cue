@@ -4,7 +4,7 @@ import (
 	v3 "envoyproxy.io/config/core/v3"
 )
 
-// [#next-free-field: 14]
+// [#next-free-field: 15]
 #RouteConfiguration: {
 	// The name of the route configuration. For example, it might match
 	// :ref:`route_config_name
@@ -89,6 +89,11 @@ import (
 	// Specify a set of default request mirroring policies which apply to all routes under its virtual hosts.
 	// Note that policies are not merged, the most specific non-empty one becomes the mirror policies.
 	request_mirror_policies?: [...#RouteAction_RequestMirrorPolicy]
+	// By default, port in :authority header (if any) is used in host matching.
+	// With this option enabled, Envoy will ignore the port number in the :authority header (if any) when picking VirtualHost.
+	// NOTE: this option will not strip the port number (if any) contained in route config
+	// :ref:`envoy_v3_api_msg_config.route.v3.VirtualHost`.domains field.
+	ignore_port_in_host_matching?: bool
 }
 
 #Vhds: {
