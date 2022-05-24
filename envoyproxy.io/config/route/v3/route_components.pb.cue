@@ -423,7 +423,7 @@ RateLimit_Action_MetaData_Source_ROUTE_ENTRY: "ROUTE_ENTRY"
 	shadow_enabled?: v31.#RuntimeFractionalPercent
 }
 
-// [#next-free-field: 40]
+// [#next-free-field: 41]
 #RouteAction: {
 	// Indicates the upstream cluster to which the request should be routed
 	// to.
@@ -620,6 +620,10 @@ RateLimit_Action_MetaData_Source_ROUTE_ENTRY: "ROUTE_ENTRY"
 	// is configured, this timeout is scaled according to the value for
 	// :ref:`HTTP_DOWNSTREAM_STREAM_IDLE <envoy_v3_api_enum_value_config.overload.v3.ScaleTimersOverloadActionConfig.TimerType.HTTP_DOWNSTREAM_STREAM_IDLE>`.
 	idle_timeout?: string
+	// Specifies how to send request over TLS early data.
+	// If absent, allows `safe HTTP requests <https://www.rfc-editor.org/rfc/rfc7231#section-4.2.1>`_ to be sent on early data.
+	// [#extension-category: envoy.route.early_data_policy]
+	early_data_policy?: v31.#TypedExtensionConfig
 	// Indicates that the route has a retry policy. Note that if this is set,
 	// it'll take precedence over the virtual host level retry policy entirely
 	// (e.g.: policies are not merged, most internal one becomes the enforced policy).
