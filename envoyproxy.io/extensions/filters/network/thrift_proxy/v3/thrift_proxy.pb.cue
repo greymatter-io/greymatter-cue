@@ -33,7 +33,7 @@ ProtocolType_TWITTER:       "TWITTER"
 	route_config_name?: string
 }
 
-// [#next-free-field: 10]
+// [#next-free-field: 11]
 #ThriftProxy: {
 	// Supplies the type of transport that the Thrift proxy should use. Defaults to
 	// :ref:`AUTO_TRANSPORT<envoy_v3_api_enum_value_extensions.filters.network.thrift_proxy.v3.TransportType.AUTO_TRANSPORT>`.
@@ -64,6 +64,12 @@ ProtocolType_TWITTER:       "TWITTER"
 	// Configuration for :ref:`access logs <arch_overview_access_logs>`
 	// emitted by Thrift proxy.
 	access_log?: [...v31.#AccessLog]
+	// If set to true, Envoy will preserve the case of Thrift header keys instead of serializing them to
+	// lower case as per the default behavior. Note that NUL, CR and LF characters will also be preserved
+	// as mandated by the Thrift spec.
+	//
+	// More info: https://github.com/apache/thrift/commit/e165fa3c85d00cb984f4d9635ed60909a1266ce1.
+	header_keys_preserve_case?: bool
 }
 
 // ThriftFilter configures a Thrift filter.
