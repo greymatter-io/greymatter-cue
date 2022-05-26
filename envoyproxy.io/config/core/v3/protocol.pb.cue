@@ -205,6 +205,9 @@ HttpProtocolOptions_HeadersWithUnderscoresAction_DROP_HEADER:    "DROP_HEADER"
 	// .. attention::
 	//   Enabling this option might lead to request smuggling vulnerability, especially if traffic
 	//   is proxied via multiple layers of proxies.
+	// [#comment:TODO: This field is ignored when the
+	// :ref:`header validation configuration <envoy_v3_api_field_extensions.filters.network.http_connection_manager.v3.HttpConnectionManager.typed_header_validation_config>`
+	// is present.]
 	allow_chunked_length?: bool
 	// Allows invalid HTTP messaging. When this option is false, then Envoy will terminate
 	// HTTP/1.1 connections upon receiving an invalid HTTP message. However,
