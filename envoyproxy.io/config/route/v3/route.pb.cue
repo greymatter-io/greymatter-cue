@@ -54,7 +54,6 @@ import (
 	// To allow setting overrides at the route or virtual host level, this order can be reversed
 	// by setting this option to true. Defaults to false.
 	//
-	// [#next-major-version: In the v3 API, this will default to true.]
 	most_specific_header_mutations_wins?: bool
 	// An optional boolean that specifies whether the clusters that the route
 	// table refers to will be validated by the cluster manager. If set to true
