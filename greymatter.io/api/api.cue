@@ -79,7 +79,8 @@ import (
 	enforcing_consecutive_gateway_failure?: int64
 }
 
-#CircuitBreakersThresholds: #CircuitBreakers & {
+#CircuitBreakersThresholds: {
+	#CircuitBreakers
 	high?: #CircuitBreakers
 }
 
