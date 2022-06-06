@@ -2,8 +2,9 @@ package v3
 
 import (
 	v3 "envoyproxy.io/config/route/v3"
-	v31 "envoyproxy.io/type/matcher/v3"
-	v32 "envoyproxy.io/type/v3"
+	v31 "envoyproxy.io/config/core/v3"
+	v32 "envoyproxy.io/type/matcher/v3"
+	v33 "envoyproxy.io/type/v3"
 )
 
 // [#next-free-field: 6]
@@ -54,11 +55,15 @@ import (
 	// assigned to each cluster.
 	// Currently ClusterWeight only supports the name and weight fields.
 	weighted_clusters?: v3.#WeightedCluster
+	// Optional endpoint metadata match criteria used by the subset load balancer. Only endpoints in
+	// the upstream cluster with metadata matching what is set in this field will be considered for
+	// load balancing. The filter name should be specified as *envoy.lb*.
+	metadata_match?: v31.#Metadata
 }
 
 #MethodMatch: {
 	// The name of the method.
-	name?: v31.#StringMatcher
+	name?: v32.#StringMatcher
 	// Method parameter definition.
 	// The key is the parameter index, starting from 0.
 	// The value is the parameter matching type.
@@ -87,5 +92,5 @@ import (
 	//
 	// * For range [-10,0), route will match for header value -1, but not for 0,
 	//   "somestring", 10.9, "-1somestring"
-	range_match?: v32.#Int64Range
+	range_match?: v33.#Int64Range
 }
