@@ -400,6 +400,8 @@ import (
 	description?:              string
 	enable_instance_metrics:   bool
 	enable_historical_metrics: bool
+	business_impact: string
+	version?: string
 }
 
 // Common
