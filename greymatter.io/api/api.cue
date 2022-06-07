@@ -12,6 +12,8 @@ import (
 	cluster_key:  string
 	zone_key:     string
 	require_tls?: bool
+	lb_policy?: string 
+	dns_type?: string
 	instances?: [...#Instance]
 	health_checks?: [...#HealthCheck]
 	outlier_detection?:     #OutlierDetection
