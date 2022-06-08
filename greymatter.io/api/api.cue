@@ -326,6 +326,7 @@ import (
 	gm_oauth?:               http.#OauthConfig
 	gm_oidc_authenticaiton?: http.#AuthenticationConfig
 	gm_oidc_validation?:     http.#ValidationConfig
+	...
 }
 
 #NetworkFilters: {
