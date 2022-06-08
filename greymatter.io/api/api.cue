@@ -431,7 +431,7 @@ import (
 	cert_key_pairs?: [...#CertKeyPathPair]
 	require_client_certs?: bool
 	trust_file?:           string
-	sni?: [...string]
+	sni?: string
 	crl?: #DataSource
 }
 
