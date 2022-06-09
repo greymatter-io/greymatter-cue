@@ -12,6 +12,8 @@ import (
 	cluster_key:  string
 	zone_key:     string
 	require_tls?: bool
+	lb_policy?: string 
+	dns_type?: string
 	instances?: [...#Instance]
 	health_checks?: [...#HealthCheck]
 	outlier_detection?:     #OutlierDetection
@@ -324,7 +326,7 @@ import (
 	gm_ensure_variables?:    http.#EnsureVariablesConfig
 	gm_keycloak?:            http.#GmJwtKeycloakConfig
 	gm_oauth?:               http.#OauthConfig
-	gm_oidc_authenticaiton?: http.#AuthenticationConfig
+	gm_oidc_authentication?: http.#AuthenticationConfig
 	gm_oidc_validation?:     http.#ValidationConfig
 }
 
