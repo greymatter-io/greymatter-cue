@@ -318,16 +318,18 @@ import (
 }
 
 #HTTPFilters: {
-	gm_metrics?:             http.#MetricsConfig
-	gm_impersonation?:       http.#ImpersonationConfig
-	gm_inheaders?:           http.#InheadersConfig
-	gm_listauth?:            http.#ListAuthConfig
-	gm_observables?:         http.#ObservablesConfig
-	gm_ensure_variables?:    http.#EnsureVariablesConfig
-	gm_keycloak?:            http.#GmJwtKeycloakConfig
-	gm_oauth?:               http.#OauthConfig
-	gm_oidc_authentication?: http.#AuthenticationConfig
-	gm_oidc_validation?:     http.#ValidationConfig
+        //Important: If your filter is multiple words, make it a quoted field
+	//so that gm-control can pick up the configuration 
+	gm_metrics?:               http.#MetricsConfig
+	gm_impersonation?:         http.#ImpersonationConfig
+	gm_inheaders?:             http.#InheadersConfig
+	gm_listauth?:              http.#ListAuthConfig
+	gm_observables?:           http.#ObservablesConfig
+	"gm_ensure-variables"?:    http.#EnsureVariablesConfig
+	gm_keycloak?:              http.#GmJwtKeycloakConfig
+	gm_oauth?:                 http.#OauthConfig
+	"gm_oidc-authentication"?: http.#AuthenticationConfig
+	"gm_oidc-validation"?:     http.#ValidationConfig
 	...
 }
 
