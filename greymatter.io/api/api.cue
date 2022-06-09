@@ -326,8 +326,8 @@ import (
 	"gm_ensure-variables"?:    http.#EnsureVariablesConfig
 	gm_keycloak?:              http.#GmJwtKeycloakConfig
 	gm_oauth?:                 http.#OauthConfig
-	"gm_oidc_authentication"?: http.#AuthenticationConfig
-	"gm_oidc_validation"?:     http.#ValidationConfig
+	"gm_oidc-authentication"?: http.#AuthenticationConfig
+	"gm_oidc-validation"?:     http.#ValidationConfig
 	...
 }
 
