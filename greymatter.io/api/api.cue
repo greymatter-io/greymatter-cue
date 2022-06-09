@@ -323,7 +323,7 @@ import (
 	gm_inheaders?:             http.#InheadersConfig
 	gm_listauth?:              http.#ListAuthConfig
 	gm_observables?:           http.#ObservablesConfig
-	"gm_ensure-variables?":    http.#EnsureVariablesConfig
+	"gm_ensure-variables"?:    http.#EnsureVariablesConfig
 	gm_keycloak?:              http.#GmJwtKeycloakConfig
 	gm_oauth?:                 http.#OauthConfig
 	"gm_oidc_authentication"?: http.#AuthenticationConfig
