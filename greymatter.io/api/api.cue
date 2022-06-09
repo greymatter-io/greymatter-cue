@@ -318,6 +318,8 @@ import (
 }
 
 #HTTPFilters: {
+        //Important: If your filter is multiple words, make it a quoted field
+	//so that gm-control can pick up the configuration 
 	gm_metrics?:               http.#MetricsConfig
 	gm_impersonation?:         http.#ImpersonationConfig
 	gm_inheaders?:             http.#InheadersConfig
