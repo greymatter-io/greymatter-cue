@@ -168,7 +168,7 @@ HttpProtocolOptions_HeadersWithUnderscoresAction_DROP_HEADER:    "DROP_HEADER"
 	max_requests_per_connection?: uint32
 }
 
-// [#next-free-field: 8]
+// [#next-free-field: 9]
 #Http1ProtocolOptions: {
 	// Handle HTTP requests with absolute URLs in the requests. These requests
 	// are generally sent by clients to forward/explicit proxies. This allows clients to configure
@@ -216,6 +216,12 @@ HttpProtocolOptions_HeadersWithUnderscoresAction_DROP_HEADER:    "DROP_HEADER"
 	// If set, this overrides any HCM :ref:`stream_error_on_invalid_http_messaging
 	// <envoy_v3_api_field_extensions.filters.network.http_connection_manager.v3.HttpConnectionManager.stream_error_on_invalid_http_message>`.
 	override_stream_error_on_invalid_http_message?: bool
+	// Allows sending fully qualified URLs when proxying the first line of the
+	// response. By default, Envoy will only send the path components in the first line.
+	// If this is true, Envoy will create a fully qualified URI composing scheme
+	// (inferred if not present), host (from the host/:authority header) and path
+	// (from first line or :path header).
+	send_fully_qualified_url?: bool
 }
 
 #KeepaliveSettings: {

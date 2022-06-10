@@ -18,4 +18,8 @@ import (
 	// The actual local address that the listener is listening on. If a listener was configured
 	// to listen on port 0, then this address has the port that was allocated by the OS.
 	local_address?: v3.#Address
+	// The additional addresses the listener is listening on as specified via the :ref:`additional_addresses <envoy_v3_api_field_config.listener.v3.Listener.additional_addresses>`
+	// configuration.
+	// [#not-implemented-hide:]
+	additional_local_addresses?: [...v3.#Address]
 }
