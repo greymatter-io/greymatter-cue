@@ -342,6 +342,7 @@ import (
 	gm_tcp_logger?:       network.#tcpLoggerConfig
 	gm_tcp_observables?:  network.#ObservablesTCPConfig
 	gm_tcp_jwt_security?: network.#jwtSecurityTcpConfig
+	...
 }
 
 #TracingConfig: {
