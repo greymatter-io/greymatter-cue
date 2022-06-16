@@ -247,7 +247,6 @@ FilterChainMatch_ConnectionSourceType_EXTERNAL:            "EXTERNAL"
 	// Configuration source specifier for an extension configuration discovery
 	// service. In case of a failure and without the default configuration, the
 	// listener closes the connections.
-	// [#not-implemented-hide:]
 	config_discovery?: v3.#ExtensionConfigSource
 	// Optional match predicate used to disable the filter. The filter is enabled when this field is empty.
 	// See :ref:`ListenerFilterChainMatchPredicate <envoy_v3_api_msg_config.listener.v3.ListenerFilterChainMatchPredicate>`

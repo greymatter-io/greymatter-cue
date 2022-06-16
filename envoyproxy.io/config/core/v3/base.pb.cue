@@ -40,7 +40,7 @@ TrafficDirection_UNSPECIFIED: "UNSPECIFIED"
 TrafficDirection_INBOUND:     "INBOUND"
 TrafficDirection_OUTBOUND:    "OUTBOUND"
 
-// Describes the supported actions types for header append action.
+// [#not-implemented-hide:] Describes the supported actions types for header append action.
 #HeaderValueOption_HeaderAppendAction: "APPEND_IF_EXISTS_OR_ADD" | "ADD_IF_ABSENT" | "OVERWRITE_IF_EXISTS_OR_ADD"
 
 HeaderValueOption_HeaderAppendAction_APPEND_IF_EXISTS_OR_ADD:    "APPEND_IF_EXISTS_OR_ADD"
