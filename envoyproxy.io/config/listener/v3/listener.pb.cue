@@ -261,6 +261,10 @@ Listener_DrainType_MODIFY_ONLY: "MODIFY_ONLY"
 #Listener_ConnectionBalanceConfig: {
 	// If specified, the listener will use the exact connection balancer.
 	exact_balance?: #Listener_ConnectionBalanceConfig_ExactBalance
+	// The listener will use the connection balancer according to ``type_url``. If ``type_url`` is invalid,
+	// Envoy will not attempt to balance active connections between worker threads.
+	// [#extension-category: envoy.network.connection_balance]
+	extend_balance?: v3.#TypedExtensionConfig
 }
 
 // Configuration for envoy internal listener. All the future internal listener features should be added here.

@@ -3,6 +3,8 @@ package v3
 // A regex matcher designed for safety when used with untrusted input.
 #RegexMatcher: {
 	// Google's RE2 regex engine.
+	//
+	// Deprecated: Do not use.
 	google_re2?: #RegexMatcher_GoogleRE2
 	// The regex match string. The string must be supported by the configured engine. The regex is matched
 	// against the full string, not as a partial match.
