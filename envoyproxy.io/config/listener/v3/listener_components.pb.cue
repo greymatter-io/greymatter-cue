@@ -1,7 +1,6 @@
 package v3
 
 import (
-	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 	v3 "envoyproxy.io/config/core/v3"
 	v31 "envoyproxy.io/type/v3"
 )
@@ -14,12 +13,13 @@ FilterChainMatch_ConnectionSourceType_EXTERNAL:            "EXTERNAL"
 
 // [#next-free-field: 6]
 #Filter: {
+	"@type": "type.googleapis.com/envoy.config.listener.v3.Filter"
 	// The name of the filter configuration.
 	name?: string
 	// Filter specific configuration which depends on the filter being
 	// instantiated. See the supported filters for further documentation.
 	// [#extension-category: envoy.filters.network]
-	typed_config?: any.#Any
+	typed_config?: _
 	// Configuration source specifier for an extension configuration discovery
 	// service. In case of a failure and without the default configuration, the
 	// listener closes the connections.
@@ -72,6 +72,7 @@ FilterChainMatch_ConnectionSourceType_EXTERNAL:            "EXTERNAL"
 // [#comment:TODO(PiotrSikora): Add support for configurable precedence of the rules]
 // [#next-free-field: 14]
 #FilterChainMatch: {
+	"@type": "type.googleapis.com/envoy.config.listener.v3.FilterChainMatch"
 	// Optional destination port to consider when use_original_dst is set on the
 	// listener in determining a filter chain match.
 	destination_port?: uint32
@@ -149,6 +150,7 @@ FilterChainMatch_ConnectionSourceType_EXTERNAL:            "EXTERNAL"
 // various other parameters.
 // [#next-free-field: 10]
 #FilterChain: {
+	"@type": "type.googleapis.com/envoy.config.listener.v3.FilterChain"
 	// The criteria to use when matching a connection to this filter chain.
 	filter_chain_match?: #FilterChainMatch
 	// A list of individual network filters that make up the filter chain for
@@ -221,6 +223,7 @@ FilterChainMatch_ConnectionSourceType_EXTERNAL:            "EXTERNAL"
 //
 // [#next-free-field: 6]
 #ListenerFilterChainMatchPredicate: {
+	"@type": "type.googleapis.com/envoy.config.listener.v3.ListenerFilterChainMatchPredicate"
 	// A set that describes a logical OR. If any member of the set matches, the match configuration
 	// matches.
 	or_match?: #ListenerFilterChainMatchPredicate_MatchSet
@@ -238,12 +241,13 @@ FilterChainMatch_ConnectionSourceType_EXTERNAL:            "EXTERNAL"
 
 // [#next-free-field: 6]
 #ListenerFilter: {
+	"@type": "type.googleapis.com/envoy.config.listener.v3.ListenerFilter"
 	// The name of the filter configuration.
 	name?: string
 	// Filter specific configuration which depends on the filter being
 	// instantiated. See the supported filters for further documentation.
 	// [#extension-category: envoy.filters.listener,envoy.filters.udp_listener]
-	typed_config?: any.#Any
+	typed_config?: _
 	// Configuration source specifier for an extension configuration discovery
 	// service. In case of a failure and without the default configuration, the
 	// listener closes the connections.
@@ -261,6 +265,7 @@ FilterChainMatch_ConnectionSourceType_EXTERNAL:            "EXTERNAL"
 // an on-demand filter chain will be postponed to the arrival of new connection requests that require this filter chain.
 // Filter chains that are not often used can be set as on-demand.
 #FilterChain_OnDemandConfiguration: {
+	"@type": "type.googleapis.com/envoy.config.listener.v3.FilterChain_OnDemandConfiguration"
 	// The timeout to wait for filter chain placeholders to complete rebuilding.
 	// 1. If this field is set to 0, timeout is disabled.
 	// 2. If not specified, a default timeout of 15s is used.
@@ -272,6 +277,7 @@ FilterChainMatch_ConnectionSourceType_EXTERNAL:            "EXTERNAL"
 
 // A set of match configurations used for logical operations.
 #ListenerFilterChainMatchPredicate_MatchSet: {
+	"@type": "type.googleapis.com/envoy.config.listener.v3.ListenerFilterChainMatchPredicate_MatchSet"
 	// The list of rules that make up the set.
 	rules?: [...#ListenerFilterChainMatchPredicate]
 }

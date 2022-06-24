@@ -22,6 +22,7 @@ CommandLineOptions_Mode_InitOnly: "InitOnly"
 // server version/server status information.
 // [#next-free-field: 7]
 #ServerInfo: {
+	"@type": "type.googleapis.com/envoy.admin.v2alpha.ServerInfo"
 	// Server version.
 	version?: string
 	// State of the server.
@@ -38,6 +39,7 @@ CommandLineOptions_Mode_InitOnly: "InitOnly"
 
 // [#next-free-field: 29]
 #CommandLineOptions: {
+	"@type": "type.googleapis.com/envoy.admin.v2alpha.CommandLineOptions"
 	// See :option:`--base-id` for details.
 	base_id?: uint64
 	// See :option:`--concurrency` for details.

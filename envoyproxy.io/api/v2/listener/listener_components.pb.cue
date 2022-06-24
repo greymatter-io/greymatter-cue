@@ -3,7 +3,6 @@ package listener
 import (
 	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
 	_type "envoyproxy.io/type"
-	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 	auth "envoyproxy.io/api/v2/auth"
 	core "envoyproxy.io/api/v2/core"
 )
@@ -15,12 +14,13 @@ FilterChainMatch_ConnectionSourceType_LOCAL:    "LOCAL"
 FilterChainMatch_ConnectionSourceType_EXTERNAL: "EXTERNAL"
 
 #Filter: {
+	"@type": "type.googleapis.com/envoy.api.v2.listener.Filter"
 	// The name of the filter to instantiate. The name must match a
 	// :ref:`supported filter <config_network_filters>`.
 	name?: string
 	// Deprecated: Do not use.
 	config?:       _struct.#Struct
-	typed_config?: any.#Any
+	typed_config?: _
 }
 
 // Specifies the match criteria for selecting a specific filter chain for a
@@ -53,6 +53,7 @@ FilterChainMatch_ConnectionSourceType_EXTERNAL: "EXTERNAL"
 // [#comment:TODO(PiotrSikora): Add support for configurable precedence of the rules]
 // [#next-free-field: 13]
 #FilterChainMatch: {
+	"@type": "type.googleapis.com/envoy.api.v2.listener.FilterChainMatch"
 	// Optional destination port to consider when use_original_dst is set on the
 	// listener in determining a filter chain match.
 	destination_port?: uint32
@@ -126,6 +127,7 @@ FilterChainMatch_ConnectionSourceType_EXTERNAL: "EXTERNAL"
 // various other parameters.
 // [#next-free-field: 8]
 #FilterChain: {
+	"@type": "type.googleapis.com/envoy.api.v2.listener.FilterChain"
 	// The criteria to use when matching a connection to this filter chain.
 	filter_chain_match?: #FilterChainMatch
 	// The TLS context for this filter chain.
@@ -191,6 +193,7 @@ FilterChainMatch_ConnectionSourceType_EXTERNAL: "EXTERNAL"
 //
 // [#next-free-field: 6]
 #ListenerFilterChainMatchPredicate: {
+	"@type": "type.googleapis.com/envoy.api.v2.listener.ListenerFilterChainMatchPredicate"
 	// A set that describes a logical OR. If any member of the set matches, the match configuration
 	// matches.
 	or_match?: #ListenerFilterChainMatchPredicate_MatchSet
@@ -207,12 +210,13 @@ FilterChainMatch_ConnectionSourceType_EXTERNAL: "EXTERNAL"
 }
 
 #ListenerFilter: {
+	"@type": "type.googleapis.com/envoy.api.v2.listener.ListenerFilter"
 	// The name of the filter to instantiate. The name must match a
 	// :ref:`supported filter <config_listener_filters>`.
 	name?: string
 	// Deprecated: Do not use.
 	config?:       _struct.#Struct
-	typed_config?: any.#Any
+	typed_config?: _
 	// Optional match predicate used to disable the filter. The filter is enabled when this field is empty.
 	// See :ref:`ListenerFilterChainMatchPredicate <envoy_api_msg_listener.ListenerFilterChainMatchPredicate>`
 	// for further examples.
@@ -221,6 +225,7 @@ FilterChainMatch_ConnectionSourceType_EXTERNAL: "EXTERNAL"
 
 // A set of match configurations used for logical operations.
 #ListenerFilterChainMatchPredicate_MatchSet: {
+	"@type": "type.googleapis.com/envoy.api.v2.listener.ListenerFilterChainMatchPredicate_MatchSet"
 	// The list of rules that make up the set.
 	rules?: [...#ListenerFilterChainMatchPredicate]
 }

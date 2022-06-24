@@ -2,7 +2,6 @@ package v2
 
 import (
 	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
-	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 )
 
 // The tracing configuration specifies settings for an HTTP tracer provider used by Envoy.
@@ -15,6 +14,7 @@ import (
 //   Use of this message type has been deprecated in favor of direct use of
 //   :ref:`Tracing.Http <envoy_api_msg_config.trace.v2.Tracing.Http>`.
 #Tracing: {
+	"@type": "type.googleapis.com/envoy.config.trace.v2.Tracing"
 	// Provides configuration for the HTTP tracer.
 	http?: #Tracing_Http
 }
@@ -26,6 +26,7 @@ import (
 // :ref:`provider <envoy_api_field_config.filter.network.http_connection_manager.v2.HttpConnectionManager.Tracing.provider>`
 // field.
 #Tracing_Http: {
+	"@type": "type.googleapis.com/envoy.config.trace.v2.Tracing_Http"
 	// The name of the HTTP trace driver to instantiate. The name must match a
 	// supported HTTP trace driver. Built-in trace drivers:
 	//
@@ -38,5 +39,5 @@ import (
 	name?: string
 	// Deprecated: Do not use.
 	config?:       _struct.#Struct
-	typed_config?: any.#Any
+	typed_config?: _
 }

@@ -6,6 +6,7 @@ import (
 
 // [#next-free-field: 15]
 #RouteConfiguration: {
+	"@type": "type.googleapis.com/envoy.config.route.v3.RouteConfiguration"
 	// The name of the route configuration. For example, it might match
 	// :ref:`route_config_name
 	// <envoy_v3_api_field_extensions.filters.network.http_connection_manager.v3.Rds.route_config_name>` in
@@ -96,6 +97,7 @@ import (
 }
 
 #Vhds: {
+	"@type": "type.googleapis.com/envoy.config.route.v3.Vhds"
 	// Configuration source specifier for VHDS.
 	config_source?: v3.#ConfigSource
 }

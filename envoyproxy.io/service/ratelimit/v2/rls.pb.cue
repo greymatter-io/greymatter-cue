@@ -27,6 +27,7 @@ RateLimitResponse_RateLimit_Unit_DAY:     "DAY"
 // of them are over limit. This enables more complex application level rate limiting scenarios
 // if desired.
 #RateLimitRequest: {
+	"@type": "type.googleapis.com/envoy.service.ratelimit.v2.RateLimitRequest"
 	// All rate limit requests must specify a domain. This enables the configuration to be per
 	// application without fear of overlap. E.g., "envoy".
 	domain?: string
@@ -41,6 +42,7 @@ RateLimitResponse_RateLimit_Unit_DAY:     "DAY"
 
 // A response from a ShouldRateLimit call.
 #RateLimitResponse: {
+	"@type": "type.googleapis.com/envoy.service.ratelimit.v2.RateLimitResponse"
 	// The overall response code which takes into account all of the descriptors that were passed
 	// in the RateLimitRequest message.
 	overall_code?: #RateLimitResponse_Code
@@ -56,6 +58,7 @@ RateLimitResponse_RateLimit_Unit_DAY:     "DAY"
 
 // Defines an actual rate limit in terms of requests per unit of time and the unit itself.
 #RateLimitResponse_RateLimit: {
+	"@type": "type.googleapis.com/envoy.service.ratelimit.v2.RateLimitResponse_RateLimit"
 	// A name or description of this limit.
 	name?: string
 	// The number of requests per unit of time.
@@ -65,6 +68,7 @@ RateLimitResponse_RateLimit_Unit_DAY:     "DAY"
 }
 
 #RateLimitResponse_DescriptorStatus: {
+	"@type": "type.googleapis.com/envoy.service.ratelimit.v2.RateLimitResponse_DescriptorStatus"
 	// The response code for an individual descriptor.
 	code?: #RateLimitResponse_Code
 	// The current limit as configured by the server. Useful for debugging, etc.
@@ -83,4 +87,5 @@ RateLimitResponse_RateLimit_Unit_DAY:     "DAY"
 
 // UnimplementedRateLimitServiceServer can be embedded to have forward compatible implementations.
 #UnimplementedRateLimitServiceServer: {
+	"@type": "type.googleapis.com/envoy.service.ratelimit.v2.UnimplementedRateLimitServiceServer"
 }

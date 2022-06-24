@@ -15,6 +15,7 @@ import (
 // Also, See :repo:`proxy_filter.cc<source/extensions/filters/http/dynamic_forward_proxy/proxy_filter.cc>`
 // for an example of a filter which populates the FilterState.
 #UpstreamIpPortMatcher: {
+	"@type": "type.googleapis.com/envoy.extensions.rbac.matchers.upstream_ip_port.v3.UpstreamIpPortMatcher"
 	// A CIDR block that will be used to match the upstream IP.
 	// Both Ipv4 and Ipv6 ranges can be matched.
 	upstream_ip?: v3.#CidrRange

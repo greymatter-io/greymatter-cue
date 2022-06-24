@@ -14,6 +14,7 @@ Listener_DrainType_MODIFY_ONLY: "MODIFY_ONLY"
 
 // [#next-free-field: 23]
 #Listener: {
+	"@type": "type.googleapis.com/envoy.api.v2.Listener"
 	// The unique name by which this listener is known. If no name is provided,
 	// Envoy will allocate an internal UUID for the listener. If the listener is to be dynamically
 	// updated or removed via :ref:`LDS <config_listeners_lds>` a unique name must be provided.
@@ -170,6 +171,7 @@ Listener_DrainType_MODIFY_ONLY: "MODIFY_ONLY"
 
 // [#not-implemented-hide:]
 #Listener_DeprecatedV1: {
+	"@type": "type.googleapis.com/envoy.api.v2.Listener_DeprecatedV1"
 	// Whether the listener should bind to the port. A listener that doesn't
 	// bind can only receive connections redirected from other listeners that
 	// set use_original_dst parameter to true. Default is true.
@@ -185,6 +187,7 @@ Listener_DrainType_MODIFY_ONLY: "MODIFY_ONLY"
 
 // Configuration for listener connection balancing.
 #Listener_ConnectionBalanceConfig: {
+	"@type": "type.googleapis.com/envoy.api.v2.Listener_ConnectionBalanceConfig"
 	// If specified, the listener will use the exact connection balancer.
 	exact_balance?: #Listener_ConnectionBalanceConfig_ExactBalance
 }
@@ -196,4 +199,5 @@ Listener_DrainType_MODIFY_ONLY: "MODIFY_ONLY"
 // sacrifices accept throughput for accuracy and should be used when there are a small number of
 // connections that rarely cycle (e.g., service mesh gRPC egress).
 #Listener_ConnectionBalanceConfig_ExactBalance: {
+	"@type": "type.googleapis.com/envoy.api.v2.Listener_ConnectionBalanceConfig_ExactBalance"
 }

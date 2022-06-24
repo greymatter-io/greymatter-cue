@@ -2,7 +2,6 @@ package core
 
 import (
 	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
-	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 	emptypb "envoyproxy.io/deps/protobuf/types/known/emptypb"
 )
 
@@ -10,6 +9,7 @@ import (
 // <envoy_api_msg_core.ApiConfigSource>` and filter configurations.
 // [#next-free-field: 6]
 #GrpcService: {
+	"@type": "type.googleapis.com/envoy.api.v2.core.GrpcService"
 	// Envoy's in-built gRPC client.
 	// See the :ref:`gRPC services overview <arch_overview_grpc_services>`
 	// documentation for discussion on gRPC client selection.
@@ -28,6 +28,7 @@ import (
 }
 
 #GrpcService_EnvoyGrpc: {
+	"@type": "type.googleapis.com/envoy.api.v2.core.GrpcService_EnvoyGrpc"
 	// The name of the upstream gRPC cluster. SSL credentials will be supplied
 	// in the :ref:`Cluster <envoy_api_msg_Cluster>` :ref:`transport_socket
 	// <envoy_api_field_Cluster.transport_socket>`.
@@ -36,6 +37,7 @@ import (
 
 // [#next-free-field: 7]
 #GrpcService_GoogleGrpc: {
+	"@type": "type.googleapis.com/envoy.api.v2.core.GrpcService_GoogleGrpc"
 	// The target URI when using the `Google C++ gRPC client
 	// <https://github.com/grpc/grpc>`_. SSL credentials will be supplied in
 	// :ref:`channel_credentials <envoy_api_field_core.GrpcService.GoogleGrpc.channel_credentials>`.
@@ -65,6 +67,7 @@ import (
 
 // See https://grpc.io/grpc/cpp/structgrpc_1_1_ssl_credentials_options.html.
 #GrpcService_GoogleGrpc_SslCredentials: {
+	"@type": "type.googleapis.com/envoy.api.v2.core.GrpcService_GoogleGrpc_SslCredentials"
 	// PEM encoded server root certificates.
 	root_certs?: #DataSource
 	// PEM encoded client private key.
@@ -76,11 +79,13 @@ import (
 // Local channel credentials. Only UDS is supported for now.
 // See https://github.com/grpc/grpc/pull/15909.
 #GrpcService_GoogleGrpc_GoogleLocalCredentials: {
+	"@type": "type.googleapis.com/envoy.api.v2.core.GrpcService_GoogleGrpc_GoogleLocalCredentials"
 }
 
 // See https://grpc.io/docs/guides/auth.html#credential-types to understand Channel and Call
 // credential types.
 #GrpcService_GoogleGrpc_ChannelCredentials: {
+	"@type":          "type.googleapis.com/envoy.api.v2.core.GrpcService_GoogleGrpc_ChannelCredentials"
 	ssl_credentials?: #GrpcService_GoogleGrpc_SslCredentials
 	// https://grpc.io/grpc/cpp/namespacegrpc.html#a6beb3ac70ff94bd2ebbd89b8f21d1f61
 	google_default?:    emptypb.#Empty
@@ -89,6 +94,7 @@ import (
 
 // [#next-free-field: 8]
 #GrpcService_GoogleGrpc_CallCredentials: {
+	"@type": "type.googleapis.com/envoy.api.v2.core.GrpcService_GoogleGrpc_CallCredentials"
 	// Access token credentials.
 	// https://grpc.io/grpc/cpp/namespacegrpc.html#ad3a80da696ffdaea943f0f858d7a360d.
 	access_token?: string
@@ -115,20 +121,23 @@ import (
 }
 
 #GrpcService_GoogleGrpc_CallCredentials_ServiceAccountJWTAccessCredentials: {
+	"@type":                 "type.googleapis.com/envoy.api.v2.core.GrpcService_GoogleGrpc_CallCredentials_ServiceAccountJWTAccessCredentials"
 	json_key?:               string
 	token_lifetime_seconds?: uint64
 }
 
 #GrpcService_GoogleGrpc_CallCredentials_GoogleIAMCredentials: {
+	"@type":              "type.googleapis.com/envoy.api.v2.core.GrpcService_GoogleGrpc_CallCredentials_GoogleIAMCredentials"
 	authorization_token?: string
 	authority_selector?:  string
 }
 
 #GrpcService_GoogleGrpc_CallCredentials_MetadataCredentialsFromPlugin: {
-	name?: string
+	"@type": "type.googleapis.com/envoy.api.v2.core.GrpcService_GoogleGrpc_CallCredentials_MetadataCredentialsFromPlugin"
+	name?:   string
 	// Deprecated: Do not use.
 	config?:       _struct.#Struct
-	typed_config?: any.#Any
+	typed_config?: _
 }
 
 // Security token service configuration that allows Google gRPC to
@@ -137,6 +146,7 @@ import (
 // https://github.com/grpc/grpc/pull/19587.
 // [#next-free-field: 10]
 #GrpcService_GoogleGrpc_CallCredentials_StsService: {
+	"@type": "type.googleapis.com/envoy.api.v2.core.GrpcService_GoogleGrpc_CallCredentials_StsService"
 	// URI of the token exchange service that handles token exchange requests.
 	// [#comment:TODO(asraa): Add URI validation when implemented. Tracked by
 	// https://github.com/envoyproxy/protoc-gen-validate/issues/303]

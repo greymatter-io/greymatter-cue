@@ -13,6 +13,7 @@ import (
 //
 //   ("<descriptor_key>", "<expression_value>")
 #Descriptor: {
+	"@type": "type.googleapis.com/envoy.extensions.rate_limit_descriptors.expr.v3.Descriptor"
 	// The key to use in the descriptor entry.
 	descriptor_key?: string
 	// If set to true, Envoy skips the descriptor if the expression evaluates to an error.

@@ -9,6 +9,7 @@ import (
 // Configuration for the UDP proxy filter.
 // [#next-free-field: 10]
 #UdpProxyConfig: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.udp.udp_proxy.v3.UdpProxyConfig"
 	// The stat prefix used when emitting UDP proxy filter stats.
 	stat_prefix?: string
 	// The upstream cluster to connect to.
@@ -57,6 +58,7 @@ import (
 // Specifies the UDP hash policy.
 // The packets can be routed by hash policy.
 #UdpProxyConfig_HashPolicy: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.udp.udp_proxy.v3.UdpProxyConfig_HashPolicy"
 	// The source IP will be used to compute the hash used by hash-based load balancing algorithms.
 	source_ip?: bool
 	// A given key will be used to compute the hash used by hash-based load balancing algorithms.

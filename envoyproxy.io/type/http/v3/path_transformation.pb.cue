@@ -1,12 +1,14 @@
 package v3
 
 #PathTransformation: {
+	"@type": "type.googleapis.com/envoy.type.http.v3.PathTransformation"
 	// A list of operations to apply. Transformations will be performed in the order that they appear.
 	operations?: [...#PathTransformation_Operation]
 }
 
 // A type of operation to alter text.
 #PathTransformation_Operation: {
+	"@type": "type.googleapis.com/envoy.type.http.v3.PathTransformation_Operation"
 	// Enable path normalization per RFC 3986.
 	normalize_path_rfc_3986?: #PathTransformation_Operation_NormalizePathRFC3986
 	// Enable merging adjacent slashes.
@@ -21,6 +23,7 @@ package v3
 // this options does not perform `case normalization
 // <https://tools.ietf.org/html/rfc3986#section-6.2.2.1>`_
 #PathTransformation_Operation_NormalizePathRFC3986: {
+	"@type": "type.googleapis.com/envoy.type.http.v3.PathTransformation_Operation_NormalizePathRFC3986"
 }
 
 // Determines if adjacent slashes are merged into one. A common use case is for a request path
@@ -30,4 +33,5 @@ package v3
 // match set to `/dir`. When using for header transformations, note that slash merging is not
 // part of `HTTP spec <https://tools.ietf.org/html/rfc3986>`_ and is provided for convenience.
 #PathTransformation_Operation_MergeSlashes: {
+	"@type": "type.googleapis.com/envoy.type.http.v3.PathTransformation_Operation_MergeSlashes"
 }

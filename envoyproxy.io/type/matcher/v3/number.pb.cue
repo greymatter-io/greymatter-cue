@@ -6,6 +6,7 @@ import (
 
 // Specifies the way to match a double value.
 #DoubleMatcher: {
+	"@type": "type.googleapis.com/envoy.type.matcher.v3.DoubleMatcher"
 	// If specified, the input double value must be in the range specified here.
 	// Note: The range is using half-open interval semantics [start, end).
 	range?: v3.#DoubleRange

@@ -15,6 +15,7 @@ RBAC_EnforcementType_CONTINUOUS:             "CONTINUOUS"
 // this information is only available in :ref:`RBAC http filter <config_http_filters_rbac>`.
 // [#next-free-field: 6]
 #RBAC: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.network.rbac.v3.RBAC"
 	// Specify the RBAC rules to be applied globally.
 	// If absent, no enforcing RBAC policy will be applied.
 	// If present and empty, DENY.

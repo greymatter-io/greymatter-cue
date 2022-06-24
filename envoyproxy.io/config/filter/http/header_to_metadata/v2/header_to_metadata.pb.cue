@@ -13,6 +13,7 @@ Config_ValueEncode_NONE:   "NONE"
 Config_ValueEncode_BASE64: "BASE64"
 
 #Config: {
+	"@type": "type.googleapis.com/envoy.config.filter.http.header_to_metadata.v2.Config"
 	// The list of rules to apply to requests.
 	request_rules?: [...#Config_Rule]
 	// The list of rules to apply to responses.
@@ -21,6 +22,7 @@ Config_ValueEncode_BASE64: "BASE64"
 
 // [#next-free-field: 6]
 #Config_KeyValuePair: {
+	"@type": "type.googleapis.com/envoy.config.filter.http.header_to_metadata.v2.Config_KeyValuePair"
 	// The namespace — if this is empty, the filter's namespace will be used.
 	metadata_namespace?: string
 	// The key to use within the namespace.
@@ -42,6 +44,7 @@ Config_ValueEncode_BASE64: "BASE64"
 
 // A Rule defines what metadata to apply when a header is present or missing.
 #Config_Rule: {
+	"@type": "type.googleapis.com/envoy.config.filter.http.header_to_metadata.v2.Config_Rule"
 	// The header that triggers this rule — required.
 	header?: string
 	// If the header is present, apply this metadata KeyValuePair.

@@ -23,6 +23,7 @@ import (
 // - which return values are copied into request_headers]
 // [#next-free-field: 12]
 #AttributeContext: {
+	"@type": "type.googleapis.com/envoy.service.auth.v3.AttributeContext"
 	// The source of a network activity, such as starting a TCP connection.
 	// In a multi hop network activity, the source represents the sender of the
 	// last hop.
@@ -48,6 +49,7 @@ import (
 // `principal`, and `labels` as appropriate.
 // [#next-free-field: 6]
 #AttributeContext_Peer: {
+	"@type": "type.googleapis.com/envoy.service.auth.v3.AttributeContext_Peer"
 	// The address of the peer, this is typically the IP address.
 	// It can also be UDS path, or others.
 	address?: v3.#Address
@@ -78,6 +80,7 @@ import (
 
 // Represents a network request, such as an HTTP request.
 #AttributeContext_Request: {
+	"@type": "type.googleapis.com/envoy.service.auth.v3.AttributeContext_Request"
 	// The timestamp when the proxy receives the first byte of the request.
 	time?: string
 	// Represents an HTTP request or an HTTP-like request.
@@ -88,6 +91,7 @@ import (
 // HTTP/1.x, HTTP/2, gRPC are all considered as HTTP requests.
 // [#next-free-field: 13]
 #AttributeContext_HttpRequest: {
+	"@type": "type.googleapis.com/envoy.service.auth.v3.AttributeContext_HttpRequest"
 	// The unique ID for a request, which can be propagated to downstream
 	// systems. The ID should have low probability of collision
 	// within a single day for a specific service.

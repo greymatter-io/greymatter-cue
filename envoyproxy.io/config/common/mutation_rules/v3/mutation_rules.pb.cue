@@ -31,6 +31,7 @@ import (
 // "rejected_header_mutations".
 // [#next-free-field: 8]
 #HeaderMutationRules: {
+	"@type": "type.googleapis.com/envoy.config.common.mutation_rules.v3.HeaderMutationRules"
 	// By default, certain headers that could affect processing of subsequent
 	// filters or request routing cannot be modified. These headers are
 	// "host", ":authority", ":scheme", and ":method". Setting this parameter

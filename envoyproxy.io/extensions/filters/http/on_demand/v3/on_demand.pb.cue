@@ -6,6 +6,7 @@ import (
 
 // Configuration of on-demand CDS.
 #OnDemandCds: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.on_demand.v3.OnDemandCds"
 	// A configuration source for the service that will be used for
 	// on-demand cluster discovery.
 	source?: v3.#ConfigSource
@@ -17,6 +18,7 @@ import (
 
 // On Demand Discovery filter config.
 #OnDemand: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.on_demand.v3.OnDemand"
 	// An optional configuration for on-demand cluster discovery
 	// service. If not specified, the on-demand cluster discovery will
 	// be disabled. When it's specified, the filter will pause the
@@ -28,6 +30,7 @@ import (
 
 // Per-route configuration for On Demand Discovery.
 #PerRouteConfig: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.on_demand.v3.PerRouteConfig"
 	// An optional configuration for on-demand cluster discovery
 	// service. If not specified, the on-demand cluster discovery will
 	// be disabled. When it's specified, the filter will pause the

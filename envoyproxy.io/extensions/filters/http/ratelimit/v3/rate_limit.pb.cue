@@ -38,6 +38,7 @@ RateLimitPerRoute_OverrideOptions_IGNORE_POLICY:   "IGNORE_POLICY"
 
 // [#next-free-field: 11]
 #RateLimit: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.ratelimit.v3.RateLimit"
 	// The rate limit domain to use when calling the rate limit service.
 	domain?: string
 	// Specifies the rate limit configurations to be applied with the same
@@ -112,6 +113,7 @@ RateLimitPerRoute_OverrideOptions_IGNORE_POLICY:   "IGNORE_POLICY"
 // Also applies to Local rate limiting :ref:`using descriptors <config_http_filters_local_rate_limit_descriptors>`.
 // [#not-implemented-hide:]
 #RateLimitConfig: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.ratelimit.v3.RateLimitConfig"
 	// Refers to the stage set in the filter. The rate limit configuration only
 	// applies to filters with the same stage number. The default stage number is
 	// 0.
@@ -137,6 +139,7 @@ RateLimitPerRoute_OverrideOptions_IGNORE_POLICY:   "IGNORE_POLICY"
 }
 
 #RateLimitPerRoute: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.ratelimit.v3.RateLimitPerRoute"
 	// Specifies if the rate limit filter should include the virtual host rate limits.
 	vh_rate_limits?: #RateLimitPerRoute_VhRateLimitsOptions
 	// Specifies if the rate limit filter should include the lower levels (route level, virtual host level or cluster weight level) rate limits override options.
@@ -151,6 +154,7 @@ RateLimitPerRoute_OverrideOptions_IGNORE_POLICY:   "IGNORE_POLICY"
 
 // [#next-free-field: 10]
 #RateLimitConfig_Action: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.ratelimit.v3.RateLimitConfig_Action"
 	// Rate limit on source cluster.
 	source_cluster?: #RateLimitConfig_Action_SourceCluster
 	// Rate limit on destination cluster.
@@ -171,6 +175,7 @@ RateLimitPerRoute_OverrideOptions_IGNORE_POLICY:   "IGNORE_POLICY"
 }
 
 #RateLimitConfig_Override: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.ratelimit.v3.RateLimitConfig_Override"
 	// Limit override from dynamic metadata.
 	dynamic_metadata?: #RateLimitConfig_Override_DynamicMetadata
 }
@@ -183,6 +188,7 @@ RateLimitPerRoute_OverrideOptions_IGNORE_POLICY:   "IGNORE_POLICY"
 //
 // <local service cluster> is derived from the :option:`--service-cluster` option.
 #RateLimitConfig_Action_SourceCluster: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.ratelimit.v3.RateLimitConfig_Action_SourceCluster"
 }
 
 // The following descriptor entry is appended to the descriptor:
@@ -202,6 +208,7 @@ RateLimitPerRoute_OverrideOptions_IGNORE_POLICY:   "IGNORE_POLICY"
 // * :ref:`cluster_header <envoy_v3_api_field_config.route.v3.RouteAction.cluster_header>` indicates which
 //   header in the request contains the target cluster.
 #RateLimitConfig_Action_DestinationCluster: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.ratelimit.v3.RateLimitConfig_Action_DestinationCluster"
 }
 
 // The following descriptor entry is appended when a header contains a key that matches the
@@ -211,6 +218,7 @@ RateLimitPerRoute_OverrideOptions_IGNORE_POLICY:   "IGNORE_POLICY"
 //
 //   ("<descriptor_key>", "<header_value_queried_from_header>")
 #RateLimitConfig_Action_RequestHeaders: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.ratelimit.v3.RateLimitConfig_Action_RequestHeaders"
 	// The header name to be queried from the request headers. The header’s
 	// value is used to populate the value of the descriptor entry for the
 	// descriptor_key.
@@ -230,6 +238,7 @@ RateLimitPerRoute_OverrideOptions_IGNORE_POLICY:   "IGNORE_POLICY"
 //
 //   ("remote_address", "<trusted address from x-forwarded-for>")
 #RateLimitConfig_Action_RemoteAddress: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.ratelimit.v3.RateLimitConfig_Action_RemoteAddress"
 }
 
 // The following descriptor entry is appended to the descriptor:
@@ -238,6 +247,7 @@ RateLimitPerRoute_OverrideOptions_IGNORE_POLICY:   "IGNORE_POLICY"
 //
 //   ("generic_key", "<descriptor_value>")
 #RateLimitConfig_Action_GenericKey: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.ratelimit.v3.RateLimitConfig_Action_GenericKey"
 	// The value to use in the descriptor entry.
 	descriptor_value?: string
 	// An optional key to use in the descriptor entry. If not set it defaults
@@ -251,6 +261,7 @@ RateLimitPerRoute_OverrideOptions_IGNORE_POLICY:   "IGNORE_POLICY"
 //
 //   ("header_match", "<descriptor_value>")
 #RateLimitConfig_Action_HeaderValueMatch: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.ratelimit.v3.RateLimitConfig_Action_HeaderValueMatch"
 	// The value to use in the descriptor entry.
 	descriptor_value?: string
 	// If set to true, the action will append a descriptor entry when the
@@ -272,6 +283,7 @@ RateLimitPerRoute_OverrideOptions_IGNORE_POLICY:   "IGNORE_POLICY"
 //
 //   ("<descriptor_key>", "<value_queried_from_metadata>")
 #RateLimitConfig_Action_MetaData: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.ratelimit.v3.RateLimitConfig_Action_MetaData"
 	// The key to use in the descriptor entry.
 	descriptor_key?: string
 	// Metadata struct that defines the key and path to retrieve the string value. A match will
@@ -286,6 +298,7 @@ RateLimitPerRoute_OverrideOptions_IGNORE_POLICY:   "IGNORE_POLICY"
 
 // Fetches the override from the dynamic metadata.
 #RateLimitConfig_Override_DynamicMetadata: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.ratelimit.v3.RateLimitConfig_Override_DynamicMetadata"
 	// Metadata struct that defines the key and path to retrieve the struct value.
 	// The value must be a struct containing an integer "requests_per_unit" property
 	// and a "unit" property with a value parseable to :ref:`RateLimitUnit

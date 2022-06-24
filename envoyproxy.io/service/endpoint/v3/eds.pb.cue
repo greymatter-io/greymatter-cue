@@ -3,6 +3,7 @@ package v3
 // [#not-implemented-hide:] Not configuration. Workaround c++ protobuf issue with importing
 // services: https://github.com/google/protobuf/issues/4221 and protoxform to upgrade the file.
 #EdsDummy: {
+	"@type": "type.googleapis.com/envoy.service.endpoint.v3.EdsDummy"
 }
 
 // EndpointDiscoveryServiceClient is the client API for EndpointDiscoveryService service.
@@ -19,6 +20,7 @@ package v3
 
 // UnimplementedEndpointDiscoveryServiceServer can be embedded to have forward compatible implementations.
 #UnimplementedEndpointDiscoveryServiceServer: {
+	"@type": "type.googleapis.com/envoy.service.endpoint.v3.UnimplementedEndpointDiscoveryServiceServer"
 }
 
 #EndpointDiscoveryService_StreamEndpointsServer: _

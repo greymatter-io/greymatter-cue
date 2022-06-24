@@ -16,6 +16,7 @@ CommonResponse_ResponseStatus_CONTINUE_AND_REPLACE: "CONTINUE_AND_REPLACE"
 // to an external processing server.
 // [#next-free-field: 8]
 #ProcessingRequest: {
+	"@type": "type.googleapis.com/envoy.service.ext_proc.v3.ProcessingRequest"
 	// Specify whether the filter that sent this request is running in synchronous
 	// or asynchronous mode. The choice of synchronous or asynchronous mode
 	// can be set in the filter configuration, and defaults to false.
@@ -66,6 +67,7 @@ CommonResponse_ResponseStatus_CONTINUE_AND_REPLACE: "CONTINUE_AND_REPLACE"
 // set to false, the server must send back exactly one ProcessingResponse message.
 // [#next-free-field: 10]
 #ProcessingResponse: {
+	"@type": "type.googleapis.com/envoy.service.ext_proc.v3.ProcessingResponse"
 	// The server must send back this message in response to a message with the
 	// "request_headers" field set.
 	request_headers?: #HeadersResponse
@@ -106,6 +108,7 @@ CommonResponse_ResponseStatus_CONTINUE_AND_REPLACE: "CONTINUE_AND_REPLACE"
 // This message is sent to the external server when the HTTP request and responses
 // are first received.
 #HttpHeaders: {
+	"@type": "type.googleapis.com/envoy.service.ext_proc.v3.HttpHeaders"
 	// The HTTP request headers. All header keys will be
 	// lower-cased, because HTTP header keys are case-insensitive.
 	headers?: v31.#HeaderMap
@@ -123,34 +126,40 @@ CommonResponse_ResponseStatus_CONTINUE_AND_REPLACE: "CONTINUE_AND_REPLACE"
 
 // This message contains the message body that Envoy sends to the external server.
 #HttpBody: {
+	"@type":        "type.googleapis.com/envoy.service.ext_proc.v3.HttpBody"
 	body?:          bytes
 	end_of_stream?: bool
 }
 
 // This message contains the trailers.
 #HttpTrailers: {
+	"@type":   "type.googleapis.com/envoy.service.ext_proc.v3.HttpTrailers"
 	trailers?: v31.#HeaderMap
 }
 
 // This message must be sent in response to an HttpHeaders message.
 #HeadersResponse: {
+	"@type":   "type.googleapis.com/envoy.service.ext_proc.v3.HeadersResponse"
 	response?: #CommonResponse
 }
 
 // This message must be sent in response to an HttpTrailers message.
 #TrailersResponse: {
+	"@type": "type.googleapis.com/envoy.service.ext_proc.v3.TrailersResponse"
 	// Instructions on how to manipulate the trailers
 	header_mutation?: #HeaderMutation
 }
 
 // This message must be sent in response to an HttpBody message.
 #BodyResponse: {
+	"@type":   "type.googleapis.com/envoy.service.ext_proc.v3.BodyResponse"
 	response?: #CommonResponse
 }
 
 // This message contains common fields between header and body responses.
 // [#next-free-field: 6]
 #CommonResponse: {
+	"@type": "type.googleapis.com/envoy.service.ext_proc.v3.CommonResponse"
 	// If set, provide additional direction on how the Envoy proxy should
 	// handle the rest of the HTTP filter chain.
 	status?: #CommonResponse_ResponseStatus
@@ -182,6 +191,7 @@ CommonResponse_ResponseStatus_CONTINUE_AND_REPLACE: "CONTINUE_AND_REPLACE"
 // to the downstream codec, or reset the stream.
 // [#next-free-field: 6]
 #ImmediateResponse: {
+	"@type": "type.googleapis.com/envoy.service.ext_proc.v3.ImmediateResponse"
 	// The response code to return
 	status?: v32.#HttpStatus
 	// Apply changes to the default headers, which will include content-type.
@@ -199,6 +209,7 @@ CommonResponse_ResponseStatus_CONTINUE_AND_REPLACE: "CONTINUE_AND_REPLACE"
 
 // This message specifies a gRPC status for an ImmediateResponse message.
 #GrpcStatus: {
+	"@type": "type.googleapis.com/envoy.service.ext_proc.v3.GrpcStatus"
 	// The actual gRPC status
 	status?: uint32
 }
@@ -206,6 +217,7 @@ CommonResponse_ResponseStatus_CONTINUE_AND_REPLACE: "CONTINUE_AND_REPLACE"
 // Change HTTP headers or trailers by appending, replacing, or removing
 // headers.
 #HeaderMutation: {
+	"@type": "type.googleapis.com/envoy.service.ext_proc.v3.HeaderMutation"
 	// Add or replace HTTP headers. Attempts to set the value of
 	// any "x-envoy" header, and attempts to set the ":method",
 	// ":authority", ":scheme", or "host" headers will be ignored.
@@ -218,6 +230,7 @@ CommonResponse_ResponseStatus_CONTINUE_AND_REPLACE: "CONTINUE_AND_REPLACE"
 // Replace the entire message body chunk received in the corresponding
 // HttpBody message with this new body, or clear the body.
 #BodyMutation: {
+	"@type": "type.googleapis.com/envoy.service.ext_proc.v3.BodyMutation"
 	// The entire body to replace
 	body?: bytes
 	// Clear the corresponding body chunk
@@ -236,6 +249,7 @@ CommonResponse_ResponseStatus_CONTINUE_AND_REPLACE: "CONTINUE_AND_REPLACE"
 
 // UnimplementedExternalProcessorServer can be embedded to have forward compatible implementations.
 #UnimplementedExternalProcessorServer: {
+	"@type": "type.googleapis.com/envoy.service.ext_proc.v3.UnimplementedExternalProcessorServer"
 }
 
 #ExternalProcessor_ProcessServer: _

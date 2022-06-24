@@ -9,6 +9,7 @@ import (
 // :ref:`CheckRequest <envoy_api_msg_service.auth.v2.CheckRequest>`.
 // A failed check will cause this filter to close the TCP connection.
 #ExtAuthz: {
+	"@type": "type.googleapis.com/envoy.config.filter.network.ext_authz.v2.ExtAuthz"
 	// The prefix to use when emitting statistics.
 	stat_prefix?: string
 	// The external authorization gRPC service configuration.

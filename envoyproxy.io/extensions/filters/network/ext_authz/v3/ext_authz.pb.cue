@@ -11,6 +11,7 @@ import (
 // A failed check will cause this filter to close the TCP connection.
 // [#next-free-field: 8]
 #ExtAuthz: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.network.ext_authz.v3.ExtAuthz"
 	// The prefix to use when emitting statistics.
 	stat_prefix?: string
 	// The external authorization gRPC service configuration.

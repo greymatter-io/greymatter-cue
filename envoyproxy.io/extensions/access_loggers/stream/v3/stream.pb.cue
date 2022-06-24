@@ -7,6 +7,7 @@ import (
 // Custom configuration for an :ref:`AccessLog <envoy_v3_api_msg_config.accesslog.v3.AccessLog>`
 // that writes log entries directly to the operating system's standard output.
 #StdoutAccessLog: {
+	"@type": "type.googleapis.com/envoy.extensions.access_loggers.stream.v3.StdoutAccessLog"
 	// Configuration to form access log data and format.
 	// If not specified, use :ref:`default format <config_access_log_default_format>`.
 	log_format?: v3.#SubstitutionFormatString
@@ -15,6 +16,7 @@ import (
 // Custom configuration for an :ref:`AccessLog <envoy_v3_api_msg_config.accesslog.v3.AccessLog>`
 // that writes log entries directly to the operating system's standard error.
 #StderrAccessLog: {
+	"@type": "type.googleapis.com/envoy.extensions.access_loggers.stream.v3.StderrAccessLog"
 	// Configuration to form access log data and format.
 	// If not specified, use :ref:`default format <config_access_log_default_format>`.
 	log_format?: v3.#SubstitutionFormatString

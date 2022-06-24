@@ -9,6 +9,7 @@ Brotli_EncoderMode_FONT:    "FONT"
 
 // [#next-free-field: 7]
 #Brotli: {
+	"@type": "type.googleapis.com/envoy.extensions.compression.brotli.compressor.v3.Brotli"
 	// Value from 0 to 11 that controls the main compression speed-density lever.
 	// The higher quality, the slower compression. The default value is 3.
 	quality?: uint32

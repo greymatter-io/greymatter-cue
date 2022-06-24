@@ -7,6 +7,7 @@ import (
 // Top level configuration for the AWS request signing filter.
 // [#next-free-field: 6]
 #AwsRequestSigning: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.aws_request_signing.v3.AwsRequestSigning"
 	// The `service namespace
 	// <https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces>`_
 	// of the HTTP endpoint.

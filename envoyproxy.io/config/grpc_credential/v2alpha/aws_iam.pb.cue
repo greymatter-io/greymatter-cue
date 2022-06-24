@@ -1,6 +1,7 @@
 package v2alpha
 
 #AwsIamConfig: {
+	"@type": "type.googleapis.com/envoy.config.grpc_credential.v2alpha.AwsIamConfig"
 	// The `service namespace
 	// <https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces>`_
 	// of the Grpc endpoint.

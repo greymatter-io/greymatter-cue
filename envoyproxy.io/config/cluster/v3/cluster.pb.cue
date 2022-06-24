@@ -2,7 +2,6 @@ package v3
 
 import (
 	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
-	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 	v3 "envoyproxy.io/deps/cncf/xds/go/xds/core/v3"
 	v31 "envoyproxy.io/config/endpoint/v3"
 	v32 "envoyproxy.io/config/core/v3"
@@ -94,12 +93,14 @@ Cluster_RingHashLbConfig_HashFunction_MURMUR_HASH_2: "MURMUR_HASH_2"
 // Cluster list collections. Entries are *Cluster* resources or references.
 // [#not-implemented-hide:]
 #ClusterCollection: {
+	"@type":  "type.googleapis.com/envoy.config.cluster.v3.ClusterCollection"
 	entries?: v3.#CollectionEntry
 }
 
 // Configuration for a single upstream cluster.
 // [#next-free-field: 57]
 #Cluster: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.Cluster"
 	// Configuration to use different transport sockets for different endpoints.
 	// The entry of *envoy.transport_socket_match* in the
 	// :ref:`LbEndpoint.Metadata <envoy_v3_api_field_config.endpoint.v3.LbEndpoint.metadata>`
@@ -267,7 +268,7 @@ Cluster_RingHashLbConfig_HashFunction_MURMUR_HASH_2: "MURMUR_HASH_2"
 	// "envoy.filters.network.thrift_proxy". See the extension's documentation for details on
 	// specific options.
 	// [#next-major-version: make this a list of typed extensions.]
-	typed_extension_protocol_options?: [string]: any.#Any
+	typed_extension_protocol_options?: [string]: _
 	// If the DNS refresh rate is specified and the cluster type is either
 	// :ref:`STRICT_DNS<envoy_v3_api_enum_value_config.cluster.v3.Cluster.DiscoveryType.STRICT_DNS>`,
 	// or :ref:`LOGICAL_DNS<envoy_v3_api_enum_value_config.cluster.v3.Cluster.DiscoveryType.LOGICAL_DNS>`,
@@ -500,6 +501,7 @@ Cluster_RingHashLbConfig_HashFunction_MURMUR_HASH_2: "MURMUR_HASH_2"
 // To facilitate this, the config message for the top-level LB policy may include a field of
 // type LoadBalancingPolicy that specifies the child policy.
 #LoadBalancingPolicy: {
+	"@type": "type.googleapis.com/envoy.config.cluster.v3.LoadBalancingPolicy"
 	// Each client will iterate over the list in order and stop at the first policy that it
 	// supports. This provides a mechanism for starting to use new LB policies that are not yet
 	// supported by all clients.
@@ -509,11 +511,13 @@ Cluster_RingHashLbConfig_HashFunction_MURMUR_HASH_2: "MURMUR_HASH_2"
 // An extensible structure containing the address Envoy should bind to when
 // establishing upstream connections.
 #UpstreamBindConfig: {
+	"@type": "type.googleapis.com/envoy.config.cluster.v3.UpstreamBindConfig"
 	// The address Envoy should bind to when establishing upstream connections.
 	source_address?: v32.#Address
 }
 
 #UpstreamConnectionOptions: {
+	"@type": "type.googleapis.com/envoy.config.cluster.v3.UpstreamConnectionOptions"
 	// If set then set SO_KEEPALIVE on the socket to enable TCP Keepalives.
 	tcp_keepalive?: v32.#TcpKeepalive
 	// If enabled, associates the interface name of the local address with the upstream connection.
@@ -523,6 +527,7 @@ Cluster_RingHashLbConfig_HashFunction_MURMUR_HASH_2: "MURMUR_HASH_2"
 }
 
 #TrackClusterStats: {
+	"@type": "type.googleapis.com/envoy.config.cluster.v3.TrackClusterStats"
 	// If timeout_budgets is true, the :ref:`timeout budget histograms
 	// <config_cluster_manager_cluster_stats_timeout_budgets>` will be published for each
 	// request. These show what percentage of a request's per try and global timeout was used. A value
@@ -538,6 +543,7 @@ Cluster_RingHashLbConfig_HashFunction_MURMUR_HASH_2: "MURMUR_HASH_2"
 // TransportSocketMatch specifies what transport socket config will be used
 // when the match conditions are satisfied.
 #Cluster_TransportSocketMatch: {
+	"@type": "type.googleapis.com/envoy.config.cluster.v3.Cluster_TransportSocketMatch"
 	// The name of the match, used in stats generation.
 	name?: string
 	// Optional endpoint metadata match criteria.
@@ -553,16 +559,18 @@ Cluster_RingHashLbConfig_HashFunction_MURMUR_HASH_2: "MURMUR_HASH_2"
 
 // Extended cluster type.
 #Cluster_CustomClusterType: {
+	"@type": "type.googleapis.com/envoy.config.cluster.v3.Cluster_CustomClusterType"
 	// The type of the cluster to instantiate. The name must match a supported cluster type.
 	name?: string
 	// Cluster specific configuration which depends on the cluster being instantiated.
 	// See the supported cluster for further documentation.
 	// [#extension-category: envoy.clusters]
-	typed_config?: any.#Any
+	typed_config?: _
 }
 
 // Only valid when discovery type is EDS.
 #Cluster_EdsClusterConfig: {
+	"@type": "type.googleapis.com/envoy.config.cluster.v3.Cluster_EdsClusterConfig"
 	// Configuration for the source of EDS updates for this Cluster.
 	eds_config?: v32.#ConfigSource
 	// Optional alternative to cluster name to present to EDS. This does not
@@ -575,6 +583,7 @@ Cluster_RingHashLbConfig_HashFunction_MURMUR_HASH_2: "MURMUR_HASH_2"
 // endpoint metadata and selected by route and weighted cluster metadata.
 // [#next-free-field: 8]
 #Cluster_LbSubsetConfig: {
+	"@type": "type.googleapis.com/envoy.config.cluster.v3.Cluster_LbSubsetConfig"
 	// The behavior used when no endpoint subset matches the selected route's
 	// metadata. The value defaults to
 	// :ref:`NO_FALLBACK<envoy_v3_api_enum_value_config.cluster.v3.Cluster.LbSubsetConfig.LbSubsetFallbackPolicy.NO_FALLBACK>`.
@@ -634,6 +643,7 @@ Cluster_RingHashLbConfig_HashFunction_MURMUR_HASH_2: "MURMUR_HASH_2"
 
 // Configuration for :ref:`slow start mode <arch_overview_load_balancing_slow_start>`.
 #Cluster_SlowStartConfig: {
+	"@type": "type.googleapis.com/envoy.config.cluster.v3.Cluster_SlowStartConfig"
 	// Represents the size of slow start window.
 	// If set, the newly created host remains in slow start mode starting from its creation time
 	// for the duration of slow start window.
@@ -659,6 +669,7 @@ Cluster_RingHashLbConfig_HashFunction_MURMUR_HASH_2: "MURMUR_HASH_2"
 
 // Specific configuration for the RoundRobin load balancing policy.
 #Cluster_RoundRobinLbConfig: {
+	"@type": "type.googleapis.com/envoy.config.cluster.v3.Cluster_RoundRobinLbConfig"
 	// Configuration for slow start mode.
 	// If this configuration is not set, slow start will not be not enabled.
 	slow_start_config?: #Cluster_SlowStartConfig
@@ -666,6 +677,7 @@ Cluster_RingHashLbConfig_HashFunction_MURMUR_HASH_2: "MURMUR_HASH_2"
 
 // Specific configuration for the LeastRequest load balancing policy.
 #Cluster_LeastRequestLbConfig: {
+	"@type": "type.googleapis.com/envoy.config.cluster.v3.Cluster_LeastRequestLbConfig"
 	// The number of random healthy hosts from which the host with the fewest active requests will
 	// be chosen. Defaults to 2 so that we perform two-choice selection if the field is not set.
 	choice_count?: uint32
@@ -701,6 +713,7 @@ Cluster_RingHashLbConfig_HashFunction_MURMUR_HASH_2: "MURMUR_HASH_2"
 // Specific configuration for the :ref:`RingHash<arch_overview_load_balancing_types_ring_hash>`
 // load balancing policy.
 #Cluster_RingHashLbConfig: {
+	"@type": "type.googleapis.com/envoy.config.cluster.v3.Cluster_RingHashLbConfig"
 	// Minimum hash ring size. The larger the ring is (that is, the more hashes there are for each
 	// provided host) the better the request distribution will reflect the desired weights. Defaults
 	// to 1024 entries, and limited to 8M entries. See also
@@ -718,6 +731,7 @@ Cluster_RingHashLbConfig_HashFunction_MURMUR_HASH_2: "MURMUR_HASH_2"
 // Specific configuration for the :ref:`Maglev<arch_overview_load_balancing_types_maglev>`
 // load balancing policy.
 #Cluster_MaglevLbConfig: {
+	"@type": "type.googleapis.com/envoy.config.cluster.v3.Cluster_MaglevLbConfig"
 	// The table size for Maglev hashing. The Maglev aims for ‘minimal disruption’ rather than an absolute guarantee.
 	// Minimal disruption means that when the set of upstreams changes, a connection will likely be sent to the same
 	// upstream as it was before. Increasing the table size reduces the amount of disruption.
@@ -729,6 +743,7 @@ Cluster_RingHashLbConfig_HashFunction_MURMUR_HASH_2: "MURMUR_HASH_2"
 // :ref:`Original Destination <arch_overview_load_balancing_types_original_destination>`
 // load balancing policy.
 #Cluster_OriginalDstLbConfig: {
+	"@type": "type.googleapis.com/envoy.config.cluster.v3.Cluster_OriginalDstLbConfig"
 	// When true, a HTTP header can be used to override the original dst address. The default header is
 	// :ref:`x-envoy-original-dst-host <config_http_conn_man_headers_x-envoy-original-dst-host>`.
 	//
@@ -750,6 +765,7 @@ Cluster_RingHashLbConfig_HashFunction_MURMUR_HASH_2: "MURMUR_HASH_2"
 // Common configuration for all load balancer implementations.
 // [#next-free-field: 9]
 #Cluster_CommonLbConfig: {
+	"@type": "type.googleapis.com/envoy.config.cluster.v3.Cluster_CommonLbConfig"
 	// Configures the :ref:`healthy panic threshold <arch_overview_load_balancing_panic_threshold>`.
 	// If not specified, the default is 50%.
 	// To disable panic mode, set to 0%.
@@ -793,6 +809,7 @@ Cluster_RingHashLbConfig_HashFunction_MURMUR_HASH_2: "MURMUR_HASH_2"
 }
 
 #Cluster_RefreshRate: {
+	"@type": "type.googleapis.com/envoy.config.cluster.v3.Cluster_RefreshRate"
 	// Specifies the base interval between refreshes. This parameter is required and must be greater
 	// than zero and less than
 	// :ref:`max_interval <envoy_v3_api_field_config.cluster.v3.Cluster.RefreshRate.max_interval>`.
@@ -805,6 +822,7 @@ Cluster_RingHashLbConfig_HashFunction_MURMUR_HASH_2: "MURMUR_HASH_2"
 }
 
 #Cluster_PreconnectPolicy: {
+	"@type": "type.googleapis.com/envoy.config.cluster.v3.Cluster_PreconnectPolicy"
 	// Indicates how many streams (rounded up) can be anticipated per-upstream for each
 	// incoming stream. This is useful for high-QPS or latency-sensitive services. Preconnecting
 	// will only be done if the upstream is healthy and the cluster has traffic.
@@ -857,6 +875,7 @@ Cluster_RingHashLbConfig_HashFunction_MURMUR_HASH_2: "MURMUR_HASH_2"
 
 // Specifications for subsets.
 #Cluster_LbSubsetConfig_LbSubsetSelector: {
+	"@type": "type.googleapis.com/envoy.config.cluster.v3.Cluster_LbSubsetConfig_LbSubsetSelector"
 	// List of keys to match with the weighted cluster metadata.
 	keys?: [...string]
 	// Selects a mode of operation in which each subset has only one host. This mode uses the same rules for
@@ -890,6 +909,7 @@ Cluster_RingHashLbConfig_HashFunction_MURMUR_HASH_2: "MURMUR_HASH_2"
 // Configuration for :ref:`zone aware routing
 // <arch_overview_load_balancing_zone_aware_routing>`.
 #Cluster_CommonLbConfig_ZoneAwareLbConfig: {
+	"@type": "type.googleapis.com/envoy.config.cluster.v3.Cluster_CommonLbConfig_ZoneAwareLbConfig"
 	// Configures percentage of requests that will be considered for zone aware routing
 	// if zone aware routing is configured. If not specified, the default is 100%.
 	// * :ref:`runtime values <config_cluster_manager_cluster_runtime_zone_routing>`.
@@ -911,10 +931,12 @@ Cluster_RingHashLbConfig_HashFunction_MURMUR_HASH_2: "MURMUR_HASH_2"
 // Configuration for :ref:`locality weighted load balancing
 // <arch_overview_load_balancing_locality_weighted_lb>`
 #Cluster_CommonLbConfig_LocalityWeightedLbConfig: {
+	"@type": "type.googleapis.com/envoy.config.cluster.v3.Cluster_CommonLbConfig_LocalityWeightedLbConfig"
 }
 
 // Common Configuration for all consistent hashing load balancers (MaglevLb, RingHashLb, etc.)
 #Cluster_CommonLbConfig_ConsistentHashingLbConfig: {
+	"@type": "type.googleapis.com/envoy.config.cluster.v3.Cluster_CommonLbConfig_ConsistentHashingLbConfig"
 	// If set to `true`, the cluster will use hostname instead of the resolved
 	// address as the key to consistently hash to an upstream host. Only valid for StrictDNS clusters with hostnames which resolve to a single IP address.
 	use_hostname_for_hashing?: bool
@@ -940,5 +962,6 @@ Cluster_RingHashLbConfig_HashFunction_MURMUR_HASH_2: "MURMUR_HASH_2"
 }
 
 #LoadBalancingPolicy_Policy: {
+	"@type":                 "type.googleapis.com/envoy.config.cluster.v3.LoadBalancingPolicy_Policy"
 	typed_extension_config?: v32.#TypedExtensionConfig
 }

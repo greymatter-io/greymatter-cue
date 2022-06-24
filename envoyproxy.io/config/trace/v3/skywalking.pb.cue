@@ -11,6 +11,7 @@ import (
 // Tracer does not support SkyWalking extension header (``sw8-x``) temporarily.
 // [#extension: envoy.tracers.skywalking]
 #SkyWalkingConfig: {
+	"@type": "type.googleapis.com/envoy.config.trace.v3.SkyWalkingConfig"
 	// SkyWalking collector service.
 	grpc_service?:  v3.#GrpcService
 	client_config?: #ClientConfig
@@ -18,6 +19,7 @@ import (
 
 // Client config for SkyWalking tracer.
 #ClientConfig: {
+	"@type": "type.googleapis.com/envoy.config.trace.v3.ClientConfig"
 	// Service name for SkyWalking tracer. If this field is empty, then local service cluster name
 	// that configured by :ref:`Bootstrap node <envoy_v3_api_field_config.bootstrap.v3.Bootstrap.node>`
 	// message's :ref:`cluster <envoy_v3_api_field_config.core.v3.Node.cluster>` field or command line

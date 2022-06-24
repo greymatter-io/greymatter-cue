@@ -3,21 +3,25 @@ package v3
 // Specifies that matching should be performed by the destination IP address.
 // [#extension: envoy.matching.inputs.destination_ip]
 #DestinationIPInput: {
+	"@type": "type.googleapis.com/envoy.extensions.matching.common_inputs.network.v3.DestinationIPInput"
 }
 
 // Specifies that matching should be performed by the destination port.
 // [#extension: envoy.matching.inputs.destination_port]
 #DestinationPortInput: {
+	"@type": "type.googleapis.com/envoy.extensions.matching.common_inputs.network.v3.DestinationPortInput"
 }
 
 // Specifies that matching should be performed by the source IP address.
 // [#extension: envoy.matching.inputs.source_ip]
 #SourceIPInput: {
+	"@type": "type.googleapis.com/envoy.extensions.matching.common_inputs.network.v3.SourceIPInput"
 }
 
 // Specifies that matching should be performed by the source port.
 // [#extension: envoy.matching.inputs.source_port]
 #SourcePortInput: {
+	"@type": "type.googleapis.com/envoy.extensions.matching.common_inputs.network.v3.SourcePortInput"
 }
 
 // Input that matches by the directly connected source IP address (this
@@ -26,6 +30,7 @@ package v3
 // listener filter <config_listener_filters_proxy_protocol>`).
 // [#extension: envoy.matching.inputs.direct_source_ip]
 #DirectSourceIPInput: {
+	"@type": "type.googleapis.com/envoy.extensions.matching.common_inputs.network.v3.DirectSourceIPInput"
 }
 
 // Input that matches by the source IP type.
@@ -34,6 +39,7 @@ package v3
 // * ``local`` - matches a connection originating from the same host,
 // [#extension: envoy.matching.inputs.source_type]
 #SourceTypeInput: {
+	"@type": "type.googleapis.com/envoy.extensions.matching.common_inputs.network.v3.SourceTypeInput"
 }
 
 // Input that matches by the requested server name (e.g. SNI in TLS).
@@ -42,6 +48,7 @@ package v3
 // when TLS protocol is detected.
 // [#extension: envoy.matching.inputs.server_name]
 #ServerNameInput: {
+	"@type": "type.googleapis.com/envoy.extensions.matching.common_inputs.network.v3.ServerNameInput"
 }
 
 // Input that matches by the transport protocol.
@@ -53,6 +60,7 @@ package v3
 //   when TLS protocol is detected.
 // [#extension: envoy.matching.inputs.transport_protocol]
 #TransportProtocolInput: {
+	"@type": "type.googleapis.com/envoy.extensions.matching.common_inputs.network.v3.TransportProtocolInput"
 }
 
 // List of quoted and comma-separated requested application protocols. The list consists of a
@@ -82,4 +90,5 @@ package v3
 //   unless all connecting clients are known to use ALPN.
 // [#extension: envoy.matching.inputs.application_protocol]
 #ApplicationProtocolInput: {
+	"@type": "type.googleapis.com/envoy.extensions.matching.common_inputs.network.v3.ApplicationProtocolInput"
 }

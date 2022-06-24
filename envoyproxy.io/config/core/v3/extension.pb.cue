@@ -1,12 +1,12 @@
 package v3
 
 import (
-	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 )
 
 // Message type for extension configuration.
 // [#next-major-version: revisit all existing typed_config that doesn't use this wrapper.].
 #TypedExtensionConfig: {
+	"@type": "type.googleapis.com/github.com.cncf.xds.go.xds.core.v3.TypedExtensionConfig"
 	// The name of an extension. This is not used to select the extension, instead
 	// it serves the role of an opaque identifier.
 	name?: string
@@ -16,5 +16,5 @@ import (
 	// URL of *TypedStruct* will be utilized. See the
 	// :ref:`extension configuration overview
 	// <config_overview_extension_configuration>` for further details.
-	typed_config?: any.#Any
+	typed_config?: _
 }

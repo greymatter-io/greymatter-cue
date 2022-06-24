@@ -7,6 +7,7 @@ package v3
 // [#comment:TODO(snowp): Link to unified matching docs.]
 // [#extension: envoy.matching.inputs.request_headers]
 #HttpRequestHeaderMatchInput: {
+	"@type": "type.googleapis.com/envoy.type.matcher.v3.HttpRequestHeaderMatchInput"
 	// The request header to match on.
 	header_name?: string
 }
@@ -18,6 +19,7 @@ package v3
 // [#comment:TODO(snowp): Link to unified matching docs.]
 // [#extension: envoy.matching.inputs.request_trailers]
 #HttpRequestTrailerMatchInput: {
+	"@type": "type.googleapis.com/envoy.type.matcher.v3.HttpRequestTrailerMatchInput"
 	// The request trailer to match on.
 	header_name?: string
 }
@@ -29,6 +31,7 @@ package v3
 // [#comment:TODO(snowp): Link to unified matching docs.]
 // [#extension: envoy.matching.inputs.response_headers]
 #HttpResponseHeaderMatchInput: {
+	"@type": "type.googleapis.com/envoy.type.matcher.v3.HttpResponseHeaderMatchInput"
 	// The response header to match on.
 	header_name?: string
 }
@@ -40,6 +43,7 @@ package v3
 // [#comment:TODO(snowp): Link to unified matching docs.]
 // [#extension: envoy.matching.inputs.response_trailers]
 #HttpResponseTrailerMatchInput: {
+	"@type": "type.googleapis.com/envoy.type.matcher.v3.HttpResponseTrailerMatchInput"
 	// The response trailer to match on.
 	header_name?: string
 }

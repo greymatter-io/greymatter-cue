@@ -15,6 +15,7 @@ import (
 // then an endpoint within that locality will be chose based on its weight.
 // [#next-free-field: 6]
 #ClusterLoadAssignment: {
+	"@type": "type.googleapis.com/envoy.config.endpoint.v3.ClusterLoadAssignment"
 	// Name of the cluster. This will be the :ref:`service_name
 	// <envoy_v3_api_field_config.cluster.v3.Cluster.EdsClusterConfig.service_name>` value if specified
 	// in the cluster :ref:`EdsClusterConfig
@@ -32,6 +33,7 @@ import (
 // Load balancing policy settings.
 // [#next-free-field: 6]
 #ClusterLoadAssignment_Policy: {
+	"@type": "type.googleapis.com/envoy.config.endpoint.v3.ClusterLoadAssignment_Policy"
 	// Action to trim the overall incoming traffic to protect the upstream
 	// hosts. This action allows protection in case the hosts are unable to
 	// recover from an outage, or unable to autoscale or unable to handle
@@ -77,6 +79,7 @@ import (
 
 // [#not-implemented-hide:]
 #ClusterLoadAssignment_Policy_DropOverload: {
+	"@type": "type.googleapis.com/envoy.config.endpoint.v3.ClusterLoadAssignment_Policy_DropOverload"
 	// Identifier for the policy specifying the drop.
 	category?: string
 	// Percentage of traffic that should be dropped for the category.

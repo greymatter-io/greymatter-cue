@@ -1,7 +1,6 @@
 package v3
 
 import (
-	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 	v3 "envoyproxy.io/type/v3"
 )
 
@@ -13,20 +12,23 @@ ScaleTimersOverloadActionConfig_TimerType_HTTP_DOWNSTREAM_STREAM_IDLE:     "HTTP
 ScaleTimersOverloadActionConfig_TimerType_TRANSPORT_SOCKET_CONNECT:        "TRANSPORT_SOCKET_CONNECT"
 
 #ResourceMonitor: {
+	"@type": "type.googleapis.com/envoy.config.overload.v3.ResourceMonitor"
 	// The name of the resource monitor to instantiate. Must match a registered
 	// resource monitor type.
 	// See the :ref:`extensions listed in typed_config below <extension_category_envoy.resource_monitors>` for the default list of available resource monitor.
 	name?:         string
-	typed_config?: any.#Any
+	typed_config?: _
 }
 
 #ThresholdTrigger: {
+	"@type": "type.googleapis.com/envoy.config.overload.v3.ThresholdTrigger"
 	// If the resource pressure is greater than or equal to this value, the trigger
 	// will enter saturation.
 	value?: float64
 }
 
 #ScaledTrigger: {
+	"@type": "type.googleapis.com/envoy.config.overload.v3.ScaledTrigger"
 	// If the resource pressure is greater than this value, the trigger will be in the
 	// :ref:`scaling <arch_overview_overload_manager-triggers-state>` state with value
 	// `(pressure - scaling_threshold) / (saturation_threshold - scaling_threshold)`.
@@ -36,6 +38,7 @@ ScaleTimersOverloadActionConfig_TimerType_TRANSPORT_SOCKET_CONNECT:        "TRAN
 }
 
 #Trigger: {
+	"@type": "type.googleapis.com/envoy.config.overload.v3.Trigger"
 	// The name of the resource this is a trigger for.
 	name?:      string
 	threshold?: #ThresholdTrigger
@@ -46,11 +49,13 @@ ScaleTimersOverloadActionConfig_TimerType_TRANSPORT_SOCKET_CONNECT:        "TRAN
 // :ref:`the docs <config_overload_manager_reducing_timeouts>` for an example of how to configure
 // the action with different timeouts and minimum values.
 #ScaleTimersOverloadActionConfig: {
+	"@type": "type.googleapis.com/envoy.config.overload.v3.ScaleTimersOverloadActionConfig"
 	// A set of timer scaling rules to be applied.
 	timer_scale_factors?: [...#ScaleTimersOverloadActionConfig_ScaleTimer]
 }
 
 #OverloadAction: {
+	"@type": "type.googleapis.com/envoy.config.overload.v3.OverloadAction"
 	// The name of the overload action. This is just a well-known string that listeners can
 	// use for registering callbacks. Custom overload actions should be named using reverse
 	// DNS to ensure uniqueness.
@@ -60,12 +65,13 @@ ScaleTimersOverloadActionConfig_TimerType_TRANSPORT_SOCKET_CONNECT:        "TRAN
 	// are notified when the overload action changes state.
 	triggers?: [...#Trigger]
 	// Configuration for the action being instantiated.
-	typed_config?: any.#Any
+	typed_config?: _
 }
 
 // Configuration for which accounts the WatermarkBuffer Factories should
 // track.
 #BufferFactoryConfig: {
+	"@type": "type.googleapis.com/envoy.config.overload.v3.BufferFactoryConfig"
 	// The minimum power of two at which Envoy starts tracking an account.
 	//
 	// Envoy has 8 power of two buckets starting with the provided exponent below.
@@ -84,6 +90,7 @@ ScaleTimersOverloadActionConfig_TimerType_TRANSPORT_SOCKET_CONNECT:        "TRAN
 }
 
 #OverloadManager: {
+	"@type": "type.googleapis.com/envoy.config.overload.v3.OverloadManager"
 	// The interval for refreshing resource usage.
 	refresh_interval?: string
 	// The set of resources to monitor.
@@ -95,6 +102,7 @@ ScaleTimersOverloadActionConfig_TimerType_TRANSPORT_SOCKET_CONNECT:        "TRAN
 }
 
 #ScaleTimersOverloadActionConfig_ScaleTimer: {
+	"@type": "type.googleapis.com/envoy.config.overload.v3.ScaleTimersOverloadActionConfig_ScaleTimer"
 	// The type of timer this minimum applies to.
 	timer?: #ScaleTimersOverloadActionConfig_TimerType
 	// Sets the minimum duration as an absolute value.

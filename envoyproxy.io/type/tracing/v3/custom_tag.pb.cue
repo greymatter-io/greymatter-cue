@@ -7,6 +7,7 @@ import (
 // Describes custom tags for the active span.
 // [#next-free-field: 6]
 #CustomTag: {
+	"@type": "type.googleapis.com/envoy.type.tracing.v3.CustomTag"
 	// Used to populate the tag name.
 	tag?: string
 	// A literal custom tag.
@@ -21,12 +22,14 @@ import (
 
 // Literal type custom tag with static value for the tag value.
 #CustomTag_Literal: {
+	"@type": "type.googleapis.com/envoy.type.tracing.v3.CustomTag_Literal"
 	// Static literal value to populate the tag value.
 	value?: string
 }
 
 // Environment type custom tag with environment name and default value.
 #CustomTag_Environment: {
+	"@type": "type.googleapis.com/envoy.type.tracing.v3.CustomTag_Environment"
 	// Environment variable name to obtain the value to populate the tag value.
 	name?: string
 	// When the environment variable is not found,
@@ -37,6 +40,7 @@ import (
 
 // Header type custom tag with header name and default value.
 #CustomTag_Header: {
+	"@type": "type.googleapis.com/envoy.type.tracing.v3.CustomTag_Header"
 	// Header name to obtain the value to populate the tag value.
 	name?: string
 	// When the header does not exist,
@@ -51,6 +55,7 @@ import (
 // `the canonical JSON <https://developers.google.com/protocol-buffers/docs/proto3#json>`_
 // representation of it.
 #CustomTag_Metadata: {
+	"@type": "type.googleapis.com/envoy.type.tracing.v3.CustomTag_Metadata"
 	// Specify what kind of metadata to obtain tag value from.
 	kind?: v3.#MetadataKind
 	// Metadata key to define the path to retrieve the tag value.

@@ -2,6 +2,7 @@ package type
 
 // Configures a token bucket, typically used for rate limiting.
 #TokenBucket: {
+	"@type": "type.googleapis.com/envoy.type.TokenBucket"
 	// The maximum tokens that the bucket can hold. This is also the number of tokens that the bucket
 	// initially contains.
 	max_tokens?: uint32

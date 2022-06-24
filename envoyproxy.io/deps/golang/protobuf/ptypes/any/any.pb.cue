@@ -1,5 +1,4 @@
-package any
-
+package
 import (
 	anypb "envoyproxy.io/deps/protobuf/types/known/anypb"
 )

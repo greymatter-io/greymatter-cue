@@ -10,6 +10,7 @@ import (
 // decorating an existing extension with a matcher, which can be used to match against
 // relevant protocol data.
 #ExtensionWithMatcher: {
+	"@type": "type.googleapis.com/envoy.extensions.common.matching.v3.ExtensionWithMatcher"
 	// The associated matcher. This is deprecated in favor of xds_matcher.
 	//
 	// Deprecated: Do not use.

@@ -56,6 +56,7 @@ XRateLimitHeadersRFCVersion_DRAFT_VERSION_03: "DRAFT_VERSION_03"
 // the number of requests per unit to use instead of the number configured in the
 // rate limiting service.
 #RateLimitDescriptor: {
+	"@type": "type.googleapis.com/envoy.extensions.common.ratelimit.v3.RateLimitDescriptor"
 	// Descriptor entries.
 	entries?: [...#RateLimitDescriptor_Entry]
 	// Optional rate limit override to supply to the ratelimit service.
@@ -63,6 +64,7 @@ XRateLimitHeadersRFCVersion_DRAFT_VERSION_03: "DRAFT_VERSION_03"
 }
 
 #LocalRateLimitDescriptor: {
+	"@type": "type.googleapis.com/envoy.extensions.common.ratelimit.v3.LocalRateLimitDescriptor"
 	// Descriptor entries.
 	entries?: [...#RateLimitDescriptor_Entry]
 	// Token Bucket algorithm for local ratelimiting.
@@ -70,6 +72,7 @@ XRateLimitHeadersRFCVersion_DRAFT_VERSION_03: "DRAFT_VERSION_03"
 }
 
 #RateLimitDescriptor_Entry: {
+	"@type": "type.googleapis.com/envoy.extensions.common.ratelimit.v3.RateLimitDescriptor_Entry"
 	// Descriptor key.
 	key?: string
 	// Descriptor value.
@@ -80,6 +83,7 @@ XRateLimitHeadersRFCVersion_DRAFT_VERSION_03: "DRAFT_VERSION_03"
 // configured in the rate limit service. See :ref:`rate limit override
 // <config_http_filters_rate_limit_rate_limit_override>` for more information.
 #RateLimitDescriptor_RateLimitOverride: {
+	"@type": "type.googleapis.com/envoy.extensions.common.ratelimit.v3.RateLimitDescriptor_RateLimitOverride"
 	// The number of requests per unit of time.
 	requests_per_unit?: uint32
 	// The unit of time.

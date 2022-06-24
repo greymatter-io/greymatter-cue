@@ -7,4 +7,5 @@ package v3
 // downstream scheme is HTTP, only HTTP redirect targets are allowed.
 // [#extension: envoy.internal_redirect_predicates.safe_cross_scheme]
 #SafeCrossSchemeConfig: {
+	"@type": "type.googleapis.com/envoy.extensions.internal_redirect.safe_cross_scheme.v3.SafeCrossSchemeConfig"
 }

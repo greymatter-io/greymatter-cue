@@ -1,6 +1,7 @@
 package v3
 
 #ProxyProtocol: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.listener.proxy_protocol.v3.ProxyProtocol"
 	// The list of rules to apply to requests.
 	rules?: [...#ProxyProtocol_Rule]
 	// Allow requests through that don't use proxy protocol. Defaults to false.
@@ -22,6 +23,7 @@ package v3
 }
 
 #ProxyProtocol_KeyValuePair: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.listener.proxy_protocol.v3.ProxyProtocol_KeyValuePair"
 	// The namespace — if this is empty, the filter's namespace will be used.
 	metadata_namespace?: string
 	// The key to use within the namespace.
@@ -30,6 +32,7 @@ package v3
 
 // A Rule defines what metadata to apply when a header is present or missing.
 #ProxyProtocol_Rule: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.listener.proxy_protocol.v3.ProxyProtocol_Rule"
 	// The type that triggers the rule - required
 	// TLV type is defined as uint8_t in proxy protocol. See `the spec
 	// <https://www.haproxy.org/download/2.1/doc/proxy-protocol.txt>`_ for details.

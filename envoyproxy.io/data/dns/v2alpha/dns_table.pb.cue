@@ -7,6 +7,7 @@ import (
 // This message contains the configuration for the DNS Filter if populated
 // from the control plane
 #DnsTable: {
+	"@type": "type.googleapis.com/envoy.data.dns.v2alpha.DnsTable"
 	// Control how many times envoy makes an attempt to forward a query to
 	// an external server
 	external_retry_count?: uint32
@@ -21,6 +22,7 @@ import (
 
 // This message contains a list of IP addresses returned for a query for a known name
 #DnsTable_AddressList: {
+	"@type": "type.googleapis.com/envoy.data.dns.v2alpha.DnsTable_AddressList"
 	// This field contains a well formed IP address that is returned
 	// in the answer for a name query. The address field can be an
 	// IPv4 or IPv6 address. Address family detection is done automatically
@@ -35,10 +37,12 @@ import (
 // or dictate some other method for resolving the addresses for an
 // endpoint
 #DnsTable_DnsEndpoint: {
+	"@type":       "type.googleapis.com/envoy.data.dns.v2alpha.DnsTable_DnsEndpoint"
 	address_list?: #DnsTable_AddressList
 }
 
 #DnsTable_DnsVirtualDomain: {
+	"@type": "type.googleapis.com/envoy.data.dns.v2alpha.DnsTable_DnsVirtualDomain"
 	// The domain name for which Envoy will respond to query requests
 	name?: string
 	// The configuration containing the method to determine the address

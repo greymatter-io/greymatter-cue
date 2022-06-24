@@ -4,11 +4,13 @@ package v2alpha
 // display certificate information. See :ref:`/certs <operations_admin_interface_certs>` for more
 // information.
 #Certificates: {
+	"@type": "type.googleapis.com/envoy.admin.v2alpha.Certificates"
 	// List of certificates known to an Envoy.
 	certificates?: [...#Certificate]
 }
 
 #Certificate: {
+	"@type": "type.googleapis.com/envoy.admin.v2alpha.Certificate"
 	// Details of CA certificate.
 	ca_cert?: [...#CertificateDetails]
 	// Details of Certificate Chain
@@ -17,6 +19,7 @@ package v2alpha
 
 // [#next-free-field: 7]
 #CertificateDetails: {
+	"@type": "type.googleapis.com/envoy.admin.v2alpha.CertificateDetails"
 	// Path of the certificate.
 	path?: string
 	// Certificate Serial Number.
@@ -32,6 +35,7 @@ package v2alpha
 }
 
 #SubjectAlternateName: {
+	"@type":     "type.googleapis.com/envoy.admin.v2alpha.SubjectAlternateName"
 	dns?:        string
 	uri?:        string
 	ip_address?: string

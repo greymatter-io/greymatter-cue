@@ -12,6 +12,7 @@ import (
 // by S. Nilsson and G. Karlsson. For "big" lists of IPs, this matcher is more
 // efficient than multiple single IP matcher, that would have a linear cost.
 #Ip: {
+	"@type": "type.googleapis.com/envoy.extensions.matching.input_matchers.ip.v3.Ip"
 	// Match if the IP belongs to any of these CIDR ranges.
 	cidr_ranges?: [...v3.#CidrRange]
 	// The human readable prefix to use when emitting statistics for the IP input

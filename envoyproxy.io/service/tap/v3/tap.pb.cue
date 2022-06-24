@@ -8,6 +8,7 @@ import (
 // [#not-implemented-hide:] Stream message for the Tap API. Envoy will open a stream to the server
 // and stream taps without ever expecting a response.
 #StreamTapsRequest: {
+	"@type": "type.googleapis.com/envoy.service.tap.v3.StreamTapsRequest"
 	// Identifier data effectively is a structured metadata. As a performance optimization this will
 	// only be sent in the first message on the stream.
 	identifier?: #StreamTapsRequest_Identifier
@@ -20,9 +21,11 @@ import (
 
 // [#not-implemented-hide:]
 #StreamTapsResponse: {
+	"@type": "type.googleapis.com/envoy.service.tap.v3.StreamTapsResponse"
 }
 
 #StreamTapsRequest_Identifier: {
+	"@type": "type.googleapis.com/envoy.service.tap.v3.StreamTapsRequest_Identifier"
 	// The node sending taps over the stream.
 	node?: v31.#Node
 	// The opaque identifier that was set in the :ref:`output config
@@ -42,6 +45,7 @@ import (
 
 // UnimplementedTapSinkServiceServer can be embedded to have forward compatible implementations.
 #UnimplementedTapSinkServiceServer: {
+	"@type": "type.googleapis.com/envoy.service.tap.v3.UnimplementedTapSinkServiceServer"
 }
 
 #TapSinkService_StreamTapsServer: _

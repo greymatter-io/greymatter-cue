@@ -7,6 +7,7 @@ import (
 // Configuration for the route match action.
 // [#not-implemented-hide:]
 #RouteAction: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.network.meta_protocol_proxy.matcher.action.v3.RouteAction"
 	// Indicates the upstream cluster to which the request should be routed.
 	cluster?: string
 	// Multiple upstream clusters can be specified for a given route. The request is routed to one

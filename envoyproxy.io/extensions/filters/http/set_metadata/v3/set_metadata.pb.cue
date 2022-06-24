@@ -5,6 +5,7 @@ import (
 )
 
 #Config: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.set_metadata.v3.Config"
 	// The metadata namespace.
 	metadata_namespace?: string
 	// The value to update the namespace with. See

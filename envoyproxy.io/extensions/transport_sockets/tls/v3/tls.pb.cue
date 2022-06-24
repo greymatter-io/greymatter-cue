@@ -11,6 +11,7 @@ DownstreamTlsContext_OcspStaplePolicy_STRICT_STAPLING:  "STRICT_STAPLING"
 DownstreamTlsContext_OcspStaplePolicy_MUST_STAPLE:      "MUST_STAPLE"
 
 #UpstreamTlsContext: {
+	"@type": "type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.UpstreamTlsContext"
 	// Common TLS context settings.
 	//
 	// .. attention::
@@ -36,6 +37,7 @@ DownstreamTlsContext_OcspStaplePolicy_MUST_STAPLE:      "MUST_STAPLE"
 
 // [#next-free-field: 9]
 #DownstreamTlsContext: {
+	"@type": "type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.DownstreamTlsContext"
 	// Common TLS context settings.
 	common_tls_context?: #CommonTlsContext
 	// If specified, Envoy will reject connections without a valid client
@@ -70,6 +72,7 @@ DownstreamTlsContext_OcspStaplePolicy_MUST_STAPLE:      "MUST_STAPLE"
 // TLS key log configuration.
 // The key log file format is "format used by NSS for its SSLKEYLOGFILE debugging output" (text taken from openssl man page)
 #TlsKeyLog: {
+	"@type": "type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.TlsKeyLog"
 	// The path to save the TLS key log.
 	path?: string
 	// The local IP address that will be used to filter the connection which should save the TLS key log
@@ -83,6 +86,7 @@ DownstreamTlsContext_OcspStaplePolicy_MUST_STAPLE:      "MUST_STAPLE"
 // TLS context shared by both client and server TLS contexts.
 // [#next-free-field: 16]
 #CommonTlsContext: {
+	"@type": "type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.CommonTlsContext"
 	// TLS protocol versions, cipher suites etc.
 	tls_params?: #TlsParameters
 	// :ref:`Multiple TLS certificates <arch_overview_ssl_cert_select>` can be associated with the
@@ -176,6 +180,7 @@ DownstreamTlsContext_OcspStaplePolicy_MUST_STAPLE:      "MUST_STAPLE"
 //
 // [#not-implemented-hide:]
 #CommonTlsContext_CertificateProvider: {
+	"@type": "type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.CommonTlsContext_CertificateProvider"
 	// opaque name used to specify certificate instances or types. For example, "ROOTCA" to specify
 	// a root-certificate (validation context) or "TLS" to specify a new tls-certificate.
 	name?:         string
@@ -190,6 +195,7 @@ DownstreamTlsContext_OcspStaplePolicy_MUST_STAPLE:      "MUST_STAPLE"
 //
 // [#not-implemented-hide:]
 #CommonTlsContext_CertificateProviderInstance: {
+	"@type": "type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.CommonTlsContext_CertificateProviderInstance"
 	// Provider instance name. This name must be defined in the client's configuration (e.g., a
 	// bootstrap file) to correspond to a provider instance (i.e., the same data in the typed_config
 	// field that would be sent in the CertificateProvider message if the config was sent by the
@@ -207,6 +213,7 @@ DownstreamTlsContext_OcspStaplePolicy_MUST_STAPLE:      "MUST_STAPLE"
 }
 
 #CommonTlsContext_CombinedCertificateValidationContext: {
+	"@type": "type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.CommonTlsContext_CombinedCertificateValidationContext"
 	// How to validate peer certificates.
 	default_validation_context?: #CertificateValidationContext
 	// Config for fetching validation context via SDS API. Note SDS API allows certificates to be

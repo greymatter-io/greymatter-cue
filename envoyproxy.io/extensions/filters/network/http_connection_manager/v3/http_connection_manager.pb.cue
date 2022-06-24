@@ -1,7 +1,6 @@
 package v3
 
 import (
-	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 	v3 "envoyproxy.io/config/core/v3"
 	v31 "envoyproxy.io/config/accesslog/v3"
 	v32 "envoyproxy.io/config/route/v3"
@@ -51,6 +50,7 @@ HttpConnectionManager_Tracing_OperationName_EGRESS:  "EGRESS"
 
 // [#next-free-field: 51]
 #HttpConnectionManager: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager"
 	// Supplies the type of codec that the connection manager should use.
 	codec_type?: #HttpConnectionManager_CodecType
 	// The human readable prefix to use when emitting statistics for the
@@ -418,7 +418,7 @@ HttpConnectionManager_Tracing_OperationName_EGRESS:  "EGRESS"
 	// #. Syntax of HTTP/1 request target URI and response status
 	// #. HTTP/2 header map validity according to `RFC 7540 section 8.1.2<https://datatracker.ietf.org/doc/html/rfc7540#section-8.1.2`_
 	// #. Syntax of HTTP/2 pseudo headers
-	// #. HTTP/3 header map validity according to `draft standard <https://datatracker.ietf.org/doc/html/draft-ietf-quic-http-34>`_
+	// #. HTTP/3 header map validity according to `RFC 9114 section 4.3 <https://www.rfc-editor.org/rfc/rfc9114.html>`_
 	// #. Syntax of HTTP/3 pseudo headers
 	// #. Syntax of ``Content-Length`` and ``Transfer-Encoding``
 	// #. Validation of HTTP/1 requests with both ``Content-Length`` and ``Transfer-Encoding`` headers
@@ -432,6 +432,7 @@ HttpConnectionManager_Tracing_OperationName_EGRESS:  "EGRESS"
 
 // The configuration to customize local reply returned by Envoy.
 #LocalReplyConfig: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.LocalReplyConfig"
 	// Configuration of list of mappers which allows to filter and change local response.
 	// The mappers will be checked by the specified order until one is matched.
 	mappers?: [...#ResponseMapper]
@@ -479,6 +480,7 @@ HttpConnectionManager_Tracing_OperationName_EGRESS:  "EGRESS"
 // The configuration to filter and change local response.
 // [#next-free-field: 6]
 #ResponseMapper: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.ResponseMapper"
 	// Filter to determine if this mapper should apply.
 	filter?: v31.#AccessLogFilter
 	// The new response status code if specified.
@@ -495,6 +497,7 @@ HttpConnectionManager_Tracing_OperationName_EGRESS:  "EGRESS"
 }
 
 #Rds: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.Rds"
 	// Configuration source specifier for RDS.
 	config_source?: v3.#ConfigSource
 	// The name of the route configuration. This name will be passed to the RDS
@@ -506,11 +509,13 @@ HttpConnectionManager_Tracing_OperationName_EGRESS:  "EGRESS"
 
 // This message is used to work around the limitations with 'oneof' and repeated fields.
 #ScopedRouteConfigurationsList: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.ScopedRouteConfigurationsList"
 	scoped_route_configurations?: [...v32.#ScopedRouteConfiguration]
 }
 
 // [#next-free-field: 6]
 #ScopedRoutes: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.ScopedRoutes"
 	// The name assigned to the scoped routing configuration.
 	name?: string
 	// The algorithm to use for constructing a scope key for each request.
@@ -534,6 +539,7 @@ HttpConnectionManager_Tracing_OperationName_EGRESS:  "EGRESS"
 }
 
 #ScopedRds: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.ScopedRds"
 	// Configuration source specifier for scoped RDS.
 	scoped_rds_config_source?: v3.#ConfigSource
 	// xdstp:// resource locator for scoped RDS collection.
@@ -543,6 +549,7 @@ HttpConnectionManager_Tracing_OperationName_EGRESS:  "EGRESS"
 
 // [#next-free-field: 7]
 #HttpFilter: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpFilter"
 	// The name of the filter configuration. It also serves as a resource name in ExtensionConfigDS.
 	name?: string
 	// Filter specific configuration which depends on the filter being instantiated. See the supported
@@ -552,7 +559,7 @@ HttpConnectionManager_Tracing_OperationName_EGRESS:  "EGRESS"
 	// :ref:`ExtensionWithMatcher <envoy_v3_api_msg_extensions.common.matching.v3.ExtensionWithMatcher>`
 	// with the desired HTTP filter.
 	// [#extension-category: envoy.filters.http]
-	typed_config?: any.#Any
+	typed_config?: _
 	// Configuration source specifier for an extension configuration discovery service.
 	// In case of a failure and without the default configuration, the HTTP listener responds with code 500.
 	// Extension configs delivered through this mechanism are not expected to require warming (see https://github.com/envoyproxy/envoy/issues/12061).
@@ -570,14 +577,16 @@ HttpConnectionManager_Tracing_OperationName_EGRESS:  "EGRESS"
 }
 
 #RequestIDExtension: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.RequestIDExtension"
 	// Request ID extension specific configuration.
-	typed_config?: any.#Any
+	typed_config?: _
 }
 
 // [#protodoc-title: Envoy Mobile HTTP connection manager]
 // HTTP connection manager for use in Envoy mobile.
 // [#extension: envoy.filters.network.envoy_mobile_http_connection_manager]
 #EnvoyMobileHttpConnectionManager: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.EnvoyMobileHttpConnectionManager"
 	// The configuration for the underlying HttpConnectionManager which will be
 	// instantiated for Envoy mobile.
 	config?: #HttpConnectionManager
@@ -585,6 +594,7 @@ HttpConnectionManager_Tracing_OperationName_EGRESS:  "EGRESS"
 
 // [#next-free-field: 10]
 #HttpConnectionManager_Tracing: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager_Tracing"
 	// Target percentage of requests managed by this HTTP connection manager that will be force
 	// traced if the :ref:`x-client-trace-id <config_http_conn_man_headers_x-client-trace-id>`
 	// header is set. This field is a direct analog for the runtime variable
@@ -630,6 +640,7 @@ HttpConnectionManager_Tracing_OperationName_EGRESS:  "EGRESS"
 }
 
 #HttpConnectionManager_InternalAddressConfig: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager_InternalAddressConfig"
 	// Whether unix socket addresses should be considered internal.
 	unix_sockets?: bool
 	// List of CIDR ranges that are treated as internal. If unset, then RFC1918 / RFC4193
@@ -639,6 +650,7 @@ HttpConnectionManager_Tracing_OperationName_EGRESS:  "EGRESS"
 
 // [#next-free-field: 7]
 #HttpConnectionManager_SetCurrentClientCertDetails: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager_SetCurrentClientCertDetails"
 	// Whether to forward the subject of the client cert. Defaults to false.
 	subject?: bool
 	// Whether to forward the entire client cert in URL encoded PEM format. This will appear in the
@@ -671,6 +683,7 @@ HttpConnectionManager_Tracing_OperationName_EGRESS:  "EGRESS"
 //    The current implementation of upgrade headers does not work with HTTP/2
 //    upstreams.
 #HttpConnectionManager_UpgradeConfig: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager_UpgradeConfig"
 	// The case-insensitive name of this upgrade, e.g. "websocket".
 	// For each upgrade type present in upgrade_configs, requests with
 	// Upgrade: [upgrade_type]
@@ -697,6 +710,7 @@ HttpConnectionManager_Tracing_OperationName_EGRESS:  "EGRESS"
 //
 // Note: access logging and tracing will show the original *:path* header.
 #HttpConnectionManager_PathNormalizationOptions: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager_PathNormalizationOptions"
 	// [#not-implemented-hide:] Normalization applies internally before any processing of requests by
 	// HTTP filters, routing, and matching *and* will affect the forwarded *:path* header. Defaults
 	// to :ref:`NormalizePathRFC3986
@@ -730,6 +744,7 @@ HttpConnectionManager_Tracing_OperationName_EGRESS:  "EGRESS"
 //   "<server_name>; error=<error_type>; details=<details>"
 // [#next-free-field: 7]
 #HttpConnectionManager_ProxyStatusConfig: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager_ProxyStatusConfig"
 	// If true, the details field of the Proxy-Status header is not populated with stream_info.response_code_details.
 	// This value defaults to `false`, i.e. the `details` field is populated by default.
 	remove_details?: bool
@@ -764,6 +779,7 @@ HttpConnectionManager_Tracing_OperationName_EGRESS:  "EGRESS"
 // by this message. This key will be used to look up the routing table (i.e., the
 // :ref:`RouteConfiguration<envoy_v3_api_msg_config.route.v3.RouteConfiguration>`) to use for the request.
 #ScopedRoutes_ScopeKeyBuilder: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.ScopedRoutes_ScopeKeyBuilder"
 	// The final(built) scope key consists of the ordered union of these fragments, which are compared in order with the
 	// fragments of a :ref:`ScopedRouteConfiguration<envoy_v3_api_msg_config.route.v3.ScopedRouteConfiguration>`.
 	// A missing fragment during comparison will make the key invalid, i.e., the computed key doesn't match any key.
@@ -772,6 +788,7 @@ HttpConnectionManager_Tracing_OperationName_EGRESS:  "EGRESS"
 
 // Specifies the mechanism for constructing key fragments which are composed into scope keys.
 #ScopedRoutes_ScopeKeyBuilder_FragmentBuilder: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.ScopedRoutes_ScopeKeyBuilder_FragmentBuilder"
 	// Specifies how a header field's value should be extracted.
 	header_value_extractor?: #ScopedRoutes_ScopeKeyBuilder_FragmentBuilder_HeaderValueExtractor
 }
@@ -794,6 +811,7 @@ HttpConnectionManager_Tracing_OperationName_EGRESS:  "EGRESS"
 //
 //    Each 'a=b' key-value pair constitutes an 'element' of the header field.
 #ScopedRoutes_ScopeKeyBuilder_FragmentBuilder_HeaderValueExtractor: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.ScopedRoutes_ScopeKeyBuilder_FragmentBuilder_HeaderValueExtractor"
 	// The name of the header field to extract the value from.
 	//
 	// .. note::
@@ -815,6 +833,7 @@ HttpConnectionManager_Tracing_OperationName_EGRESS:  "EGRESS"
 
 // Specifies a header field's key value pair to match on.
 #ScopedRoutes_ScopeKeyBuilder_FragmentBuilder_HeaderValueExtractor_KvElement: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.ScopedRoutes_ScopeKeyBuilder_FragmentBuilder_HeaderValueExtractor_KvElement"
 	// The separator between key and value (e.g., '=' separates 'k=v;...').
 	// If an element is an empty string, the element is ignored.
 	// If an element contains no separator, the whole element is parsed as key and the

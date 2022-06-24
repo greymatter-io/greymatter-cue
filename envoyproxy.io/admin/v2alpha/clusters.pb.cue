@@ -8,6 +8,7 @@ import (
 // Admin endpoint uses this wrapper for `/clusters` to display cluster status information.
 // See :ref:`/clusters <operations_admin_interface_clusters>` for more information.
 #Clusters: {
+	"@type": "type.googleapis.com/envoy.admin.v2alpha.Clusters"
 	// Mapping from cluster name to each cluster's status.
 	cluster_statuses?: [...#ClusterStatus]
 }
@@ -15,6 +16,7 @@ import (
 // Details an individual cluster's current status.
 // [#next-free-field: 6]
 #ClusterStatus: {
+	"@type": "type.googleapis.com/envoy.admin.v2alpha.ClusterStatus"
 	// Name of the cluster.
 	name?: string
 	// Denotes whether this cluster was added via API or configured statically.
@@ -60,6 +62,7 @@ import (
 // Current state of a particular host.
 // [#next-free-field: 10]
 #HostStatus: {
+	"@type": "type.googleapis.com/envoy.admin.v2alpha.HostStatus"
 	// Address of this host.
 	address?: core.#Address
 	// List of stats specific to this host.
@@ -106,6 +109,7 @@ import (
 // Health status for a host.
 // [#next-free-field: 7]
 #HostHealthStatus: {
+	"@type": "type.googleapis.com/envoy.admin.v2alpha.HostHealthStatus"
 	// The host is currently failing active health checks.
 	failed_active_health_check?: bool
 	// The host is currently considered an outlier and has been ejected.

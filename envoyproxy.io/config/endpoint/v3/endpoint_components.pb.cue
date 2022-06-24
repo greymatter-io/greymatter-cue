@@ -6,6 +6,7 @@ import (
 
 // Upstream host identifier.
 #Endpoint: {
+	"@type": "type.googleapis.com/envoy.config.endpoint.v3.Endpoint"
 	// The upstream host address.
 	//
 	// .. attention::
@@ -34,6 +35,7 @@ import (
 // An Endpoint that Envoy can route traffic to.
 // [#next-free-field: 6]
 #LbEndpoint: {
+	"@type":   "type.googleapis.com/envoy.config.endpoint.v3.LbEndpoint"
 	endpoint?: #Endpoint
 	// [#not-implemented-hide:]
 	endpoint_name?: string
@@ -62,6 +64,7 @@ import (
 // [#not-implemented-hide:]
 // A configuration for a LEDS collection.
 #LedsClusterLocalityConfig: {
+	"@type": "type.googleapis.com/envoy.config.endpoint.v3.LedsClusterLocalityConfig"
 	// Configuration for the source of LEDS updates for a Locality.
 	leds_config?: v3.#ConfigSource
 	// The xDS transport protocol glob collection resource name.
@@ -74,6 +77,7 @@ import (
 // they have different priorities.
 // [#next-free-field: 9]
 #LocalityLbEndpoints: {
+	"@type": "type.googleapis.com/envoy.config.endpoint.v3.LocalityLbEndpoints"
 	// Identifies location of where the upstream hosts run.
 	locality?: v3.#Locality
 	// The group of endpoints belonging to the locality specified.
@@ -119,6 +123,7 @@ import (
 
 // The optional health check configuration.
 #Endpoint_HealthCheckConfig: {
+	"@type": "type.googleapis.com/envoy.config.endpoint.v3.Endpoint_HealthCheckConfig"
 	// Optional alternative health check port value.
 	//
 	// By default the health check address port of an upstream host is the same
@@ -137,5 +142,6 @@ import (
 // [#not-implemented-hide:]
 // A list of endpoints of a specific locality.
 #LocalityLbEndpoints_LbEndpointList: {
+	"@type": "type.googleapis.com/envoy.config.endpoint.v3.LocalityLbEndpoints_LbEndpointList"
 	lb_endpoints?: [...#LbEndpoint]
 }

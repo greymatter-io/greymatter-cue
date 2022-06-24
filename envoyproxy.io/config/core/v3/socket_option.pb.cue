@@ -30,6 +30,7 @@ SocketOption_SocketState_STATE_LISTENING: "STATE_LISTENING"
 // It should be noted that the name or level may have different values on different platforms.
 // [#next-free-field: 7]
 #SocketOption: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.SocketOption"
 	// An optional name to give this socket option for debugging, etc.
 	// Uniqueness is not required and no special meaning is assumed.
 	description?: string

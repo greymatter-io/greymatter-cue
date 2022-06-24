@@ -1,12 +1,12 @@
 package v3
 
 import (
-	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 	v3 "envoyproxy.io/config/core/v3"
 )
 
 // Configuration for restricting Proxy-Wasm capabilities available to modules.
 #CapabilityRestrictionConfig: {
+	"@type": "type.googleapis.com/envoy.extensions.wasm.v3.CapabilityRestrictionConfig"
 	// The Proxy-Wasm capabilities which will be allowed. Capabilities are mapped by
 	// name. The *SanitizationConfig* which each capability maps to is currently unimplemented and ignored,
 	// and so should be left empty.
@@ -25,11 +25,13 @@ import (
 //
 // NOTE: This is currently unimplemented.
 #SanitizationConfig: {
+	"@type": "type.googleapis.com/envoy.extensions.wasm.v3.SanitizationConfig"
 }
 
 // Configuration for a Wasm VM.
 // [#next-free-field: 8]
 #VmConfig: {
+	"@type": "type.googleapis.com/envoy.extensions.wasm.v3.VmConfig"
 	// An ID which will be used along with a hash of the wasm code (or the name of the registered Null
 	// VM plugin) to determine which VM will be used for the plugin. All plugins which use the same
 	// *vm_id* and code will use the same VM. May be left blank. Sharing a VM between plugins can
@@ -72,7 +74,7 @@ import (
 	// (proxy_on_start). `google.protobuf.Struct` is serialized as JSON before
 	// passing it to the plugin. `google.protobuf.BytesValue` and
 	// `google.protobuf.StringValue` are passed directly without the wrapper.
-	configuration?: any.#Any
+	configuration?: _
 	// Allow the wasm file to include pre-compiled code on VMs which support it.
 	// Warning: this should only be enable for trusted sources as the precompiled code is not
 	// verified.
@@ -90,6 +92,7 @@ import (
 }
 
 #EnvironmentVariables: {
+	"@type": "type.googleapis.com/envoy.extensions.wasm.v3.EnvironmentVariables"
 	// The keys of *Envoy's* environment variables exposed to this VM. In other words, if a key exists in Envoy's environment
 	// variables, then that key-value pair will be injected. Note that if a key does not exist, it will be ignored.
 	host_env_keys?: [...string]
@@ -100,6 +103,7 @@ import (
 // Base Configuration for Wasm Plugins e.g. filters and services.
 // [#next-free-field: 7]
 #PluginConfig: {
+	"@type": "type.googleapis.com/envoy.extensions.wasm.v3.PluginConfig"
 	// A unique name for a filters/services in a VM for use in identifying the filter/service if
 	// multiple filters/services are handled by the same *vm_id* and *root_id* and for
 	// logging/debugging.
@@ -114,7 +118,7 @@ import (
 	// `google.protobuf.Struct` is serialized as JSON before
 	// passing it to the plugin. `google.protobuf.BytesValue` and
 	// `google.protobuf.StringValue` are passed directly without the wrapper.
-	configuration?: any.#Any
+	configuration?: _
 	// If there is a fatal error on the VM (e.g. exception, abort(), on_start or on_configure return false),
 	// then all plugins associated with the VM will either fail closed (by default), e.g. by returning an HTTP 503 error,
 	// or fail open (if 'fail_open' is set to true) by bypassing the filter. Note: when on_start or on_configure return false
@@ -128,6 +132,7 @@ import (
 // WasmService is configured as a built-in *envoy.wasm_service* :ref:`WasmService
 // <config_wasm_service>` This opaque configuration will be used to create a Wasm Service.
 #WasmService: {
+	"@type": "type.googleapis.com/envoy.extensions.wasm.v3.WasmService"
 	// General plugin configuration.
 	config?: #PluginConfig
 	// If true, create a single VM rather than creating one VM per worker. Such a singleton can

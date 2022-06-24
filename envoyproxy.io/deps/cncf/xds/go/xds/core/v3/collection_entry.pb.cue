@@ -1,7 +1,6 @@
 package v3
 
 import (
-	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 )
 
 #CollectionEntry: {
@@ -12,5 +11,5 @@ import (
 #CollectionEntry_InlineEntry: {
 	name?:     string
 	version?:  string
-	resource?: any.#Any
+	resource?: _
 }

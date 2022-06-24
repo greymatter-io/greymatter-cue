@@ -2,6 +2,7 @@ package v2alpha
 
 // Configuration for the UDP proxy filter.
 #UdpProxyConfig: {
+	"@type": "type.googleapis.com/envoy.config.filter.udp.udp_proxy.v2alpha.UdpProxyConfig"
 	// The stat prefix used when emitting UDP proxy filter stats.
 	stat_prefix?: string
 	// The upstream cluster to connect to.

@@ -6,6 +6,7 @@ import (
 
 // [#next-free-field: 6]
 #RateLimit: {
+	"@type": "type.googleapis.com/envoy.config.filter.thrift.rate_limit.v2alpha1.RateLimit"
 	// The rate limit domain to use in the rate limit service request.
 	domain?: string
 	// Specifies the rate limit configuration stage. Each configured rate limit filter performs a

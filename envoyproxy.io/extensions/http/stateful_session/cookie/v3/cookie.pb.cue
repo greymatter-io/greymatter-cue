@@ -27,6 +27,7 @@ import (
 //
 // [#extension: envoy.http.stateful_session.cookie]
 #CookieBasedSessionState: {
+	"@type": "type.googleapis.com/envoy.extensions.http.stateful_session.cookie.v3.CookieBasedSessionState"
 	// The cookie configuration used to track session state.
 	cookie?: v3.#Cookie
 }

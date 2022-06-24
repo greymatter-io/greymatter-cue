@@ -4,6 +4,7 @@ package v3
 // Store the peer identity in dynamic metadata, namespace is "envoy.transport_socket.peer_information", key is "peer_identity".
 // https://cloud.google.com/security/encryption-in-transit/application-layer-transport-security/
 #Alts: {
+	"@type": "type.googleapis.com/envoy.extensions.transport_sockets.alts.v3.Alts"
 	// The location of a handshaker service, this is usually 169.254.169.254:8080
 	// on GCE.
 	handshaker_service?: string

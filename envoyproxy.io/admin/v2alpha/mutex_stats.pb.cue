@@ -8,6 +8,7 @@ package v2alpha
 // correspond to core clock frequency. For more information, see the `CycleClock`
 // [docs](https://github.com/abseil/abseil-cpp/blob/master/absl/base/internal/cycleclock.h).
 #MutexStats: {
+	"@type": "type.googleapis.com/envoy.admin.v2alpha.MutexStats"
 	// The number of individual mutex contentions which have occurred since startup.
 	num_contentions?: uint64
 	// The length of the current contention wait cycle.

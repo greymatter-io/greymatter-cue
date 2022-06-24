@@ -1,23 +1,24 @@
 package v3
 
 import (
-	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 	v3 "envoyproxy.io/type/matcher/v3"
 	v31 "envoyproxy.io/config/core/v3"
 )
 
 // Configuration for pluggable stats sinks.
 #StatsSink: {
+	"@type": "type.googleapis.com/envoy.config.metrics.v3.StatsSink"
 	// The name of the stats sink to instantiate. The name must match a supported
 	// stats sink.
 	// See the :ref:`extensions listed in typed_config below <extension_category_envoy.stats_sinks>` for the default list of available stats sink.
 	// Sinks optionally support tagged/multiple dimensional metrics.
 	name?:         string
-	typed_config?: any.#Any
+	typed_config?: _
 }
 
 // Statistics configuration such as tagging.
 #StatsConfig: {
+	"@type": "type.googleapis.com/envoy.config.metrics.v3.StatsConfig"
 	// Each stat name is iteratively processed through these tag specifiers.
 	// When a tag is matched, the first capture group is removed from the name so
 	// later :ref:`TagSpecifiers <envoy_v3_api_msg_config.metrics.v3.TagSpecifier>` cannot match that
@@ -79,6 +80,7 @@ import (
 
 // Configuration for disabling stat instantiation.
 #StatsMatcher: {
+	"@type": "type.googleapis.com/envoy.config.metrics.v3.StatsMatcher"
 	// If `reject_all` is true, then all stats are disabled. If `reject_all` is false, then all
 	// stats are enabled.
 	reject_all?: bool
@@ -95,6 +97,7 @@ import (
 // unconditionally set if a fixed value, otherwise it will only be set if one
 // or more capture groups in the regex match.
 #TagSpecifier: {
+	"@type": "type.googleapis.com/envoy.config.metrics.v3.TagSpecifier"
 	// Attaches an identifier to the tag values to identify the tag being in the
 	// sink. Envoy has a set of default names and regexes to extract dynamic
 	// portions of existing stats, which can be found in :repo:`well_known_names.h
@@ -169,6 +172,7 @@ import (
 
 // Specifies a matcher for stats and the buckets that matching stats should use.
 #HistogramBucketSettings: {
+	"@type": "type.googleapis.com/envoy.config.metrics.v3.HistogramBucketSettings"
 	// The stats that this rule applies to. The match is applied to the original stat name
 	// before tag-extraction, for example `cluster.exampleclustername.upstream_cx_length_ms`.
 	match?: v3.#StringMatcher
@@ -181,6 +185,7 @@ import (
 // tagged metrics.
 // [#extension: envoy.stat_sinks.statsd]
 #StatsdSink: {
+	"@type": "type.googleapis.com/envoy.config.metrics.v3.StatsdSink"
 	// The UDP address of a running `statsd <https://github.com/etsy/statsd>`_
 	// compliant listener. If specified, statistics will be flushed to this
 	// address.
@@ -224,6 +229,7 @@ import (
 // <envoy_v3_api_msg_config.metrics.v3.StatsConfig>`.
 // [#extension: envoy.stat_sinks.dog_statsd]
 #DogStatsdSink: {
+	"@type": "type.googleapis.com/envoy.config.metrics.v3.DogStatsdSink"
 	// The UDP address of a running DogStatsD compliant listener. If specified,
 	// statistics will be flushed to this address.
 	address?: v31.#Address
@@ -250,6 +256,7 @@ import (
 // Streaming is started through an admin endpoint :http:get:`/hystrix_event_stream`.
 // [#extension: envoy.stat_sinks.hystrix]
 #HystrixSink: {
+	"@type": "type.googleapis.com/envoy.config.metrics.v3.HystrixSink"
 	// The number of buckets the rolling statistical window is divided into.
 	//
 	// Each time the sink is flushed, all relevant Envoy statistics are sampled and

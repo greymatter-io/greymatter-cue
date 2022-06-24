@@ -1,7 +1,6 @@
 package v2
 
 import (
-	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 	core "envoyproxy.io/api/v2/core"
 )
 
@@ -29,6 +28,7 @@ TLSProperties_TLSVersion_TLSv1_2:             "TLSv1_2"
 TLSProperties_TLSVersion_TLSv1_3:             "TLSv1_3"
 
 #TCPAccessLogEntry: {
+	"@type": "type.googleapis.com/envoy.data.accesslog.v2.TCPAccessLogEntry"
 	// Common properties shared by all Envoy access logs.
 	common_properties?: #AccessLogCommon
 	// Properties of the TCP connection.
@@ -36,6 +36,7 @@ TLSProperties_TLSVersion_TLSv1_3:             "TLSv1_3"
 }
 
 #HTTPAccessLogEntry: {
+	"@type": "type.googleapis.com/envoy.data.accesslog.v2.HTTPAccessLogEntry"
 	// Common properties shared by all Envoy access logs.
 	common_properties?: #AccessLogCommon
 	protocol_version?:  #HTTPAccessLogEntry_HTTPVersion
@@ -47,6 +48,7 @@ TLSProperties_TLSVersion_TLSv1_3:             "TLSv1_3"
 
 // Defines fields for a connection
 #ConnectionProperties: {
+	"@type": "type.googleapis.com/envoy.data.accesslog.v2.ConnectionProperties"
 	// Number of bytes received from downstream.
 	received_bytes?: uint64
 	// Number of bytes sent to downstream.
@@ -56,6 +58,7 @@ TLSProperties_TLSVersion_TLSv1_3:             "TLSv1_3"
 // Defines fields that are shared by all Envoy access logs.
 // [#next-free-field: 22]
 #AccessLogCommon: {
+	"@type": "type.googleapis.com/envoy.data.accesslog.v2.AccessLogCommon"
 	// [#not-implemented-hide:]
 	// This field indicates the rate at which this log entry was sampled.
 	// Valid range is (0.0, 1.0].
@@ -134,12 +137,13 @@ TLSProperties_TLSVersion_TLSv1_3:             "TLSv1_3"
 	// Map of filter state in stream info that have been configured to be logged. If the filter
 	// state serialized to any message other than `google.protobuf.Any` it will be packed into
 	// `google.protobuf.Any`.
-	filter_state_objects?: [string]: any.#Any
+	filter_state_objects?: [string]: _
 }
 
 // Flags indicating occurrences during request/response processing.
 // [#next-free-field: 20]
 #ResponseFlags: {
+	"@type": "type.googleapis.com/envoy.data.accesslog.v2.ResponseFlags"
 	// Indicates local server healthcheck failed.
 	failed_local_healthcheck?: bool
 	// Indicates there was no healthy upstream.
@@ -184,6 +188,7 @@ TLSProperties_TLSVersion_TLSv1_3:             "TLSv1_3"
 // Properties of a negotiated TLS connection.
 // [#next-free-field: 7]
 #TLSProperties: {
+	"@type": "type.googleapis.com/envoy.data.accesslog.v2.TLSProperties"
 	// Version of TLS that was negotiated.
 	tls_version?: #TLSProperties_TLSVersion
 	// TLS cipher suite negotiated during handshake. The value is a
@@ -204,6 +209,7 @@ TLSProperties_TLSVersion_TLSv1_3:             "TLSv1_3"
 
 // [#next-free-field: 14]
 #HTTPRequestProperties: {
+	"@type": "type.googleapis.com/envoy.data.accesslog.v2.HTTPRequestProperties"
 	// The request method (RFC 7231/2616).
 	request_method?: core.#RequestMethod
 	// The scheme portion of the incoming request URI.
@@ -245,6 +251,7 @@ TLSProperties_TLSVersion_TLSv1_3:             "TLSv1_3"
 
 // [#next-free-field: 7]
 #HTTPResponseProperties: {
+	"@type": "type.googleapis.com/envoy.data.accesslog.v2.HTTPResponseProperties"
 	// The HTTP response code returned by Envoy.
 	response_code?: uint32
 	// Size of the HTTP response headers in bytes.
@@ -266,10 +273,12 @@ TLSProperties_TLSVersion_TLSv1_3:             "TLSv1_3"
 }
 
 #ResponseFlags_Unauthorized: {
+	"@type": "type.googleapis.com/envoy.data.accesslog.v2.ResponseFlags_Unauthorized"
 	reason?: #ResponseFlags_Unauthorized_Reason
 }
 
 #TLSProperties_CertificateProperties: {
+	"@type": "type.googleapis.com/envoy.data.accesslog.v2.TLSProperties_CertificateProperties"
 	// SANs present in the certificate.
 	subject_alt_name?: [...#TLSProperties_CertificateProperties_SubjectAltName]
 	// The subject field of the certificate.
@@ -277,7 +286,8 @@ TLSProperties_TLSVersion_TLSv1_3:             "TLSv1_3"
 }
 
 #TLSProperties_CertificateProperties_SubjectAltName: {
-	uri?: string
+	"@type": "type.googleapis.com/envoy.data.accesslog.v2.TLSProperties_CertificateProperties_SubjectAltName"
+	uri?:    string
 	// [#not-implemented-hide:]
 	dns?: string
 }

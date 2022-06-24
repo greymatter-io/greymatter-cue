@@ -11,6 +11,7 @@ import (
 // to work.
 // [#extension: envoy.filters.network.sni_dynamic_forward_proxy]
 #FilterConfig: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.network.sni_dynamic_forward_proxy.v3.FilterConfig"
 	// The DNS cache configuration that the filter will attach to. Note this
 	// configuration must match that of associated :ref:`dynamic forward proxy
 	// cluster configuration
