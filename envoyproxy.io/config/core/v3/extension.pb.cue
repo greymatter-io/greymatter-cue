@@ -1,8 +1,5 @@
 package v3
 
-import (
-)
-
 // Message type for extension configuration.
 // [#next-major-version: revisit all existing typed_config that doesn't use this wrapper.].
 #TypedExtensionConfig: {

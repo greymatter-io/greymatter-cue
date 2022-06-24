@@ -1,8 +1,5 @@
 package v3
 
-import (
-)
-
 // Describes a type of API listener, which is used in non-proxy clients. The type of API
 // exposed to the non-proxy application depends on the type of API listener.
 #ApiListener: {

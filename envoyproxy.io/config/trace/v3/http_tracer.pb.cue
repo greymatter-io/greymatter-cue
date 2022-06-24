@@ -1,8 +1,5 @@
 package v3
 
-import (
-)
-
 // The tracing configuration specifies settings for an HTTP tracer provider used by Envoy.
 //
 // Envoy may support other tracers in the future, but right now the HTTP tracer is the only one

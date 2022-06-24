@@ -1,8 +1,5 @@
 package v2alpha1
 
-import (
-)
-
 // Dubbo Protocol types supported by Envoy.
 #ProtocolType: "Dubbo"
 

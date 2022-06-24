@@ -1,8 +1,5 @@
 package v3
 
-import (
-)
-
 #Filter: {
 	"@type": "type.googleapis.com/envoy.type.matcher.v3.Filter"
 	// The name of the filter configuration.

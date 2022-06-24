@@ -1,8 +1,5 @@
 package cluster
 
-import (
-)
-
 #Filter: {
 	"@type": "type.googleapis.com/envoy.api.v2.cluster.Filter"
 	// The name of the filter to instantiate. The name must match a
