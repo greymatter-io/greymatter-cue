@@ -1,5 +1,5 @@
 package v3
 
-// [#extension: envoy.cache.simple_http_cache]
+// [#extension: envoy.extensions.http.cache.simple]
 #SimpleHttpCacheConfig: {
 }

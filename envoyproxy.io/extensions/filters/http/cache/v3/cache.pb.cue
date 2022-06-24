@@ -9,7 +9,7 @@ import (
 // [#extension: envoy.filters.http.cache]
 #CacheConfig: {
 	// Config specific to the cache storage implementation.
-	// [#extension-category: envoy.filters.http.cache]
+	// [#extension-category: envoy.http.cache]
 	typed_config?: any.#Any
 	// List of matching rules that defines allowed *Vary* headers.
 	//
