@@ -12,6 +12,7 @@ FaultDelay_FaultDelayType_FIXED: "FIXED"
 // HTTP/gRPC/Mongo/Redis operation or delay proxying of TCP connections.
 // [#next-free-field: 6]
 #FaultDelay: {
+	"@type": "type.googleapis.com/envoy.config.filter.fault.v2.FaultDelay"
 	// Unused and deprecated. Will be removed in the next release.
 	//
 	// Deprecated: Do not use.
@@ -31,6 +32,7 @@ FaultDelay_FaultDelayType_FIXED: "FIXED"
 
 // Describes a rate limit to be applied.
 #FaultRateLimit: {
+	"@type": "type.googleapis.com/envoy.config.filter.fault.v2.FaultRateLimit"
 	// A fixed rate limit.
 	fixed_limit?: #FaultRateLimit_FixedLimit
 	// Rate limits are controlled via an HTTP header (if applicable).
@@ -43,10 +45,12 @@ FaultDelay_FaultDelayType_FIXED: "FIXED"
 // :ref:`HTTP fault filter <config_http_filters_fault_injection_http_header>` documentation for
 // more information.
 #FaultDelay_HeaderDelay: {
+	"@type": "type.googleapis.com/envoy.config.filter.fault.v2.FaultDelay_HeaderDelay"
 }
 
 // Describes a fixed/constant rate limit.
 #FaultRateLimit_FixedLimit: {
+	"@type": "type.googleapis.com/envoy.config.filter.fault.v2.FaultRateLimit_FixedLimit"
 	// The limit supplied in KiB/s.
 	limit_kbps?: uint64
 }
@@ -55,4 +59,5 @@ FaultDelay_FaultDelayType_FIXED: "FIXED"
 // :ref:`HTTP fault filter <config_http_filters_fault_injection_http_header>` documentation for
 // more information.
 #FaultRateLimit_HeaderLimit: {
+	"@type": "type.googleapis.com/envoy.config.filter.fault.v2.FaultRateLimit_HeaderLimit"
 }

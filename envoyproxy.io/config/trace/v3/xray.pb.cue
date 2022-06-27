@@ -7,6 +7,7 @@ import (
 
 // [#extension: envoy.tracers.xray]
 #XRayConfig: {
+	"@type": "type.googleapis.com/envoy.config.trace.v3.XRayConfig"
 	// The UDP endpoint of the X-Ray Daemon where the spans will be sent.
 	// If this value is not set, the default value of 127.0.0.1:2000 will be used.
 	daemon_endpoint?: v3.#SocketAddress
@@ -24,6 +25,7 @@ import (
 }
 
 #XRayConfig_SegmentFields: {
+	"@type": "type.googleapis.com/envoy.config.trace.v3.XRayConfig_SegmentFields"
 	// The type of AWS resource, e.g. "AWS::AppMesh::Proxy".
 	origin?: string
 	// AWS resource metadata dictionary.

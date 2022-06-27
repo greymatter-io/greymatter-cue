@@ -2,6 +2,7 @@ package core
 
 // Envoy external URI descriptor
 #HttpUri: {
+	"@type": "type.googleapis.com/envoy.api.v2.core.HttpUri"
 	// The HTTP server URI. It should be a full FQDN with protocol, host and path.
 	//
 	// Example:

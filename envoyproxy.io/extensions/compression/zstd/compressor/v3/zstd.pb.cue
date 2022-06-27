@@ -20,6 +20,7 @@ Zstd_Strategy_BTULTRA2: "BTULTRA2"
 
 // [#next-free-field: 6]
 #Zstd: {
+	"@type": "type.googleapis.com/envoy.extensions.compression.zstd.compressor.v3.Zstd"
 	// Set compression parameters according to pre-defined compression level table.
 	// Note that exact compression parameters are dynamically determined,
 	// depending on both compression level and source content size (when known).

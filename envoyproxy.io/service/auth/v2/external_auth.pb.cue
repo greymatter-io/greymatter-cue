@@ -7,12 +7,14 @@ import (
 )
 
 #CheckRequest: {
+	"@type": "type.googleapis.com/envoy.service.auth.v2.CheckRequest"
 	// The request attributes.
 	attributes?: #AttributeContext
 }
 
 // HTTP attributes for a denied response.
 #DeniedHttpResponse: {
+	"@type": "type.googleapis.com/envoy.service.auth.v2.DeniedHttpResponse"
 	// This field allows the authorization service to send a HTTP response status
 	// code to the downstream client other than 403 (Forbidden).
 	status?: _type.#HttpStatus
@@ -27,6 +29,7 @@ import (
 
 // HTTP attributes for an ok response.
 #OkHttpResponse: {
+	"@type": "type.googleapis.com/envoy.service.auth.v2.OkHttpResponse"
 	// HTTP entity headers in addition to the original request headers. This allows the authorization
 	// service to append, to add or to override headers from the original request before
 	// dispatching it to the upstream. Note that the `append` field in `HeaderValueOption` defaults to
@@ -39,6 +42,7 @@ import (
 
 // Intended for gRPC and Network Authorization servers `only`.
 #CheckResponse: {
+	"@type": "type.googleapis.com/envoy.service.auth.v2.CheckResponse"
 	// Status `OK` allows the request. Any other status indicates the request should be denied.
 	status?: status.#Status
 	// Supplies http attributes for a denied response.
@@ -57,4 +61,5 @@ import (
 
 // UnimplementedAuthorizationServer can be embedded to have forward compatible implementations.
 #UnimplementedAuthorizationServer: {
+	"@type": "type.googleapis.com/envoy.service.auth.v2.UnimplementedAuthorizationServer"
 }

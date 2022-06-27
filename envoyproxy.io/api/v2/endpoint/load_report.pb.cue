@@ -12,6 +12,7 @@ import (
 // [#not-implemented-hide:] Not configuration. TBD how to doc proto APIs.
 // [#next-free-field: 9]
 #UpstreamLocalityStats: {
+	"@type": "type.googleapis.com/envoy.api.v2.endpoint.UpstreamLocalityStats"
 	// Name of zone, region and optionally endpoint group these metrics were
 	// collected from. Zone and region names could be empty if unknown.
 	locality?: core.#Locality
@@ -41,6 +42,7 @@ import (
 // [#not-implemented-hide:] Not configuration. TBD how to doc proto APIs.
 // [#next-free-field: 8]
 #UpstreamEndpointStats: {
+	"@type": "type.googleapis.com/envoy.api.v2.endpoint.UpstreamEndpointStats"
 	// Upstream host address.
 	address?: core.#Address
 	// Opaque and implementation dependent metadata of the
@@ -74,6 +76,7 @@ import (
 
 // [#not-implemented-hide:] Not configuration. TBD how to doc proto APIs.
 #EndpointLoadMetricStats: {
+	"@type": "type.googleapis.com/envoy.api.v2.endpoint.EndpointLoadMetricStats"
 	// Name of the metric; may be empty.
 	metric_name?: string
 	// Number of calls that finished and included this metric.
@@ -89,6 +92,7 @@ import (
 // Next ID: 7
 // [#next-free-field: 7]
 #ClusterStats: {
+	"@type": "type.googleapis.com/envoy.api.v2.endpoint.ClusterStats"
 	// The name of the cluster.
 	cluster_name?: string
 	// The eds_cluster_config service_name of the cluster.
@@ -115,6 +119,7 @@ import (
 }
 
 #ClusterStats_DroppedRequests: {
+	"@type": "type.googleapis.com/envoy.api.v2.endpoint.ClusterStats_DroppedRequests"
 	// Identifier for the policy specifying the drop.
 	category?: string
 	// Total number of deliberately dropped requests for the category.

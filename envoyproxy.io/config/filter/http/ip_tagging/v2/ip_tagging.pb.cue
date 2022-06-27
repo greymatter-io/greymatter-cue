@@ -17,6 +17,7 @@ IPTagging_RequestType_INTERNAL: "INTERNAL"
 IPTagging_RequestType_EXTERNAL: "EXTERNAL"
 
 #IPTagging: {
+	"@type": "type.googleapis.com/envoy.config.filter.http.ip_tagging.v2.IPTagging"
 	// The type of request the filter should apply to.
 	request_type?: #IPTagging_RequestType
 	// [#comment:TODO(ccaraman): Extend functionality to load IP tags from file system.
@@ -27,6 +28,7 @@ IPTagging_RequestType_EXTERNAL: "EXTERNAL"
 
 // Supplies the IP tag name and the IP address subnets.
 #IPTagging_IPTag: {
+	"@type": "type.googleapis.com/envoy.config.filter.http.ip_tagging.v2.IPTagging_IPTag"
 	// Specifies the IP tag name to apply.
 	ip_tag_name?: string
 	// A list of IP address subnets that will be tagged with

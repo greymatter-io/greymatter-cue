@@ -4,11 +4,13 @@ package v3
 // display certificate information. See :ref:`/certs <operations_admin_interface_certs>` for more
 // information.
 #Certificates: {
+	"@type": "type.googleapis.com/envoy.admin.v3.Certificates"
 	// List of certificates known to an Envoy.
 	certificates?: [...#Certificate]
 }
 
 #Certificate: {
+	"@type": "type.googleapis.com/envoy.admin.v3.Certificate"
 	// Details of CA certificate.
 	ca_cert?: [...#CertificateDetails]
 	// Details of Certificate Chain
@@ -17,6 +19,7 @@ package v3
 
 // [#next-free-field: 8]
 #CertificateDetails: {
+	"@type": "type.googleapis.com/envoy.admin.v3.CertificateDetails"
 	// Path of the certificate.
 	path?: string
 	// Certificate Serial Number.
@@ -34,12 +37,14 @@ package v3
 }
 
 #SubjectAlternateName: {
+	"@type":     "type.googleapis.com/envoy.admin.v3.SubjectAlternateName"
 	dns?:        string
 	uri?:        string
 	ip_address?: string
 }
 
 #CertificateDetails_OcspDetails: {
+	"@type": "type.googleapis.com/envoy.admin.v3.CertificateDetails_OcspDetails"
 	// Indicates the time from which the OCSP response is valid.
 	valid_from?: string
 	// Indicates the time at which the OCSP response expires.

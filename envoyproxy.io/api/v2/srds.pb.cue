@@ -3,6 +3,7 @@ package v2
 // [#not-implemented-hide:] Not configuration. Workaround c++ protobuf issue with importing
 // services: https://github.com/google/protobuf/issues/4221 and protoxform to upgrade the file.
 #SrdsDummy: {
+	"@type": "type.googleapis.com/envoy.api.v2.SrdsDummy"
 }
 
 // ScopedRoutesDiscoveryServiceClient is the client API for ScopedRoutesDiscoveryService service.
@@ -19,6 +20,7 @@ package v2
 
 // UnimplementedScopedRoutesDiscoveryServiceServer can be embedded to have forward compatible implementations.
 #UnimplementedScopedRoutesDiscoveryServiceServer: {
+	"@type": "type.googleapis.com/envoy.api.v2.UnimplementedScopedRoutesDiscoveryServiceServer"
 }
 
 #ScopedRoutesDiscoveryService_StreamScopedRoutesServer: _

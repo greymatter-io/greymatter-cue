@@ -12,6 +12,7 @@ import (
 // You can find out more about this error model and how to work with it in the
 // [API Design Guide](https://cloud.google.com/apis/design/errors).
 #Status: {
+	"@type": "type.googleapis.com/google.golang.org.genproto.googleapis.rpc.status.Status"
 	// The status code, which should be an enum value of [google.rpc.Code][google.rpc.Code].
 	code?: int32
 	// A developer-facing error message, which should be in English. Any

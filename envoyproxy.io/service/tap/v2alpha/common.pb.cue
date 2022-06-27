@@ -19,6 +19,7 @@ OutputSink_Format_PROTO_TEXT:                    "PROTO_TEXT"
 
 // Tap configuration.
 #TapConfig: {
+	"@type": "type.googleapis.com/envoy.service.tap.v2alpha.TapConfig"
 	// The match configuration. If the configuration matches the data source being tapped, a tap will
 	// occur, with the result written to the configured output.
 	match_config?: #MatchPredicate
@@ -40,6 +41,7 @@ OutputSink_Format_PROTO_TEXT:                    "PROTO_TEXT"
 // configurations to be built using various logical operators.
 // [#next-free-field: 9]
 #MatchPredicate: {
+	"@type": "type.googleapis.com/envoy.service.tap.v2alpha.MatchPredicate"
 	// A set that describes a logical OR. If any member of the set matches, the match configuration
 	// matches.
 	or_match?: #MatchPredicate_MatchSet
@@ -62,12 +64,14 @@ OutputSink_Format_PROTO_TEXT:                    "PROTO_TEXT"
 
 // HTTP headers match configuration.
 #HttpHeadersMatch: {
+	"@type": "type.googleapis.com/envoy.service.tap.v2alpha.HttpHeadersMatch"
 	// HTTP headers to match.
 	headers?: [...route.#HeaderMatcher]
 }
 
 // Tap output configuration.
 #OutputConfig: {
+	"@type": "type.googleapis.com/envoy.service.tap.v2alpha.OutputConfig"
 	// Output sinks for tap data. Currently a single sink is allowed in the list. Once multiple
 	// sink types are supported this constraint will be relaxed.
 	sinks?: [...#OutputSink]
@@ -92,6 +96,7 @@ OutputSink_Format_PROTO_TEXT:                    "PROTO_TEXT"
 
 // Tap output sink configuration.
 #OutputSink: {
+	"@type": "type.googleapis.com/envoy.service.tap.v2alpha.OutputSink"
 	// Sink output format.
 	format?: #OutputSink_Format
 	// Tap output will be streamed out the :http:post:`/tap` admin endpoint.
@@ -112,10 +117,12 @@ OutputSink_Format_PROTO_TEXT:                    "PROTO_TEXT"
 
 // Streaming admin sink configuration.
 #StreamingAdminSink: {
+	"@type": "type.googleapis.com/envoy.service.tap.v2alpha.StreamingAdminSink"
 }
 
 // The file per tap sink outputs a discrete file for every tapped stream.
 #FilePerTapSink: {
+	"@type": "type.googleapis.com/envoy.service.tap.v2alpha.FilePerTapSink"
 	// Path prefix. The output file will be of the form <path_prefix>_<id>.pb, where <id> is an
 	// identifier distinguishing the recorded trace for stream instances (the Envoy
 	// connection ID, HTTP stream ID, etc.).
@@ -125,6 +132,7 @@ OutputSink_Format_PROTO_TEXT:                    "PROTO_TEXT"
 // [#not-implemented-hide:] Streaming gRPC sink configuration sends the taps to an external gRPC
 // server.
 #StreamingGrpcSink: {
+	"@type": "type.googleapis.com/envoy.service.tap.v2alpha.StreamingGrpcSink"
 	// Opaque identifier, that will be sent back to the streaming grpc server.
 	tap_id?: string
 	// The gRPC server that hosts the Tap Sink Service.
@@ -133,6 +141,7 @@ OutputSink_Format_PROTO_TEXT:                    "PROTO_TEXT"
 
 // A set of match configurations used for logical operations.
 #MatchPredicate_MatchSet: {
+	"@type": "type.googleapis.com/envoy.service.tap.v2alpha.MatchPredicate_MatchSet"
 	// The list of rules that make up the set.
 	rules?: [...#MatchPredicate]
 }

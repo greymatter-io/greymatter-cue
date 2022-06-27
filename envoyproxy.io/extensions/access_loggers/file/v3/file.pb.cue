@@ -10,6 +10,7 @@ import (
 // AccessLog.
 // [#next-free-field: 6]
 #FileAccessLog: {
+	"@type": "type.googleapis.com/envoy.extensions.access_loggers.file.v3.FileAccessLog"
 	// A path to a local file to which to write the access log entries.
 	path?: string
 	// Access log :ref:`format string<config_access_log_format_strings>`.

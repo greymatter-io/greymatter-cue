@@ -24,6 +24,7 @@ package v2
 //    - key: foo
 //
 #MetadataKey: {
+	"@type": "type.googleapis.com/envoy.type.metadata.v2.MetadataKey"
 	// The key name of Metadata to retrieve the Struct from the metadata.
 	// Typically, it represents a builtin subsystem or custom extension.
 	key?: string
@@ -38,6 +39,7 @@ package v2
 
 // Describes what kind of metadata.
 #MetadataKind: {
+	"@type": "type.googleapis.com/envoy.type.metadata.v2.MetadataKind"
 	// Request kind of metadata.
 	request?: #MetadataKind_Request
 	// Route kind of metadata.
@@ -51,23 +53,28 @@ package v2
 // Specifies the segment in a path to retrieve value from Metadata.
 // Currently it is only supported to specify the key, i.e. field name, as one segment of a path.
 #MetadataKey_PathSegment: {
+	"@type": "type.googleapis.com/envoy.type.metadata.v2.MetadataKey_PathSegment"
 	// If specified, use the key to retrieve the value in a Struct.
 	key?: string
 }
 
 // Represents dynamic metadata associated with the request.
 #MetadataKind_Request: {
+	"@type": "type.googleapis.com/envoy.type.metadata.v2.MetadataKind_Request"
 }
 
 // Represents metadata from :ref:`the route<envoy_api_field_route.Route.metadata>`.
 #MetadataKind_Route: {
+	"@type": "type.googleapis.com/envoy.type.metadata.v2.MetadataKind_Route"
 }
 
 // Represents metadata from :ref:`the upstream cluster<envoy_api_field_Cluster.metadata>`.
 #MetadataKind_Cluster: {
+	"@type": "type.googleapis.com/envoy.type.metadata.v2.MetadataKind_Cluster"
 }
 
 // Represents metadata from :ref:`the upstream
 // host<envoy_api_field_endpoint.LbEndpoint.metadata>`.
 #MetadataKind_Host: {
+	"@type": "type.googleapis.com/envoy.type.metadata.v2.MetadataKind_Host"
 }

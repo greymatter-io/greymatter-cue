@@ -7,6 +7,7 @@ import (
 
 // [#next-free-field: 8]
 #AdmissionControl: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.admission_control.v3.AdmissionControl"
 	// If set to false, the admission control filter will operate as a pass-through filter. If the
 	// message is unspecified, the filter will be enabled.
 	enabled?:          v3.#RuntimeFeatureFlag
@@ -42,6 +43,7 @@ import (
 // indicate a successful request must be explicitly specified if not relying on the default
 // values.
 #AdmissionControl_SuccessCriteria: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.admission_control.v3.AdmissionControl_SuccessCriteria"
 	// If HTTP criteria are unspecified, all HTTP status codes below 500 are treated as successful
 	// responses.
 	//
@@ -64,12 +66,14 @@ import (
 }
 
 #AdmissionControl_SuccessCriteria_HttpCriteria: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.admission_control.v3.AdmissionControl_SuccessCriteria_HttpCriteria"
 	// Status code ranges that constitute a successful request. Configurable codes are in the
 	// range [100, 600).
 	http_success_status?: [...v31.#Int32Range]
 }
 
 #AdmissionControl_SuccessCriteria_GrpcCriteria: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.admission_control.v3.AdmissionControl_SuccessCriteria_GrpcCriteria"
 	// Status codes that constitute a successful request.
 	// Mappings can be found at: https://github.com/grpc/grpc/blob/master/doc/statuscodes.md.
 	grpc_success_status?: [...uint32]

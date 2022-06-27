@@ -38,6 +38,7 @@ Span_Link_Type_PARENT_LINKED_SPAN: "PARENT_LINKED_SPAN"
 // The next id is 17.
 // TODO(bdrutu): Add an example.
 #Span: {
+	"@type": "type.googleapis.com/github.com.census-instrumentation.opencensus-proto.gen-go.trace.v1.Span"
 	// A unique identifier for a trace. All spans from the same trace share
 	// the same `trace_id`. The ID is a 16-byte array. An ID with all zeroes
 	// is considered invalid.
@@ -133,6 +134,7 @@ Span_Link_Type_PARENT_LINKED_SPAN: "PARENT_LINKED_SPAN"
 // [google.rpc.Status](https://github.com/googleapis/googleapis/blob/master/google/rpc/status.proto),
 // which is used by [gRPC](https://github.com/grpc).
 #Status: {
+	"@type": "type.googleapis.com/github.com.census-instrumentation.opencensus-proto.gen-go.trace.v1.Status"
 	// The status code. This is optional field. It is safe to assume 0 (OK)
 	// when not set.
 	code?: int32
@@ -142,6 +144,7 @@ Span_Link_Type_PARENT_LINKED_SPAN: "PARENT_LINKED_SPAN"
 
 // The value of an Attribute.
 #AttributeValue: {
+	"@type": "type.googleapis.com/github.com.census-instrumentation.opencensus-proto.gen-go.trace.v1.AttributeValue"
 	// A string up to 256 bytes long.
 	string_value?: #TruncatableString
 	// A 64-bit signed integer.
@@ -154,6 +157,7 @@ Span_Link_Type_PARENT_LINKED_SPAN: "PARENT_LINKED_SPAN"
 
 // The call stack which originated this span.
 #StackTrace: {
+	"@type": "type.googleapis.com/github.com.census-instrumentation.opencensus-proto.gen-go.trace.v1.StackTrace"
 	// Stack frames in this stack trace.
 	stack_frames?: #StackTrace_StackFrames
 	// The hash ID is used to conserve network bandwidth for duplicate
@@ -173,6 +177,7 @@ Span_Link_Type_PARENT_LINKED_SPAN: "PARENT_LINKED_SPAN"
 
 // A description of a binary module.
 #Module: {
+	"@type": "type.googleapis.com/github.com.census-instrumentation.opencensus-proto.gen-go.trace.v1.Module"
 	// TODO: document the meaning of this field.
 	// For example: main binary, kernel modules, and dynamic libraries
 	// such as libc.so, sharedlib.so.
@@ -184,6 +189,7 @@ Span_Link_Type_PARENT_LINKED_SPAN: "PARENT_LINKED_SPAN"
 
 // A string that might be shortened to a specified length.
 #TruncatableString: {
+	"@type": "type.googleapis.com/github.com.census-instrumentation.opencensus-proto.gen-go.trace.v1.TruncatableString"
 	// The shortened string. For example, if the original string was 500 bytes long and
 	// the limit of the string was 128 bytes, then this value contains the first 128
 	// bytes of the 500-byte string. Note that truncation always happens on a
@@ -201,12 +207,14 @@ Span_Link_Type_PARENT_LINKED_SPAN: "PARENT_LINKED_SPAN"
 //
 // See the https://github.com/w3c/distributed-tracing for more details about this field.
 #Span_Tracestate: {
+	"@type": "type.googleapis.com/github.com.census-instrumentation.opencensus-proto.gen-go.trace.v1.Span_Tracestate"
 	// A list of entries that represent the Tracestate.
 	entries?: [...#Span_Tracestate_Entry]
 }
 
 // A set of attributes, each with a key and a value.
 #Span_Attributes: {
+	"@type": "type.googleapis.com/github.com.census-instrumentation.opencensus-proto.gen-go.trace.v1.Span_Attributes"
 	// The set of attributes. The value can be a string, an integer, a double
 	// or the Boolean values `true` or `false`. Note, global attributes like
 	// server name can be set as tags using resource API. Examples of attributes:
@@ -224,6 +232,7 @@ Span_Link_Type_PARENT_LINKED_SPAN: "PARENT_LINKED_SPAN"
 
 // A time-stamped annotation or message event in the Span.
 #Span_TimeEvent: {
+	"@type": "type.googleapis.com/github.com.census-instrumentation.opencensus-proto.gen-go.trace.v1.Span_TimeEvent"
 	// The time the event occurred.
 	time?: string
 	// A text annotation with a set of attributes.
@@ -236,6 +245,7 @@ Span_Link_Type_PARENT_LINKED_SPAN: "PARENT_LINKED_SPAN"
 // on the span, consisting of either user-supplied key-value pairs, or
 // details of a message sent/received between Spans.
 #Span_TimeEvents: {
+	"@type": "type.googleapis.com/github.com.census-instrumentation.opencensus-proto.gen-go.trace.v1.Span_TimeEvents"
 	// A collection of `TimeEvent`s.
 	time_event?: [...#Span_TimeEvent]
 	// The number of dropped annotations in all the included time events.
@@ -251,6 +261,7 @@ Span_Link_Type_PARENT_LINKED_SPAN: "PARENT_LINKED_SPAN"
 // where a single batch handler processes multiple requests from different
 // traces or when the handler receives a request from a different project.
 #Span_Link: {
+	"@type": "type.googleapis.com/github.com.census-instrumentation.opencensus-proto.gen-go.trace.v1.Span_Link"
 	// A unique identifier of a trace that this linked span is part of. The ID is a
 	// 16-byte array.
 	trace_id?: bytes
@@ -267,6 +278,7 @@ Span_Link_Type_PARENT_LINKED_SPAN: "PARENT_LINKED_SPAN"
 // A collection of links, which are references from this span to a span
 // in the same or different trace.
 #Span_Links: {
+	"@type": "type.googleapis.com/github.com.census-instrumentation.opencensus-proto.gen-go.trace.v1.Span_Links"
 	// A collection of links.
 	link?: [...#Span_Link]
 	// The number of dropped links after the maximum size was enforced. If
@@ -275,6 +287,7 @@ Span_Link_Type_PARENT_LINKED_SPAN: "PARENT_LINKED_SPAN"
 }
 
 #Span_Tracestate_Entry: {
+	"@type": "type.googleapis.com/github.com.census-instrumentation.opencensus-proto.gen-go.trace.v1.Span_Tracestate_Entry"
 	// The key must begin with a lowercase letter, and can only contain
 	// lowercase letters 'a'-'z', digits '0'-'9', underscores '_', dashes
 	// '-', asterisks '*', and forward slashes '/'.
@@ -287,6 +300,7 @@ Span_Link_Type_PARENT_LINKED_SPAN: "PARENT_LINKED_SPAN"
 
 // A text annotation with a set of attributes.
 #Span_TimeEvent_Annotation: {
+	"@type": "type.googleapis.com/github.com.census-instrumentation.opencensus-proto.gen-go.trace.v1.Span_TimeEvent_Annotation"
 	// A user-supplied message describing the event.
 	description?: #TruncatableString
 	// A set of attributes on the annotation.
@@ -295,6 +309,7 @@ Span_Link_Type_PARENT_LINKED_SPAN: "PARENT_LINKED_SPAN"
 
 // An event describing a message sent/received between Spans.
 #Span_TimeEvent_MessageEvent: {
+	"@type": "type.googleapis.com/github.com.census-instrumentation.opencensus-proto.gen-go.trace.v1.Span_TimeEvent_MessageEvent"
 	// The type of MessageEvent. Indicates whether the message was sent or
 	// received.
 	type?: #Span_TimeEvent_MessageEvent_Type
@@ -312,6 +327,7 @@ Span_Link_Type_PARENT_LINKED_SPAN: "PARENT_LINKED_SPAN"
 
 // A single stack frame in a stack trace.
 #StackTrace_StackFrame: {
+	"@type": "type.googleapis.com/github.com.census-instrumentation.opencensus-proto.gen-go.trace.v1.StackTrace_StackFrame"
 	// The fully-qualified name that uniquely identifies the function or
 	// method that is active in this frame.
 	function_name?: #TruncatableString
@@ -334,6 +350,7 @@ Span_Link_Type_PARENT_LINKED_SPAN: "PARENT_LINKED_SPAN"
 
 // A collection of stack frames, which can be truncated.
 #StackTrace_StackFrames: {
+	"@type": "type.googleapis.com/github.com.census-instrumentation.opencensus-proto.gen-go.trace.v1.StackTrace_StackFrames"
 	// Stack frames in this call stack.
 	frame?: [...#StackTrace_StackFrame]
 	// The number of stack frames that were dropped because there

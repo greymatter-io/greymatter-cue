@@ -12,6 +12,7 @@ import (
 // As an on_no_match might result in another matching tree being evaluated, this process
 // might repeat several times until the final OnMatch (or no match) is decided.
 #Matcher: {
+	"@type": "type.googleapis.com/envoy.config.common.matcher.v3.Matcher"
 	// A linear list of matchers to evaluate.
 	matcher_list?: #Matcher_MatcherList
 	// A match tree to evaluate.
@@ -27,6 +28,7 @@ import (
 // configurations to be built using various logical operators.
 // [#next-free-field: 11]
 #MatchPredicate: {
+	"@type": "type.googleapis.com/envoy.config.common.matcher.v3.MatchPredicate"
 	// A set that describes a logical OR. If any member of the set matches, the match configuration
 	// matches.
 	or_match?: #MatchPredicate_MatchSet
@@ -53,6 +55,7 @@ import (
 
 // HTTP headers match configuration.
 #HttpHeadersMatch: {
+	"@type": "type.googleapis.com/envoy.config.common.matcher.v3.HttpHeadersMatch"
 	// HTTP headers to match.
 	headers?: [...v3.#HeaderMatcher]
 }
@@ -68,6 +71,7 @@ import (
 //   If multiple patterns are specified, the process is repeated for each pattern. If location of a pattern is known, ``bytes_limit`` should be specified
 //   to scan only part of the http body.
 #HttpGenericBodyMatch: {
+	"@type": "type.googleapis.com/envoy.config.common.matcher.v3.HttpGenericBodyMatch"
 	// Limits search to specified number of bytes - default zero (no limit - match entire captured buffer).
 	bytes_limit?: uint32
 	// List of patterns to match.
@@ -76,6 +80,7 @@ import (
 
 // What to do if a match is successful.
 #Matcher_OnMatch: {
+	"@type": "type.googleapis.com/envoy.config.common.matcher.v3.Matcher_OnMatch"
 	// Nested matcher to evaluate.
 	// If the nested matcher does not match and does not specify
 	// on_no_match, then this matcher is considered not to have
@@ -90,11 +95,13 @@ import (
 // The field matchers are evaluated in order, and the first match
 // wins.
 #Matcher_MatcherList: {
+	"@type": "type.googleapis.com/envoy.config.common.matcher.v3.Matcher_MatcherList"
 	// A list of matchers. First match wins.
 	matchers?: [...#Matcher_MatcherList_FieldMatcher]
 }
 
 #Matcher_MatcherTree: {
+	"@type": "type.googleapis.com/envoy.config.common.matcher.v3.Matcher_MatcherTree"
 	// Protocol-specific specification of input field to match on.
 	input?:           v31.#TypedExtensionConfig
 	exact_match_map?: #Matcher_MatcherTree_MatchMap
@@ -106,6 +113,7 @@ import (
 
 // Predicate to determine if a match is successful.
 #Matcher_MatcherList_Predicate: {
+	"@type": "type.googleapis.com/envoy.config.common.matcher.v3.Matcher_MatcherList_Predicate"
 	// A single predicate to evaluate.
 	single_predicate?: #Matcher_MatcherList_Predicate_SinglePredicate
 	// A list of predicates to be OR-ed together.
@@ -118,6 +126,7 @@ import (
 
 // An individual matcher.
 #Matcher_MatcherList_FieldMatcher: {
+	"@type": "type.googleapis.com/envoy.config.common.matcher.v3.Matcher_MatcherList_FieldMatcher"
 	// Determines if the match succeeds.
 	predicate?: #Matcher_MatcherList_Predicate
 	// What to do if the match succeeds.
@@ -126,6 +135,7 @@ import (
 
 // Predicate for a single input field.
 #Matcher_MatcherList_Predicate_SinglePredicate: {
+	"@type": "type.googleapis.com/envoy.config.common.matcher.v3.Matcher_MatcherList_Predicate_SinglePredicate"
 	// Protocol-specific specification of input field to match on.
 	// [#extension-category: envoy.matching.common_inputs]
 	input?: v31.#TypedExtensionConfig
@@ -138,21 +148,25 @@ import (
 
 // A list of two or more matchers. Used to allow using a list within a oneof.
 #Matcher_MatcherList_Predicate_PredicateList: {
+	"@type": "type.googleapis.com/envoy.config.common.matcher.v3.Matcher_MatcherList_Predicate_PredicateList"
 	predicate?: [...#Matcher_MatcherList_Predicate]
 }
 
 // A map of configured matchers. Used to allow using a map within a oneof.
 #Matcher_MatcherTree_MatchMap: {
+	"@type": "type.googleapis.com/envoy.config.common.matcher.v3.Matcher_MatcherTree_MatchMap"
 	map?: [string]: #Matcher_OnMatch
 }
 
 // A set of match configurations used for logical operations.
 #MatchPredicate_MatchSet: {
+	"@type": "type.googleapis.com/envoy.config.common.matcher.v3.MatchPredicate_MatchSet"
 	// The list of rules that make up the set.
 	rules?: [...#MatchPredicate]
 }
 
 #HttpGenericBodyMatch_GenericTextMatch: {
+	"@type": "type.googleapis.com/envoy.config.common.matcher.v3.HttpGenericBodyMatch_GenericTextMatch"
 	// Text string to be located in HTTP body.
 	string_match?: string
 	// Sequence of bytes to be located in HTTP body.

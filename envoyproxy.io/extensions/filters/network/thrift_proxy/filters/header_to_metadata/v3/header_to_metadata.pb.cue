@@ -17,12 +17,14 @@ HeaderToMetadata_ValueEncode_NONE:   "NONE"
 HeaderToMetadata_ValueEncode_BASE64: "BASE64"
 
 #HeaderToMetadata: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.network.thrift_proxy.filters.header_to_metadata.v3.HeaderToMetadata"
 	// The list of rules to apply to requests.
 	request_rules?: [...#HeaderToMetadata_Rule]
 }
 
 // [#next-free-field: 7]
 #HeaderToMetadata_KeyValuePair: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.network.thrift_proxy.filters.header_to_metadata.v3.HeaderToMetadata_KeyValuePair"
 	// The namespace — if this is empty, the filter's namespace will be used.
 	metadata_namespace?: string
 	// The key to use within the namespace.
@@ -52,6 +54,7 @@ HeaderToMetadata_ValueEncode_BASE64: "BASE64"
 
 // A Rule defines what metadata to apply when a header is present or missing.
 #HeaderToMetadata_Rule: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.network.thrift_proxy.filters.header_to_metadata.v3.HeaderToMetadata_Rule"
 	// Specifies that a match will be performed on the value of a header.
 	//
 	// The header to be extracted.

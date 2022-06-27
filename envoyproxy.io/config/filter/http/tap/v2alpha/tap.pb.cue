@@ -6,6 +6,7 @@ import (
 
 // Top level configuration for the tap filter.
 #Tap: {
+	"@type": "type.googleapis.com/envoy.config.filter.http.tap.v2alpha.Tap"
 	// Common configuration for the HTTP tap filter.
 	common_config?: v2alpha.#CommonExtensionConfig
 }

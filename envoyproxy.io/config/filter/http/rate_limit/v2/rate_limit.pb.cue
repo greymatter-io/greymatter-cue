@@ -6,6 +6,7 @@ import (
 
 // [#next-free-field: 8]
 #RateLimit: {
+	"@type": "type.googleapis.com/envoy.config.filter.http.rate_limit.v2.RateLimit"
 	// The rate limit domain to use when calling the rate limit service.
 	domain?: string
 	// Specifies the rate limit configurations to be applied with the same

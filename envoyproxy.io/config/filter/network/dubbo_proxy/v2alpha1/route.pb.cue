@@ -8,6 +8,7 @@ import (
 
 // [#next-free-field: 6]
 #RouteConfiguration: {
+	"@type": "type.googleapis.com/envoy.config.filter.network.dubbo_proxy.v2alpha1.RouteConfiguration"
 	// The name of the route configuration. Reserved for future use in asynchronous route discovery.
 	name?: string
 	// The interface name of the service.
@@ -22,6 +23,7 @@ import (
 }
 
 #Route: {
+	"@type": "type.googleapis.com/envoy.config.filter.network.dubbo_proxy.v2alpha1.Route"
 	// Route matching parameters.
 	match?: #RouteMatch
 	// Route request to some upstream cluster.
@@ -29,6 +31,7 @@ import (
 }
 
 #RouteMatch: {
+	"@type": "type.googleapis.com/envoy.config.filter.network.dubbo_proxy.v2alpha1.RouteMatch"
 	// Method level routing matching.
 	method?: #MethodMatch
 	// Specifies a set of headers that the route should match on. The router will check the request’s
@@ -39,6 +42,7 @@ import (
 }
 
 #RouteAction: {
+	"@type": "type.googleapis.com/envoy.config.filter.network.dubbo_proxy.v2alpha1.RouteAction"
 	// Indicates the upstream cluster to which the request should be routed.
 	cluster?: string
 	// Multiple upstream clusters can be specified for a given route. The
@@ -49,6 +53,7 @@ import (
 }
 
 #MethodMatch: {
+	"@type": "type.googleapis.com/envoy.config.filter.network.dubbo_proxy.v2alpha1.MethodMatch"
 	// The name of the method.
 	name?: matcher.#StringMatcher
 	// Method parameter definition.
@@ -59,6 +64,7 @@ import (
 
 // The parameter matching type.
 #MethodMatch_ParameterMatchSpecifier: {
+	"@type": "type.googleapis.com/envoy.config.filter.network.dubbo_proxy.v2alpha1.MethodMatch_ParameterMatchSpecifier"
 	// If specified, header match will be performed based on the value of the header.
 	exact_match?: string
 	// If specified, header match will be performed based on range.

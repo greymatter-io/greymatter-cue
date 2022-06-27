@@ -1,6 +1,7 @@
 package auth
 
 #UpstreamTlsContext: {
+	"@type": "type.googleapis.com/envoy.api.v2.auth.UpstreamTlsContext"
 	// Common TLS context settings.
 	//
 	// .. attention::
@@ -26,6 +27,7 @@ package auth
 
 // [#next-free-field: 8]
 #DownstreamTlsContext: {
+	"@type": "type.googleapis.com/envoy.api.v2.auth.DownstreamTlsContext"
 	// Common TLS context settings.
 	common_tls_context?: #CommonTlsContext
 	// If specified, Envoy will reject connections without a valid client
@@ -56,6 +58,7 @@ package auth
 // TLS context shared by both client and server TLS contexts.
 // [#next-free-field: 9]
 #CommonTlsContext: {
+	"@type": "type.googleapis.com/envoy.api.v2.auth.CommonTlsContext"
 	// TLS protocol versions, cipher suites etc.
 	tls_params?: #TlsParameters
 	// :ref:`Multiple TLS certificates <arch_overview_ssl_cert_select>` can be associated with the
@@ -93,6 +96,7 @@ package auth
 }
 
 #CommonTlsContext_CombinedCertificateValidationContext: {
+	"@type": "type.googleapis.com/envoy.api.v2.auth.CommonTlsContext_CombinedCertificateValidationContext"
 	// How to validate peer certificates.
 	default_validation_context?: #CertificateValidationContext
 	// Config for fetching validation context via SDS API.

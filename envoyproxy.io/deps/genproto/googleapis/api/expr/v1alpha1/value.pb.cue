@@ -10,6 +10,7 @@ import (
 // This is similar to `google.protobuf.Value`, but can represent CEL's full
 // range of values.
 #Value: {
+	"@type": "type.googleapis.com/google.golang.org.genproto.googleapis.api.expr.v1alpha1.Value"
 	// Null value.
 	null_value?: structpb.#NullValue
 	// Boolean value.
@@ -38,6 +39,7 @@ import (
 
 // An enum value.
 #EnumValue: {
+	"@type": "type.googleapis.com/google.golang.org.genproto.googleapis.api.expr.v1alpha1.EnumValue"
 	// The fully qualified name of the enum type.
 	type?: string
 	// The value of the enum.
@@ -49,6 +51,7 @@ import (
 // Wrapped in a message so 'not set' and empty can be differentiated, which is
 // required for use in a 'oneof'.
 #ListValue: {
+	"@type": "type.googleapis.com/google.golang.org.genproto.googleapis.api.expr.v1alpha1.ListValue"
 	// The ordered values in the list.
 	values?: [...#Value]
 }
@@ -58,6 +61,7 @@ import (
 // Wrapped in a message so 'not set' and empty can be differentiated, which is
 // required for use in a 'oneof'.
 #MapValue: {
+	"@type": "type.googleapis.com/google.golang.org.genproto.googleapis.api.expr.v1alpha1.MapValue"
 	// The set of map entries.
 	//
 	// CEL has fewer restrictions on keys, so a protobuf map represenation
@@ -67,6 +71,7 @@ import (
 
 // An entry in the map.
 #MapValue_Entry: {
+	"@type": "type.googleapis.com/google.golang.org.genproto.googleapis.api.expr.v1alpha1.MapValue_Entry"
 	// The key.
 	//
 	// Must be unique with in the map.

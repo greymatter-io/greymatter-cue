@@ -7,6 +7,7 @@ import (
 // Configuration specific to the UDP QUIC listener.
 // [#next-free-field: 8]
 #QuicProtocolOptions: {
+	"@type":                "type.googleapis.com/envoy.config.listener.v3.QuicProtocolOptions"
 	quic_protocol_options?: v3.#QuicProtocolOptions
 	// Maximum number of milliseconds that connection will be alive when there is
 	// no network activity.

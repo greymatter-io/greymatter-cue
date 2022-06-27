@@ -7,6 +7,7 @@ ResourceLocator_Scheme_HTTP:  "HTTP"
 ResourceLocator_Scheme_FILE:  "FILE"
 
 #ResourceLocator: {
+	"@type":        "type.googleapis.com/github.com.cncf.xds.go.xds.core.v3.ResourceLocator"
 	scheme?:        #ResourceLocator_Scheme
 	id?:            string
 	authority?:     string
@@ -16,6 +17,7 @@ ResourceLocator_Scheme_FILE:  "FILE"
 }
 
 #ResourceLocator_Directive: {
-	alt?:   #ResourceLocator
-	entry?: string
+	"@type": "type.googleapis.com/github.com.cncf.xds.go.xds.core.v3.ResourceLocator_Directive"
+	alt?:    #ResourceLocator
+	entry?:  string
 }

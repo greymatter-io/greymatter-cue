@@ -7,6 +7,7 @@ import (
 )
 
 #FaultAbort: {
+	"@type": "type.googleapis.com/envoy.config.filter.http.fault.v2.FaultAbort"
 	// HTTP status code to use to abort the HTTP request.
 	http_status?: uint32
 	// Fault aborts are controlled via an HTTP header (if applicable).
@@ -18,6 +19,7 @@ import (
 
 // [#next-free-field: 14]
 #HTTPFault: {
+	"@type": "type.googleapis.com/envoy.config.filter.http.fault.v2.HTTPFault"
 	// If specified, the filter will inject delays based on the values in the
 	// object.
 	delay?: v2.#FaultDelay
@@ -90,4 +92,5 @@ import (
 // :ref:`HTTP fault filter <config_http_filters_fault_injection_http_header>` documentation for
 // more information.
 #FaultAbort_HeaderAbort: {
+	"@type": "type.googleapis.com/envoy.config.filter.http.fault.v2.FaultAbort_HeaderAbort"
 }

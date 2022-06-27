@@ -10,6 +10,7 @@ import (
 // <envoy_api_field_service.accesslog.v2.StreamAccessLogsMessage.http_logs>`.
 // [#extension: envoy.access_loggers.http_grpc]
 #HttpGrpcAccessLogConfig: {
+	"@type":        "type.googleapis.com/envoy.config.accesslog.v2.HttpGrpcAccessLogConfig"
 	common_config?: #CommonGrpcAccessLogConfig
 	// Additional request headers to log in :ref:`HTTPRequestProperties.request_headers
 	// <envoy_api_field_data.accesslog.v2.HTTPRequestProperties.request_headers>`.
@@ -26,12 +27,14 @@ import (
 // populate *StreamAccessLogsMessage.tcp_logs*.
 // [#extension: envoy.access_loggers.tcp_grpc]
 #TcpGrpcAccessLogConfig: {
+	"@type":        "type.googleapis.com/envoy.config.accesslog.v2.TcpGrpcAccessLogConfig"
 	common_config?: #CommonGrpcAccessLogConfig
 }
 
 // Common configuration for gRPC access logs.
 // [#next-free-field: 6]
 #CommonGrpcAccessLogConfig: {
+	"@type": "type.googleapis.com/envoy.config.accesslog.v2.CommonGrpcAccessLogConfig"
 	// The friendly name of the access log to be returned in :ref:`StreamAccessLogsMessage.Identifier
 	// <envoy_api_msg_service.accesslog.v2.StreamAccessLogsMessage.Identifier>`. This allows the
 	// access log server to differentiate between different access logs coming from the same Envoy.

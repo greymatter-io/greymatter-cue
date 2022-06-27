@@ -2,10 +2,10 @@ package v2alpha
 
 import (
 	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
-	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 )
 
 #ResourceMonitor: {
+	"@type": "type.googleapis.com/envoy.config.overload.v2alpha.ResourceMonitor"
 	// The name of the resource monitor to instantiate. Must match a registered
 	// resource monitor type. The built-in resource monitors are:
 	//
@@ -16,22 +16,25 @@ import (
 	name?: string
 	// Deprecated: Do not use.
 	config?:       _struct.#Struct
-	typed_config?: any.#Any
+	typed_config?: _
 }
 
 #ThresholdTrigger: {
+	"@type": "type.googleapis.com/envoy.config.overload.v2alpha.ThresholdTrigger"
 	// If the resource pressure is greater than or equal to this value, the trigger
 	// will fire.
 	value?: float64
 }
 
 #Trigger: {
+	"@type": "type.googleapis.com/envoy.config.overload.v2alpha.Trigger"
 	// The name of the resource this is a trigger for.
 	name?:      string
 	threshold?: #ThresholdTrigger
 }
 
 #OverloadAction: {
+	"@type": "type.googleapis.com/envoy.config.overload.v2alpha.OverloadAction"
 	// The name of the overload action. This is just a well-known string that listeners can
 	// use for registering callbacks. Custom overload actions should be named using reverse
 	// DNS to ensure uniqueness.
@@ -43,6 +46,7 @@ import (
 }
 
 #OverloadManager: {
+	"@type": "type.googleapis.com/envoy.config.overload.v2alpha.OverloadManager"
 	// The interval for refreshing resource usage.
 	refresh_interval?: string
 	// The set of resources to monitor.

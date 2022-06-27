@@ -5,6 +5,7 @@ import (
 )
 
 #GraphiteStatsdSink: {
+	"@type": "type.googleapis.com/envoy.extensions.stat_sinks.graphite_statsd.v3.GraphiteStatsdSink"
 	// The UDP address of a running Graphite-compliant listener. If specified,
 	// statistics will be flushed to this address.
 	address?: v3.#Address

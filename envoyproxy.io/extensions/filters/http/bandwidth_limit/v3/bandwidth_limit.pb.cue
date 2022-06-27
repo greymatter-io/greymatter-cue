@@ -15,6 +15,7 @@ BandwidthLimit_EnableMode_REQUEST_AND_RESPONSE: "REQUEST_AND_RESPONSE"
 
 // [#next-free-field: 8]
 #BandwidthLimit: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.bandwidth_limit.v3.BandwidthLimit"
 	// The human readable prefix to use when emitting stats.
 	stat_prefix?: string
 	// The enable mode for the bandwidth limit filter.

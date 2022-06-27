@@ -2,6 +2,7 @@ package v3
 
 // [#next-free-field: 7]
 #RedisClusterConfig: {
+	"@type": "type.googleapis.com/envoy.extensions.clusters.redis.v3.RedisClusterConfig"
 	// Interval between successive topology refresh requests. If not set, this defaults to 5s.
 	cluster_refresh_rate?: string
 	// Timeout for topology refresh request. If not set, this defaults to 3s.

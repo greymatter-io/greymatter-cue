@@ -13,9 +13,11 @@ HttpProtocolOptions_HeadersWithUnderscoresAction_DROP_HEADER:    "DROP_HEADER"
 
 // [#not-implemented-hide:]
 #TcpProtocolOptions: {
+	"@type": "type.googleapis.com/envoy.api.v2.core.TcpProtocolOptions"
 }
 
 #UpstreamHttpProtocolOptions: {
+	"@type": "type.googleapis.com/envoy.api.v2.core.UpstreamHttpProtocolOptions"
 	// Set transport socket `SNI <https://en.wikipedia.org/wiki/Server_Name_Indication>`_ for new
 	// upstream connections based on the downstream HTTP host/authority header, as seen by the
 	// :ref:`router filter <config_http_filters_router>`.
@@ -29,6 +31,7 @@ HttpProtocolOptions_HeadersWithUnderscoresAction_DROP_HEADER:    "DROP_HEADER"
 
 // [#next-free-field: 6]
 #HttpProtocolOptions: {
+	"@type": "type.googleapis.com/envoy.api.v2.core.HttpProtocolOptions"
 	// The idle timeout for connections. The idle timeout is defined as the
 	// period in which there are no active requests. When the
 	// idle timeout is reached the connection will be closed. If the connection is an HTTP/2
@@ -64,6 +67,7 @@ HttpProtocolOptions_HeadersWithUnderscoresAction_DROP_HEADER:    "DROP_HEADER"
 
 // [#next-free-field: 6]
 #Http1ProtocolOptions: {
+	"@type": "type.googleapis.com/envoy.api.v2.core.Http1ProtocolOptions"
 	// Handle HTTP requests with absolute URLs in the requests. These requests
 	// are generally sent by clients to forward/explicit proxies. This allows clients to configure
 	// envoy as their HTTP proxy. In Unix, for example, this is typically done by setting the
@@ -95,6 +99,7 @@ HttpProtocolOptions_HeadersWithUnderscoresAction_DROP_HEADER:    "DROP_HEADER"
 
 // [#next-free-field: 14]
 #Http2ProtocolOptions: {
+	"@type": "type.googleapis.com/envoy.api.v2.core.Http2ProtocolOptions"
 	// `Maximum table size <https://httpwg.org/specs/rfc7541.html#rfc.section.4.2>`_
 	// (in octets) that the encoder is permitted to use for the dynamic HPACK table. Valid values
 	// range from 0 to 4294967295 (2^32 - 1) and defaults to 4096. 0 effectively disables header
@@ -213,10 +218,12 @@ HttpProtocolOptions_HeadersWithUnderscoresAction_DROP_HEADER:    "DROP_HEADER"
 
 // [#not-implemented-hide:]
 #GrpcProtocolOptions: {
+	"@type":                 "type.googleapis.com/envoy.api.v2.core.GrpcProtocolOptions"
 	http2_protocol_options?: #Http2ProtocolOptions
 }
 
 #Http1ProtocolOptions_HeaderKeyFormat: {
+	"@type": "type.googleapis.com/envoy.api.v2.core.Http1ProtocolOptions_HeaderKeyFormat"
 	// Formats the header by proper casing words: the first character and any character following
 	// a special character will be capitalized if it's an alpha character. For example,
 	// "content-type" becomes "Content-Type", and "foo$b#$are" becomes "Foo$B#$Are".
@@ -226,11 +233,13 @@ HttpProtocolOptions_HeadersWithUnderscoresAction_DROP_HEADER:    "DROP_HEADER"
 }
 
 #Http1ProtocolOptions_HeaderKeyFormat_ProperCaseWords: {
+	"@type": "type.googleapis.com/envoy.api.v2.core.Http1ProtocolOptions_HeaderKeyFormat_ProperCaseWords"
 }
 
 // Defines a parameter to be sent in the SETTINGS frame.
 // See `RFC7540, sec. 6.5.1 <https://tools.ietf.org/html/rfc7540#section-6.5.1>`_ for details.
 #Http2ProtocolOptions_SettingsParameter: {
+	"@type": "type.googleapis.com/envoy.api.v2.core.Http2ProtocolOptions_SettingsParameter"
 	// The 16 bit parameter identifier.
 	identifier?: uint32
 	// The 32 bit parameter value.

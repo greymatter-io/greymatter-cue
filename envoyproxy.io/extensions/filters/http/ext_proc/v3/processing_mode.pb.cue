@@ -17,6 +17,7 @@ ProcessingMode_BodySendMode_BUFFERED_PARTIAL: "BUFFERED_PARTIAL"
 
 // [#next-free-field: 7]
 #ProcessingMode: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.ext_proc.v3.ProcessingMode"
 	// How to handle the request header. Default is "SEND".
 	request_header_mode?: #ProcessingMode_HeaderSendMode
 	// How to handle the response header. Default is "SEND".

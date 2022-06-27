@@ -31,6 +31,7 @@ CommandLineOptions_DrainStrategy_Immediate: "Immediate"
 // server version/server status information.
 // [#next-free-field: 8]
 #ServerInfo: {
+	"@type": "type.googleapis.com/envoy.admin.v3.ServerInfo"
 	// Server version.
 	version?: string
 	// State of the server.
@@ -49,6 +50,7 @@ CommandLineOptions_DrainStrategy_Immediate: "Immediate"
 
 // [#next-free-field: 39]
 #CommandLineOptions: {
+	"@type": "type.googleapis.com/envoy.admin.v3.CommandLineOptions"
 	// See :option:`--base-id` for details.
 	base_id?: uint64
 	// See :option:`--use-dynamic-base-id` for details.

@@ -4,6 +4,7 @@ package v2alpha1
 // for the connection. This address could come from something like the Proxy Protocol filter, or it
 // could come from trusted http headers.
 #OriginalSrc: {
+	"@type": "type.googleapis.com/envoy.config.filter.listener.original_src.v2alpha1.OriginalSrc"
 	// Whether to bind the port to the one used in the original downstream connection.
 	// [#not-implemented-hide:]
 	bind_port?: bool

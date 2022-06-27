@@ -8,6 +8,7 @@ import (
 // <arch_overview_http_dynamic_forward_proxy>` for more information.
 // [#extension: envoy.filters.http.dynamic_forward_proxy]
 #FilterConfig: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.dynamic_forward_proxy.v3.FilterConfig"
 	// The DNS cache configuration that the filter will attach to. Note this configuration must
 	// match that of associated :ref:`dynamic forward proxy cluster configuration
 	// <envoy_v3_api_field_extensions.clusters.dynamic_forward_proxy.v3.ClusterConfig.dns_cache_config>`.
@@ -21,6 +22,7 @@ import (
 
 // Per route Configuration for the dynamic forward proxy HTTP filter.
 #PerRouteConfig: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.dynamic_forward_proxy.v3.PerRouteConfig"
 	// Indicates that before DNS lookup, the host header will be swapped with
 	// this value. If not set or empty, the original host header value
 	// will be used and no rewrite will happen.

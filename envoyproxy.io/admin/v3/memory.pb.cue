@@ -5,6 +5,7 @@ package v3
 // docs entitled ["Generic Tcmalloc Status"](https://gperftools.github.io/gperftools/tcmalloc.html).
 // [#next-free-field: 7]
 #Memory: {
+	"@type": "type.googleapis.com/envoy.admin.v3.Memory"
 	// The number of bytes allocated by the heap for Envoy. This is an alias for
 	// `generic.current_allocated_bytes`.
 	allocated?: uint64

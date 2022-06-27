@@ -5,6 +5,7 @@ import (
 )
 
 #Wasm: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.wasm.v3.Wasm"
 	// General Plugin configuration.
 	config?: v3.#PluginConfig
 }

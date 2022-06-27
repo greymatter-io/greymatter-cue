@@ -6,6 +6,7 @@ import (
 
 // [#next-free-field: 9]
 #Compressor: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.compressor.v3.Compressor"
 	// Minimum response length, in bytes, which will trigger compression. The default value is 30.
 	//
 	// Deprecated: Do not use.
@@ -61,6 +62,7 @@ import (
 }
 
 #Compressor_CommonDirectionConfig: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.compressor.v3.Compressor_CommonDirectionConfig"
 	// Runtime flag that controls whether compression is enabled or not for the direction this
 	// common config is put in. If set to false, the filter will operate as a pass-through filter
 	// in the chosen direction. If the field is omitted, the filter will be enabled.
@@ -78,11 +80,13 @@ import (
 
 // Configuration for filter behavior on the request direction.
 #Compressor_RequestDirectionConfig: {
+	"@type":        "type.googleapis.com/envoy.extensions.filters.http.compressor.v3.Compressor_RequestDirectionConfig"
 	common_config?: #Compressor_CommonDirectionConfig
 }
 
 // Configuration for filter behavior on the response direction.
 #Compressor_ResponseDirectionConfig: {
+	"@type":        "type.googleapis.com/envoy.extensions.filters.http.compressor.v3.Compressor_ResponseDirectionConfig"
 	common_config?: #Compressor_CommonDirectionConfig
 	// If true, disables compression when the response contains an etag header. When it is false, the
 	// filter will preserve weak etags and remove the ones that require strong validation.

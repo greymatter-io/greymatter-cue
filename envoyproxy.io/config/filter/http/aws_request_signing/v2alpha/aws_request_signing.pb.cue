@@ -2,6 +2,7 @@ package v2alpha
 
 // Top level configuration for the AWS request signing filter.
 #AwsRequestSigning: {
+	"@type": "type.googleapis.com/envoy.config.filter.http.aws_request_signing.v2alpha.AwsRequestSigning"
 	// The `service namespace
 	// <https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces>`_
 	// of the HTTP endpoint.

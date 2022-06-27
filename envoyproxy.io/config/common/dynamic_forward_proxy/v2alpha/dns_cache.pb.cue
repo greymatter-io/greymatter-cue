@@ -8,6 +8,7 @@ import (
 // <arch_overview_http_dynamic_forward_proxy>` for more information.
 // [#next-free-field: 7]
 #DnsCacheConfig: {
+	"@type": "type.googleapis.com/envoy.config.common.dynamic_forward_proxy.v2alpha.DnsCacheConfig"
 	// The name of the cache. Multiple named caches allow independent dynamic forward proxy
 	// configurations to operate within a single Envoy process using different configurations. All
 	// configurations with the same name *must* otherwise have the same settings when referenced

@@ -13,6 +13,7 @@ RingHash_HashFunction_MURMUR_HASH_2: "MURMUR_HASH_2"
 // [#extension: envoy.clusters.lb_policy]
 // [#next-free-field: 6]
 #RingHash: {
+	"@type": "type.googleapis.com/envoy.extensions.load_balancing_policies.ring_hash.v3.RingHash"
 	// The hash function used to hash hosts onto the ketama ring. The value defaults to
 	// :ref:`XX_HASH<envoy_v3_api_enum_value_config.cluster.v3.Cluster.RingHashLbConfig.HashFunction.XX_HASH>`.
 	hash_function?: #RingHash_HashFunction

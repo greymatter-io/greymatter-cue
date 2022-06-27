@@ -6,6 +6,7 @@ SocketAddress_Protocol_TCP: "TCP"
 SocketAddress_Protocol_UDP: "UDP"
 
 #Pipe: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.Pipe"
 	// Unix Domain Socket path. On Linux, paths starting with '@' will use the
 	// abstract namespace. The starting '@' is replaced by a null byte by Envoy.
 	// Paths starting with '@' will result in an error in environments other than
@@ -19,12 +20,14 @@ SocketAddress_Protocol_UDP: "UDP"
 // [#comment: TODO(lambdai): Make this address available for listener and endpoint.
 // TODO(asraa): When address available, remove workaround from test/server/server_fuzz_test.cc:30.]
 #EnvoyInternalAddress: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.EnvoyInternalAddress"
 	// [#not-implemented-hide:] The :ref:`listener name <envoy_v3_api_field_config.listener.v3.Listener.name>` of the destination internal listener.
 	server_listener_name?: string
 }
 
 // [#next-free-field: 7]
 #SocketAddress: {
+	"@type":   "type.googleapis.com/envoy.config.core.v3.SocketAddress"
 	protocol?: #SocketAddress_Protocol
 	// The address for this socket. :ref:`Listeners <config_listeners>` will bind
 	// to the address. An empty address is not allowed. Specify ``0.0.0.0`` or ``::``
@@ -57,6 +60,7 @@ SocketAddress_Protocol_UDP: "UDP"
 }
 
 #TcpKeepalive: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.TcpKeepalive"
 	// Maximum number of keepalive probes to send without response before deciding
 	// the connection is dead. Default is to use the OS level configuration (unless
 	// overridden, Linux defaults to 9.)
@@ -71,6 +75,7 @@ SocketAddress_Protocol_UDP: "UDP"
 }
 
 #BindConfig: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.BindConfig"
 	// The address to bind to when creating a socket.
 	source_address?: #SocketAddress
 	// Whether to set the *IP_FREEBIND* option when creating the socket. When this
@@ -90,6 +95,7 @@ SocketAddress_Protocol_UDP: "UDP"
 // used to tell Envoy where to bind/listen, connect to upstream and find
 // management servers.
 #Address: {
+	"@type":         "type.googleapis.com/envoy.config.core.v3.Address"
 	socket_address?: #SocketAddress
 	pipe?:           #Pipe
 	// [#not-implemented-hide:]
@@ -99,6 +105,7 @@ SocketAddress_Protocol_UDP: "UDP"
 // CidrRange specifies an IP Address and a prefix length to construct
 // the subnet mask for a `CIDR <https://tools.ietf.org/html/rfc4632>`_ range.
 #CidrRange: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.CidrRange"
 	// IPv4 or IPv6 address, e.g. ``192.0.0.0`` or ``2001:db8::``.
 	address_prefix?: string
 	// Length of prefix, e.g. 0, 32. Defaults to 0 when unset.

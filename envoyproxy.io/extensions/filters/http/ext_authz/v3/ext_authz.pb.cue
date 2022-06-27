@@ -8,6 +8,7 @@ import (
 
 // [#next-free-field: 17]
 #ExtAuthz: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.ext_authz.v3.ExtAuthz"
 	// gRPC service configuration (default timeout: 200ms).
 	grpc_service?: v3.#GrpcService
 	// HTTP service configuration (default timeout: 200ms).
@@ -113,6 +114,7 @@ import (
 
 // Configuration for buffering the request data.
 #BufferSettings: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.ext_authz.v3.BufferSettings"
 	// Sets the maximum size of a message body that the filter will hold in memory. Envoy will return
 	// *HTTP 413* and will *not* initiate the authorization process when buffer reaches the number
 	// set in this field. Note that this setting will have precedence over :ref:`failure_mode_allow
@@ -159,6 +161,7 @@ import (
 // for details.
 // [#next-free-field: 9]
 #HttpService: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.ext_authz.v3.HttpService"
 	// Sets the HTTP server URI which the authorization requests must be sent to.
 	server_uri?: v3.#HttpUri
 	// Sets a prefix to the value of authorization request header *Path*.
@@ -170,6 +173,7 @@ import (
 }
 
 #AuthorizationRequest: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.ext_authz.v3.AuthorizationRequest"
 	// Authorization request includes the client request headers that have a correspondent match
 	// in the :ref:`list <envoy_v3_api_msg_type.matcher.v3.ListStringMatcher>`.
 	//
@@ -194,6 +198,7 @@ import (
 
 // [#next-free-field: 6]
 #AuthorizationResponse: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.ext_authz.v3.AuthorizationResponse"
 	// When this :ref:`list <envoy_v3_api_msg_type.matcher.v3.ListStringMatcher>` is set, authorization
 	// response headers that have a correspondent match will be added to the original client request.
 	// Note that coexistent headers will be overridden.
@@ -225,6 +230,7 @@ import (
 
 // Extra settings on a per virtualhost/route/weighted-cluster level.
 #ExtAuthzPerRoute: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.ext_authz.v3.ExtAuthzPerRoute"
 	// Disable the ext auth filter for this particular vhost or route.
 	// If disabled is specified in multiple per-filter-configs, the most specific one will be used.
 	disabled?: bool
@@ -234,6 +240,7 @@ import (
 
 // Extra settings for the check request.
 #CheckSettings: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.ext_authz.v3.CheckSettings"
 	// Context extensions to set on the CheckRequest's
 	// :ref:`AttributeContext.context_extensions<envoy_v3_api_field_service.auth.v3.AttributeContext.context_extensions>`
 	//

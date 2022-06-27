@@ -1,11 +1,8 @@
 package v3
 
-import (
-	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
-)
-
 #Resource: {
+	"@type":   "type.googleapis.com/github.com.cncf.xds.go.xds.core.v3.Resource"
 	name?:     #ResourceName
 	version?:  string
-	resource?: any.#Any
+	resource?: _
 }

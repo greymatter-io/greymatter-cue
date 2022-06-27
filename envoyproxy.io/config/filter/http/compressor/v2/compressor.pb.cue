@@ -6,6 +6,7 @@ import (
 
 // [#next-free-field: 6]
 #Compressor: {
+	"@type": "type.googleapis.com/envoy.config.filter.http.compressor.v2.Compressor"
 	// Minimum response length, in bytes, which will trigger compression. The default value is 30.
 	content_length?: uint32
 	// Set of strings that allows specifying which mime-types yield compression; e.g.,

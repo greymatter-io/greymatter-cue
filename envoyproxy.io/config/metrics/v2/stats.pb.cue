@@ -2,13 +2,13 @@ package v2
 
 import (
 	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
-	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 	core "envoyproxy.io/api/v2/core"
 	matcher "envoyproxy.io/type/matcher"
 )
 
 // Configuration for pluggable stats sinks.
 #StatsSink: {
+	"@type": "type.googleapis.com/envoy.config.metrics.v2.StatsSink"
 	// The name of the stats sink to instantiate. The name must match a supported
 	// stats sink. The built-in stats sinks are:
 	//
@@ -21,11 +21,12 @@ import (
 	name?: string
 	// Deprecated: Do not use.
 	config?:       _struct.#Struct
-	typed_config?: any.#Any
+	typed_config?: _
 }
 
 // Statistics configuration such as tagging.
 #StatsConfig: {
+	"@type": "type.googleapis.com/envoy.config.metrics.v2.StatsConfig"
 	// Each stat name is iteratively processed through these tag specifiers.
 	// When a tag is matched, the first capture group is removed from the name so
 	// later :ref:`TagSpecifiers <envoy_api_msg_config.metrics.v2.TagSpecifier>` cannot match that
@@ -59,6 +60,7 @@ import (
 
 // Configuration for disabling stat instantiation.
 #StatsMatcher: {
+	"@type": "type.googleapis.com/envoy.config.metrics.v2.StatsMatcher"
 	// If `reject_all` is true, then all stats are disabled. If `reject_all` is false, then all
 	// stats are enabled.
 	reject_all?: bool
@@ -75,6 +77,7 @@ import (
 // unconditionally set if a fixed value, otherwise it will only be set if one
 // or more capture groups in the regex match.
 #TagSpecifier: {
+	"@type": "type.googleapis.com/envoy.config.metrics.v2.TagSpecifier"
 	// Attaches an identifier to the tag values to identify the tag being in the
 	// sink. Envoy has a set of default names and regexes to extract dynamic
 	// portions of existing stats, which can be found in :repo:`well_known_names.h
@@ -151,6 +154,7 @@ import (
 // tagged metrics.
 // [#extension: envoy.stat_sinks.statsd]
 #StatsdSink: {
+	"@type": "type.googleapis.com/envoy.config.metrics.v2.StatsdSink"
 	// The UDP address of a running `statsd <https://github.com/etsy/statsd>`_
 	// compliant listener. If specified, statistics will be flushed to this
 	// address.
@@ -194,6 +198,7 @@ import (
 // <envoy_api_msg_config.metrics.v2.StatsConfig>`.
 // [#extension: envoy.stat_sinks.dog_statsd]
 #DogStatsdSink: {
+	"@type": "type.googleapis.com/envoy.config.metrics.v2.DogStatsdSink"
 	// The UDP address of a running DogStatsD compliant listener. If specified,
 	// statistics will be flushed to this address.
 	address?: core.#Address
@@ -213,6 +218,7 @@ import (
 // Streaming is started through an admin endpoint :http:get:`/hystrix_event_stream`.
 // [#extension: envoy.stat_sinks.hystrix]
 #HystrixSink: {
+	"@type": "type.googleapis.com/envoy.config.metrics.v2.HystrixSink"
 	// The number of buckets the rolling statistical window is divided into.
 	//
 	// Each time the sink is flushed, all relevant Envoy statistics are sampled and

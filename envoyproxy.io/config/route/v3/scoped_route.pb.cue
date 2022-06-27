@@ -64,6 +64,7 @@ package v3
 //
 // [#next-free-field: 6]
 #ScopedRouteConfiguration: {
+	"@type": "type.googleapis.com/envoy.config.route.v3.ScopedRouteConfiguration"
 	// Whether the RouteConfiguration should be loaded on demand.
 	on_demand?: bool
 	// The name assigned to the routing scope.
@@ -84,6 +85,7 @@ package v3
 // request and is dependent on the order of the fragments contained in the
 // Key.
 #ScopedRouteConfiguration_Key: {
+	"@type": "type.googleapis.com/envoy.config.route.v3.ScopedRouteConfiguration_Key"
 	// The ordered set of fragments to match against. The order must match the
 	// fragments in the corresponding
 	// :ref:`scope_key_builder<envoy_v3_api_field_extensions.filters.network.http_connection_manager.v3.ScopedRoutes.scope_key_builder>`.
@@ -91,6 +93,7 @@ package v3
 }
 
 #ScopedRouteConfiguration_Key_Fragment: {
+	"@type": "type.googleapis.com/envoy.config.route.v3.ScopedRouteConfiguration_Key_Fragment"
 	// A string to match against.
 	string_key?: string
 }

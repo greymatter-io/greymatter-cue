@@ -2,7 +2,6 @@ package auth
 
 import (
 	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
-	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 	core "envoyproxy.io/api/v2/core"
 	matcher "envoyproxy.io/type/matcher"
 )
@@ -22,6 +21,7 @@ CertificateValidationContext_TrustChainVerification_VERIFY_TRUST_CHAIN: "VERIFY_
 CertificateValidationContext_TrustChainVerification_ACCEPT_UNTRUSTED:   "ACCEPT_UNTRUSTED"
 
 #TlsParameters: {
+	"@type": "type.googleapis.com/envoy.api.v2.auth.TlsParameters"
 	// Minimum TLS protocol version. By default, it's ``TLSv1_2`` for both clients and servers.
 	tls_minimum_protocol_version?: #TlsParameters_TlsProtocol
 	// Maximum TLS protocol version. By default, it's ``TLSv1_2`` for clients and ``TLSv1_3`` for
@@ -88,16 +88,18 @@ CertificateValidationContext_TrustChainVerification_ACCEPT_UNTRUSTED:   "ACCEPT_
 // (potentially asynchronous) signing and decryption operations. Some use cases for private key
 // methods would be TPM support and TLS acceleration.
 #PrivateKeyProvider: {
+	"@type": "type.googleapis.com/envoy.api.v2.auth.PrivateKeyProvider"
 	// Private key method provider name. The name must match a
 	// supported private key method provider type.
 	provider_name?: string
 	// Deprecated: Do not use.
 	config?:       _struct.#Struct
-	typed_config?: any.#Any
+	typed_config?: _
 }
 
 // [#next-free-field: 7]
 #TlsCertificate: {
+	"@type": "type.googleapis.com/envoy.api.v2.auth.TlsCertificate"
 	// The TLS certificate chain.
 	certificate_chain?: core.#DataSource
 	// The TLS private key.
@@ -120,6 +122,7 @@ CertificateValidationContext_TrustChainVerification_ACCEPT_UNTRUSTED:   "ACCEPT_
 }
 
 #TlsSessionTicketKeys: {
+	"@type": "type.googleapis.com/envoy.api.v2.auth.TlsSessionTicketKeys"
 	// Keys for encrypting and decrypting TLS session tickets. The
 	// first key in the array contains the key to encrypt all new sessions created by this context.
 	// All keys are candidates for decrypting received tickets. This allows for easy rotation of keys
@@ -148,6 +151,7 @@ CertificateValidationContext_TrustChainVerification_ACCEPT_UNTRUSTED:   "ACCEPT_
 
 // [#next-free-field: 11]
 #CertificateValidationContext: {
+	"@type": "type.googleapis.com/envoy.api.v2.auth.CertificateValidationContext"
 	// TLS certificate data containing certificate authority certificates to use in verifying
 	// a presented peer certificate (e.g. server certificate for clusters or client certificate
 	// for listeners). If not specified and a peer certificate is presented it will not be

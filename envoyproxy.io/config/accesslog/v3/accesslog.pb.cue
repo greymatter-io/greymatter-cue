@@ -1,7 +1,6 @@
 package v3
 
 import (
-	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 	v3 "envoyproxy.io/config/core/v3"
 	v31 "envoyproxy.io/type/v3"
 	v32 "envoyproxy.io/config/route/v3"
@@ -35,15 +34,17 @@ GrpcStatusFilter_Status_DATA_LOSS:           "DATA_LOSS"
 GrpcStatusFilter_Status_UNAUTHENTICATED:     "UNAUTHENTICATED"
 
 #AccessLog: {
+	"@type": "type.googleapis.com/envoy.config.accesslog.v3.AccessLog"
 	// The name of the access log extension configuration.
 	name?: string
 	// Filter which is used to determine if the access log needs to be written.
 	filter?:       #AccessLogFilter
-	typed_config?: any.#Any
+	typed_config?: _
 }
 
 // [#next-free-field: 13]
 #AccessLogFilter: {
+	"@type": "type.googleapis.com/envoy.config.accesslog.v3.AccessLogFilter"
 	// Status code filter.
 	status_code_filter?: #StatusCodeFilter
 	// Duration filter.
@@ -73,6 +74,7 @@ GrpcStatusFilter_Status_UNAUTHENTICATED:     "UNAUTHENTICATED"
 
 // Filter on an integer comparison.
 #ComparisonFilter: {
+	"@type": "type.googleapis.com/envoy.config.accesslog.v3.ComparisonFilter"
 	// Comparison operator.
 	op?: #ComparisonFilter_Op
 	// Value to compare against.
@@ -81,12 +83,14 @@ GrpcStatusFilter_Status_UNAUTHENTICATED:     "UNAUTHENTICATED"
 
 // Filters on HTTP response/status code.
 #StatusCodeFilter: {
+	"@type": "type.googleapis.com/envoy.config.accesslog.v3.StatusCodeFilter"
 	// Comparison.
 	comparison?: #ComparisonFilter
 }
 
 // Filters on total request duration in milliseconds.
 #DurationFilter: {
+	"@type": "type.googleapis.com/envoy.config.accesslog.v3.DurationFilter"
 	// Comparison.
 	comparison?: #ComparisonFilter
 }
@@ -94,15 +98,18 @@ GrpcStatusFilter_Status_UNAUTHENTICATED:     "UNAUTHENTICATED"
 // Filters for requests that are not health check requests. A health check
 // request is marked by the health check filter.
 #NotHealthCheckFilter: {
+	"@type": "type.googleapis.com/envoy.config.accesslog.v3.NotHealthCheckFilter"
 }
 
 // Filters for requests that are traceable. See the tracing overview for more
 // information on how a request becomes traceable.
 #TraceableFilter: {
+	"@type": "type.googleapis.com/envoy.config.accesslog.v3.TraceableFilter"
 }
 
 // Filters for random sampling of requests.
 #RuntimeFilter: {
+	"@type": "type.googleapis.com/envoy.config.accesslog.v3.RuntimeFilter"
 	// Runtime key to get an optional overridden numerator for use in the
 	// *percent_sampled* field. If found in runtime, this value will replace the
 	// default numerator.
@@ -132,6 +139,7 @@ GrpcStatusFilter_Status_UNAUTHENTICATED:     "UNAUTHENTICATED"
 // Filters are evaluated sequentially and if one of them returns false, the
 // filter returns false immediately.
 #AndFilter: {
+	"@type": "type.googleapis.com/envoy.config.accesslog.v3.AndFilter"
 	filters?: [...#AccessLogFilter]
 }
 
@@ -139,11 +147,13 @@ GrpcStatusFilter_Status_UNAUTHENTICATED:     "UNAUTHENTICATED"
 // Filters are evaluated sequentially and if one of them returns true, the
 // filter returns true immediately.
 #OrFilter: {
+	"@type": "type.googleapis.com/envoy.config.accesslog.v3.OrFilter"
 	filters?: [...#AccessLogFilter]
 }
 
 // Filters requests based on the presence or value of a request header.
 #HeaderFilter: {
+	"@type": "type.googleapis.com/envoy.config.accesslog.v3.HeaderFilter"
 	// Only requests with a header which matches the specified HeaderMatcher will
 	// pass the filter check.
 	header?: v32.#HeaderMatcher
@@ -154,6 +164,7 @@ GrpcStatusFilter_Status_UNAUTHENTICATED:     "UNAUTHENTICATED"
 // in the access log formatter
 // :ref:`documentation<config_access_log_format_response_flags>`.
 #ResponseFlagFilter: {
+	"@type": "type.googleapis.com/envoy.config.accesslog.v3.ResponseFlagFilter"
 	// Only responses with the any of the flags listed in this field will be
 	// logged. This field is optional. If it is not specified, then any response
 	// flag will pass the filter check.
@@ -163,6 +174,7 @@ GrpcStatusFilter_Status_UNAUTHENTICATED:     "UNAUTHENTICATED"
 // Filters gRPC requests based on their response status. If a gRPC status is not
 // provided, the filter will infer the status from the HTTP status code.
 #GrpcStatusFilter: {
+	"@type": "type.googleapis.com/envoy.config.accesslog.v3.GrpcStatusFilter"
 	// Logs only responses that have any one of the gRPC statuses in this field.
 	statuses?: [...#GrpcStatusFilter_Status]
 	// If included and set to true, the filter will instead block all responses
@@ -178,6 +190,7 @@ GrpcStatusFilter_Status_UNAUTHENTICATED:     "UNAUTHENTICATED"
 // existing key in dynamic metadata, the request is logged only if
 // match_if_key_not_found is "true" or unset.
 #MetadataFilter: {
+	"@type": "type.googleapis.com/envoy.config.accesslog.v3.MetadataFilter"
 	// Matcher to check metadata for specified value. For example, to match on the
 	// access_log_hint metadata, set the filter to "envoy.common" and the path to
 	// "access_log_hint", and the value to "true".
@@ -189,8 +202,9 @@ GrpcStatusFilter_Status_UNAUTHENTICATED:     "UNAUTHENTICATED"
 
 // Extension filter is statically registered at runtime.
 #ExtensionFilter: {
+	"@type": "type.googleapis.com/envoy.config.accesslog.v3.ExtensionFilter"
 	// The name of the filter implementation to instantiate. The name must
 	// match a statically registered filter.
 	name?:         string
-	typed_config?: any.#Any
+	typed_config?: _
 }

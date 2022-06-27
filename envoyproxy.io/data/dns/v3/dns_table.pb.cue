@@ -7,6 +7,7 @@ import (
 // This message contains the configuration for the DNS Filter if populated
 // from the control plane
 #DnsTable: {
+	"@type": "type.googleapis.com/envoy.data.dns.v3.DnsTable"
 	// Control how many times Envoy makes an attempt to forward a query to an external DNS server
 	external_retry_count?: uint32
 	// Fully qualified domain names for which Envoy will respond to DNS queries. By leaving this
@@ -26,6 +27,7 @@ import (
 
 // This message contains a list of IP addresses returned for a query for a known name
 #DnsTable_AddressList: {
+	"@type": "type.googleapis.com/envoy.data.dns.v3.DnsTable_AddressList"
 	// This field contains a well formed IP address that is returned in the answer for a
 	// name query. The address field can be an IPv4 or IPv6 address. Address family
 	// detection is done automatically when Envoy parses the string. Since this field is
@@ -36,6 +38,7 @@ import (
 
 // Specify the service protocol using a numeric or string value
 #DnsTable_DnsServiceProtocol: {
+	"@type": "type.googleapis.com/envoy.data.dns.v3.DnsTable_DnsServiceProtocol"
 	// Specify the protocol number for the service. Envoy will try to resolve the number to
 	// the protocol name. For example, 6 will resolve to "tcp". Refer to:
 	// https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml
@@ -48,6 +51,7 @@ import (
 // Specify the target for a given DNS service
 // [#next-free-field: 6]
 #DnsTable_DnsServiceTarget: {
+	"@type": "type.googleapis.com/envoy.data.dns.v3.DnsTable_DnsServiceTarget"
 	// Use a resolvable hostname as the endpoint for a service.
 	host_name?: string
 	// Use a cluster name as the endpoint for a service.
@@ -64,6 +68,7 @@ import (
 
 // This message defines a service selection record returned for a service query in a domain
 #DnsTable_DnsService: {
+	"@type": "type.googleapis.com/envoy.data.dns.v3.DnsTable_DnsService"
 	// The name of the service without the protocol or domain name
 	service_name?: string
 	// The service protocol. This can be specified as a string or the numeric value of the protocol
@@ -76,10 +81,12 @@ import (
 
 // Define a list of service records for a given service
 #DnsTable_DnsServiceList: {
+	"@type": "type.googleapis.com/envoy.data.dns.v3.DnsTable_DnsServiceList"
 	services?: [...#DnsTable_DnsService]
 }
 
 #DnsTable_DnsEndpoint: {
+	"@type": "type.googleapis.com/envoy.data.dns.v3.DnsTable_DnsEndpoint"
 	// Define a list of addresses to return for the specified endpoint
 	address_list?: #DnsTable_AddressList
 	// Define a cluster whose addresses are returned for the specified endpoint
@@ -89,6 +96,7 @@ import (
 }
 
 #DnsTable_DnsVirtualDomain: {
+	"@type": "type.googleapis.com/envoy.data.dns.v3.DnsTable_DnsVirtualDomain"
 	// A domain name for which Envoy will respond to query requests
 	name?: string
 	// The configuration containing the method to determine the address of this endpoint

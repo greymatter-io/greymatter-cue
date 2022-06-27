@@ -7,6 +7,7 @@ import (
 // The behavior of the filter for a stream.
 // [#next-free-field: 6]
 #BufferBehavior: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.file_system_buffer.v3.BufferBehavior"
 	// Don't inject ``content-length`` header.
 	// Output immediately, buffer only if output is slower than input.
 	stream_when_possible?: #BufferBehavior_StreamWhenPossible
@@ -25,6 +26,7 @@ import (
 
 // The configuration for one direction of the filter behavior.
 #StreamConfig: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.file_system_buffer.v3.StreamConfig"
 	// Whether to bypass / stream / fully buffer / etc.
 	// If unset in route, vhost and listener config, the default is ``stream_when_possible``.
 	behavior?: #BufferBehavior
@@ -65,6 +67,7 @@ import (
 // fields inherit from the vhost or listener-level config, or, if never set,
 // and not required, use a default value.
 #FileSystemBufferFilterConfig: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.file_system_buffer.v3.FileSystemBufferFilterConfig"
 	// A configuration for an AsyncFileManager.
 	//
 	// If unset in route, vhost and listener, an exception will be thrown.
@@ -86,16 +89,21 @@ import (
 }
 
 #BufferBehavior_StreamWhenPossible: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.file_system_buffer.v3.BufferBehavior_StreamWhenPossible"
 }
 
 #BufferBehavior_Bypass: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.file_system_buffer.v3.BufferBehavior_Bypass"
 }
 
 #BufferBehavior_InjectContentLengthIfNecessary: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.file_system_buffer.v3.BufferBehavior_InjectContentLengthIfNecessary"
 }
 
 #BufferBehavior_FullyBufferAndAlwaysInjectContentLength: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.file_system_buffer.v3.BufferBehavior_FullyBufferAndAlwaysInjectContentLength"
 }
 
 #BufferBehavior_FullyBuffer: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.file_system_buffer.v3.BufferBehavior_FullyBuffer"
 }

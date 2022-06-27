@@ -6,6 +6,7 @@ import (
 )
 
 #LocalRateLimit: {
+	"@type": "type.googleapis.com/envoy.config.filter.network.local_rate_limit.v2alpha.LocalRateLimit"
 	// The prefix to use when emitting :ref:`statistics
 	// <config_network_filters_local_rate_limit_stats>`.
 	stat_prefix?: string

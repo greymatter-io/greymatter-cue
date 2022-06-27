@@ -4,6 +4,7 @@ package v3
 // with importing services: https://github.com/google/protobuf/issues/4221 and
 // protoxform to upgrade the file.
 #EcdsDummy: {
+	"@type": "type.googleapis.com/envoy.service.extension.v3.EcdsDummy"
 }
 
 // ExtensionConfigDiscoveryServiceClient is the client API for ExtensionConfigDiscoveryService service.
@@ -20,6 +21,7 @@ package v3
 
 // UnimplementedExtensionConfigDiscoveryServiceServer can be embedded to have forward compatible implementations.
 #UnimplementedExtensionConfigDiscoveryServiceServer: {
+	"@type": "type.googleapis.com/envoy.service.extension.v3.UnimplementedExtensionConfigDiscoveryServiceServer"
 }
 
 #ExtensionConfigDiscoveryService_StreamExtensionConfigsServer: _

@@ -7,6 +7,7 @@ package v3
 // unchanged. While this is unlikely to happen intentionally, this could cause inconsistent match results
 // between deployments.
 #ConsistentHashing: {
+	"@type": "type.googleapis.com/envoy.extensions.matching.input_matchers.consistent_hashing.v3.ConsistentHashing"
 	// The threshold the resulting hash must be over in order for this matcher to evaluate to true.
 	// This value must be below the configured modulo value.
 	// Setting this to 0 is equivalent to this matcher always matching.

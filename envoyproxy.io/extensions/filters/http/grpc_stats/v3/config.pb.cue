@@ -6,6 +6,7 @@ import (
 
 // gRPC statistics filter configuration
 #FilterConfig: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.grpc_stats.v3.FilterConfig"
 	// If true, the filter maintains a filter state object with the request and response message
 	// counts.
 	emit_filter_state?: bool
@@ -41,6 +42,7 @@ import (
 
 // gRPC statistics filter state object in protobuf form.
 #FilterObject: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.grpc_stats.v3.FilterObject"
 	// Count of request messages in the request stream.
 	request_message_count?: uint64
 	// Count of response messages in the response stream.

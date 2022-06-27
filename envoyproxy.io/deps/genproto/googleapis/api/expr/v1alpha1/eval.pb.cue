@@ -8,6 +8,7 @@ import (
 //
 // Can represent an inital, partial, or completed state of evaluation.
 #EvalState: {
+	"@type": "type.googleapis.com/google.golang.org.genproto.googleapis.api.expr.v1alpha1.EvalState"
 	// The unique values referenced in this message.
 	values?: [...#ExprValue]
 	// An ordered list of results.
@@ -19,6 +20,7 @@ import (
 
 // The value of an evaluated expression.
 #ExprValue: {
+	"@type": "type.googleapis.com/google.golang.org.genproto.googleapis.api.expr.v1alpha1.ExprValue"
 	// A concrete value.
 	value?: #Value
 	// The set of errors in the critical path of evalution.
@@ -69,6 +71,7 @@ import (
 //
 // The errors included depend on the context. See `ExprValue.error`.
 #ErrorSet: {
+	"@type": "type.googleapis.com/google.golang.org.genproto.googleapis.api.expr.v1alpha1.ErrorSet"
 	// The errors in the set.
 	errors?: [...status.#Status]
 }
@@ -77,12 +80,14 @@ import (
 //
 // The unknowns included depend on the context. See `ExprValue.unknown`.
 #UnknownSet: {
+	"@type": "type.googleapis.com/google.golang.org.genproto.googleapis.api.expr.v1alpha1.UnknownSet"
 	// The ids of the expressions with unknown values.
 	exprs?: [...int64]
 }
 
 // A single evalution result.
 #EvalState_Result: {
+	"@type": "type.googleapis.com/google.golang.org.genproto.googleapis.api.expr.v1alpha1.EvalState_Result"
 	// The id of the expression this result if for.
 	expr?: int64
 	// The index in `values` of the resulting value.

@@ -17,6 +17,7 @@ NullValue_NULL_VALUE: "NULL_VALUE"
 //
 // The JSON representation for `Struct` is JSON object.
 #Struct: {
+	"@type": "type.googleapis.com/google.golang.org.protobuf.types.known.structpb.Struct"
 	// Unordered map of dynamically typed values.
 	fields?: [string]: #Value
 }
@@ -28,6 +29,7 @@ NullValue_NULL_VALUE: "NULL_VALUE"
 //
 // The JSON representation for `Value` is JSON value.
 #Value: {
+	"@type": "type.googleapis.com/google.golang.org.protobuf.types.known.structpb.Value"
 	// Represents a null value.
 	null_value?: #NullValue
 	// Represents a double value.
@@ -46,6 +48,7 @@ NullValue_NULL_VALUE: "NULL_VALUE"
 //
 // The JSON representation for `ListValue` is JSON array.
 #ListValue: {
+	"@type": "type.googleapis.com/google.golang.org.protobuf.types.known.structpb.ListValue"
 	// Repeated field of dynamically typed values.
 	values?: [...#Value]
 }

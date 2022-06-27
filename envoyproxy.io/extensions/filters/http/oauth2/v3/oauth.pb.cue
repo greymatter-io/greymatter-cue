@@ -8,6 +8,7 @@ import (
 )
 
 #OAuth2Credentials: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.oauth2.v3.OAuth2Credentials"
 	// The client_id to be used in the authorize calls. This value will be URL encoded when sent to the OAuth server.
 	client_id?: string
 	// The secret used to retrieve the access token. This value will be URL encoded when sent to the OAuth server.
@@ -22,6 +23,7 @@ import (
 //
 // [#next-free-field: 11]
 #OAuth2Config: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.oauth2.v3.OAuth2Config"
 	// Endpoint on the authorization server to retrieve the access token from.
 	token_endpoint?: v31.#HttpUri
 	// The endpoint redirect to for authorization in response to unauthorized requests.
@@ -53,11 +55,13 @@ import (
 
 // Filter config.
 #OAuth2: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.oauth2.v3.OAuth2"
 	// Leave this empty to disable OAuth2 for a specific route, using per filter config.
 	config?: #OAuth2Config
 }
 
 #OAuth2Credentials_CookieNames: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.oauth2.v3.OAuth2Credentials_CookieNames"
 	// Cookie name to hold OAuth bearer token value. When the authentication server validates the
 	// client and returns an authorization token back to the OAuth filter, no matter what format
 	// that token is, if :ref:`forward_bearer_token <envoy_v3_api_field_extensions.filters.http.oauth2.v3.OAuth2Config.forward_bearer_token>`

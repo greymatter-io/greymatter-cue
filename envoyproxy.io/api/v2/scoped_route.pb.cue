@@ -60,6 +60,7 @@ package v2
 // RouteConfiguration being assigned to the HTTP request/stream.
 //
 #ScopedRouteConfiguration: {
+	"@type": "type.googleapis.com/envoy.api.v2.ScopedRouteConfiguration"
 	// The name assigned to the routing scope.
 	name?: string
 	// The resource name to use for a :ref:`envoy_api_msg_DiscoveryRequest` to an
@@ -76,6 +77,7 @@ package v2
 // request and is dependent on the order of the fragments contained in the
 // Key.
 #ScopedRouteConfiguration_Key: {
+	"@type": "type.googleapis.com/envoy.api.v2.ScopedRouteConfiguration_Key"
 	// The ordered set of fragments to match against. The order must match the
 	// fragments in the corresponding
 	// :ref:`scope_key_builder<envoy_api_field_config.filter.network.http_connection_manager.v2.ScopedRoutes.scope_key_builder>`.
@@ -83,6 +85,7 @@ package v2
 }
 
 #ScopedRouteConfiguration_Key_Fragment: {
+	"@type": "type.googleapis.com/envoy.api.v2.ScopedRouteConfiguration_Key_Fragment"
 	// A string to match against.
 	string_key?: string
 }

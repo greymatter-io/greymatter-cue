@@ -50,6 +50,7 @@ import (
 //                       cluster: outbound|20880|v1|org.apache.dubbo.samples.basic.api.demoservice
 // [#not-implemented-hide:]
 #RouteConfiguration: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.network.meta_protocol_proxy.v3.RouteConfiguration"
 	// The name of the route configuration. For example, it might match route_config_name in
 	// envoy.extensions.filters.network.meta_protocol_proxy.v3.Rds.
 	name?: string

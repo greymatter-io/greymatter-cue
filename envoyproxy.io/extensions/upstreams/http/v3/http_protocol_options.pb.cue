@@ -47,6 +47,7 @@ import (
 //        .... [further cluster config]
 // [#next-free-field: 6]
 #HttpProtocolOptions: {
+	"@type": "type.googleapis.com/envoy.extensions.upstreams.http.v3.HttpProtocolOptions"
 	// This contains options common across HTTP/1 and HTTP/2
 	common_http_protocol_options?: v3.#HttpProtocolOptions
 	// This contains common protocol options which are only applied upstream.
@@ -64,6 +65,7 @@ import (
 // If this is used, the cluster will only operate on one of the possible upstream protocols.
 // Note that HTTP/2 or above should generally be used for upstream gRPC clusters.
 #HttpProtocolOptions_ExplicitHttpConfig: {
+	"@type":                 "type.googleapis.com/envoy.extensions.upstreams.http.v3.HttpProtocolOptions_ExplicitHttpConfig"
 	http_protocol_options?:  v3.#Http1ProtocolOptions
 	http2_protocol_options?: v3.#Http2ProtocolOptions
 	// .. warning::
@@ -78,6 +80,7 @@ import (
 // If HTTP/3 is configured for downstream and not configured for upstream,
 // HTTP/3 requests will fail over to HTTP/2.
 #HttpProtocolOptions_UseDownstreamHttpConfig: {
+	"@type":                 "type.googleapis.com/envoy.extensions.upstreams.http.v3.HttpProtocolOptions_UseDownstreamHttpConfig"
 	http_protocol_options?:  v3.#Http1ProtocolOptions
 	http2_protocol_options?: v3.#Http2ProtocolOptions
 	// .. warning::
@@ -96,6 +99,7 @@ import (
 // failure. The transport layer may be configured with custom ALPN, but the default ALPN
 // for the cluster (or if custom ALPN fails) will be "h2,http/1.1".
 #HttpProtocolOptions_AutoHttpConfig: {
+	"@type":                 "type.googleapis.com/envoy.extensions.upstreams.http.v3.HttpProtocolOptions_AutoHttpConfig"
 	http_protocol_options?:  v3.#Http1ProtocolOptions
 	http2_protocol_options?: v3.#Http2ProtocolOptions
 	// Unlike HTTP/1 and HTTP/2, HTTP/3 will not be configured unless it is
