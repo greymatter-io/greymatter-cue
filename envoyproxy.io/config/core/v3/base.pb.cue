@@ -40,7 +40,7 @@ TrafficDirection_UNSPECIFIED: "UNSPECIFIED"
 TrafficDirection_INBOUND:     "INBOUND"
 TrafficDirection_OUTBOUND:    "OUTBOUND"
 
-// Describes the supported actions types for header append action.
+// [#not-implemented-hide:] Describes the supported actions types for header append action.
 #HeaderValueOption_HeaderAppendAction: "APPEND_IF_EXISTS_OR_ADD" | "ADD_IF_ABSENT" | "OVERWRITE_IF_EXISTS_OR_ADD"
 
 HeaderValueOption_HeaderAppendAction_APPEND_IF_EXISTS_OR_ADD:    "APPEND_IF_EXISTS_OR_ADD"
@@ -77,7 +77,7 @@ HeaderValueOption_HeaderAppendAction_OVERWRITE_IF_EXISTS_OR_ADD: "OVERWRITE_IF_E
 }
 
 // Version and identification for an Envoy extension.
-// [#next-free-field: 6]
+// [#next-free-field: 7]
 #Extension: {
 	// This is the name of the Envoy filter as specified in the Envoy
 	// configuration, e.g. envoy.filters.http.router, com.acme.widget.
@@ -91,6 +91,8 @@ HeaderValueOption_HeaderAppendAction_OVERWRITE_IF_EXISTS_OR_ADD: "OVERWRITE_IF_E
 	// [#not-implemented-hide:] Type descriptor of extension configuration proto.
 	// [#comment:TODO(yanavlasov): Link to the doc with existing configuration protos.]
 	// [#comment:TODO(yanavlasov): Add tests when PR #9391 lands.]
+	//
+	// Deprecated: Do not use.
 	type_descriptor?: string
 	// The version is a property of the extension and maintained independently
 	// of other extensions and the Envoy API.
@@ -98,6 +100,8 @@ HeaderValueOption_HeaderAppendAction_OVERWRITE_IF_EXISTS_OR_ADD: "OVERWRITE_IF_E
 	version?: #BuildVersion
 	// Indicates that the extension is present but was disabled via dynamic configuration.
 	disabled?: bool
+	// Type URLs of extension configuration protos.
+	type_urls?: [...string]
 }
 
 // Identifies a specific Envoy instance. The node identifier is presented to the

@@ -35,7 +35,7 @@ CustomInlineHeader_InlineHeaderType_RESPONSE_HEADER:  "RESPONSE_HEADER"
 CustomInlineHeader_InlineHeaderType_RESPONSE_TRAILER: "RESPONSE_TRAILER"
 
 // Bootstrap :ref:`configuration overview <config_overview_bootstrap>`.
-// [#next-free-field: 34]
+// [#next-free-field: 35]
 #Bootstrap: {
 	// Node identity to present to the management server and for instance
 	// identification purposes (e.g. in generated headers).
@@ -225,6 +225,9 @@ CustomInlineHeader_InlineHeaderType_RESPONSE_TRAILER: "RESPONSE_TRAILER"
 	// Optional path to a file with performance tracing data created by "Perfetto" SDK in binary
 	// ProtoBuf format. The default value is "envoy.pftrace".
 	perf_tracing_file_path?: string
+	// Optional overriding of default regex engine.
+	// If the value is not specified, Google RE2 will be used by default.
+	default_regex_engine?: v3.#TypedExtensionConfig
 }
 
 // Administration interface :ref:`operations documentation

@@ -1,8 +1,8 @@
 package v3
 
 import (
-	v3 "envoyproxy.io/deps/cncf/xds/go/xds/core/v3"
-	v31 "envoyproxy.io/config/core/v3"
+	v3 "envoyproxy.io/config/core/v3"
+	v31 "envoyproxy.io/deps/cncf/xds/go/xds/core/v3"
 	v32 "envoyproxy.io/deps/cncf/xds/go/xds/type/matcher/v3"
 	v33 "envoyproxy.io/config/accesslog/v3"
 )
@@ -12,13 +12,19 @@ import (
 Listener_DrainType_DEFAULT:     "DEFAULT"
 Listener_DrainType_MODIFY_ONLY: "MODIFY_ONLY"
 
+// The additional address the listener is listening on.
+// [#not-implemented-hide:]
+#AdditionalAddress: {
+	address?: v3.#Address
+}
+
 // Listener list collections. Entries are *Listener* resources or references.
 // [#not-implemented-hide:]
 #ListenerCollection: {
-	entries?: [...v3.#CollectionEntry]
+	entries?: [...v31.#CollectionEntry]
 }
 
-// [#next-free-field: 33]
+// [#next-free-field: 34]
 #Listener: {
 	// The unique name by which this listener is known. If no name is provided,
 	// Envoy will allocate an internal UUID for the listener. If the listener is to be dynamically
@@ -28,7 +34,12 @@ Listener_DrainType_MODIFY_ONLY: "MODIFY_ONLY"
 	// that is governed by the bind rules of the OS. E.g., multiple listeners can listen on port 0 on
 	// Linux as the actual port will be allocated by the OS.
 	// Required unless *api_listener* or *listener_specifier* is populated.
-	address?: v31.#Address
+	address?: v3.#Address
+	// The additional addresses the listener should listen on. The addresses must be unique across all
+	// listeners. Multiple addresses with port 0 can be supplied. When using multiple addresses in a single listener,
+	// all addresses use the same protocol, and multiple internal addresses are not supported.
+	// [#not-implemented-hide:]
+	additional_addresses?: [...#AdditionalAddress]
 	// Optional prefix to use on listener stats. If empty, the stats will be rooted at
 	// `listener.<address as string>.`. If non-empty, stats will be rooted at
 	// `listener.<stat_prefix>.`.
@@ -71,7 +82,7 @@ Listener_DrainType_MODIFY_ONLY: "MODIFY_ONLY"
 	// If unspecified, an implementation defined default is applied (1MiB).
 	per_connection_buffer_limit_bytes?: uint32
 	// Listener metadata.
-	metadata?: v31.#Metadata
+	metadata?: v3.#Metadata
 	// [#not-implemented-hide:]
 	//
 	// Deprecated: Do not use.
@@ -124,7 +135,7 @@ Listener_DrainType_MODIFY_ONLY: "MODIFY_ONLY"
 	freebind?: bool
 	// Additional socket options that may not be present in Envoy source code or
 	// precompiled binaries.
-	socket_options?: [...v31.#SocketOption]
+	socket_options?: [...v3.#SocketOption]
 	// Whether the listener should accept TCP Fast Open (TFO) connections.
 	// When this flag is set to a value greater than 0, the option TCP_FASTOPEN is enabled on
 	// the socket, with a queue length of the specified size
@@ -143,7 +154,7 @@ Listener_DrainType_MODIFY_ONLY: "MODIFY_ONLY"
 	// Specifies the intended direction of the traffic relative to the local Envoy.
 	// This property is required on Windows for listeners using the original destination filter,
 	// see :ref:`Original Destination <config_listener_filters_original_dst>`.
-	traffic_direction?: v31.#TrafficDirection
+	traffic_direction?: v3.#TrafficDirection
 	// If the protocol in the listener socket address in :ref:`protocol
 	// <envoy_v3_api_field_config.core.v3.SocketAddress.protocol>` is :ref:`UDP
 	// <envoy_v3_api_enum_value_config.core.v3.SocketAddress.Protocol.UDP>`, this field specifies UDP
@@ -250,6 +261,10 @@ Listener_DrainType_MODIFY_ONLY: "MODIFY_ONLY"
 #Listener_ConnectionBalanceConfig: {
 	// If specified, the listener will use the exact connection balancer.
 	exact_balance?: #Listener_ConnectionBalanceConfig_ExactBalance
+	// The listener will use the connection balancer according to ``type_url``. If ``type_url`` is invalid,
+	// Envoy will not attempt to balance active connections between worker threads.
+	// [#extension-category: envoy.network.connection_balance]
+	extend_balance?: v3.#TypedExtensionConfig
 }
 
 // Configuration for envoy internal listener. All the future internal listener features should be added here.

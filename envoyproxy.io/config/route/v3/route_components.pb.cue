@@ -181,7 +181,7 @@ RateLimit_Action_MetaData_Source_ROUTE_ENTRY: "ROUTE_ENTRY"
 //
 //   Envoy supports routing on HTTP method via :ref:`header matching
 //   <envoy_v3_api_msg_config.route.v3.HeaderMatcher>`.
-// [#next-free-field: 19]
+// [#next-free-field: 20]
 #Route: {
 	// Name for the route.
 	name?: string
@@ -248,6 +248,20 @@ RateLimit_Action_MetaData_Source_ROUTE_ENTRY: "ROUTE_ENTRY"
 	// If set, the bytes actually buffered will be the minimum value of this and the
 	// listener per_connection_buffer_limit_bytes.
 	per_request_buffer_limit_bytes?: uint32
+	// The human readable prefix to use when emitting statistics for this endpoint.
+	// The statistics are rooted at vhost.<virtual host name>.route.<stat_prefix>.
+	// This should be set for highly critical
+	// endpoints that one wishes to get “per-route” statistics on.
+	// If not set, endpoint statistics are not generated.
+	//
+	// The emitted statistics are the same as those documented for :ref:`virtual clusters <config_http_filters_router_vcluster_stats>`.
+	//
+	// .. warning::
+	//
+	//    We do not recommend setting up a stat prefix for
+	//    every application endpoint. This is both not easily maintainable and
+	//    statistics use a non-trivial amount of memory(approximately 1KiB per route).
+	stat_prefix?: string
 }
 
 // Compared to the :ref:`cluster <envoy_v3_api_field_config.route.v3.RouteAction.cluster>` field that specifies a

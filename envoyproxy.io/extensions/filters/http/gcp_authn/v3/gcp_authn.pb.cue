@@ -12,10 +12,19 @@ import (
 	// Retry policy for fetching tokens.
 	// This field is optional. If it is not configured, the filter will be fail-closed (i.e., reject the requests).
 	retry_policy?: v3.#RetryPolicy
+	// Token cache configuration. This field is optional.
+	cache_config?: #TokenCacheConfig
 }
 
 // Audience is the URL of the receiving service that performs token authentication.
 // It will be provided to the filter through cluster's typed_filter_metadata.
 #Audience: {
 	url?: string
+}
+
+// Token Cache configuration.
+#TokenCacheConfig: {
+	// The number of cache entries. The maximum number of entries is INT64_MAX as it is constrained by underlying cache implementation.
+	// Default value 0 (i.e., proto3 defaults) disables the cache by default. Other default values will enable the cache.
+	cache_size?: uint64
 }

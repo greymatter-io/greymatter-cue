@@ -211,6 +211,31 @@ RBAC_Action_LOG:   "LOG"
 	not_id?: #Principal
 }
 
+// Action defines the result of allowance or denial when a request matches the matcher.
+#Action: {
+	// The name indicates the policy name.
+	name?: string
+	// The action to take if the matcher matches. Every action either allows or denies a request,
+	// and can also carry out action-specific operations.
+	//
+	// Actions:
+	//
+	//  * ALLOW: If the request gets matched on ALLOW, it is permitted.
+	//  * DENY: If the request gets matched on DENY, it is not permitted.
+	//  * LOG: If the request gets matched on LOG, it is permitted. Besides, the
+	//    dynamic metadata key `access_log_hint` under the shared key namespace
+	//    'envoy.common' will be set to the value `true`.
+	//  * If the request cannot get matched, it will fallback to DENY.
+	//
+	// Log behavior:
+	//
+	//  If the RBAC matcher contains at least one LOG action, the dynamic
+	//  metadata key `access_log_hint` will be set based on if the request
+	//  get matched on the LOG action.
+	//
+	action?: #RBAC_Action
+}
+
 // Used in the `and_rules` and `or_rules` fields in the `rule` oneof. Depending on the context,
 // each are applied with the associated behavior.
 #Permission_Set: {

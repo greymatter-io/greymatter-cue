@@ -4,7 +4,7 @@ import (
 	v3 "envoyproxy.io/config/core/v3"
 )
 
-// [#next-free-field: 15]
+// [#next-free-field: 16]
 #RouteConfiguration: {
 	// The name of the route configuration. For example, it might match
 	// :ref:`route_config_name
@@ -93,6 +93,11 @@ import (
 	// NOTE: this option will not strip the port number (if any) contained in route config
 	// :ref:`envoy_v3_api_msg_config.route.v3.VirtualHost`.domains field.
 	ignore_port_in_host_matching?: bool
+	// Ignore path-parameters in path-matching.
+	// Before RFC3986, URI were like(RFC1808): <scheme>://<net_loc>/<path>;<params>?<query>#<fragment>
+	// Envoy by default takes ":path" as "<path>;<params>".
+	// For users who want to only match path on the "<path>" portion, this option should be true.
+	ignore_path_parameters_in_path_matching?: bool
 }
 
 #Vhds: {
