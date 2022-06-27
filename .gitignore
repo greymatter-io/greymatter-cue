@@ -1,1 +1,4 @@
 vendor/
+
+# editors and IDEs
+.idea
