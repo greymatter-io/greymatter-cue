@@ -1,7 +1,6 @@
 package v3
 
 import (
-	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 	v3 "envoyproxy.io/deps/cncf/xds/go/xds/core/v3"
 )
 
@@ -27,6 +26,7 @@ ApiConfigSource_ApiType_AGGREGATED_DELTA_GRPC:                 "AGGREGATED_DELTA
 // will use to fetch an xDS API.
 // [#next-free-field: 10]
 #ApiConfigSource: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.ApiConfigSource"
 	// API type (gRPC, REST, delta gRPC)
 	api_type?: #ApiConfigSource_ApiType
 	// API version for xDS transport protocol. This describes the xDS gRPC/REST
@@ -68,6 +68,7 @@ ApiConfigSource_ApiType_AGGREGATED_DELTA_GRPC:                 "AGGREGATED_DELTA
 // set in :ref:`ConfigSource <envoy_v3_api_msg_config.core.v3.ConfigSource>` can be used to
 // specify that ADS is to be used.
 #AggregatedConfigSource: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.AggregatedConfigSource"
 }
 
 // [#not-implemented-hide:]
@@ -75,6 +76,7 @@ ApiConfigSource_ApiType_AGGREGATED_DELTA_GRPC:                 "AGGREGATED_DELTA
 // set in :ref:`ConfigSource <envoy_v3_api_msg_config.core.v3.ConfigSource>` can be used to
 // specify that other data can be obtained from the same server.
 #SelfConfigSource: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.SelfConfigSource"
 	// API version for xDS transport protocol. This describes the xDS gRPC/REST
 	// endpoint and version of [Delta]DiscoveryRequest/Response used on the wire.
 	transport_api_version?: #ApiVersion
@@ -82,6 +84,7 @@ ApiConfigSource_ApiType_AGGREGATED_DELTA_GRPC:                 "AGGREGATED_DELTA
 
 // Rate Limit settings to be applied for discovery requests made by Envoy.
 #RateLimitSettings: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.RateLimitSettings"
 	// Maximum number of tokens to be used for rate limiting discovery request calls. If not set, a
 	// default value of 100 will be used.
 	max_tokens?: uint32
@@ -92,6 +95,7 @@ ApiConfigSource_ApiType_AGGREGATED_DELTA_GRPC:                 "AGGREGATED_DELTA
 
 // Local filesystem path configuration source.
 #PathConfigSource: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.PathConfigSource"
 	// Path on the filesystem to source and watch for configuration updates.
 	// When sourcing configuration for a :ref:`secret <envoy_v3_api_msg_extensions.transport_sockets.tls.v3.Secret>`,
 	// the certificate and key files are also watched for updates.
@@ -133,6 +137,7 @@ ApiConfigSource_ApiType_AGGREGATED_DELTA_GRPC:                 "AGGREGATED_DELTA
 // inotify for updates.
 // [#next-free-field: 9]
 #ConfigSource: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.ConfigSource"
 	// Authorities that this config source may be used for. An authority specified in a xdstp:// URL
 	// is resolved to a *ConfigSource* prior to configuration fetch. This field provides the
 	// association between authority name and configuration source.
@@ -187,11 +192,12 @@ ApiConfigSource_ApiType_AGGREGATED_DELTA_GRPC:                 "AGGREGATED_DELTA
 // behavior of a disabled extension depends on the context. For example, a
 // filter chain with a disabled extension filter rejects all incoming streams.
 #ExtensionConfigSource: {
+	"@type":        "type.googleapis.com/envoy.config.core.v3.ExtensionConfigSource"
 	config_source?: #ConfigSource
 	// Optional default configuration to use as the initial configuration if
 	// there is a failure to receive the initial extension configuration or if
 	// `apply_default_config_without_warming` flag is set.
-	default_config?: any.#Any
+	default_config?: _
 	// Use the default config as the initial configuration without warming and
 	// waiting for the first discovery response. Requires the default configuration
 	// to be supplied.

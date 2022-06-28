@@ -8,6 +8,7 @@ import (
 
 // An expression together with source information as returned by the parser.
 #ParsedExpr: {
+	"@type": "type.googleapis.com/google.golang.org.genproto.googleapis.api.expr.v1alpha1.ParsedExpr"
 	// The parsed expression.
 	expr?: #Expr
 	// The source info derived from input that generated the parsed `expr`.
@@ -30,6 +31,7 @@ import (
 // the declaration `google.api.name` within a [Expr.Select][google.api.expr.v1alpha1.Expr.Select] expression, and
 // the function declaration `startsWith`.
 #Expr: {
+	"@type": "type.googleapis.com/google.golang.org.genproto.googleapis.api.expr.v1alpha1.Expr"
 	// Required. An id assigned to this node by the parser which is unique in a
 	// given expression tree. This is used to associate type information and other
 	// attributes to a node in the parse tree.
@@ -64,6 +66,7 @@ import (
 // Examples of literals include: `"hello"`, `b'bytes'`, `1u`, `4.2`, `-2`,
 // `true`, `null`.
 #Constant: {
+	"@type": "type.googleapis.com/google.golang.org.genproto.googleapis.api.expr.v1alpha1.Constant"
 	// null value.
 	null_value?: structpb.#NullValue
 	// boolean value.
@@ -94,6 +97,7 @@ import (
 
 // Source information collected at parse time.
 #SourceInfo: {
+	"@type": "type.googleapis.com/google.golang.org.genproto.googleapis.api.expr.v1alpha1.SourceInfo"
 	// The syntax version of the source, e.g. `cel1`.
 	syntax_version?: string
 	// The location name. All position information attached to an expression is
@@ -125,6 +129,7 @@ import (
 
 // A specific position in source.
 #SourcePosition: {
+	"@type": "type.googleapis.com/google.golang.org.genproto.googleapis.api.expr.v1alpha1.SourcePosition"
 	// The soucre location name (e.g. file name).
 	location?: string
 	// The UTF-8 code unit offset.
@@ -139,6 +144,7 @@ import (
 
 // An identifier expression. e.g. `request`.
 #Expr_Ident: {
+	"@type": "type.googleapis.com/google.golang.org.genproto.googleapis.api.expr.v1alpha1.Expr_Ident"
 	// Required. Holds a single, unqualified identifier, possibly preceded by a
 	// '.'.
 	//
@@ -148,6 +154,7 @@ import (
 
 // A field selection expression. e.g. `request.auth`.
 #Expr_Select: {
+	"@type": "type.googleapis.com/google.golang.org.genproto.googleapis.api.expr.v1alpha1.Expr_Select"
 	// Required. The target of the selection expression.
 	//
 	// For example, in the select expression `request.auth`, the `request`
@@ -168,6 +175,7 @@ import (
 //
 // For example, `value == 10`, `size(map_value)`.
 #Expr_Call: {
+	"@type": "type.googleapis.com/google.golang.org.genproto.googleapis.api.expr.v1alpha1.Expr_Call"
 	// The target of an method call-style expression. For example, `x` in
 	// `x.f()`.
 	target?: #Expr
@@ -182,6 +190,7 @@ import (
 // Lists may either be homogenous, e.g. `[1, 2, 3]`, or heterogeneous, e.g.
 // `dyn([1, 'hello', 2.0])`
 #Expr_CreateList: {
+	"@type": "type.googleapis.com/google.golang.org.genproto.googleapis.api.expr.v1alpha1.Expr_CreateList"
 	// The elements part of the list.
 	elements?: [...#Expr]
 }
@@ -192,6 +201,7 @@ import (
 // similar, but prefixed with a type name and composed of field ids:
 // `types.MyType{field_id: 'value'}`.
 #Expr_CreateStruct: {
+	"@type": "type.googleapis.com/google.golang.org.genproto.googleapis.api.expr.v1alpha1.Expr_CreateStruct"
 	// The type name of the message to be created, empty when creating map
 	// literals.
 	message_name?: string
@@ -226,6 +236,7 @@ import (
 // macro tests whether the property is set to its default. For map and struct
 // types, the macro tests whether the property `x` is defined on `m`.
 #Expr_Comprehension: {
+	"@type": "type.googleapis.com/google.golang.org.genproto.googleapis.api.expr.v1alpha1.Expr_Comprehension"
 	// The name of the iteration variable.
 	iter_var?: string
 	// The range over which var iterates.
@@ -251,6 +262,7 @@ import (
 
 // Represents an entry.
 #Expr_CreateStruct_Entry: {
+	"@type": "type.googleapis.com/google.golang.org.genproto.googleapis.api.expr.v1alpha1.Expr_CreateStruct_Entry"
 	// Required. An id assigned to this node by the parser which is unique
 	// in a given expression tree. This is used to associate type
 	// information and other attributes to the node.

@@ -3,6 +3,7 @@ package v2
 // [#not-implemented-hide:] Not configuration. Workaround c++ protobuf issue with importing
 // services: https://github.com/google/protobuf/issues/4221 and protoxform to upgrade the file.
 #RdsDummy: {
+	"@type": "type.googleapis.com/envoy.api.v2.RdsDummy"
 }
 
 // RouteDiscoveryServiceClient is the client API for RouteDiscoveryService service.
@@ -19,6 +20,7 @@ package v2
 
 // UnimplementedRouteDiscoveryServiceServer can be embedded to have forward compatible implementations.
 #UnimplementedRouteDiscoveryServiceServer: {
+	"@type": "type.googleapis.com/envoy.api.v2.UnimplementedRouteDiscoveryServiceServer"
 }
 
 #RouteDiscoveryService_StreamRoutesServer: _
@@ -37,6 +39,7 @@ package v2
 
 // UnimplementedVirtualHostDiscoveryServiceServer can be embedded to have forward compatible implementations.
 #UnimplementedVirtualHostDiscoveryServiceServer: {
+	"@type": "type.googleapis.com/envoy.api.v2.UnimplementedVirtualHostDiscoveryServiceServer"
 }
 
 #VirtualHostDiscoveryService_DeltaVirtualHostsServer: _

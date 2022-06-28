@@ -19,6 +19,7 @@ Gzip_CompressionLevel_Enum_SPEED:   "SPEED"
 
 // [#next-free-field: 11]
 #Gzip: {
+	"@type": "type.googleapis.com/envoy.config.filter.http.gzip.v2.Gzip"
 	// Value from 1 to 9 that controls the amount of internal memory used by zlib. Higher values
 	// use more memory, but are faster and produce better compression results. The default value is 5.
 	memory_level?: uint32
@@ -80,4 +81,5 @@ Gzip_CompressionLevel_Enum_SPEED:   "SPEED"
 }
 
 #Gzip_CompressionLevel: {
+	"@type": "type.googleapis.com/envoy.config.filter.http.gzip.v2.Gzip_CompressionLevel"
 }

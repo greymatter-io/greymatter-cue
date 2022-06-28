@@ -5,6 +5,7 @@ import (
 )
 
 #XRayConfig: {
+	"@type": "type.googleapis.com/envoy.config.trace.v2alpha.XRayConfig"
 	// The UDP endpoint of the X-Ray Daemon where the spans will be sent.
 	// If this value is not set, the default value of 127.0.0.1:2000 will be used.
 	daemon_endpoint?: core.#SocketAddress

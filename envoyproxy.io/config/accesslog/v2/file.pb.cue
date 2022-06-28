@@ -8,6 +8,7 @@ import (
 // that writes log entries directly to a file. Configures the built-in *envoy.access_loggers.file*
 // AccessLog.
 #FileAccessLog: {
+	"@type": "type.googleapis.com/envoy.config.accesslog.v2.FileAccessLog"
 	// A path to a local file to which to write the access log entries.
 	path?: string
 	// Access log :ref:`format string<config_access_log_format_strings>`.

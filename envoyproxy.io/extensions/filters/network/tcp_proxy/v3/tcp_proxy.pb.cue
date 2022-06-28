@@ -8,6 +8,7 @@ import (
 
 // [#next-free-field: 15]
 #TcpProxy: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.network.tcp_proxy.v3.TcpProxy"
 	// The prefix to use when emitting :ref:`statistics
 	// <config_network_filters_tcp_proxy_stats>`.
 	stat_prefix?: string
@@ -68,6 +69,7 @@ import (
 // that indicate the percentage of traffic to be forwarded to each cluster.
 // The router selects an upstream cluster based on these weights.
 #TcpProxy_WeightedCluster: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.network.tcp_proxy.v3.TcpProxy_WeightedCluster"
 	// Specifies one or more upstream clusters associated with the route.
 	clusters?: [...#TcpProxy_WeightedCluster_ClusterWeight]
 }
@@ -76,6 +78,7 @@ import (
 // Tunneling is supported over both HTTP/1.1 and HTTP/2. Upstream protocol is
 // determined by the cluster configuration.
 #TcpProxy_TunnelingConfig: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.network.tcp_proxy.v3.TcpProxy_TunnelingConfig"
 	// The hostname to send in the synthesized CONNECT headers to the upstream proxy.
 	hostname?: string
 	// Use POST method instead of CONNECT method to tunnel the TCP stream.
@@ -91,6 +94,7 @@ import (
 }
 
 #TcpProxy_OnDemand: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.network.tcp_proxy.v3.TcpProxy_OnDemand"
 	// An optional configuration for on-demand cluster discovery
 	// service. If not specified, the on-demand cluster discovery will
 	// be disabled. When it's specified, the filter will pause a request
@@ -108,6 +112,7 @@ import (
 }
 
 #TcpProxy_WeightedCluster_ClusterWeight: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.network.tcp_proxy.v3.TcpProxy_WeightedCluster_ClusterWeight"
 	// Name of the upstream cluster.
 	name?: string
 	// When a request matches the route, the choice of an upstream cluster is

@@ -3,7 +3,6 @@ package route
 import (
 	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
 	_type "envoyproxy.io/type"
-	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 	core "envoyproxy.io/api/v2/core"
 	matcher "envoyproxy.io/type/matcher"
 	v2 "envoyproxy.io/type/tracing/v2"
@@ -41,6 +40,7 @@ RedirectAction_RedirectResponseCode_PERMANENT_REDIRECT: "PERMANENT_REDIRECT"
 // upstream cluster to route to or whether to perform a redirect.
 // [#next-free-field: 21]
 #VirtualHost: {
+	"@type": "type.googleapis.com/envoy.api.v2.route.VirtualHost"
 	// The logical name of the virtual host. This is used when emitting certain
 	// statistics but is not relevant for routing.
 	name?: string
@@ -110,7 +110,7 @@ RedirectAction_RedirectResponseCode_PERMANENT_REDIRECT: "PERMANENT_REDIRECT"
 	// *envoy.filters.http.buffer* for the HTTP buffer filter. Use of this field is filter
 	// specific; see the :ref:`HTTP filter documentation <config_http_filters>`
 	// for if and how it is utilized.
-	typed_per_filter_config?: [string]: any.#Any
+	typed_per_filter_config?: [string]: _
 	// Decides whether the :ref:`x-envoy-attempt-count
 	// <config_http_filters_router_x-envoy-attempt-count>` header should be included
 	// in the upstream request. Setting this option will cause it to override any existing header
@@ -140,7 +140,7 @@ RedirectAction_RedirectResponseCode_PERMANENT_REDIRECT: "PERMANENT_REDIRECT"
 	// will take precedence over this config and it'll be treated independently (e.g.: values are not
 	// inherited). :ref:`Retry policy <envoy_api_field_route.VirtualHost.retry_policy>` should not be
 	// set if this field is used.
-	retry_policy_typed_config?: any.#Any
+	retry_policy_typed_config?: _
 	// Indicates the hedge policy for all routes in this virtual host. Note that setting a
 	// route level entry will take precedence over this config and it'll be treated
 	// independently (e.g.: values are not inherited).
@@ -153,7 +153,8 @@ RedirectAction_RedirectResponseCode_PERMANENT_REDIRECT: "PERMANENT_REDIRECT"
 
 // A filter-defined action type.
 #FilterAction: {
-	action?: any.#Any
+	"@type": "type.googleapis.com/envoy.api.v2.route.FilterAction"
+	action?: _
 }
 
 // A route is both a specification of how to match a request as well as an indication of what to do
@@ -165,6 +166,7 @@ RedirectAction_RedirectResponseCode_PERMANENT_REDIRECT: "PERMANENT_REDIRECT"
 //   <envoy_api_msg_route.HeaderMatcher>`.
 // [#next-free-field: 18]
 #Route: {
+	"@type": "type.googleapis.com/envoy.api.v2.route.Route"
 	// Name for the route.
 	name?: string
 	// Route matching parameters.
@@ -200,7 +202,7 @@ RedirectAction_RedirectResponseCode_PERMANENT_REDIRECT: "PERMANENT_REDIRECT"
 	// *envoy.filters.http.buffer* for the HTTP buffer filter. Use of this field is filter
 	// specific; see the :ref:`HTTP filter documentation <config_http_filters>` for
 	// if and how it is utilized.
-	typed_per_filter_config?: [string]: any.#Any
+	typed_per_filter_config?: [string]: _
 	// Specifies a set of headers that will be added to requests matching this
 	// route. Headers specified at this level are applied before headers from the
 	// enclosing :ref:`envoy_api_msg_route.VirtualHost` and
@@ -237,6 +239,7 @@ RedirectAction_RedirectResponseCode_PERMANENT_REDIRECT: "PERMANENT_REDIRECT"
 // traffic to be forwarded to each cluster. The router selects an upstream cluster based on the
 // weights.
 #WeightedCluster: {
+	"@type": "type.googleapis.com/envoy.api.v2.route.WeightedCluster"
 	// Specifies one or more upstream clusters associated with the route.
 	clusters?: [...#WeightedCluster_ClusterWeight]
 	// Specifies the total weight across all clusters. The sum of all cluster weights must equal this
@@ -255,6 +258,7 @@ RedirectAction_RedirectResponseCode_PERMANENT_REDIRECT: "PERMANENT_REDIRECT"
 
 // [#next-free-field: 12]
 #RouteMatch: {
+	"@type": "type.googleapis.com/envoy.api.v2.route.RouteMatch"
 	// If specified, the route is a prefix rule meaning that the prefix must
 	// match the beginning of the *:path* header.
 	prefix?: string
@@ -338,6 +342,7 @@ RedirectAction_RedirectResponseCode_PERMANENT_REDIRECT: "PERMANENT_REDIRECT"
 
 // [#next-free-field: 12]
 #CorsPolicy: {
+	"@type": "type.googleapis.com/envoy.api.v2.route.CorsPolicy"
 	// Specifies the origins that will be allowed to do CORS requests.
 	//
 	// An origin is allowed if either allow_origin or allow_origin_regex match.
@@ -401,6 +406,7 @@ RedirectAction_RedirectResponseCode_PERMANENT_REDIRECT: "PERMANENT_REDIRECT"
 
 // [#next-free-field: 34]
 #RouteAction: {
+	"@type": "type.googleapis.com/envoy.api.v2.route.RouteAction"
 	// Indicates the upstream cluster to which the request should be routed
 	// to.
 	cluster?: string
@@ -556,7 +562,7 @@ RedirectAction_RedirectResponseCode_PERMANENT_REDIRECT: "PERMANENT_REDIRECT"
 	// precedence over the virtual host level retry policy entirely (e.g.: policies are not merged,
 	// most internal one becomes the enforced policy). :ref:`Retry policy <envoy_api_field_route.VirtualHost.retry_policy>`
 	// should not be set if this field is used.
-	retry_policy_typed_config?: any.#Any
+	retry_policy_typed_config?: _
 	// Indicates that the route has a request mirroring policy.
 	//
 	// .. attention::
@@ -646,6 +652,7 @@ RedirectAction_RedirectResponseCode_PERMANENT_REDIRECT: "PERMANENT_REDIRECT"
 // HTTP retry :ref:`architecture overview <arch_overview_http_routing_retry>`.
 // [#next-free-field: 11]
 #RetryPolicy: {
+	"@type": "type.googleapis.com/envoy.api.v2.route.RetryPolicy"
 	// Specifies the conditions under which retry takes place. These are the same
 	// conditions documented for :ref:`config_http_filters_router_x-envoy-retry-on` and
 	// :ref:`config_http_filters_router_x-envoy-retry-grpc-on`.
@@ -697,6 +704,7 @@ RedirectAction_RedirectResponseCode_PERMANENT_REDIRECT: "PERMANENT_REDIRECT"
 
 // HTTP request hedging :ref:`architecture overview <arch_overview_http_routing_hedging>`.
 #HedgePolicy: {
+	"@type": "type.googleapis.com/envoy.api.v2.route.HedgePolicy"
 	// Specifies the number of initial requests that should be sent upstream.
 	// Must be at least 1.
 	// Defaults to 1.
@@ -725,6 +733,7 @@ RedirectAction_RedirectResponseCode_PERMANENT_REDIRECT: "PERMANENT_REDIRECT"
 
 // [#next-free-field: 9]
 #RedirectAction: {
+	"@type": "type.googleapis.com/envoy.api.v2.route.RedirectAction"
 	// The scheme portion of the URL will be swapped with "https".
 	https_redirect?: bool
 	// The scheme portion of the URL will be swapped with this value.
@@ -768,6 +777,7 @@ RedirectAction_RedirectResponseCode_PERMANENT_REDIRECT: "PERMANENT_REDIRECT"
 }
 
 #DirectResponseAction: {
+	"@type": "type.googleapis.com/envoy.api.v2.route.DirectResponseAction"
 	// Specifies the HTTP response status to be returned.
 	status?: uint32
 	// Specifies the content of the response body. If this setting is omitted,
@@ -782,6 +792,7 @@ RedirectAction_RedirectResponseCode_PERMANENT_REDIRECT: "PERMANENT_REDIRECT"
 }
 
 #Decorator: {
+	"@type": "type.googleapis.com/envoy.api.v2.route.Decorator"
 	// The operation name associated with the request matched to this route. If tracing is
 	// enabled, this information will be used as the span name reported for this request.
 	//
@@ -796,6 +807,7 @@ RedirectAction_RedirectResponseCode_PERMANENT_REDIRECT: "PERMANENT_REDIRECT"
 }
 
 #Tracing: {
+	"@type": "type.googleapis.com/envoy.api.v2.route.Tracing"
 	// Target percentage of requests managed by this HTTP connection manager that will be force
 	// traced if the :ref:`x-client-trace-id <config_http_conn_man_headers_x-client-trace-id>`
 	// header is set. This field is a direct analog for the runtime variable
@@ -845,6 +857,7 @@ RedirectAction_RedirectResponseCode_PERMANENT_REDIRECT: "PERMANENT_REDIRECT"
 //    every application endpoint. This is both not easily maintainable and as well the matching and
 //    statistics output are not free.
 #VirtualCluster: {
+	"@type": "type.googleapis.com/envoy.api.v2.route.VirtualCluster"
 	// Specifies a regex pattern to use for matching requests. The entire path of the request
 	// must match the regex. The regex grammar used is defined `here
 	// <https://en.cppreference.com/w/cpp/regex/ecmascript>`_.
@@ -881,6 +894,7 @@ RedirectAction_RedirectResponseCode_PERMANENT_REDIRECT: "PERMANENT_REDIRECT"
 
 // Global rate limiting :ref:`architecture overview <arch_overview_global_rate_limit>`.
 #RateLimit: {
+	"@type": "type.googleapis.com/envoy.api.v2.route.RateLimit"
 	// Refers to the stage set in the filter. The rate limit configuration only
 	// applies to filters with the same stage number. The default stage number is
 	// 0.
@@ -926,6 +940,7 @@ RedirectAction_RedirectResponseCode_PERMANENT_REDIRECT: "PERMANENT_REDIRECT"
 //  [#next-major-version: HeaderMatcher should be refactored to use StringMatcher.]
 // [#next-free-field: 12]
 #HeaderMatcher: {
+	"@type": "type.googleapis.com/envoy.api.v2.route.HeaderMatcher"
 	// Specifies the name of the header in the request.
 	name?: string
 	// If specified, header match will be performed based on the value of the header.
@@ -993,6 +1008,7 @@ RedirectAction_RedirectResponseCode_PERMANENT_REDIRECT: "PERMANENT_REDIRECT"
 // as an ampersand-separated list of keys and/or key=value elements.
 // [#next-free-field: 7]
 #QueryParameterMatcher: {
+	"@type": "type.googleapis.com/envoy.api.v2.route.QueryParameterMatcher"
 	// Specifies the name of a key that must be present in the requested
 	// *path*'s query string.
 	name?: string
@@ -1023,6 +1039,7 @@ RedirectAction_RedirectResponseCode_PERMANENT_REDIRECT: "PERMANENT_REDIRECT"
 
 // [#next-free-field: 11]
 #WeightedCluster_ClusterWeight: {
+	"@type": "type.googleapis.com/envoy.api.v2.route.WeightedCluster_ClusterWeight"
 	// Name of the upstream cluster. The cluster must exist in the
 	// :ref:`cluster manager configuration <config_cluster_manager>`.
 	name?: string
@@ -1072,13 +1089,15 @@ RedirectAction_RedirectResponseCode_PERMANENT_REDIRECT: "PERMANENT_REDIRECT"
 	// *envoy.filters.http.buffer* for the HTTP buffer filter. Use of this field is filter
 	// specific; see the :ref:`HTTP filter documentation <config_http_filters>`
 	// for if and how it is utilized.
-	typed_per_filter_config?: [string]: any.#Any
+	typed_per_filter_config?: [string]: _
 }
 
 #RouteMatch_GrpcRouteMatchOptions: {
+	"@type": "type.googleapis.com/envoy.api.v2.route.RouteMatch_GrpcRouteMatchOptions"
 }
 
 #RouteMatch_TlsContextMatchOptions: {
+	"@type": "type.googleapis.com/envoy.api.v2.route.RouteMatch_TlsContextMatchOptions"
 	// If specified, the route will match against whether or not a certificate is presented.
 	// If not specified, certificate presentation status (true or false) will not be considered when route matching.
 	presented?: bool
@@ -1099,6 +1118,7 @@ RedirectAction_RedirectResponseCode_PERMANENT_REDIRECT: "PERMANENT_REDIRECT"
 //
 //   Shadowing will not be triggered if the primary cluster does not exist.
 #RouteAction_RequestMirrorPolicy: {
+	"@type": "type.googleapis.com/envoy.api.v2.route.RouteAction_RequestMirrorPolicy"
 	// Specifies the cluster that requests will be mirrored to. The cluster must
 	// exist in the cluster manager configuration.
 	cluster?: string
@@ -1137,6 +1157,7 @@ RedirectAction_RedirectResponseCode_PERMANENT_REDIRECT: "PERMANENT_REDIRECT"
 // <arch_overview_load_balancing_types>`.
 // [#next-free-field: 7]
 #RouteAction_HashPolicy: {
+	"@type": "type.googleapis.com/envoy.api.v2.route.RouteAction_HashPolicy"
 	// Header hash policy.
 	header?: #RouteAction_HashPolicy_Header
 	// Cookie hash policy.
@@ -1176,6 +1197,7 @@ RedirectAction_RedirectResponseCode_PERMANENT_REDIRECT: "PERMANENT_REDIRECT"
 // <envoy_api_field_config.filter.network.http_connection_manager.v2.HttpConnectionManager.upgrade_configs>`
 // but does not affect any custom filter chain specified there.
 #RouteAction_UpgradeConfig: {
+	"@type": "type.googleapis.com/envoy.api.v2.route.RouteAction_UpgradeConfig"
 	// The case-insensitive name of this upgrade, e.g. "websocket".
 	// For each upgrade type present in upgrade_configs, requests with
 	// Upgrade: [upgrade_type] will be proxied upstream.
@@ -1185,6 +1207,7 @@ RedirectAction_RedirectResponseCode_PERMANENT_REDIRECT: "PERMANENT_REDIRECT"
 }
 
 #RouteAction_HashPolicy_Header: {
+	"@type": "type.googleapis.com/envoy.api.v2.route.RouteAction_HashPolicy_Header"
 	// The name of the request header that will be used to obtain the hash
 	// key. If the request header is not present, no hash will be produced.
 	header_name?: string
@@ -1205,6 +1228,7 @@ RedirectAction_RedirectResponseCode_PERMANENT_REDIRECT: "PERMANENT_REDIRECT"
 //    streams on the same connection will independently receive the same
 //    cookie, even if they arrive at the Envoy simultaneously.
 #RouteAction_HashPolicy_Cookie: {
+	"@type": "type.googleapis.com/envoy.api.v2.route.RouteAction_HashPolicy_Cookie"
 	// The name of the cookie that will be used to obtain the hash key. If the
 	// cookie is not present and ttl below is not set, no hash will be
 	// produced.
@@ -1219,11 +1243,13 @@ RedirectAction_RedirectResponseCode_PERMANENT_REDIRECT: "PERMANENT_REDIRECT"
 }
 
 #RouteAction_HashPolicy_ConnectionProperties: {
+	"@type": "type.googleapis.com/envoy.api.v2.route.RouteAction_HashPolicy_ConnectionProperties"
 	// Hash on source IP address.
 	source_ip?: bool
 }
 
 #RouteAction_HashPolicy_QueryParameter: {
+	"@type": "type.googleapis.com/envoy.api.v2.route.RouteAction_HashPolicy_QueryParameter"
 	// The name of the URL query parameter that will be used to obtain the hash
 	// key. If the parameter is not present, no hash will be produced. Query
 	// parameter names are case-sensitive.
@@ -1231,6 +1257,7 @@ RedirectAction_RedirectResponseCode_PERMANENT_REDIRECT: "PERMANENT_REDIRECT"
 }
 
 #RouteAction_HashPolicy_FilterState: {
+	"@type": "type.googleapis.com/envoy.api.v2.route.RouteAction_HashPolicy_FilterState"
 	// The name of the Object in the per-request filterState, which is an
 	// Envoy::Hashable object. If there is no data associated with the key,
 	// or the stored object is not Envoy::Hashable, no hash will be produced.
@@ -1238,20 +1265,23 @@ RedirectAction_RedirectResponseCode_PERMANENT_REDIRECT: "PERMANENT_REDIRECT"
 }
 
 #RetryPolicy_RetryPriority: {
-	name?: string
+	"@type": "type.googleapis.com/envoy.api.v2.route.RetryPolicy_RetryPriority"
+	name?:   string
 	// Deprecated: Do not use.
 	config?:       _struct.#Struct
-	typed_config?: any.#Any
+	typed_config?: _
 }
 
 #RetryPolicy_RetryHostPredicate: {
-	name?: string
+	"@type": "type.googleapis.com/envoy.api.v2.route.RetryPolicy_RetryHostPredicate"
+	name?:   string
 	// Deprecated: Do not use.
 	config?:       _struct.#Struct
-	typed_config?: any.#Any
+	typed_config?: _
 }
 
 #RetryPolicy_RetryBackOff: {
+	"@type": "type.googleapis.com/envoy.api.v2.route.RetryPolicy_RetryBackOff"
 	// Specifies the base interval between retries. This parameter is required and must be greater
 	// than zero. Values less than 1 ms are rounded up to 1 ms.
 	// See :ref:`config_http_filters_router_x-envoy-max-retries` for a discussion of Envoy's
@@ -1266,6 +1296,7 @@ RedirectAction_RedirectResponseCode_PERMANENT_REDIRECT: "PERMANENT_REDIRECT"
 
 // [#next-free-field: 7]
 #RateLimit_Action: {
+	"@type": "type.googleapis.com/envoy.api.v2.route.RateLimit_Action"
 	// Rate limit on source cluster.
 	source_cluster?: #RateLimit_Action_SourceCluster
 	// Rate limit on destination cluster.
@@ -1288,6 +1319,7 @@ RedirectAction_RedirectResponseCode_PERMANENT_REDIRECT: "PERMANENT_REDIRECT"
 //
 // <local service cluster> is derived from the :option:`--service-cluster` option.
 #RateLimit_Action_SourceCluster: {
+	"@type": "type.googleapis.com/envoy.api.v2.route.RateLimit_Action_SourceCluster"
 }
 
 // The following descriptor entry is appended to the descriptor:
@@ -1307,6 +1339,7 @@ RedirectAction_RedirectResponseCode_PERMANENT_REDIRECT: "PERMANENT_REDIRECT"
 // * :ref:`cluster_header <envoy_api_field_route.RouteAction.cluster_header>` indicates which
 //   header in the request contains the target cluster.
 #RateLimit_Action_DestinationCluster: {
+	"@type": "type.googleapis.com/envoy.api.v2.route.RateLimit_Action_DestinationCluster"
 }
 
 // The following descriptor entry is appended when a header contains a key that matches the
@@ -1316,6 +1349,7 @@ RedirectAction_RedirectResponseCode_PERMANENT_REDIRECT: "PERMANENT_REDIRECT"
 //
 //   ("<descriptor_key>", "<header_value_queried_from_header>")
 #RateLimit_Action_RequestHeaders: {
+	"@type": "type.googleapis.com/envoy.api.v2.route.RateLimit_Action_RequestHeaders"
 	// The header name to be queried from the request headers. The header’s
 	// value is used to populate the value of the descriptor entry for the
 	// descriptor_key.
@@ -1331,6 +1365,7 @@ RedirectAction_RedirectResponseCode_PERMANENT_REDIRECT: "PERMANENT_REDIRECT"
 //
 //   ("remote_address", "<trusted address from x-forwarded-for>")
 #RateLimit_Action_RemoteAddress: {
+	"@type": "type.googleapis.com/envoy.api.v2.route.RateLimit_Action_RemoteAddress"
 }
 
 // The following descriptor entry is appended to the descriptor:
@@ -1339,6 +1374,7 @@ RedirectAction_RedirectResponseCode_PERMANENT_REDIRECT: "PERMANENT_REDIRECT"
 //
 //   ("generic_key", "<descriptor_value>")
 #RateLimit_Action_GenericKey: {
+	"@type": "type.googleapis.com/envoy.api.v2.route.RateLimit_Action_GenericKey"
 	// The value to use in the descriptor entry.
 	descriptor_value?: string
 }
@@ -1349,6 +1385,7 @@ RedirectAction_RedirectResponseCode_PERMANENT_REDIRECT: "PERMANENT_REDIRECT"
 //
 //   ("header_match", "<descriptor_value>")
 #RateLimit_Action_HeaderValueMatch: {
+	"@type": "type.googleapis.com/envoy.api.v2.route.RateLimit_Action_HeaderValueMatch"
 	// The value to use in the descriptor entry.
 	descriptor_value?: string
 	// If set to true, the action will append a descriptor entry when the

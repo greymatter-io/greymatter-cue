@@ -2,6 +2,7 @@ package v3
 
 // Configuration for apple DNS resolver.
 #AppleDnsResolverConfig: {
+	"@type": "type.googleapis.com/envoy.extensions.network.dns_resolver.apple.v3.AppleDnsResolverConfig"
 	// The resolver will avoid the system's heuristics to only return
 	// IPv4 or IPv6 addresses that it considers to be "routable", instead
 	// returning all possible IPv4 or IPv6 addresses. This setting is

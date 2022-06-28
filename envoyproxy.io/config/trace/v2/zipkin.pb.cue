@@ -12,6 +12,7 @@ ZipkinConfig_CollectorEndpointVersion_GRPC:         "GRPC"
 // [#extension: envoy.tracers.zipkin]
 // [#next-free-field: 6]
 #ZipkinConfig: {
+	"@type": "type.googleapis.com/envoy.config.trace.v2.ZipkinConfig"
 	// The cluster manager cluster that hosts the Zipkin collectors. Note that the
 	// Zipkin cluster must be defined in the :ref:`Bootstrap static cluster
 	// resources <envoy_api_field_config.bootstrap.v2.Bootstrap.StaticResources.clusters>`.

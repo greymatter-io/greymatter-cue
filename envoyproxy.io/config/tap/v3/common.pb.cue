@@ -20,6 +20,7 @@ OutputSink_Format_PROTO_TEXT:                    "PROTO_TEXT"
 
 // Tap configuration.
 #TapConfig: {
+	"@type": "type.googleapis.com/envoy.config.tap.v3.TapConfig"
 	// The match configuration. If the configuration matches the data source being tapped, a tap will
 	// occur, with the result written to the configured output.
 	// Exactly one of :ref:`match <envoy_v3_api_field_config.tap.v3.TapConfig.match>` and
@@ -52,6 +53,7 @@ OutputSink_Format_PROTO_TEXT:                    "PROTO_TEXT"
 // configurations to be built using various logical operators.
 // [#next-free-field: 11]
 #MatchPredicate: {
+	"@type": "type.googleapis.com/envoy.config.tap.v3.MatchPredicate"
 	// A set that describes a logical OR. If any member of the set matches, the match configuration
 	// matches.
 	or_match?: #MatchPredicate_MatchSet
@@ -78,6 +80,7 @@ OutputSink_Format_PROTO_TEXT:                    "PROTO_TEXT"
 
 // HTTP headers match configuration.
 #HttpHeadersMatch: {
+	"@type": "type.googleapis.com/envoy.config.tap.v3.HttpHeadersMatch"
 	// HTTP headers to match.
 	headers?: [...v32.#HeaderMatcher]
 }
@@ -93,6 +96,7 @@ OutputSink_Format_PROTO_TEXT:                    "PROTO_TEXT"
 //   If multiple patterns are specified, the process is repeated for each pattern. If location of a pattern is known, ``bytes_limit`` should be specified
 //   to scan only part of the http body.
 #HttpGenericBodyMatch: {
+	"@type": "type.googleapis.com/envoy.config.tap.v3.HttpGenericBodyMatch"
 	// Limits search to specified number of bytes - default zero (no limit - match entire captured buffer).
 	bytes_limit?: uint32
 	// List of patterns to match.
@@ -101,6 +105,7 @@ OutputSink_Format_PROTO_TEXT:                    "PROTO_TEXT"
 
 // Tap output configuration.
 #OutputConfig: {
+	"@type": "type.googleapis.com/envoy.config.tap.v3.OutputConfig"
 	// Output sinks for tap data. Currently a single sink is allowed in the list. Once multiple
 	// sink types are supported this constraint will be relaxed.
 	sinks?: [...#OutputSink]
@@ -126,6 +131,7 @@ OutputSink_Format_PROTO_TEXT:                    "PROTO_TEXT"
 // Tap output sink configuration.
 // [#next-free-field: 6]
 #OutputSink: {
+	"@type": "type.googleapis.com/envoy.config.tap.v3.OutputSink"
 	// Sink output format.
 	format?: #OutputSink_Format
 	// Tap output will be streamed out the :http:post:`/tap` admin endpoint.
@@ -156,6 +162,7 @@ OutputSink_Format_PROTO_TEXT:                    "PROTO_TEXT"
 
 // Streaming admin sink configuration.
 #StreamingAdminSink: {
+	"@type": "type.googleapis.com/envoy.config.tap.v3.StreamingAdminSink"
 }
 
 // BufferedAdminSink configures a tap output to collect traces without returning them until
@@ -163,6 +170,7 @@ OutputSink_Format_PROTO_TEXT:                    "PROTO_TEXT"
 // Similar to StreamingAdminSink, it is only allowed to specify the buffered admin output
 // sink if the tap is being configured from the `/tap` admin endpoint.
 #BufferedAdminSink: {
+	"@type": "type.googleapis.com/envoy.config.tap.v3.BufferedAdminSink"
 	// Stop collecting traces when the specified number are collected.
 	// If other criteria for ending collection are reached first, this value will not be used.
 	max_traces?: uint64
@@ -176,6 +184,7 @@ OutputSink_Format_PROTO_TEXT:                    "PROTO_TEXT"
 
 // The file per tap sink outputs a discrete file for every tapped stream.
 #FilePerTapSink: {
+	"@type": "type.googleapis.com/envoy.config.tap.v3.FilePerTapSink"
 	// Path prefix. The output file will be of the form <path_prefix>_<id>.pb, where <id> is an
 	// identifier distinguishing the recorded trace for stream instances (the Envoy
 	// connection ID, HTTP stream ID, etc.).
@@ -185,6 +194,7 @@ OutputSink_Format_PROTO_TEXT:                    "PROTO_TEXT"
 // [#not-implemented-hide:] Streaming gRPC sink configuration sends the taps to an external gRPC
 // server.
 #StreamingGrpcSink: {
+	"@type": "type.googleapis.com/envoy.config.tap.v3.StreamingGrpcSink"
 	// Opaque identifier, that will be sent back to the streaming grpc server.
 	tap_id?: string
 	// The gRPC server that hosts the Tap Sink Service.
@@ -193,11 +203,13 @@ OutputSink_Format_PROTO_TEXT:                    "PROTO_TEXT"
 
 // A set of match configurations used for logical operations.
 #MatchPredicate_MatchSet: {
+	"@type": "type.googleapis.com/envoy.config.tap.v3.MatchPredicate_MatchSet"
 	// The list of rules that make up the set.
 	rules?: [...#MatchPredicate]
 }
 
 #HttpGenericBodyMatch_GenericTextMatch: {
+	"@type": "type.googleapis.com/envoy.config.tap.v3.HttpGenericBodyMatch_GenericTextMatch"
 	// Text string to be located in HTTP body.
 	string_match?: string
 	// Sequence of bytes to be located in HTTP body.

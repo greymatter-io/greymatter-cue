@@ -20,6 +20,7 @@ import (
 //
 // [#extension: envoy.stat_sinks.metrics_service]
 #MetricsServiceConfig: {
+	"@type": "type.googleapis.com/envoy.config.metrics.v3.MetricsServiceConfig"
 	// The upstream gRPC cluster that hosts the metrics service.
 	grpc_service?: v3.#GrpcService
 	// API version for metric service transport protocol. This describes the metric service gRPC

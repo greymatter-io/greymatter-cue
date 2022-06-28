@@ -1,6 +1,7 @@
 package v3
 
 #ZooKeeperProxy: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.network.zookeeper_proxy.v3.ZooKeeperProxy"
 	// The human readable prefix to use when emitting :ref:`statistics
 	// <config_network_filters_zookeeper_proxy_stats>`.
 	stat_prefix?: string

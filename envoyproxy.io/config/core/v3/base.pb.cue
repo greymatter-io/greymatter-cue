@@ -2,7 +2,6 @@ package v3
 
 import (
 	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
-	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 	v3 "envoyproxy.io/type/v3"
 	v31 "envoyproxy.io/deps/cncf/xds/go/xds/core/v3"
 )
@@ -49,6 +48,7 @@ HeaderValueOption_HeaderAppendAction_OVERWRITE_IF_EXISTS_OR_ADD: "OVERWRITE_IF_E
 
 // Identifies location of where either Envoy runs or where upstream hosts run.
 #Locality: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.Locality"
 	// Region this :ref:`zone <envoy_v3_api_field_config.core.v3.Locality.zone>` belongs to.
 	region?: string
 	// Defines the local service zone where Envoy is running. Though optional, it
@@ -69,6 +69,7 @@ HeaderValueOption_HeaderAppendAction_OVERWRITE_IF_EXISTS_OR_ADD: "OVERWRITE_IF_E
 // BuildVersion combines SemVer version of extension with free-form build information
 // (i.e. 'alpha', 'private-build') as a set of strings.
 #BuildVersion: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.BuildVersion"
 	// SemVer version of extension.
 	version?: v3.#SemanticVersion
 	// Free-form build information.
@@ -79,6 +80,7 @@ HeaderValueOption_HeaderAppendAction_OVERWRITE_IF_EXISTS_OR_ADD: "OVERWRITE_IF_E
 // Version and identification for an Envoy extension.
 // [#next-free-field: 7]
 #Extension: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.Extension"
 	// This is the name of the Envoy filter as specified in the Envoy
 	// configuration, e.g. envoy.filters.http.router, com.acme.widget.
 	name?: string
@@ -109,6 +111,7 @@ HeaderValueOption_HeaderAppendAction_OVERWRITE_IF_EXISTS_OR_ADD: "OVERWRITE_IF_E
 // configuration for serving.
 // [#next-free-field: 13]
 #Node: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.Node"
 	// An opaque node identifier for the Envoy node. This also provides the local
 	// service node name. It should be set if any of the following features are
 	// used: :ref:`statsd <arch_overview_statistics>`, :ref:`CDS
@@ -188,6 +191,7 @@ HeaderValueOption_HeaderAppendAction_OVERWRITE_IF_EXISTS_OR_ADD: "OVERWRITE_IF_E
 //   (x-envoy-upstream-canary) and for stats purposes.
 // [#next-major-version: move to type/metadata/v2]
 #Metadata: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.Metadata"
 	// Key is the reverse DNS filter name, e.g. com.acme.widget. The envoy.*
 	// namespace is reserved for Envoy's built-in filters.
 	// If both *filter_metadata* and
@@ -201,11 +205,12 @@ HeaderValueOption_HeaderAppendAction_OVERWRITE_IF_EXISTS_OR_ADD: "OVERWRITE_IF_E
 	// If both :ref:`filter_metadata <envoy_v3_api_field_config.core.v3.Metadata.filter_metadata>`
 	// and *typed_filter_metadata* fields are present in the metadata with same keys,
 	// only *typed_filter_metadata* field will be parsed.
-	typed_filter_metadata?: [string]: any.#Any
+	typed_filter_metadata?: [string]: _
 }
 
 // Runtime derived uint32 with a default when not specified.
 #RuntimeUInt32: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.RuntimeUInt32"
 	// Default value if runtime value is not available.
 	default_value?: uint32
 	// Runtime key to get value for comparison. This value is used if defined.
@@ -214,6 +219,7 @@ HeaderValueOption_HeaderAppendAction_OVERWRITE_IF_EXISTS_OR_ADD: "OVERWRITE_IF_E
 
 // Runtime derived percentage with a default when not specified.
 #RuntimePercent: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.RuntimePercent"
 	// Default value if runtime value is not available.
 	default_value?: v3.#Percent
 	// Runtime key to get value for comparison. This value is used if defined.
@@ -222,6 +228,7 @@ HeaderValueOption_HeaderAppendAction_OVERWRITE_IF_EXISTS_OR_ADD: "OVERWRITE_IF_E
 
 // Runtime derived double with a default when not specified.
 #RuntimeDouble: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.RuntimeDouble"
 	// Default value if runtime value is not available.
 	default_value?: float64
 	// Runtime key to get value for comparison. This value is used if defined.
@@ -230,6 +237,7 @@ HeaderValueOption_HeaderAppendAction_OVERWRITE_IF_EXISTS_OR_ADD: "OVERWRITE_IF_E
 
 // Runtime derived bool with a default when not specified.
 #RuntimeFeatureFlag: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.RuntimeFeatureFlag"
 	// Default value if runtime value is not available.
 	default_value?: bool
 	// Runtime key to get value for comparison. This value is used if defined. The boolean value must
@@ -240,6 +248,7 @@ HeaderValueOption_HeaderAppendAction_OVERWRITE_IF_EXISTS_OR_ADD: "OVERWRITE_IF_E
 
 // Query parameter name/value pair.
 #QueryParameter: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.QueryParameter"
 	// The key of the query parameter. Case sensitive.
 	key?: string
 	// The value of the query parameter.
@@ -248,6 +257,7 @@ HeaderValueOption_HeaderAppendAction_OVERWRITE_IF_EXISTS_OR_ADD: "OVERWRITE_IF_E
 
 // Header name/value pair.
 #HeaderValue: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.HeaderValue"
 	// Header name.
 	key?: string
 	// Header value.
@@ -260,6 +270,7 @@ HeaderValueOption_HeaderAppendAction_OVERWRITE_IF_EXISTS_OR_ADD: "OVERWRITE_IF_E
 
 // Header name/value pair plus option to control append behavior.
 #HeaderValueOption: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.HeaderValueOption"
 	// Header name/value pair that this option applies to.
 	header?: #HeaderValue
 	// Should the value be appended? If true (default), the value is appended to
@@ -275,18 +286,21 @@ HeaderValueOption_HeaderAppendAction_OVERWRITE_IF_EXISTS_OR_ADD: "OVERWRITE_IF_E
 
 // Wrapper for a set of headers.
 #HeaderMap: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.HeaderMap"
 	headers?: [...#HeaderValue]
 }
 
 // A directory that is watched for changes, e.g. by inotify on Linux. Move/rename
 // events inside this directory trigger the watch.
 #WatchedDirectory: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.WatchedDirectory"
 	// Directory path to watch.
 	path?: string
 }
 
 // Data source consisting of a file, an inline value, or an environment variable.
 #DataSource: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.DataSource"
 	// Local filesystem data source.
 	filename?: string
 	// Bytes inlined in the configuration.
@@ -299,6 +313,7 @@ HeaderValueOption_HeaderAppendAction_OVERWRITE_IF_EXISTS_OR_ADD: "OVERWRITE_IF_E
 
 // The message specifies the retry policy of remote data source when fetching fails.
 #RetryPolicy: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.RetryPolicy"
 	// Specifies parameters that control :ref:`retry backoff strategy <envoy_v3_api_msg_config.core.v3.BackoffStrategy>`.
 	// This parameter is optional, in which case the default base interval is 1000 milliseconds. The
 	// default maximum interval is 10 times the base interval.
@@ -310,6 +325,7 @@ HeaderValueOption_HeaderAppendAction_OVERWRITE_IF_EXISTS_OR_ADD: "OVERWRITE_IF_E
 
 // The message specifies how to fetch data from remote and how to verify it.
 #RemoteDataSource: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.RemoteDataSource"
 	// The HTTP URI to fetch the remote data.
 	http_uri?: #HttpUri
 	// SHA256 string for verifying data.
@@ -320,6 +336,7 @@ HeaderValueOption_HeaderAppendAction_OVERWRITE_IF_EXISTS_OR_ADD: "OVERWRITE_IF_E
 
 // Async data source which support async data fetch.
 #AsyncDataSource: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.AsyncDataSource"
 	// Local async data source.
 	local?: #DataSource
 	// Remote async data source.
@@ -331,10 +348,11 @@ HeaderValueOption_HeaderAppendAction_OVERWRITE_IF_EXISTS_OR_ADD: "OVERWRITE_IF_E
 // empty, a default transport socket implementation and configuration will be
 // chosen based on the platform and existence of tls_context.
 #TransportSocket: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.TransportSocket"
 	// The name of the transport socket to instantiate. The name must match a supported transport
 	// socket implementation.
 	name?:         string
-	typed_config?: any.#Any
+	typed_config?: _
 }
 
 // Runtime derived FractionalPercent with defaults for when the numerator or denominator is not
@@ -348,6 +366,7 @@ HeaderValueOption_HeaderAppendAction_OVERWRITE_IF_EXISTS_OR_ADD: "OVERWRITE_IF_E
 //   percentage out of 100. For instance, a runtime key lookup returning the value "42" would parse
 //   as a `FractionalPercent` whose numerator is 42 and denominator is HUNDRED.
 #RuntimeFractionalPercent: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.RuntimeFractionalPercent"
 	// Default value if the runtime value's for the numerator/denominator keys are not available.
 	default_value?: v3.#FractionalPercent
 	// Runtime key for a YAML representation of a FractionalPercent.
@@ -356,6 +375,7 @@ HeaderValueOption_HeaderAppendAction_OVERWRITE_IF_EXISTS_OR_ADD: "OVERWRITE_IF_E
 
 // Identifies a specific ControlPlane instance that Envoy is connected to.
 #ControlPlane: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.ControlPlane"
 	// An opaque control plane identifier that uniquely identifies an instance
 	// of control plane. This can be used to identify which control plane instance,
 	// the Envoy is connected to.

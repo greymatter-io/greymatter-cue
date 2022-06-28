@@ -12,6 +12,7 @@ import (
 //
 // This transport socket is currently only supported on Linux.
 #Config: {
+	"@type": "type.googleapis.com/envoy.extensions.transport_sockets.tcp_stats.v3.Config"
 	// The underlying transport socket being wrapped.
 	transport_socket?: v3.#TransportSocket
 	// Period to update stats while the connection is open. If unset, updates only happen when the

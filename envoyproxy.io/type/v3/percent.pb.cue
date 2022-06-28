@@ -9,7 +9,8 @@ FractionalPercent_DenominatorType_MILLION:      "MILLION"
 
 // Identifies a percentage, in the range [0.0, 100.0].
 #Percent: {
-	value?: float64
+	"@type": "type.googleapis.com/envoy.type.v3.Percent"
+	value?:  float64
 }
 
 // A fractional percentage is used in cases in which for performance reasons performing floating
@@ -19,6 +20,7 @@ FractionalPercent_DenominatorType_MILLION:      "MILLION"
 // * **Example**: 1/100 = 1%.
 // * **Example**: 3/10000 = 0.03%.
 #FractionalPercent: {
+	"@type": "type.googleapis.com/envoy.type.v3.FractionalPercent"
 	// Specifies the numerator. Defaults to 0.
 	numerator?: uint32
 	// Specifies the denominator. If the denominator specified is less than the numerator, the final

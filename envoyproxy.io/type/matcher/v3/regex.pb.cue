@@ -2,6 +2,7 @@ package v3
 
 // A regex matcher designed for safety when used with untrusted input.
 #RegexMatcher: {
+	"@type": "type.googleapis.com/envoy.type.matcher.v3.RegexMatcher"
 	// Google's RE2 regex engine.
 	//
 	// Deprecated: Do not use.
@@ -14,6 +15,7 @@ package v3
 // Describes how to match a string and then produce a new string using a regular
 // expression and a substitution string.
 #RegexMatchAndSubstitute: {
+	"@type": "type.googleapis.com/envoy.type.matcher.v3.RegexMatchAndSubstitute"
 	// The regular expression used to find portions of a string (hereafter called
 	// the "subject string") that should be replaced. When a new string is
 	// produced during the substitution operation, the new string is initially
@@ -50,6 +52,7 @@ package v3
 // which records the program size, and the counter `re2.exceeded_warn_level`, which is incremented
 // each time the program size exceeds the warn level threshold.
 #RegexMatcher_GoogleRE2: {
+	"@type": "type.googleapis.com/envoy.type.matcher.v3.RegexMatcher_GoogleRE2"
 	// This field controls the RE2 "program size" which is a rough estimate of how complex a
 	// compiled regex is to evaluate. A regex that has a program size greater than the configured
 	// value will fail to compile. In this case, the configured max program size can be increased

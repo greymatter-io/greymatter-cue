@@ -8,6 +8,7 @@ import (
 
 // [#next-free-field: 13]
 #TcpProxy: {
+	"@type": "type.googleapis.com/envoy.config.filter.network.tcp_proxy.v2.TcpProxy"
 	// The prefix to use when emitting :ref:`statistics
 	// <config_network_filters_tcp_proxy_stats>`.
 	stat_prefix?: string
@@ -65,6 +66,7 @@ import (
 //
 // Deprecated: Do not use.
 #TcpProxy_DeprecatedV1: {
+	"@type": "type.googleapis.com/envoy.config.filter.network.tcp_proxy.v2.TcpProxy_DeprecatedV1"
 	// The route table for the filter. All filter instances must have a route
 	// table, even if it is empty.
 	routes?: [...#TcpProxy_DeprecatedV1_TCPRoute]
@@ -74,6 +76,7 @@ import (
 // that indicate the percentage of traffic to be forwarded to each cluster.
 // The router selects an upstream cluster based on these weights.
 #TcpProxy_WeightedCluster: {
+	"@type": "type.googleapis.com/envoy.config.filter.network.tcp_proxy.v2.TcpProxy_WeightedCluster"
 	// Specifies one or more upstream clusters associated with the route.
 	clusters?: [...#TcpProxy_WeightedCluster_ClusterWeight]
 }
@@ -82,6 +85,7 @@ import (
 // Currently, only HTTP/2 is supported. When other options exist, HTTP/2 will
 // remain the default.
 #TcpProxy_TunnelingConfig: {
+	"@type": "type.googleapis.com/envoy.config.filter.network.tcp_proxy.v2.TcpProxy_TunnelingConfig"
 	// The hostname to send in the synthesized CONNECT headers to the upstream proxy.
 	hostname?: string
 }
@@ -95,6 +99,7 @@ import (
 // match.
 // [#next-free-field: 6]
 #TcpProxy_DeprecatedV1_TCPRoute: {
+	"@type": "type.googleapis.com/envoy.config.filter.network.tcp_proxy.v2.TcpProxy_DeprecatedV1_TCPRoute"
 	// The cluster to connect to when a the downstream network connection
 	// matches the specified criteria.
 	cluster?: string
@@ -130,6 +135,7 @@ import (
 }
 
 #TcpProxy_WeightedCluster_ClusterWeight: {
+	"@type": "type.googleapis.com/envoy.config.filter.network.tcp_proxy.v2.TcpProxy_WeightedCluster_ClusterWeight"
 	// Name of the upstream cluster.
 	name?: string
 	// When a request matches the route, the choice of an upstream cluster is

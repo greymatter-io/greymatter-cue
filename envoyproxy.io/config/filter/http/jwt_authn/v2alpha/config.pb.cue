@@ -37,6 +37,7 @@ import (
 //
 // [#next-free-field: 10]
 #JwtProvider: {
+	"@type": "type.googleapis.com/envoy.config.filter.http.jwt_authn.v2alpha.JwtProvider"
 	// Specify the `principal <https://tools.ietf.org/html/rfc7519#section-4.1.1>`_ that issued
 	// the JWT, usually a URL or an email address.
 	//
@@ -161,6 +162,7 @@ import (
 
 // This message specifies how to fetch JWKS from remote and how to cache it.
 #RemoteJwks: {
+	"@type": "type.googleapis.com/envoy.config.filter.http.jwt_authn.v2alpha.RemoteJwks"
 	// The HTTP URI to fetch the JWKS. For example:
 	//
 	// .. code-block:: yaml
@@ -177,6 +179,7 @@ import (
 
 // This message specifies a header location to extract JWT token.
 #JwtHeader: {
+	"@type": "type.googleapis.com/envoy.config.filter.http.jwt_authn.v2alpha.JwtHeader"
 	// The HTTP header name.
 	name?: string
 	// The value prefix. The value format is "value_prefix<token>"
@@ -187,6 +190,7 @@ import (
 
 // Specify a required provider with audiences.
 #ProviderWithAudiences: {
+	"@type": "type.googleapis.com/envoy.config.filter.http.jwt_authn.v2alpha.ProviderWithAudiences"
 	// Specify a required provider name.
 	provider_name?: string
 	// This field overrides the one specified in the JwtProvider.
@@ -251,6 +255,7 @@ import (
 //
 // [#next-free-field: 7]
 #JwtRequirement: {
+	"@type": "type.googleapis.com/envoy.config.filter.http.jwt_authn.v2alpha.JwtRequirement"
 	// Specify a required provider name.
 	provider_name?: string
 	// Specify a required provider with audiences.
@@ -276,6 +281,7 @@ import (
 // This message specifies a list of RequiredProvider.
 // Their results are OR-ed; if any one of them passes, the result is passed
 #JwtRequirementOrList: {
+	"@type": "type.googleapis.com/envoy.config.filter.http.jwt_authn.v2alpha.JwtRequirementOrList"
 	// Specify a list of JwtRequirement.
 	requirements?: [...#JwtRequirement]
 }
@@ -283,6 +289,7 @@ import (
 // This message specifies a list of RequiredProvider.
 // Their results are AND-ed; all of them must pass, if one of them fails or missing, it fails.
 #JwtRequirementAndList: {
+	"@type": "type.googleapis.com/envoy.config.filter.http.jwt_authn.v2alpha.JwtRequirementAndList"
 	// Specify a list of JwtRequirement.
 	requirements?: [...#JwtRequirement]
 }
@@ -309,6 +316,7 @@ import (
 // In above example, all requests matched the path prefix require jwt authentication
 // from "provider-A".
 #RequirementRule: {
+	"@type": "type.googleapis.com/envoy.config.filter.http.jwt_authn.v2alpha.RequirementRule"
 	// The route matching parameter. Only when the match is satisfied, the "requires" field will
 	// apply.
 	//
@@ -342,6 +350,7 @@ import (
 // If a filter set "jwt_selector" with "issuer_1" to FilterState for a request,
 // jwt_authn filter will use JwtRequirement{"provider_name": "issuer1"} to verify.
 #FilterStateRule: {
+	"@type": "type.googleapis.com/envoy.config.filter.http.jwt_authn.v2alpha.FilterStateRule"
 	// The filter state name to retrieve the `Router::StringAccessor` object.
 	name?: string
 	// A map of string keys to requirements. The string key is the string value
@@ -391,6 +400,7 @@ import (
 //              - provider_name: provider2
 //
 #JwtAuthentication: {
+	"@type": "type.googleapis.com/envoy.config.filter.http.jwt_authn.v2alpha.JwtAuthentication"
 	// Map of provider names to JwtProviders.
 	//
 	// .. code-block:: yaml

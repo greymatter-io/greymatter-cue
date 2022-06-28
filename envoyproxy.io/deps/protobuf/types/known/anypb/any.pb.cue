@@ -84,6 +84,7 @@ package anypb
 //     }
 //
 #Any: {
+	"@type": "type.googleapis.com/google.golang.org.protobuf.types.known.anypb.Any"
 	// A URL/resource name that uniquely identifies the type of the serialized
 	// protocol buffer message. This string must contain at least
 	// one "/" character. The last segment of the URL's path must represent

@@ -8,6 +8,7 @@ import (
 // A load report Envoy sends to the management server.
 // [#not-implemented-hide:] Not configuration. TBD how to doc proto APIs.
 #LoadStatsRequest: {
+	"@type": "type.googleapis.com/envoy.service.load_stats.v2.LoadStatsRequest"
 	// Node identifier for Envoy instance.
 	node?: core.#Node
 	// A list of load stats to report.
@@ -18,6 +19,7 @@ import (
 // is interested in learning load stats about.
 // [#not-implemented-hide:] Not configuration. TBD how to doc proto APIs.
 #LoadStatsResponse: {
+	"@type": "type.googleapis.com/envoy.service.load_stats.v2.LoadStatsResponse"
 	// Clusters to report stats for.
 	// Not populated if *send_all_clusters* is true.
 	clusters?: [...string]
@@ -50,6 +52,7 @@ import (
 
 // UnimplementedLoadReportingServiceServer can be embedded to have forward compatible implementations.
 #UnimplementedLoadReportingServiceServer: {
+	"@type": "type.googleapis.com/envoy.service.load_stats.v2.UnimplementedLoadReportingServiceServer"
 }
 
 #LoadReportingService_StreamLoadStatsServer: _

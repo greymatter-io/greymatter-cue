@@ -25,6 +25,7 @@ Gzip_CompressionLevel_COMPRESSION_LEVEL_9: "COMPRESSION_LEVEL_9"
 
 // [#next-free-field: 6]
 #Gzip: {
+	"@type": "type.googleapis.com/envoy.extensions.compression.gzip.compressor.v3.Gzip"
 	// Value from 1 to 9 that controls the amount of internal memory used by zlib. Higher values
 	// use more memory, but are faster and produce better compression results. The default value is 5.
 	memory_level?: uint32

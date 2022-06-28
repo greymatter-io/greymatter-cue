@@ -14,6 +14,7 @@ import (
 //
 // [#extension: envoy.http.original_ip_detection.custom_header]
 #CustomHeaderConfig: {
+	"@type": "type.googleapis.com/envoy.extensions.http.original_ip_detection.custom_header.v3.CustomHeaderConfig"
 	// The header name containing the original downstream remote address, if present.
 	//
 	// Note: in the case of a multi-valued header, only the first value is tried and the rest are ignored.

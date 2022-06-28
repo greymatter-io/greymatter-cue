@@ -3,7 +3,6 @@ package v2
 import (
 	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
 	_type "envoyproxy.io/type"
-	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 	core "envoyproxy.io/api/v2/core"
 	route "envoyproxy.io/api/v2/route"
 )
@@ -35,6 +34,7 @@ GrpcStatusFilter_Status_DATA_LOSS:           "DATA_LOSS"
 GrpcStatusFilter_Status_UNAUTHENTICATED:     "UNAUTHENTICATED"
 
 #AccessLog: {
+	"@type": "type.googleapis.com/envoy.config.filter.accesslog.v2.AccessLog"
 	// The name of the access log implementation to instantiate. The name must
 	// match a statically registered access log. Current built-in loggers include:
 	//
@@ -46,11 +46,12 @@ GrpcStatusFilter_Status_UNAUTHENTICATED:     "UNAUTHENTICATED"
 	filter?: #AccessLogFilter
 	// Deprecated: Do not use.
 	config?:       _struct.#Struct
-	typed_config?: any.#Any
+	typed_config?: _
 }
 
 // [#next-free-field: 12]
 #AccessLogFilter: {
+	"@type": "type.googleapis.com/envoy.config.filter.accesslog.v2.AccessLogFilter"
 	// Status code filter.
 	status_code_filter?: #StatusCodeFilter
 	// Duration filter.
@@ -77,6 +78,7 @@ GrpcStatusFilter_Status_UNAUTHENTICATED:     "UNAUTHENTICATED"
 
 // Filter on an integer comparison.
 #ComparisonFilter: {
+	"@type": "type.googleapis.com/envoy.config.filter.accesslog.v2.ComparisonFilter"
 	// Comparison operator.
 	op?: #ComparisonFilter_Op
 	// Value to compare against.
@@ -85,12 +87,14 @@ GrpcStatusFilter_Status_UNAUTHENTICATED:     "UNAUTHENTICATED"
 
 // Filters on HTTP response/status code.
 #StatusCodeFilter: {
+	"@type": "type.googleapis.com/envoy.config.filter.accesslog.v2.StatusCodeFilter"
 	// Comparison.
 	comparison?: #ComparisonFilter
 }
 
 // Filters on total request duration in milliseconds.
 #DurationFilter: {
+	"@type": "type.googleapis.com/envoy.config.filter.accesslog.v2.DurationFilter"
 	// Comparison.
 	comparison?: #ComparisonFilter
 }
@@ -98,15 +102,18 @@ GrpcStatusFilter_Status_UNAUTHENTICATED:     "UNAUTHENTICATED"
 // Filters for requests that are not health check requests. A health check
 // request is marked by the health check filter.
 #NotHealthCheckFilter: {
+	"@type": "type.googleapis.com/envoy.config.filter.accesslog.v2.NotHealthCheckFilter"
 }
 
 // Filters for requests that are traceable. See the tracing overview for more
 // information on how a request becomes traceable.
 #TraceableFilter: {
+	"@type": "type.googleapis.com/envoy.config.filter.accesslog.v2.TraceableFilter"
 }
 
 // Filters for random sampling of requests.
 #RuntimeFilter: {
+	"@type": "type.googleapis.com/envoy.config.filter.accesslog.v2.RuntimeFilter"
 	// Runtime key to get an optional overridden numerator for use in the *percent_sampled* field.
 	// If found in runtime, this value will replace the default numerator.
 	runtime_key?: string
@@ -131,6 +138,7 @@ GrpcStatusFilter_Status_UNAUTHENTICATED:     "UNAUTHENTICATED"
 // Filters are evaluated sequentially and if one of them returns false, the
 // filter returns false immediately.
 #AndFilter: {
+	"@type": "type.googleapis.com/envoy.config.filter.accesslog.v2.AndFilter"
 	filters?: [...#AccessLogFilter]
 }
 
@@ -138,11 +146,13 @@ GrpcStatusFilter_Status_UNAUTHENTICATED:     "UNAUTHENTICATED"
 // Filters are evaluated sequentially and if one of them returns true, the
 // filter returns true immediately.
 #OrFilter: {
+	"@type": "type.googleapis.com/envoy.config.filter.accesslog.v2.OrFilter"
 	filters?: [...#AccessLogFilter]
 }
 
 // Filters requests based on the presence or value of a request header.
 #HeaderFilter: {
+	"@type": "type.googleapis.com/envoy.config.filter.accesslog.v2.HeaderFilter"
 	// Only requests with a header which matches the specified HeaderMatcher will pass the filter
 	// check.
 	header?: route.#HeaderMatcher
@@ -152,6 +162,7 @@ GrpcStatusFilter_Status_UNAUTHENTICATED:     "UNAUTHENTICATED"
 // A list of the response flags can be found
 // in the access log formatter :ref:`documentation<config_access_log_format_response_flags>`.
 #ResponseFlagFilter: {
+	"@type": "type.googleapis.com/envoy.config.filter.accesslog.v2.ResponseFlagFilter"
 	// Only responses with the any of the flags listed in this field will be logged.
 	// This field is optional. If it is not specified, then any response flag will pass
 	// the filter check.
@@ -161,6 +172,7 @@ GrpcStatusFilter_Status_UNAUTHENTICATED:     "UNAUTHENTICATED"
 // Filters gRPC requests based on their response status. If a gRPC status is not provided, the
 // filter will infer the status from the HTTP status code.
 #GrpcStatusFilter: {
+	"@type": "type.googleapis.com/envoy.config.filter.accesslog.v2.GrpcStatusFilter"
 	// Logs only responses that have any one of the gRPC statuses in this field.
 	statuses?: [...#GrpcStatusFilter_Status]
 	// If included and set to true, the filter will instead block all responses with a gRPC status or
@@ -170,10 +182,11 @@ GrpcStatusFilter_Status_UNAUTHENTICATED:     "UNAUTHENTICATED"
 
 // Extension filter is statically registered at runtime.
 #ExtensionFilter: {
+	"@type": "type.googleapis.com/envoy.config.filter.accesslog.v2.ExtensionFilter"
 	// The name of the filter implementation to instantiate. The name must
 	// match a statically registered filter.
 	name?: string
 	// Deprecated: Do not use.
 	config?:       _struct.#Struct
-	typed_config?: any.#Any
+	typed_config?: _
 }

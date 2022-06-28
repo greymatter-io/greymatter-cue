@@ -54,6 +54,7 @@ RBAC_Action_DENY:  "DENY"
 //         - any: true
 //
 #RBAC: {
+	"@type": "type.googleapis.com/envoy.config.rbac.v2.RBAC"
 	// The action to take if a policy matches. The request is allowed if and only if:
 	//
 	//   * `action` is "ALLOWED" and at least one policy matches
@@ -67,6 +68,7 @@ RBAC_Action_DENY:  "DENY"
 // and only if at least one of its permissions match the action taking place AND at least one of its
 // principals match the downstream AND the condition is true if specified.
 #Policy: {
+	"@type": "type.googleapis.com/envoy.config.rbac.v2.Policy"
 	// Required. The set of permissions that define a role. Each permission is matched with OR
 	// semantics. To match all actions for this policy, a single Permission with the `any` field set
 	// to true should be used.
@@ -84,6 +86,7 @@ RBAC_Action_DENY:  "DENY"
 // Permission defines an action (or actions) that a principal can take.
 // [#next-free-field: 11]
 #Permission: {
+	"@type": "type.googleapis.com/envoy.config.rbac.v2.Permission"
 	// A set of rules that all must match in order to define the action.
 	and_rules?: #Permission_Set
 	// A set of rules where at least one must match in order to define the action.
@@ -132,6 +135,7 @@ RBAC_Action_DENY:  "DENY"
 // Principal defines an identity or a group of identities for a downstream subject.
 // [#next-free-field: 12]
 #Principal: {
+	"@type": "type.googleapis.com/envoy.config.rbac.v2.Principal"
 	// A set of identifiers that all must match in order to define the downstream.
 	and_ids?: #Principal_Set
 	// A set of identifiers at least one must match in order to define the downstream.
@@ -174,17 +178,20 @@ RBAC_Action_DENY:  "DENY"
 // Used in the `and_rules` and `or_rules` fields in the `rule` oneof. Depending on the context,
 // each are applied with the associated behavior.
 #Permission_Set: {
+	"@type": "type.googleapis.com/envoy.config.rbac.v2.Permission_Set"
 	rules?: [...#Permission]
 }
 
 // Used in the `and_ids` and `or_ids` fields in the `identifier` oneof. Depending on the context,
 // each are applied with the associated behavior.
 #Principal_Set: {
+	"@type": "type.googleapis.com/envoy.config.rbac.v2.Principal_Set"
 	ids?: [...#Principal]
 }
 
 // Authentication attributes for a downstream.
 #Principal_Authenticated: {
+	"@type": "type.googleapis.com/envoy.config.rbac.v2.Principal_Authenticated"
 	// The name of the principal. If set, The URI SAN or DNS SAN in that order is used from the
 	// certificate, otherwise the subject field is used. If unset, it applies to any user that is
 	// authenticated.

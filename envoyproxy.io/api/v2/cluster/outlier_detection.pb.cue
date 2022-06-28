@@ -4,6 +4,7 @@ package cluster
 // more information on outlier detection.
 // [#next-free-field: 21]
 #OutlierDetection: {
+	"@type": "type.googleapis.com/envoy.api.v2.cluster.OutlierDetection"
 	// The number of consecutive 5xx responses or local origin errors that are mapped
 	// to 5xx error codes before a consecutive 5xx ejection
 	// occurs. Defaults to 5.

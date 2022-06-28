@@ -3,6 +3,7 @@ package v3
 // [#not-implemented-hide:] Not configuration. Workaround c++ protobuf issue with importing
 // services: https://github.com/google/protobuf/issues/4221 and protoxform to upgrade the file.
 #CdsDummy: {
+	"@type": "type.googleapis.com/envoy.service.cluster.v3.CdsDummy"
 }
 
 // ClusterDiscoveryServiceClient is the client API for ClusterDiscoveryService service.
@@ -19,6 +20,7 @@ package v3
 
 // UnimplementedClusterDiscoveryServiceServer can be embedded to have forward compatible implementations.
 #UnimplementedClusterDiscoveryServiceServer: {
+	"@type": "type.googleapis.com/envoy.service.cluster.v3.UnimplementedClusterDiscoveryServiceServer"
 }
 
 #ClusterDiscoveryService_StreamClustersServer: _

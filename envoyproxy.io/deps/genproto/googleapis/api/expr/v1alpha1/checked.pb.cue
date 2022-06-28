@@ -26,6 +26,7 @@ Type_WellKnownType_DURATION:                    "DURATION"
 
 // A CEL expression which has been successfully type checked.
 #CheckedExpr: {
+	"@type": "type.googleapis.com/google.golang.org.genproto.googleapis.api.expr.v1alpha1.CheckedExpr"
 	// A map from expression ids to resolved references.
 	//
 	// The following entries are in this table:
@@ -66,6 +67,7 @@ Type_WellKnownType_DURATION:                    "DURATION"
 
 // Represents a CEL type.
 #Type: {
+	"@type": "type.googleapis.com/google.golang.org.genproto.googleapis.api.expr.v1alpha1.Type"
 	// Dynamic type.
 	dyn?: emptypb.#Empty
 	// Null value.
@@ -113,6 +115,7 @@ Type_WellKnownType_DURATION:                    "DURATION"
 // A declaration is part of the contract between the expression, the agent
 // evaluating that expression, and the caller requesting evaluation.
 #Decl: {
+	"@type": "type.googleapis.com/google.golang.org.genproto.googleapis.api.expr.v1alpha1.Decl"
 	// The fully qualified name of the declaration.
 	//
 	// Declarations are organized in containers and this represents the full path
@@ -130,6 +133,7 @@ Type_WellKnownType_DURATION:                    "DURATION"
 
 // Describes a resolved reference to a declaration.
 #Reference: {
+	"@type": "type.googleapis.com/google.golang.org.genproto.googleapis.api.expr.v1alpha1.Reference"
 	// The fully qualified name of the declaration.
 	name?: string
 	// For references to functions, this is a list of `Overload.overload_id`
@@ -148,12 +152,14 @@ Type_WellKnownType_DURATION:                    "DURATION"
 
 // List type with typed elements, e.g. `list<example.proto.MyMessage>`.
 #Type_ListType: {
+	"@type": "type.googleapis.com/google.golang.org.genproto.googleapis.api.expr.v1alpha1.Type_ListType"
 	// The element type.
 	elem_type?: #Type
 }
 
 // Map type with parameterized key and value types, e.g. `map<string, int>`.
 #Type_MapType: {
+	"@type": "type.googleapis.com/google.golang.org.genproto.googleapis.api.expr.v1alpha1.Type_MapType"
 	// The type of the key.
 	key_type?: #Type
 	// The type of the value.
@@ -162,6 +168,7 @@ Type_WellKnownType_DURATION:                    "DURATION"
 
 // Function type with result and arg types.
 #Type_FunctionType: {
+	"@type": "type.googleapis.com/google.golang.org.genproto.googleapis.api.expr.v1alpha1.Type_FunctionType"
 	// Result type of the function.
 	result_type?: #Type
 	// Argument types of the function.
@@ -170,6 +177,7 @@ Type_WellKnownType_DURATION:                    "DURATION"
 
 // Application defined abstract type.
 #Type_AbstractType: {
+	"@type": "type.googleapis.com/google.golang.org.genproto.googleapis.api.expr.v1alpha1.Type_AbstractType"
 	// The fully qualified name of this abstract type.
 	name?: string
 	// Parameter types for this abstract type.
@@ -183,6 +191,7 @@ Type_WellKnownType_DURATION:                    "DURATION"
 // but may be used in conjunction with other identifiers bound at evaluation
 // time.
 #Decl_IdentDecl: {
+	"@type": "type.googleapis.com/google.golang.org.genproto.googleapis.api.expr.v1alpha1.Decl_IdentDecl"
 	// Required. The type of the identifier.
 	type?: #Type
 	// The constant value of the identifier. If not specified, the identifier
@@ -198,6 +207,7 @@ Type_WellKnownType_DURATION:                    "DURATION"
 // Functions have no observable side-effects (there may be side-effects like
 // logging which are not observable from CEL).
 #Decl_FunctionDecl: {
+	"@type": "type.googleapis.com/google.golang.org.genproto.googleapis.api.expr.v1alpha1.Decl_FunctionDecl"
 	// Required. List of function overloads, must contain at least one overload.
 	overloads?: [...#Decl_FunctionDecl_Overload]
 }
@@ -213,6 +223,7 @@ Type_WellKnownType_DURATION:                    "DURATION"
 // Overloads must have non-overlapping argument types after erasure of all
 // parameterized type variables (similar as type erasure in Java).
 #Decl_FunctionDecl_Overload: {
+	"@type": "type.googleapis.com/google.golang.org.genproto.googleapis.api.expr.v1alpha1.Decl_FunctionDecl_Overload"
 	// Required. Globally unique overload name of the function which reflects
 	// the function name and argument types.
 	//

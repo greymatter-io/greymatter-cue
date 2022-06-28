@@ -64,6 +64,7 @@ StatusCode_NetworkAuthenticationRequired: "NetworkAuthenticationRequired"
 
 // HTTP status.
 #HttpStatus: {
+	"@type": "type.googleapis.com/envoy.type.v3.HttpStatus"
 	// Supplies HTTP response code.
 	code?: #StatusCode
 }

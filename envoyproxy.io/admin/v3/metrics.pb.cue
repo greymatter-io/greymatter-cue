@@ -7,6 +7,7 @@ SimpleMetric_Type_GAUGE:   "GAUGE"
 
 // Proto representation of an Envoy Counter or Gauge value.
 #SimpleMetric: {
+	"@type": "type.googleapis.com/envoy.admin.v3.SimpleMetric"
 	// Type of the metric represented.
 	type?: #SimpleMetric_Type
 	// Current metric value.

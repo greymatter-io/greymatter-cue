@@ -2,6 +2,7 @@ package v3
 
 // gRPC reverse bridge filter configuration
 #FilterConfig: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.grpc_http1_reverse_bridge.v3.FilterConfig"
 	// The content-type to pass to the upstream when the gRPC bridge filter is applied.
 	// The filter will also validate that the upstream responds with the same content type.
 	content_type?: string
@@ -30,6 +31,7 @@ package v3
 
 // gRPC reverse bridge filter configuration per virtualhost/route/weighted-cluster level.
 #FilterConfigPerRoute: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.grpc_http1_reverse_bridge.v3.FilterConfigPerRoute"
 	// If true, disables gRPC reverse bridge filter for this particular vhost or route.
 	// If disabled is specified in multiple per-filter-configs, the most specific one will be used.
 	disabled?: bool

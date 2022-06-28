@@ -7,6 +7,7 @@ import (
 
 // [#next-free-field: 10]
 #ExternalProcessor: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.ext_proc.v3.ExternalProcessor"
 	// Configuration for the gRPC service that the filter will communicate with.
 	// The filter supports both the "Envoy" and "Google" gRPC clients.
 	grpc_service?: v3.#GrpcService
@@ -65,6 +66,7 @@ import (
 // Extra settings that may be added to per-route configuration for a
 // virtual host or cluster.
 #ExtProcPerRoute: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.ext_proc.v3.ExtProcPerRoute"
 	// Disable the filter for this particular vhost or route.
 	// If disabled is specified in multiple per-filter-configs, the most specific one will be used.
 	disabled?: bool
@@ -77,6 +79,7 @@ import (
 // Overrides that may be set on a per-route basis
 // [#next-free-field: 6]
 #ExtProcOverrides: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.ext_proc.v3.ExtProcOverrides"
 	// Set a different processing mode for this route than the default.
 	processing_mode?: #ProcessingMode
 	// [#not-implemented-hide:]

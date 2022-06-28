@@ -3,6 +3,7 @@ package v2
 // [#not-implemented-hide:] Not configuration. Workaround c++ protobuf issue with importing
 // services: https://github.com/google/protobuf/issues/4221
 #SdsDummy: {
+	"@type": "type.googleapis.com/envoy.service.discovery.v2.SdsDummy"
 }
 
 // SecretDiscoveryServiceClient is the client API for SecretDiscoveryService service.
@@ -19,6 +20,7 @@ package v2
 
 // UnimplementedSecretDiscoveryServiceServer can be embedded to have forward compatible implementations.
 #UnimplementedSecretDiscoveryServiceServer: {
+	"@type": "type.googleapis.com/envoy.service.discovery.v2.UnimplementedSecretDiscoveryServiceServer"
 }
 
 #SecretDiscoveryService_DeltaSecretsServer: _

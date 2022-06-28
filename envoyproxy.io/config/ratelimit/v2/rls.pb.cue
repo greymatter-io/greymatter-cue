@@ -6,6 +6,7 @@ import (
 
 // Rate limit :ref:`configuration overview <config_rate_limit_service>`.
 #RateLimitServiceConfig: {
+	"@type": "type.googleapis.com/envoy.config.ratelimit.v2.RateLimitServiceConfig"
 	// Specifies the gRPC service that hosts the rate limit service. The client
 	// will connect to this cluster when it needs to make rate limit service
 	// requests.

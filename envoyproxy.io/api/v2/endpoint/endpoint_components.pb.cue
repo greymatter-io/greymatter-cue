@@ -6,6 +6,7 @@ import (
 
 // Upstream host identifier.
 #Endpoint: {
+	"@type": "type.googleapis.com/envoy.api.v2.endpoint.Endpoint"
 	// The upstream host address.
 	//
 	// .. attention::
@@ -34,6 +35,7 @@ import (
 // An Endpoint that Envoy can route traffic to.
 // [#next-free-field: 6]
 #LbEndpoint: {
+	"@type":   "type.googleapis.com/envoy.api.v2.endpoint.LbEndpoint"
 	endpoint?: #Endpoint
 	// [#not-implemented-hide:]
 	endpoint_name?: string
@@ -65,6 +67,7 @@ import (
 // balancing weights or different priorities.
 // [#next-free-field: 7]
 #LocalityLbEndpoints: {
+	"@type": "type.googleapis.com/envoy.api.v2.endpoint.LocalityLbEndpoints"
 	// Identifies location of where the upstream hosts run.
 	locality?: core.#Locality
 	// The group of endpoints belonging to the locality specified.
@@ -102,6 +105,7 @@ import (
 
 // The optional health check configuration.
 #Endpoint_HealthCheckConfig: {
+	"@type": "type.googleapis.com/envoy.api.v2.endpoint.Endpoint_HealthCheckConfig"
 	// Optional alternative health check port value.
 	//
 	// By default the health check address port of an upstream host is the same

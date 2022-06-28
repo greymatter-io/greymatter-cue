@@ -15,6 +15,7 @@ LightstepConfig_PropagationMode_TRACE_CONTEXT: "TRACE_CONTEXT"
 // Configuration for the LightStep tracer.
 // [#extension: envoy.tracers.lightstep]
 #LightstepConfig: {
+	"@type": "type.googleapis.com/envoy.config.trace.v3.LightstepConfig"
 	// The cluster manager cluster that hosts the LightStep collectors.
 	collector_cluster?: string
 	// File containing the access token to the `LightStep

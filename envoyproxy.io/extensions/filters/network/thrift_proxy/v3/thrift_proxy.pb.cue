@@ -1,7 +1,6 @@
 package v3
 
 import (
-	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 	v3 "envoyproxy.io/config/core/v3"
 	v31 "envoyproxy.io/config/accesslog/v3"
 )
@@ -24,6 +23,7 @@ ProtocolType_COMPACT:       "COMPACT"
 ProtocolType_TWITTER:       "TWITTER"
 
 #Trds: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.network.thrift_proxy.v3.Trds"
 	// Configuration source specifier.
 	// In case of *api_config_source* only aggregated *api_type* is supported.
 	config_source?: v3.#ConfigSource
@@ -35,6 +35,7 @@ ProtocolType_TWITTER:       "TWITTER"
 
 // [#next-free-field: 11]
 #ThriftProxy: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.network.thrift_proxy.v3.ThriftProxy"
 	// Supplies the type of transport that the Thrift proxy should use. Defaults to
 	// :ref:`AUTO_TRANSPORT<envoy_v3_api_enum_value_extensions.filters.network.thrift_proxy.v3.TransportType.AUTO_TRANSPORT>`.
 	transport?: #TransportType
@@ -74,6 +75,7 @@ ProtocolType_TWITTER:       "TWITTER"
 
 // ThriftFilter configures a Thrift filter.
 #ThriftFilter: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.network.thrift_proxy.v3.ThriftFilter"
 	// The name of the filter to instantiate. The name must match a supported
 	// filter. The built-in filters are:
 	//
@@ -81,7 +83,7 @@ ProtocolType_TWITTER:       "TWITTER"
 	// * :ref:`envoy.filters.thrift.router <config_thrift_filters_router>`
 	// * :ref:`envoy.filters.thrift.rate_limit <config_thrift_filters_rate_limit>`
 	name?:         string
-	typed_config?: any.#Any
+	typed_config?: _
 }
 
 // ThriftProtocolOptions specifies Thrift upstream protocol options. This object is used in
@@ -89,6 +91,7 @@ ProtocolType_TWITTER:       "TWITTER"
 // :ref:`typed_extension_protocol_options<envoy_v3_api_field_config.cluster.v3.Cluster.typed_extension_protocol_options>`,
 // keyed by the name `envoy.filters.network.thrift_proxy`.
 #ThriftProtocolOptions: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.network.thrift_proxy.v3.ThriftProtocolOptions"
 	// Supplies the type of transport that the Thrift proxy should use for upstream connections.
 	// Selecting
 	// :ref:`AUTO_TRANSPORT<envoy_v3_api_enum_value_extensions.filters.network.thrift_proxy.v3.TransportType.AUTO_TRANSPORT>`,

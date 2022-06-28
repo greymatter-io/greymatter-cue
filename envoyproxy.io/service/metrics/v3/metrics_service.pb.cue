@@ -6,9 +6,11 @@ import (
 )
 
 #StreamMetricsResponse: {
+	"@type": "type.googleapis.com/envoy.service.metrics.v3.StreamMetricsResponse"
 }
 
 #StreamMetricsMessage: {
+	"@type": "type.googleapis.com/envoy.service.metrics.v3.StreamMetricsMessage"
 	// Identifier data effectively is a structured metadata. As a performance optimization this will
 	// only be sent in the first message on the stream.
 	identifier?: #StreamMetricsMessage_Identifier
@@ -17,6 +19,7 @@ import (
 }
 
 #StreamMetricsMessage_Identifier: {
+	"@type": "type.googleapis.com/envoy.service.metrics.v3.StreamMetricsMessage_Identifier"
 	// The node sending metrics over the stream.
 	node?: v3.#Node
 }
@@ -33,6 +36,7 @@ import (
 
 // UnimplementedMetricsServiceServer can be embedded to have forward compatible implementations.
 #UnimplementedMetricsServiceServer: {
+	"@type": "type.googleapis.com/envoy.service.metrics.v3.UnimplementedMetricsServiceServer"
 }
 
 #MetricsService_StreamMetricsServer: _

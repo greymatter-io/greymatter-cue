@@ -17,12 +17,14 @@ HttpProtocolOptions_HeadersWithUnderscoresAction_DROP_HEADER:    "DROP_HEADER"
 
 // [#not-implemented-hide:]
 #TcpProtocolOptions: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.TcpProtocolOptions"
 }
 
 // Config for keepalive probes in a QUIC connection.
 // Note that QUIC keep-alive probing packets work differently from HTTP/2 keep-alive PINGs in a sense that the probing packet
 // itself doesn't timeout waiting for a probing response. Quic has a shorter idle timeout than TCP, so it doesn't rely on such probing to discover dead connections. If the peer fails to respond, the connection will idle timeout eventually. Thus, they are configured differently from :ref:`connection_keepalive <envoy_v3_api_field_config.core.v3.Http2ProtocolOptions.connection_keepalive>`.
 #QuicKeepAliveSettings: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.QuicKeepAliveSettings"
 	// The max interval for a connection to send keep-alive probing packets (with PING or PATH_RESPONSE). The value should be smaller than :ref:`connection idle_timeout <envoy_v3_api_field_config.listener.v3.QuicProtocolOptions.idle_timeout>` to prevent idle timeout while not less than 1s to avoid throttling the connection or flooding the peer with probes.
 	//
 	// If :ref:`initial_interval <envoy_v3_api_field_config.core.v3.QuicKeepAliveSettings.initial_interval>` is absent or zero, a client connection will use this value to start probing.
@@ -41,6 +43,7 @@ HttpProtocolOptions_HeadersWithUnderscoresAction_DROP_HEADER:    "DROP_HEADER"
 // QUIC protocol options which apply to both downstream and upstream connections.
 // [#next-free-field: 6]
 #QuicProtocolOptions: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.QuicProtocolOptions"
 	// Maximum number of streams that the client can negotiate per connection. 100
 	// if not specified.
 	max_concurrent_streams?: uint32
@@ -73,6 +76,7 @@ HttpProtocolOptions_HeadersWithUnderscoresAction_DROP_HEADER:    "DROP_HEADER"
 }
 
 #UpstreamHttpProtocolOptions: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.UpstreamHttpProtocolOptions"
 	// Set transport socket `SNI <https://en.wikipedia.org/wiki/Server_Name_Indication>`_ for new
 	// upstream connections based on the downstream HTTP host/authority header or any other arbitrary
 	// header when :ref:`override_auto_sni_header <envoy_v3_api_field_config.core.v3.UpstreamHttpProtocolOptions.override_auto_sni_header>`
@@ -98,6 +102,7 @@ HttpProtocolOptions_HeadersWithUnderscoresAction_DROP_HEADER:    "DROP_HEADER"
 // HTTP Alternative Services and https://datatracker.ietf.org/doc/html/draft-ietf-dnsop-svcb-https-04
 // for the "HTTPS" DNS resource record.
 #AlternateProtocolsCacheOptions: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.AlternateProtocolsCacheOptions"
 	// The name of the cache. Multiple named caches allow independent alternate protocols cache
 	// configurations to operate within a single Envoy process using different configurations. All
 	// alternate protocols cache options with the same name *must* be equal in all fields when
@@ -124,6 +129,7 @@ HttpProtocolOptions_HeadersWithUnderscoresAction_DROP_HEADER:    "DROP_HEADER"
 
 // [#next-free-field: 7]
 #HttpProtocolOptions: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.HttpProtocolOptions"
 	// The idle timeout for connections. The idle timeout is defined as the
 	// period in which there are no active requests. When the
 	// idle timeout is reached the connection will be closed. If the connection is an HTTP/2
@@ -170,6 +176,7 @@ HttpProtocolOptions_HeadersWithUnderscoresAction_DROP_HEADER:    "DROP_HEADER"
 
 // [#next-free-field: 9]
 #Http1ProtocolOptions: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.Http1ProtocolOptions"
 	// Handle HTTP requests with absolute URLs in the requests. These requests
 	// are generally sent by clients to forward/explicit proxies. This allows clients to configure
 	// envoy as their HTTP proxy. In Unix, for example, this is typically done by setting the
@@ -225,6 +232,7 @@ HttpProtocolOptions_HeadersWithUnderscoresAction_DROP_HEADER:    "DROP_HEADER"
 }
 
 #KeepaliveSettings: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.KeepaliveSettings"
 	// Send HTTP/2 PING frames at this period, in order to test that the connection is still alive.
 	// If this is zero, interval PINGs will not be sent.
 	interval?: string
@@ -249,6 +257,7 @@ HttpProtocolOptions_HeadersWithUnderscoresAction_DROP_HEADER:    "DROP_HEADER"
 
 // [#next-free-field: 16]
 #Http2ProtocolOptions: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.Http2ProtocolOptions"
 	// `Maximum table size <https://httpwg.org/specs/rfc7541.html#rfc.section.4.2>`_
 	// (in octets) that the encoder is permitted to use for the dynamic HPACK table. Valid values
 	// range from 0 to 4294967295 (2^32 - 1) and defaults to 4096. 0 effectively disables header
@@ -393,12 +402,14 @@ HttpProtocolOptions_HeadersWithUnderscoresAction_DROP_HEADER:    "DROP_HEADER"
 
 // [#not-implemented-hide:]
 #GrpcProtocolOptions: {
+	"@type":                 "type.googleapis.com/envoy.config.core.v3.GrpcProtocolOptions"
 	http2_protocol_options?: #Http2ProtocolOptions
 }
 
 // A message which allows using HTTP/3.
 // [#next-free-field: 6]
 #Http3ProtocolOptions: {
+	"@type":                "type.googleapis.com/envoy.config.core.v3.Http3ProtocolOptions"
 	quic_protocol_options?: #QuicProtocolOptions
 	// Allows invalid HTTP messaging and headers. When this option is disabled (default), then
 	// the whole HTTP/3 connection is terminated upon receiving invalid HEADERS frame. However,
@@ -418,6 +429,7 @@ HttpProtocolOptions_HeadersWithUnderscoresAction_DROP_HEADER:    "DROP_HEADER"
 
 // A message to control transformations to the :scheme header
 #SchemeHeaderTransformation: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.SchemeHeaderTransformation"
 	// Overwrite any Scheme header with the contents of this string.
 	scheme_to_overwrite?: string
 }
@@ -432,6 +444,7 @@ HttpProtocolOptions_HeadersWithUnderscoresAction_DROP_HEADER:    "DROP_HEADER"
 // response headers
 // alt-svc: h3=:"123"; ma=86400" in a response to a request to foo.com:123
 #AlternateProtocolsCacheOptions_AlternateProtocolsCacheEntry: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.AlternateProtocolsCacheOptions_AlternateProtocolsCacheEntry"
 	// The host name for the alternate protocol entry.
 	hostname?: string
 	// The port for the alternate protocol entry.
@@ -440,6 +453,7 @@ HttpProtocolOptions_HeadersWithUnderscoresAction_DROP_HEADER:    "DROP_HEADER"
 
 // [#next-free-field: 9]
 #Http1ProtocolOptions_HeaderKeyFormat: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.Http1ProtocolOptions_HeaderKeyFormat"
 	// Formats the header by proper casing words: the first character and any character following
 	// a special character will be capitalized if it's an alpha character. For example,
 	// "content-type" becomes "Content-Type", and "foo$b#$are" becomes "Foo$B#$Are".
@@ -453,11 +467,13 @@ HttpProtocolOptions_HeadersWithUnderscoresAction_DROP_HEADER:    "DROP_HEADER"
 }
 
 #Http1ProtocolOptions_HeaderKeyFormat_ProperCaseWords: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.Http1ProtocolOptions_HeaderKeyFormat_ProperCaseWords"
 }
 
 // Defines a parameter to be sent in the SETTINGS frame.
 // See `RFC7540, sec. 6.5.1 <https://tools.ietf.org/html/rfc7540#section-6.5.1>`_ for details.
 #Http2ProtocolOptions_SettingsParameter: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.Http2ProtocolOptions_SettingsParameter"
 	// The 16 bit parameter identifier.
 	identifier?: uint32
 	// The 32 bit parameter value.

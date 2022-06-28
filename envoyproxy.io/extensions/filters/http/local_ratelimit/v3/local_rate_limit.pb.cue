@@ -8,6 +8,7 @@ import (
 
 // [#next-free-field: 13]
 #LocalRateLimit: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.local_ratelimit.v3.LocalRateLimit"
 	// The human readable prefix to use when emitting stats.
 	stat_prefix?: string
 	// This field allows for a custom HTTP response status code to the downstream client when

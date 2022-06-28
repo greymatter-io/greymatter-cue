@@ -19,6 +19,7 @@ Action_UNEJECT: "UNEJECT"
 
 // [#next-free-field: 12]
 #OutlierDetectionEvent: {
+	"@type": "type.googleapis.com/envoy.data.cluster.v3.OutlierDetectionEvent"
 	// In case of eject represents type of ejection that took place.
 	type?: #OutlierEjectionType
 	// Timestamp for event.
@@ -44,6 +45,7 @@ Action_UNEJECT: "UNEJECT"
 }
 
 #OutlierEjectSuccessRate: {
+	"@type": "type.googleapis.com/envoy.data.cluster.v3.OutlierEjectSuccessRate"
 	// Host’s success rate at the time of the ejection event on a 0-100 range.
 	host_success_rate?: uint32
 	// Average success rate of the hosts in the cluster at the time of the ejection event on a 0-100
@@ -54,9 +56,11 @@ Action_UNEJECT: "UNEJECT"
 }
 
 #OutlierEjectConsecutive: {
+	"@type": "type.googleapis.com/envoy.data.cluster.v3.OutlierEjectConsecutive"
 }
 
 #OutlierEjectFailurePercentage: {
+	"@type": "type.googleapis.com/envoy.data.cluster.v3.OutlierEjectFailurePercentage"
 	// Host's success rate at the time of the ejection event on a 0-100 range.
 	host_success_rate?: uint32
 }

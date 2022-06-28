@@ -20,6 +20,7 @@ package v3
 //    See the :ref:`x-request-id <config_http_conn_man_headers_x-request-id>` documentation for
 //    more information.
 #UuidRequestIdConfig: {
+	"@type": "type.googleapis.com/envoy.extensions.request_id.uuid.v3.UuidRequestIdConfig"
 	// Whether the implementation alters the UUID to contain the trace sampling decision as per the
 	// `UuidRequestIdConfig` message documentation. This defaults to true. If disabled no
 	// modification to the UUID will be performed. It is important to note that if disabled,

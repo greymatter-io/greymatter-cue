@@ -5,6 +5,7 @@ package v3
 //
 // [#extension: envoy.http.original_ip_detection.xff]
 #XffConfig: {
+	"@type": "type.googleapis.com/envoy.extensions.http.original_ip_detection.xff.v3.XffConfig"
 	// The number of additional ingress proxy hops from the right side of the
 	// :ref:`config_http_conn_man_headers_x-forwarded-for` HTTP header to trust when
 	// determining the origin client's IP address. The default is zero if this option

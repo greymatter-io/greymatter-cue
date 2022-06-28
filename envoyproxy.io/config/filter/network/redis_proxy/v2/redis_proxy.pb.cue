@@ -18,6 +18,7 @@ RedisProxy_ConnPoolSettings_ReadPolicy_ANY:            "ANY"
 
 // [#next-free-field: 7]
 #RedisProxy: {
+	"@type": "type.googleapis.com/envoy.config.filter.network.redis_proxy.v2.RedisProxy"
 	// The prefix to use when emitting :ref:`statistics <config_network_filters_redis_proxy_stats>`.
 	stat_prefix?: string
 	// Name of cluster from cluster manager. See the :ref:`configuration section
@@ -80,6 +81,7 @@ RedisProxy_ConnPoolSettings_ReadPolicy_ANY:            "ANY"
 // :ref:`typed_extension_protocol_options<envoy_api_field_Cluster.typed_extension_protocol_options>`,
 // keyed by the name `envoy.filters.network.redis_proxy`.
 #RedisProtocolOptions: {
+	"@type": "type.googleapis.com/envoy.config.filter.network.redis_proxy.v2.RedisProtocolOptions"
 	// Upstream server password as defined by the `requirepass` directive
 	// <https://redis.io/topics/config>`_ in the server's configuration file.
 	auth_password?: core.#DataSource
@@ -88,6 +90,7 @@ RedisProxy_ConnPoolSettings_ReadPolicy_ANY:            "ANY"
 // Redis connection pool settings.
 // [#next-free-field: 9]
 #RedisProxy_ConnPoolSettings: {
+	"@type": "type.googleapis.com/envoy.config.filter.network.redis_proxy.v2.RedisProxy_ConnPoolSettings"
 	// Per-operation timeout in milliseconds. The timer starts when the first
 	// command of a pipeline is written to the backend connection. Each response received from Redis
 	// resets the timer since it signifies that the next command is being processed by the backend.
@@ -145,6 +148,7 @@ RedisProxy_ConnPoolSettings_ReadPolicy_ANY:            "ANY"
 }
 
 #RedisProxy_PrefixRoutes: {
+	"@type": "type.googleapis.com/envoy.config.filter.network.redis_proxy.v2.RedisProxy_PrefixRoutes"
 	// List of prefix routes.
 	routes?: [...#RedisProxy_PrefixRoutes_Route]
 	// Indicates that prefix matching should be case insensitive.
@@ -165,6 +169,7 @@ RedisProxy_ConnPoolSettings_ReadPolicy_ANY:            "ANY"
 }
 
 #RedisProxy_PrefixRoutes_Route: {
+	"@type": "type.googleapis.com/envoy.config.filter.network.redis_proxy.v2.RedisProxy_PrefixRoutes_Route"
 	// String prefix that must match the beginning of the keys. Envoy will always favor the
 	// longest match.
 	prefix?: string
@@ -181,6 +186,7 @@ RedisProxy_ConnPoolSettings_ReadPolicy_ANY:            "ANY"
 // respond before returning the response from the primary cluster. All normal statistics are
 // collected for the shadow cluster making this feature useful for testing.
 #RedisProxy_PrefixRoutes_Route_RequestMirrorPolicy: {
+	"@type": "type.googleapis.com/envoy.config.filter.network.redis_proxy.v2.RedisProxy_PrefixRoutes_Route_RequestMirrorPolicy"
 	// Specifies the cluster that requests will be mirrored to. The cluster must
 	// exist in the cluster manager configuration.
 	cluster?: string

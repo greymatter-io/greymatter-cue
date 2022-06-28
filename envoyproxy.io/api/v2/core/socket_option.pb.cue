@@ -10,6 +10,7 @@ SocketOption_SocketState_STATE_LISTENING: "STATE_LISTENING"
 // might not exist in upstream kernels or precompiled Envoy binaries.
 // [#next-free-field: 7]
 #SocketOption: {
+	"@type": "type.googleapis.com/envoy.api.v2.core.SocketOption"
 	// An optional name to give this socket option for debugging, etc.
 	// Uniqueness is not required and no special meaning is assumed.
 	description?: string

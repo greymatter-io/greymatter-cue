@@ -6,6 +6,7 @@ package v3
 // this will be registered to run as the last watchdog action on KILL and
 // MULTIKILL events if those are enabled.
 #AbortActionConfig: {
+	"@type": "type.googleapis.com/envoy.watchdog.v3.AbortActionConfig"
 	// How long to wait for the thread to respond to the thread kill function
 	// before killing the process from this action. This is a blocking action.
 	// By default this is 5 seconds.

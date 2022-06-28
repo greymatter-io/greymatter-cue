@@ -10,6 +10,7 @@ import (
 // <arch_overview_load_balancing_types>` for more information.
 // [#extension: envoy.clusters.lb_policy]
 #LeastRequest: {
+	"@type": "type.googleapis.com/envoy.extensions.load_balancing_policies.least_request.v3.LeastRequest"
 	// The number of random healthy hosts from which the host with the fewest active requests will
 	// be chosen. Defaults to 2 so that we perform two-choice selection if the field is not set.
 	choice_count?: uint32

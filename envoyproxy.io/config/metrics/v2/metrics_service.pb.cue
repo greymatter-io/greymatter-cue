@@ -9,6 +9,7 @@ import (
 // Metrics Service.
 // [#extension: envoy.stat_sinks.metrics_service]
 #MetricsServiceConfig: {
+	"@type": "type.googleapis.com/envoy.config.metrics.v2.MetricsServiceConfig"
 	// The upstream gRPC cluster that hosts the metrics service.
 	grpc_service?: core.#GrpcService
 }

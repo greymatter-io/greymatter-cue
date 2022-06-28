@@ -4,6 +4,7 @@ package v3
 // symbolic Common Expression Language expressions to inform the decision
 // to generate an access log.
 #ExpressionFilter: {
+	"@type": "type.googleapis.com/envoy.extensions.access_loggers.filters.cel.v3.ExpressionFilter"
 	// Expression that, when evaluated, will be used to filter access logs.
 	// Expressions are based on the set of Envoy :ref:`attributes <arch_overview_attributes>`.
 	// The provided expression must evaluate to true for logging (expression errors are considered false).

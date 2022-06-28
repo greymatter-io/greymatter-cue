@@ -1,7 +1,6 @@
 package v3
 
 import (
-	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 	v3 "envoyproxy.io/config/core/v3"
 	v31 "envoyproxy.io/type/matcher/v3"
 )
@@ -31,6 +30,7 @@ CertificateValidationContext_TrustChainVerification_VERIFY_TRUST_CHAIN: "VERIFY_
 CertificateValidationContext_TrustChainVerification_ACCEPT_UNTRUSTED:   "ACCEPT_UNTRUSTED"
 
 #TlsParameters: {
+	"@type": "type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.TlsParameters"
 	// Minimum TLS protocol version. By default, it's ``TLSv1_2`` for both clients and servers.
 	tls_minimum_protocol_version?: #TlsParameters_TlsProtocol
 	// Maximum TLS protocol version. By default, it's ``TLSv1_2`` for clients and ``TLSv1_3`` for
@@ -103,14 +103,16 @@ CertificateValidationContext_TrustChainVerification_ACCEPT_UNTRUSTED:   "ACCEPT_
 // (potentially asynchronous) signing and decryption operations. Some use cases for private key
 // methods would be TPM support and TLS acceleration.
 #PrivateKeyProvider: {
+	"@type": "type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.PrivateKeyProvider"
 	// Private key method provider name. The name must match a
 	// supported private key method provider type.
 	provider_name?: string
-	typed_config?:  any.#Any
+	typed_config?:  _
 }
 
 // [#next-free-field: 9]
 #TlsCertificate: {
+	"@type": "type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.TlsCertificate"
 	// The TLS certificate chain.
 	//
 	// If *certificate_chain* is a filesystem path, a watch will be added to the
@@ -169,6 +171,7 @@ CertificateValidationContext_TrustChainVerification_ACCEPT_UNTRUSTED:   "ACCEPT_
 }
 
 #TlsSessionTicketKeys: {
+	"@type": "type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.TlsSessionTicketKeys"
 	// Keys for encrypting and decrypting TLS session tickets. The
 	// first key in the array contains the key to encrypt all new sessions created by this context.
 	// All keys are candidates for decrypting received tickets. This allows for easy rotation of keys
@@ -201,6 +204,7 @@ CertificateValidationContext_TrustChainVerification_ACCEPT_UNTRUSTED:   "ACCEPT_
 // respect to the TLS handshake.
 // [#not-implemented-hide:]
 #CertificateProviderPluginInstance: {
+	"@type": "type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.CertificateProviderPluginInstance"
 	// Provider instance name. If not present, defaults to "default".
 	//
 	// Instance names should generally be defined not in terms of the underlying provider
@@ -216,6 +220,7 @@ CertificateValidationContext_TrustChainVerification_ACCEPT_UNTRUSTED:   "ACCEPT_
 
 // Matcher for subject alternative names, to match both type and value of the SAN.
 #SubjectAltNameMatcher: {
+	"@type": "type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.SubjectAltNameMatcher"
 	// Specification of type of SAN. Note that the default enum value is an invalid choice.
 	san_type?: #SubjectAltNameMatcher_SanType
 	// Matcher for SAN value.
@@ -224,6 +229,7 @@ CertificateValidationContext_TrustChainVerification_ACCEPT_UNTRUSTED:   "ACCEPT_
 
 // [#next-free-field: 17]
 #CertificateValidationContext: {
+	"@type": "type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.CertificateValidationContext"
 	// TLS certificate data containing certificate authority certificates to use in verifying
 	// a presented peer certificate (e.g. server certificate for clusters or client certificate
 	// for listeners). If not specified and a peer certificate is presented it will not be

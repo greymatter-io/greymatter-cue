@@ -4,4 +4,5 @@ package v3
 // based on CONNECT configuration.
 // [#extension: envoy.upstreams.tcp.generic]
 #GenericConnectionPoolProto: {
+	"@type": "type.googleapis.com/envoy.extensions.upstreams.tcp.generic.v3.GenericConnectionPoolProto"
 }

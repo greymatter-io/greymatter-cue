@@ -1,13 +1,13 @@
 package v3
 
 import (
-	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 	status "envoyproxy.io/deps/genproto/googleapis/rpc/status"
 	v3 "envoyproxy.io/config/core/v3"
 )
 
 // Specifies a resource to be subscribed to.
 #ResourceLocator: {
+	"@type": "type.googleapis.com/envoy.service.discovery.v3.ResourceLocator"
 	// The resource name to subscribe to.
 	name?: string
 	// A set of dynamic parameters used to match against the dynamic parameter
@@ -18,6 +18,7 @@ import (
 
 // Specifies a concrete resource name.
 #ResourceName: {
+	"@type": "type.googleapis.com/envoy.service.discovery.v3.ResourceName"
 	// The name of the resource.
 	name?: string
 	// Dynamic parameter constraints associated with this resource. To be used by client-side caches
@@ -29,6 +30,7 @@ import (
 // a given Envoy node on some API.
 // [#next-free-field: 8]
 #DiscoveryRequest: {
+	"@type": "type.googleapis.com/envoy.service.discovery.v3.DiscoveryRequest"
 	// The version_info provided in the request messages will be the version_info
 	// received with the most recent successfully processed response or empty on
 	// the first request. It is expected that no new request is sent after a
@@ -74,10 +76,11 @@ import (
 
 // [#next-free-field: 7]
 #DiscoveryResponse: {
+	"@type": "type.googleapis.com/envoy.service.discovery.v3.DiscoveryResponse"
 	// The version of the response data.
 	version_info?: string
 	// The response resources. These resources are typed and depend on the API being called.
-	resources?: [...any.#Any]
+	resources?: _
 	// [#not-implemented-hide:]
 	// Canary is used to support two Envoy command line flags:
 	//
@@ -143,6 +146,7 @@ import (
 // initial_resource_versions.
 // [#next-free-field: 10]
 #DeltaDiscoveryRequest: {
+	"@type": "type.googleapis.com/envoy.service.discovery.v3.DeltaDiscoveryRequest"
 	// The node making the request.
 	node?: v3.#Node
 	// Type of the resource that is being requested, e.g.
@@ -208,6 +212,7 @@ import (
 
 // [#next-free-field: 9]
 #DeltaDiscoveryResponse: {
+	"@type": "type.googleapis.com/envoy.service.discovery.v3.DeltaDiscoveryResponse"
 	// The version of the response data (used for debugging).
 	system_version_info?: string
 	// The response resources. These are typed resources, whose types must match
@@ -238,6 +243,7 @@ import (
 // field. This allows xDS implementations (clients, servers, and caching proxies) to determine
 // which variant of a resource is appropriate for a given client.
 #DynamicParameterConstraints: {
+	"@type": "type.googleapis.com/envoy.service.discovery.v3.DynamicParameterConstraints"
 	// A single constraint to evaluate.
 	constraint?: #DynamicParameterConstraints_SingleConstraint
 	// A list of constraints that match if any one constraint in the list
@@ -251,6 +257,7 @@ import (
 
 // [#next-free-field: 9]
 #Resource: {
+	"@type": "type.googleapis.com/envoy.service.discovery.v3.Resource"
 	// The resource's name, to distinguish it from others of the same type of resource.
 	// Only one of *name* or *resource_name* may be set.
 	name?: string
@@ -265,7 +272,7 @@ import (
 	// resources.
 	version?: string
 	// The resource being tracked.
-	resource?: any.#Any
+	resource?: _
 	// Time-to-live value for the resource. For each resource, a timer is started. The timer is
 	// reset each time the resource is received with a new TTL. If the resource is received with
 	// no TTL set, the timer is removed for the resource. Upon expiration of the timer, the
@@ -287,6 +294,7 @@ import (
 
 // A single constraint for a given key.
 #DynamicParameterConstraints_SingleConstraint: {
+	"@type": "type.googleapis.com/envoy.service.discovery.v3.DynamicParameterConstraints_SingleConstraint"
 	// The key to match against.
 	key?: string
 	// Matches this exact value.
@@ -299,15 +307,18 @@ import (
 }
 
 #DynamicParameterConstraints_ConstraintList: {
+	"@type": "type.googleapis.com/envoy.service.discovery.v3.DynamicParameterConstraints_ConstraintList"
 	constraints?: [...#DynamicParameterConstraints]
 }
 
 #DynamicParameterConstraints_SingleConstraint_Exists: {
+	"@type": "type.googleapis.com/envoy.service.discovery.v3.DynamicParameterConstraints_SingleConstraint_Exists"
 }
 
 // Cache control properties for the resource.
 // [#not-implemented-hide:]
 #Resource_CacheControl: {
+	"@type": "type.googleapis.com/envoy.service.discovery.v3.Resource_CacheControl"
 	// If true, xDS proxies may not cache this resource.
 	// Note that this does not apply to clients other than xDS proxies, which must cache resources
 	// for their own use, regardless of the value of this field.

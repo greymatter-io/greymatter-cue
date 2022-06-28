@@ -7,6 +7,7 @@ import (
 
 // A load report Envoy sends to the management server.
 #LoadStatsRequest: {
+	"@type": "type.googleapis.com/envoy.service.load_stats.v3.LoadStatsRequest"
 	// Node identifier for Envoy instance.
 	node?: v3.#Node
 	// A list of load stats to report.
@@ -16,6 +17,7 @@ import (
 // The management server sends envoy a LoadStatsResponse with all clusters it
 // is interested in learning load stats about.
 #LoadStatsResponse: {
+	"@type": "type.googleapis.com/envoy.service.load_stats.v3.LoadStatsResponse"
 	// Clusters to report stats for.
 	// Not populated if *send_all_clusters* is true.
 	clusters?: [...string]
@@ -49,6 +51,7 @@ import (
 
 // UnimplementedLoadReportingServiceServer can be embedded to have forward compatible implementations.
 #UnimplementedLoadReportingServiceServer: {
+	"@type": "type.googleapis.com/envoy.service.load_stats.v3.UnimplementedLoadReportingServiceServer"
 }
 
 #LoadReportingService_StreamLoadStatsServer: _

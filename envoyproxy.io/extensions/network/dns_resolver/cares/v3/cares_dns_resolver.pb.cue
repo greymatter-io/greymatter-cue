@@ -6,6 +6,7 @@ import (
 
 // Configuration for c-ares DNS resolver.
 #CaresDnsResolverConfig: {
+	"@type": "type.googleapis.com/envoy.extensions.network.dns_resolver.cares.v3.CaresDnsResolverConfig"
 	// A list of dns resolver addresses.
 	// :ref:`use_resolvers_as_fallback<envoy_v3_api_field_extensions.network.dns_resolver.cares.v3.CaresDnsResolverConfig.use_resolvers_as_fallback>`
 	// below dictates if the DNS client should override system defaults or only use the provided

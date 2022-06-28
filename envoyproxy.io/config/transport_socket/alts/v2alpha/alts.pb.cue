@@ -3,6 +3,7 @@ package v2alpha
 // Configuration for ALTS transport socket. This provides Google's ALTS protocol to Envoy.
 // https://cloud.google.com/security/encryption-in-transit/application-layer-transport-security/
 #Alts: {
+	"@type": "type.googleapis.com/envoy.config.transport_socket.alts.v2alpha.Alts"
 	// The location of a handshaker service, this is usually 169.254.169.254:8080
 	// on GCE.
 	handshaker_service?: string
