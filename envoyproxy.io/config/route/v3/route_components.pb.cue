@@ -305,7 +305,7 @@ RateLimit_Action_MetaData_Source_ROUTE_ENTRY: "ROUTE_ENTRY"
 	is_optional?: bool
 }
 
-// [#next-free-field: 15]
+// [#next-free-field: 16]
 #RouteMatch: {
 	// If specified, the route is a prefix rule meaning that the prefix must
 	// match the beginning of the *:path* header.
@@ -346,6 +346,33 @@ RateLimit_Action_MetaData_Source_ROUTE_ENTRY: "ROUTE_ENTRY"
 	//
 	// Expect the value to not contain ``?`` or ``#`` and not to end in ``/``
 	path_separated_prefix?: string
+	// If specified, the route is a template match rule meaning that the
+	// ``:path`` header (without the query string) must match the given
+	// ``path_template`` pattern.
+	//
+	// Path template matching types:
+	//
+	// * ``*`` : Matches a single path component, up to the next path separator: /
+	//
+	// * ``**`` : Matches zero or more path segments. If present, must be the last operator.
+	//
+	// * ``{name} or {name=*}`` :  A named variable matching one path segment up to the next path separator: /.
+	//
+	// * ``{name=videos/*}`` : A named variable matching more than one path segment.
+	//      The path component matching videos/* is captured as the named variable.
+	//
+	// * ``{name=**}`` : A named variable matching zero or more path segments.
+	//
+	//
+	// For example:
+	//
+	// * ``/videos/*/*/*.m4s`` would match ``videos/123414/hls/1080p5000_00001.m4s``
+	//
+	// * ``/videos/{file}`` would match ``/videos/1080p5000_00001.m4s``
+	//
+	// * ``/**.mpd`` would match ``/content/123/india/dash/55/manifest.mpd``
+	// [#not-implemented-hide:]
+	path_template?: string
 	// Indicates that prefix/path matching should be case sensitive. The default
 	// is true. Ignored for safe_regex matching.
 	case_sensitive?: bool
@@ -437,7 +464,7 @@ RateLimit_Action_MetaData_Source_ROUTE_ENTRY: "ROUTE_ENTRY"
 	shadow_enabled?: v31.#RuntimeFractionalPercent
 }
 
-// [#next-free-field: 41]
+// [#next-free-field: 42]
 #RouteAction: {
 	// Indicates the upstream cluster to which the request should be routed
 	// to.
@@ -485,9 +512,9 @@ RateLimit_Action_MetaData_Source_ROUTE_ENTRY: "ROUTE_ENTRY"
 	// place the original path before rewrite into the :ref:`x-envoy-original-path
 	// <config_http_filters_router_x-envoy-original-path>` header.
 	//
-	// Only one of *prefix_rewrite* or
-	// :ref:`regex_rewrite <envoy_v3_api_field_config.route.v3.RouteAction.regex_rewrite>`
-	// may be specified.
+	// Only one of :ref:`regex_rewrite <envoy_v3_api_field_config.route.v3.RouteAction.regex_rewrite>`
+	// [#comment:TODO(silverstar194) add the following once path_template_rewrite is implemented: :ref:`path_template_rewrite <envoy_v3_api_field_config.route.v3.RouteAction.path_template_rewrite>`]
+	// or *prefix_rewrite* may be specified.
 	//
 	// .. attention::
 	//
@@ -521,6 +548,7 @@ RateLimit_Action_MetaData_Source_ROUTE_ENTRY: "ROUTE_ENTRY"
 	// <config_http_filters_router_x-envoy-original-path>` header.
 	//
 	// Only one of :ref:`prefix_rewrite <envoy_v3_api_field_config.route.v3.RouteAction.prefix_rewrite>`
+	// [#comment:TODO(silverstar194) add the following once path_template_rewrite is implemented: :ref:`path_template_rewrite <envoy_v3_api_field_config.route.v3.RouteAction.path_template_rewrite>`,]
 	// or *regex_rewrite* may be specified.
 	//
 	// Examples using Google's `RE2 <https://github.com/google/re2>`_ engine:
@@ -540,6 +568,47 @@ RateLimit_Action_MetaData_Source_ROUTE_ENTRY: "ROUTE_ENTRY"
 	//   would do a case-insensitive match and transform path ``/aaa/XxX/bbb`` to
 	//   ``/aaa/yyy/bbb``.
 	regex_rewrite?: v32.#RegexMatchAndSubstitute
+	// Indicates that during forwarding, portions of the path that match the
+	// pattern should be rewritten, even allowing the substitution of variables
+	// from the match pattern into the new path as specified by the rewrite template.
+	// This is useful to allow application paths to be
+	// rewritten in a way that is aware of segments with variable content like
+	// identifiers. The router filter will place the original path as it was
+	// before the rewrite into the :ref:`x-envoy-original-path
+	// <config_http_filters_router_x-envoy-original-path>` header.
+	//
+	// Only one of :ref:`prefix_rewrite <envoy_v3_api_field_config.route.v3.RouteAction.prefix_rewrite>`,
+	// :ref:`regex_rewrite <envoy_v3_api_field_config.route.v3.RouteAction.regex_rewrite>`,
+	// or *path_template_rewrite* may be specified.
+	//
+	// Template pattern matching types:
+	//
+	// * ``*`` : Matches a single path component, up to the next path separator: /
+	//
+	// * ``**`` : Matches zero or more path segments. If present, must be the last operator.
+	//
+	// * ``{name} or {name=*}`` :  A named variable matching one path segment up to the next path separator: /.
+	//
+	// * ``{name=videos/*}`` : A named variable matching more than one path segment.
+	//      The path component matching videos/* is captured as the named variable.
+	//
+	// * ``{name=**}`` : A named variable matching zero or more path segments.
+	//
+	// Only named matches can be used to perform rewrites.
+	//
+	// Examples using path_template_rewrite:
+	//
+	// * The pattern ``/{one}/{two}`` paired with a substitution string of ``/{two}/{one}`` would
+	//   transform ``/cat/dog`` into ``/dog/cat``.
+	//
+	// * The pattern ``/videos/{language=lang/*}/*`` paired with a substitution string of
+	//   ``/{language}`` would transform ``/videos/lang/en/video.m4s`` into ``lang/en``.
+	//
+	// * The path pattern ``/content/{format}/{lang}/{id}/{file}.vtt`` paired with a substitution
+	//   string of ``/{lang}/{format}/{file}.vtt`` would transform ``/content/hls/en-us/12345/en_193913.vtt``
+	//   into ``/en-us/hls/en_193913.vtt``.
+	// [#not-implemented-hide:]
+	path_template_rewrite?: string
 	// Indicates that during forwarding, the host header will be swapped with
 	// this value. Using this option will append the
 	// :ref:`config_http_conn_man_headers_x-forwarded-host` header if
