@@ -13,6 +13,7 @@ import (
 // Bootstrap :ref:`configuration overview <config_overview_bootstrap>`.
 // [#next-free-field: 21]
 #Bootstrap: {
+	"@type": "type.googleapis.com/envoy.config.bootstrap.v2.Bootstrap"
 	// Node identity to present to the management server and for instance
 	// identification purposes (e.g. in generated headers).
 	node?: core.#Node
@@ -95,6 +96,7 @@ import (
 // Administration interface :ref:`operations documentation
 // <operations_admin_interface>`.
 #Admin: {
+	"@type": "type.googleapis.com/envoy.config.bootstrap.v2.Admin"
 	// The path to write the access log for the administration server. If no
 	// access log is desired specify ‘/dev/null’. This is only required if
 	// :ref:`address <envoy_api_field_config.bootstrap.v2.Admin.address>` is set.
@@ -112,6 +114,7 @@ import (
 
 // Cluster manager :ref:`architecture overview <arch_overview_cluster_manager>`.
 #ClusterManager: {
+	"@type": "type.googleapis.com/envoy.config.bootstrap.v2.ClusterManager"
 	// Name of the local cluster (i.e., the cluster that owns the Envoy running
 	// this configuration). In order to enable :ref:`zone aware routing
 	// <arch_overview_load_balancing_zone_aware_routing>` this option must be set.
@@ -138,6 +141,7 @@ import (
 // nonresponsive threads and kills the process after the configured thresholds.
 // See the :ref:`watchdog documentation <operations_performance_watchdog>` for more information.
 #Watchdog: {
+	"@type": "type.googleapis.com/envoy.config.bootstrap.v2.Watchdog"
 	// The duration after which Envoy counts a nonresponsive thread in the
 	// *watchdog_miss* statistic. If not specified the default is 200ms.
 	miss_timeout?: string
@@ -157,6 +161,7 @@ import (
 
 // Runtime :ref:`configuration overview <config_runtime>` (deprecated).
 #Runtime: {
+	"@type": "type.googleapis.com/envoy.config.bootstrap.v2.Runtime"
 	// The implementation assumes that the file system tree is accessed via a
 	// symbolic link. An atomic link swap is used when a new tree should be
 	// switched to. This parameter specifies the path to the symbolic link. Envoy
@@ -184,6 +189,7 @@ import (
 
 // [#next-free-field: 6]
 #RuntimeLayer: {
+	"@type": "type.googleapis.com/envoy.config.bootstrap.v2.RuntimeLayer"
 	// Descriptive name for the runtime layer. This is only used for the runtime
 	// :http:get:`/runtime` output.
 	name?: string
@@ -199,12 +205,14 @@ import (
 
 // Runtime :ref:`configuration overview <config_runtime>`.
 #LayeredRuntime: {
+	"@type": "type.googleapis.com/envoy.config.bootstrap.v2.LayeredRuntime"
 	// The :ref:`layers <config_runtime_layering>` of the runtime. This is ordered
 	// such that later layers in the list overlay earlier entries.
 	layers?: [...#RuntimeLayer]
 }
 
 #Bootstrap_StaticResources: {
+	"@type": "type.googleapis.com/envoy.config.bootstrap.v2.Bootstrap_StaticResources"
 	// Static :ref:`Listeners <envoy_api_msg_Listener>`. These listeners are
 	// available regardless of LDS configuration.
 	listeners?: [...v22.#Listener]
@@ -221,6 +229,7 @@ import (
 }
 
 #Bootstrap_DynamicResources: {
+	"@type": "type.googleapis.com/envoy.config.bootstrap.v2.Bootstrap_DynamicResources"
 	// All :ref:`Listeners <envoy_api_msg_Listener>` are provided by a single
 	// :ref:`LDS <arch_overview_dynamic_config_lds>` configuration source.
 	lds_config?: core.#ConfigSource
@@ -239,6 +248,7 @@ import (
 }
 
 #ClusterManager_OutlierDetection: {
+	"@type": "type.googleapis.com/envoy.config.bootstrap.v2.ClusterManager_OutlierDetection"
 	// Specifies the path to the outlier event log.
 	event_log_path?: string
 	// [#not-implemented-hide:]
@@ -249,6 +259,7 @@ import (
 
 // :ref:`Disk runtime <config_runtime_local_disk>` layer.
 #RuntimeLayer_DiskLayer: {
+	"@type": "type.googleapis.com/envoy.config.bootstrap.v2.RuntimeLayer_DiskLayer"
 	// The implementation assumes that the file system tree is accessed via a
 	// symbolic link. An atomic link swap is used when a new tree should be
 	// switched to. This parameter specifies the path to the symbolic link.
@@ -268,10 +279,12 @@ import (
 
 // :ref:`Admin console runtime <config_runtime_admin>` layer.
 #RuntimeLayer_AdminLayer: {
+	"@type": "type.googleapis.com/envoy.config.bootstrap.v2.RuntimeLayer_AdminLayer"
 }
 
 // :ref:`Runtime Discovery Service (RTDS) <config_runtime_rtds>` layer.
 #RuntimeLayer_RtdsLayer: {
+	"@type": "type.googleapis.com/envoy.config.bootstrap.v2.RuntimeLayer_RtdsLayer"
 	// Resource to subscribe to at *rtds_config* for the RTDS layer.
 	name?: string
 	// RTDS configuration source.

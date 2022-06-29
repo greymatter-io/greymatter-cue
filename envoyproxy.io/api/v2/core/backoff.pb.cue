@@ -2,6 +2,7 @@ package core
 
 // Configuration defining a jittered exponential back off strategy.
 #BackoffStrategy: {
+	"@type": "type.googleapis.com/envoy.api.v2.core.BackoffStrategy"
 	// The base interval to be used for the next back off computation. It should
 	// be greater than zero and less than or equal to :ref:`max_interval
 	// <envoy_api_field_core.BackoffStrategy.max_interval>`.

@@ -9,6 +9,7 @@ import (
 // <https://github.com/opentracing/opentracing-cpp>`_.
 // [#extension: envoy.tracers.dynamic_ot]
 #DynamicOtConfig: {
+	"@type": "type.googleapis.com/envoy.config.trace.v3.DynamicOtConfig"
 	// Dynamic library implementing the `OpenTracing API
 	// <https://github.com/opentracing/opentracing-cpp>`_.
 	library?: string

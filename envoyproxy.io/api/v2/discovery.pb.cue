@@ -1,7 +1,6 @@
 package v2
 
 import (
-	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 	core "envoyproxy.io/api/v2/core"
 	status "envoyproxy.io/deps/genproto/googleapis/rpc/status"
 )
@@ -10,6 +9,7 @@ import (
 // a given Envoy node on some API.
 // [#next-free-field: 7]
 #DiscoveryRequest: {
+	"@type": "type.googleapis.com/envoy.api.v2.DiscoveryRequest"
 	// The version_info provided in the request messages will be the version_info
 	// received with the most recent successfully processed response or empty on
 	// the first request. It is expected that no new request is sent after a
@@ -47,10 +47,11 @@ import (
 
 // [#next-free-field: 7]
 #DiscoveryResponse: {
+	"@type": "type.googleapis.com/envoy.api.v2.DiscoveryResponse"
 	// The version of the response data.
 	version_info?: string
 	// The response resources. These resources are typed and depend on the API being called.
-	resources?: [...any.#Any]
+	resources?: _
 	// [#not-implemented-hide:]
 	// Canary is used to support two Envoy command line flags:
 	//
@@ -117,6 +118,7 @@ import (
 // initial_resource_versions.
 // [#next-free-field: 8]
 #DeltaDiscoveryRequest: {
+	"@type": "type.googleapis.com/envoy.api.v2.DeltaDiscoveryRequest"
 	// The node making the request.
 	node?: core.#Node
 	// Type of the resource that is being requested, e.g.
@@ -168,6 +170,7 @@ import (
 
 // [#next-free-field: 7]
 #DeltaDiscoveryResponse: {
+	"@type": "type.googleapis.com/envoy.api.v2.DeltaDiscoveryResponse"
 	// The version of the response data (used for debugging).
 	system_version_info?: string
 	// The response resources. These are typed resources, whose types must match
@@ -185,6 +188,7 @@ import (
 }
 
 #Resource: {
+	"@type": "type.googleapis.com/envoy.api.v2.Resource"
 	// The resource's name, to distinguish it from others of the same type of resource.
 	name?: string
 	// The aliases are a list of other names that this resource can go by.
@@ -193,5 +197,5 @@ import (
 	// resources.
 	version?: string
 	// The resource being tracked.
-	resource?: any.#Any
+	resource?: _
 }

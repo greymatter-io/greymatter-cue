@@ -5,6 +5,7 @@ package v1alpha1
 //
 // Deprecated: Do not use.
 #Explain: {
+	"@type": "type.googleapis.com/google.golang.org.genproto.googleapis.api.expr.v1alpha1.Explain"
 	// All of the observed values.
 	//
 	// The field value_index is an index in the values list.
@@ -20,6 +21,7 @@ package v1alpha1
 
 // ID and value index of one step.
 #Explain_ExprStep: {
+	"@type": "type.googleapis.com/google.golang.org.genproto.googleapis.api.expr.v1alpha1.Explain_ExprStep"
 	// ID of corresponding Expr node.
 	id?: int64
 	// Index of the value in the values list.

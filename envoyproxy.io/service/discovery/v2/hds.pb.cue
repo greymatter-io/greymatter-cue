@@ -16,29 +16,35 @@ Capability_Protocol_REDIS: "REDIS"
 // Defines supported protocols etc, so the management server can assign proper
 // endpoints to healthcheck.
 #Capability: {
+	"@type": "type.googleapis.com/envoy.service.discovery.v2.Capability"
 	health_check_protocols?: [...#Capability_Protocol]
 }
 
 #HealthCheckRequest: {
+	"@type":     "type.googleapis.com/envoy.service.discovery.v2.HealthCheckRequest"
 	node?:       core.#Node
 	capability?: #Capability
 }
 
 #EndpointHealth: {
+	"@type":        "type.googleapis.com/envoy.service.discovery.v2.EndpointHealth"
 	endpoint?:      endpoint.#Endpoint
 	health_status?: core.#HealthStatus
 }
 
 #EndpointHealthResponse: {
+	"@type": "type.googleapis.com/envoy.service.discovery.v2.EndpointHealthResponse"
 	endpoints_health?: [...#EndpointHealth]
 }
 
 #HealthCheckRequestOrEndpointHealthResponse: {
+	"@type":                   "type.googleapis.com/envoy.service.discovery.v2.HealthCheckRequestOrEndpointHealthResponse"
 	health_check_request?:     #HealthCheckRequest
 	endpoint_health_response?: #EndpointHealthResponse
 }
 
 #LocalityEndpoints: {
+	"@type":   "type.googleapis.com/envoy.service.discovery.v2.LocalityEndpoints"
 	locality?: core.#Locality
 	endpoints?: [...endpoint.#Endpoint]
 }
@@ -48,12 +54,14 @@ Capability_Protocol_REDIS: "REDIS"
 // Envoy instance (outside of HDS). For maximum usefulness, it should match the
 // same cluster structure as that provided by EDS.
 #ClusterHealthCheck: {
+	"@type":       "type.googleapis.com/envoy.service.discovery.v2.ClusterHealthCheck"
 	cluster_name?: string
 	health_checks?: [...core.#HealthCheck]
 	locality_endpoints?: [...#LocalityEndpoints]
 }
 
 #HealthCheckSpecifier: {
+	"@type": "type.googleapis.com/envoy.service.discovery.v2.HealthCheckSpecifier"
 	cluster_health_checks?: [...#ClusterHealthCheck]
 	// The default is 1 second.
 	interval?: string
@@ -71,6 +79,7 @@ Capability_Protocol_REDIS: "REDIS"
 
 // UnimplementedHealthDiscoveryServiceServer can be embedded to have forward compatible implementations.
 #UnimplementedHealthDiscoveryServiceServer: {
+	"@type": "type.googleapis.com/envoy.service.discovery.v2.UnimplementedHealthDiscoveryServiceServer"
 }
 
 #HealthDiscoveryService_StreamHealthCheckServer: _

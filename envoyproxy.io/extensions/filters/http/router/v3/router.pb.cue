@@ -6,6 +6,7 @@ import (
 
 // [#next-free-field: 8]
 #Router: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.router.v3.Router"
 	// Whether the router generates dynamic cluster statistics. Defaults to
 	// true. Can be disabled in high performance scenarios.
 	dynamic_stats?: bool

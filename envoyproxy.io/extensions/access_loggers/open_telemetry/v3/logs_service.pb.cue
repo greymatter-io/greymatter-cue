@@ -11,6 +11,7 @@ import (
 // In addition, the request start time is set in the dedicated field.
 // [#extension: envoy.access_loggers.open_telemetry]
 #OpenTelemetryAccessLogConfig: {
+	"@type": "type.googleapis.com/envoy.extensions.access_loggers.open_telemetry.v3.OpenTelemetryAccessLogConfig"
 	// [#comment:TODO(itamarkam): add 'filter_state_objects_to_log' to logs.]
 	common_config?: v3.#CommonGrpcAccessLogConfig
 	// OpenTelemetry `Resource <https://github.com/open-telemetry/opentelemetry-proto/blob/main/opentelemetry/proto/logs/v1/logs.proto#L51>`_

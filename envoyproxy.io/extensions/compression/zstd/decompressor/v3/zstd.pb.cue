@@ -5,6 +5,7 @@ import (
 )
 
 #Zstd: {
+	"@type": "type.googleapis.com/envoy.extensions.compression.zstd.decompressor.v3.Zstd"
 	// Dictionaries for decompression. Zstd offers dictionary compression, which greatly improves
 	// efficiency on small files and messages. It is necessary to ensure that the dictionary used for
 	// decompression is the same as the compression dictionary. Multiple dictionaries can be set, and the

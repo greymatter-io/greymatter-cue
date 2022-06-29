@@ -7,6 +7,7 @@ Config_InvocationMode_ASYNCHRONOUS: "ASYNCHRONOUS"
 
 // AWS Lambda filter config
 #Config: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.aws_lambda.v3.Config"
 	// The ARN of the AWS Lambda to invoke when the filter is engaged
 	// Must be in the following format:
 	// arn:<partition>:lambda:<region>:<account-number>:function:<function-name>
@@ -20,5 +21,6 @@ Config_InvocationMode_ASYNCHRONOUS: "ASYNCHRONOUS"
 // Per-route configuration for AWS Lambda. This can be useful when invoking a different Lambda function or a different
 // version of the same Lambda depending on the route.
 #PerRouteConfig: {
+	"@type":        "type.googleapis.com/envoy.extensions.filters.http.aws_lambda.v3.PerRouteConfig"
 	invoke_config?: #Config
 }

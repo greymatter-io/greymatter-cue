@@ -7,11 +7,13 @@ import (
 
 // Empty response for the StreamAccessLogs API. Will never be sent. See below.
 #StreamAccessLogsResponse: {
+	"@type": "type.googleapis.com/envoy.service.accesslog.v2.StreamAccessLogsResponse"
 }
 
 // Stream message for the StreamAccessLogs API. Envoy will open a stream to the server and stream
 // access logs without ever expecting a response.
 #StreamAccessLogsMessage: {
+	"@type": "type.googleapis.com/envoy.service.accesslog.v2.StreamAccessLogsMessage"
 	// Identifier data that will only be sent in the first message on the stream. This is effectively
 	// structured metadata and is a performance optimization.
 	identifier?: #StreamAccessLogsMessage_Identifier
@@ -20,6 +22,7 @@ import (
 }
 
 #StreamAccessLogsMessage_Identifier: {
+	"@type": "type.googleapis.com/envoy.service.accesslog.v2.StreamAccessLogsMessage_Identifier"
 	// The node sending the access log messages over the stream.
 	node?: core.#Node
 	// The friendly name of the log configured in :ref:`CommonGrpcAccessLogConfig
@@ -29,11 +32,13 @@ import (
 
 // Wrapper for batches of HTTP access log entries.
 #StreamAccessLogsMessage_HTTPAccessLogEntries: {
+	"@type": "type.googleapis.com/envoy.service.accesslog.v2.StreamAccessLogsMessage_HTTPAccessLogEntries"
 	log_entry?: [...v2.#HTTPAccessLogEntry]
 }
 
 // Wrapper for batches of TCP access log entries.
 #StreamAccessLogsMessage_TCPAccessLogEntries: {
+	"@type": "type.googleapis.com/envoy.service.accesslog.v2.StreamAccessLogsMessage_TCPAccessLogEntries"
 	log_entry?: [...v2.#TCPAccessLogEntry]
 }
 
@@ -49,6 +54,7 @@ import (
 
 // UnimplementedAccessLogServiceServer can be embedded to have forward compatible implementations.
 #UnimplementedAccessLogServiceServer: {
+	"@type": "type.googleapis.com/envoy.service.accesslog.v2.UnimplementedAccessLogServiceServer"
 }
 
 #AccessLogService_StreamAccessLogsServer: _

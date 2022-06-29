@@ -10,4 +10,5 @@ package v2alpha
 
 // UnimplementedAuthorizationServer can be embedded to have forward compatible implementations.
 #UnimplementedAuthorizationServer: {
+	"@type": "type.googleapis.com/envoy.service.auth.v2alpha.UnimplementedAuthorizationServer"
 }

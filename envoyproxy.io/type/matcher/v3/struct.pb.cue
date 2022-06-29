@@ -52,6 +52,7 @@ package v3
 //
 // An example use of StructMatcher is to match metadata in envoy.v*.core.Node.
 #StructMatcher: {
+	"@type": "type.googleapis.com/envoy.type.matcher.v3.StructMatcher"
 	// The path to retrieve the Value from the Struct.
 	path?: [...#StructMatcher_PathSegment]
 	// The StructMatcher is matched if the value retrieved by path is matched to this value.
@@ -60,6 +61,7 @@ package v3
 
 // Specifies the segment in a path to retrieve value from Struct.
 #StructMatcher_PathSegment: {
+	"@type": "type.googleapis.com/envoy.type.matcher.v3.StructMatcher_PathSegment"
 	// If specified, use the key to retrieve the value in a Struct.
 	key?: string
 }

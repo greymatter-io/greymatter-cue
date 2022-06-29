@@ -15,10 +15,12 @@ import (
 // :ref:`ExecuteFilterAction <envoy_v3_api_msg_extensions.filters.http.composite.v3.ExecuteFilterAction>`)
 // which filter configuration to create and delegate to.
 #Composite: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.composite.v3.Composite"
 }
 
 // Composite match action (see :ref:`matching docs <arch_overview_matching_api>` for more info on match actions).
 // This specifies the filter configuration of the filter that the composite filter should delegate filter interactions to.
 #ExecuteFilterAction: {
+	"@type":       "type.googleapis.com/envoy.extensions.filters.http.composite.v3.ExecuteFilterAction"
 	typed_config?: v3.#TypedExtensionConfig
 }

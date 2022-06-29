@@ -7,6 +7,7 @@ import (
 
 // [#next-free-field: 6]
 #HealthCheck: {
+	"@type": "type.googleapis.com/envoy.config.filter.http.health_check.v2.HealthCheck"
 	// Specifies whether the filter operates in pass through mode or not.
 	pass_through_mode?: bool
 	// If operating in pass through mode, the amount of time in milliseconds

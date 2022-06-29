@@ -8,6 +8,7 @@ import (
 // <arch_overview_http_dynamic_forward_proxy>` for more information.
 // [#extension: envoy.clusters.dynamic_forward_proxy]
 #ClusterConfig: {
+	"@type": "type.googleapis.com/envoy.extensions.clusters.dynamic_forward_proxy.v3.ClusterConfig"
 	// The DNS cache configuration that the cluster will attach to. Note this configuration must
 	// match that of associated :ref:`dynamic forward proxy HTTP filter configuration
 	// <envoy_v3_api_field_extensions.filters.http.dynamic_forward_proxy.v3.FilterConfig.dns_cache_config>`.

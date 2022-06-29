@@ -5,6 +5,7 @@ import (
 )
 
 #MongoProxy: {
+	"@type": "type.googleapis.com/envoy.config.filter.network.mongo_proxy.v2.MongoProxy"
 	// The human readable prefix to use when emitting :ref:`statistics
 	// <config_network_filters_mongo_proxy_stats>`.
 	stat_prefix?: string

@@ -2,6 +2,7 @@ package v3
 
 // Configuration for the profile watchdog action.
 #ProfileActionConfig: {
+	"@type": "type.googleapis.com/envoy.extensions.watchdog.profile_action.v3.ProfileActionConfig"
 	// How long the profile should last. If not set defaults to 5 seconds.
 	profile_duration?: string
 	// File path to the directory to output profiles.

@@ -3,6 +3,7 @@ package v3
 // CDN-Loop Header filter config. See the :ref:`configuration overview
 // <config_http_filters_cdn_loop>` for more information.
 #CdnLoopConfig: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.cdn_loop.v3.CdnLoopConfig"
 	// The CDN identifier to use for loop checks and to append to the
 	// CDN-Loop header.
 	//

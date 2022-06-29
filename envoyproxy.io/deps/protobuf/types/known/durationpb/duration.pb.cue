@@ -61,6 +61,7 @@ package durationpb
 //
 //
 #Duration: {
+	"@type": "type.googleapis.com/google.golang.org.protobuf.types.known.durationpb.Duration"
 	// Signed seconds of the span of time. Must be from -315,576,000,000
 	// to +315,576,000,000 inclusive. Note: these bounds are computed from:
 	// 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years

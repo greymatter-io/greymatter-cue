@@ -2,7 +2,6 @@ package v3
 
 import (
 	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
-	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 	v3 "envoyproxy.io/type/v3"
 	v31 "envoyproxy.io/type/matcher/v3"
 )
@@ -18,12 +17,14 @@ HealthStatus_TIMEOUT:   "TIMEOUT"
 HealthStatus_DEGRADED:  "DEGRADED"
 
 #HealthStatusSet: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.HealthStatusSet"
 	// An order-independent set of health status.
 	statuses?: [...#HealthStatus]
 }
 
 // [#next-free-field: 25]
 #HealthCheck: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.HealthCheck"
 	// The time to wait for a health check response. If the timeout is reached the
 	// health check attempt will be considered a failure.
 	timeout?: string
@@ -155,6 +156,7 @@ HealthStatus_DEGRADED:  "DEGRADED"
 
 // Describes the encoding of the payload bytes in the payload.
 #HealthCheck_Payload: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.HealthCheck_Payload"
 	// Hex encoded payload. E.g., "000000FF".
 	text?: string
 	// [#not-implemented-hide:] Binary payload.
@@ -163,6 +165,7 @@ HealthStatus_DEGRADED:  "DEGRADED"
 
 // [#next-free-field: 13]
 #HealthCheck_HttpHealthCheck: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.HealthCheck_HttpHealthCheck"
 	// The value of the host header in the HTTP health check request. If
 	// left empty (default value), the name of the cluster this health check is associated
 	// with will be used. The host header can be customized for a specific endpoint by setting the
@@ -209,6 +212,7 @@ HealthStatus_DEGRADED:  "DEGRADED"
 }
 
 #HealthCheck_TcpHealthCheck: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.HealthCheck_TcpHealthCheck"
 	// Empty payloads imply a connect-only health check.
 	send?: #HealthCheck_Payload
 	// When checking the response, “fuzzy” matching is performed such that each
@@ -218,6 +222,7 @@ HealthStatus_DEGRADED:  "DEGRADED"
 }
 
 #HealthCheck_RedisHealthCheck: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.HealthCheck_RedisHealthCheck"
 	// If set, optionally perform ``EXISTS <key>`` instead of ``PING``. A return value
 	// from Redis of 0 (does not exist) is considered a passing healthcheck. A return value other
 	// than 0 is considered a failure. This allows the user to mark a Redis instance for maintenance
@@ -230,6 +235,7 @@ HealthStatus_DEGRADED:  "DEGRADED"
 // healthcheck. See `gRPC doc <https://github.com/grpc/grpc/blob/master/doc/health-checking.md>`_
 // for details.
 #HealthCheck_GrpcHealthCheck: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.HealthCheck_GrpcHealthCheck"
 	// An optional service name parameter which will be sent to gRPC service in
 	// `grpc.health.v1.HealthCheckRequest
 	// <https://github.com/grpc/grpc/blob/master/src/proto/grpc/health/v1/health.proto#L20>`_.
@@ -250,9 +256,10 @@ HealthStatus_DEGRADED:  "DEGRADED"
 
 // Custom health check.
 #HealthCheck_CustomHealthCheck: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.HealthCheck_CustomHealthCheck"
 	// The registered name of the custom health checker.
 	name?:         string
-	typed_config?: any.#Any
+	typed_config?: _
 }
 
 // Health checks occur over the transport socket specified for the cluster. This implies that if a
@@ -260,6 +267,7 @@ HealthStatus_DEGRADED:  "DEGRADED"
 //
 // This allows overriding the cluster TLS settings, just for health check connections.
 #HealthCheck_TlsOptions: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.HealthCheck_TlsOptions"
 	// Specifies the ALPN protocols for health check connections. This is useful if the
 	// corresponding upstream is using ALPN-based :ref:`FilterChainMatch
 	// <envoy_v3_api_msg_config.listener.v3.FilterChainMatch>` along with different protocols for health checks

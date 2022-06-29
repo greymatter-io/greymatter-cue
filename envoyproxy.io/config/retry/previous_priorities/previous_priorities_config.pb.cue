@@ -26,6 +26,7 @@ package previous_priorities
 // priorities), which might incur significant overhead for clusters with many priorities.
 // [#extension: envoy.retry_priorities.previous_priorities]
 #PreviousPrioritiesConfig: {
+	"@type": "type.googleapis.com/envoy.config.retry.previous_priorities.PreviousPrioritiesConfig"
 	// How often the priority load should be updated based on previously attempted priorities. Useful
 	// to allow each priorities to receive more than one request before being excluded or to reduce
 	// the number of times that the priority load has to be recomputed.

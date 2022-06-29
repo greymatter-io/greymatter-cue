@@ -5,6 +5,7 @@ import (
 )
 
 #FileBasedMetadataConfig: {
+	"@type": "type.googleapis.com/envoy.config.grpc_credential.v3.FileBasedMetadataConfig"
 	// Location or inline data of secret to use for authentication of the Google gRPC connection
 	// this secret will be attached to a header of the gRPC connection
 	secret_data?: v3.#DataSource

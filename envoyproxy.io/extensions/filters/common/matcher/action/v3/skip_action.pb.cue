@@ -10,4 +10,5 @@ package v3
 // As a result, if this match action is resolved before the first filter callback (e.g. HTTP request
 // headers), the filter will be completely skipped.
 #SkipFilter: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.common.matcher.action.v3.SkipFilter"
 }

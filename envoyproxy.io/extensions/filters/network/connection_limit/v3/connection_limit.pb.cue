@@ -5,6 +5,7 @@ import (
 )
 
 #ConnectionLimit: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.network.connection_limit.v3.ConnectionLimit"
 	// The prefix to use when emitting :ref:`statistics
 	// <config_network_filters_connection_limit_stats>`.
 	stat_prefix?: string

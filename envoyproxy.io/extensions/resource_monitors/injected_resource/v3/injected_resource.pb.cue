@@ -5,5 +5,6 @@ package v3
 // the resource pressure and be updated atomically by a symbolic link swap.
 // This is intended primarily for integration tests to force Envoy into an overloaded state.
 #InjectedResourceConfig: {
+	"@type":   "type.googleapis.com/envoy.extensions.resource_monitors.injected_resource.v3.InjectedResourceConfig"
 	filename?: string
 }

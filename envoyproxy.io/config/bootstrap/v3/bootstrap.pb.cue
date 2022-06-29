@@ -37,6 +37,7 @@ CustomInlineHeader_InlineHeaderType_RESPONSE_TRAILER: "RESPONSE_TRAILER"
 // Bootstrap :ref:`configuration overview <config_overview_bootstrap>`.
 // [#next-free-field: 35]
 #Bootstrap: {
+	"@type": "type.googleapis.com/envoy.config.bootstrap.v3.Bootstrap"
 	// Node identity to present to the management server and for instance
 	// identification purposes (e.g. in generated headers).
 	node?: v3.#Node
@@ -227,6 +228,7 @@ CustomInlineHeader_InlineHeaderType_RESPONSE_TRAILER: "RESPONSE_TRAILER"
 	perf_tracing_file_path?: string
 	// Optional overriding of default regex engine.
 	// If the value is not specified, Google RE2 will be used by default.
+	// [#extension-category: envoy.regex_engines]
 	default_regex_engine?: v3.#TypedExtensionConfig
 }
 
@@ -234,6 +236,7 @@ CustomInlineHeader_InlineHeaderType_RESPONSE_TRAILER: "RESPONSE_TRAILER"
 // <operations_admin_interface>`.
 // [#next-free-field: 7]
 #Admin: {
+	"@type": "type.googleapis.com/envoy.config.bootstrap.v3.Admin"
 	// Configuration for :ref:`access logs <arch_overview_access_logs>`
 	// emitted by the administration server.
 	access_log?: [...v34.#AccessLog]
@@ -260,6 +263,7 @@ CustomInlineHeader_InlineHeaderType_RESPONSE_TRAILER: "RESPONSE_TRAILER"
 
 // Cluster manager :ref:`architecture overview <arch_overview_cluster_manager>`.
 #ClusterManager: {
+	"@type": "type.googleapis.com/envoy.config.bootstrap.v3.ClusterManager"
 	// Name of the local cluster (i.e., the cluster that owns the Envoy running
 	// this configuration). In order to enable :ref:`zone aware routing
 	// <arch_overview_load_balancing_zone_aware_routing>` this option must be set.
@@ -286,6 +290,7 @@ CustomInlineHeader_InlineHeaderType_RESPONSE_TRAILER: "RESPONSE_TRAILER"
 // This allows finer tuned policies for the watchdog. If a subsystem is omitted
 // the default values for that system will be used.
 #Watchdogs: {
+	"@type": "type.googleapis.com/envoy.config.bootstrap.v3.Watchdogs"
 	// Watchdog for the main thread.
 	main_thread_watchdog?: #Watchdog
 	// Watchdog for the worker threads.
@@ -297,6 +302,7 @@ CustomInlineHeader_InlineHeaderType_RESPONSE_TRAILER: "RESPONSE_TRAILER"
 // See the :ref:`watchdog documentation <operations_performance_watchdog>` for more information.
 // [#next-free-field: 8]
 #Watchdog: {
+	"@type": "type.googleapis.com/envoy.config.bootstrap.v3.Watchdog"
 	// Register actions that will fire on given WatchDog events.
 	// See *WatchDogAction* for priority of events.
 	actions?: [...#Watchdog_WatchdogAction]
@@ -336,6 +342,7 @@ CustomInlineHeader_InlineHeaderType_RESPONSE_TRAILER: "RESPONSE_TRAILER"
 // *FatalAction* extensions live in the ``envoy.extensions.fatal_actions`` API
 // namespace.
 #FatalAction: {
+	"@type": "type.googleapis.com/envoy.config.bootstrap.v3.FatalAction"
 	// Extension specific configuration for the action. It's expected to conform
 	// to the ``Envoy::Server::Configuration::FatalAction`` interface.
 	config?: v3.#TypedExtensionConfig
@@ -343,6 +350,7 @@ CustomInlineHeader_InlineHeaderType_RESPONSE_TRAILER: "RESPONSE_TRAILER"
 
 // Runtime :ref:`configuration overview <config_runtime>` (deprecated).
 #Runtime: {
+	"@type": "type.googleapis.com/envoy.config.bootstrap.v3.Runtime"
 	// The implementation assumes that the file system tree is accessed via a
 	// symbolic link. An atomic link swap is used when a new tree should be
 	// switched to. This parameter specifies the path to the symbolic link. Envoy
@@ -370,6 +378,7 @@ CustomInlineHeader_InlineHeaderType_RESPONSE_TRAILER: "RESPONSE_TRAILER"
 
 // [#next-free-field: 6]
 #RuntimeLayer: {
+	"@type": "type.googleapis.com/envoy.config.bootstrap.v3.RuntimeLayer"
 	// Descriptive name for the runtime layer. This is only used for the runtime
 	// :http:get:`/runtime` output.
 	name?: string
@@ -385,6 +394,7 @@ CustomInlineHeader_InlineHeaderType_RESPONSE_TRAILER: "RESPONSE_TRAILER"
 
 // Runtime :ref:`configuration overview <config_runtime>`.
 #LayeredRuntime: {
+	"@type": "type.googleapis.com/envoy.config.bootstrap.v3.LayeredRuntime"
 	// The :ref:`layers <config_runtime_layering>` of the runtime. This is ordered
 	// such that later layers in the list overlay earlier entries.
 	layers?: [...#RuntimeLayer]
@@ -415,6 +425,7 @@ CustomInlineHeader_InlineHeaderType_RESPONSE_TRAILER: "RESPONSE_TRAILER"
 // an additional memory overhead on all instances of the corresponding type of
 // HeaderMap or TrailerMap.
 #CustomInlineHeader: {
+	"@type": "type.googleapis.com/envoy.config.bootstrap.v3.CustomInlineHeader"
 	// The name of the header that is expected to be set as the inline header.
 	inline_header_name?: string
 	// The type of the header that is expected to be set as the inline header.
@@ -422,6 +433,7 @@ CustomInlineHeader_InlineHeaderType_RESPONSE_TRAILER: "RESPONSE_TRAILER"
 }
 
 #Bootstrap_StaticResources: {
+	"@type": "type.googleapis.com/envoy.config.bootstrap.v3.Bootstrap_StaticResources"
 	// Static :ref:`Listeners <envoy_v3_api_msg_config.listener.v3.Listener>`. These listeners are
 	// available regardless of LDS configuration.
 	listeners?: [...v36.#Listener]
@@ -439,6 +451,7 @@ CustomInlineHeader_InlineHeaderType_RESPONSE_TRAILER: "RESPONSE_TRAILER"
 
 // [#next-free-field: 7]
 #Bootstrap_DynamicResources: {
+	"@type": "type.googleapis.com/envoy.config.bootstrap.v3.Bootstrap_DynamicResources"
 	// All :ref:`Listeners <envoy_v3_api_msg_config.listener.v3.Listener>` are provided by a single
 	// :ref:`LDS <arch_overview_dynamic_config_lds>` configuration source.
 	lds_config?: v3.#ConfigSource
@@ -463,6 +476,7 @@ CustomInlineHeader_InlineHeaderType_RESPONSE_TRAILER: "RESPONSE_TRAILER"
 }
 
 #ClusterManager_OutlierDetection: {
+	"@type": "type.googleapis.com/envoy.config.bootstrap.v3.ClusterManager_OutlierDetection"
 	// Specifies the path to the outlier event log.
 	event_log_path?: string
 	// [#not-implemented-hide:]
@@ -472,6 +486,7 @@ CustomInlineHeader_InlineHeaderType_RESPONSE_TRAILER: "RESPONSE_TRAILER"
 }
 
 #Watchdog_WatchdogAction: {
+	"@type": "type.googleapis.com/envoy.config.bootstrap.v3.Watchdog_WatchdogAction"
 	// Extension specific configuration for the action.
 	config?: v3.#TypedExtensionConfig
 	event?:  #Watchdog_WatchdogAction_WatchdogEvent
@@ -479,6 +494,7 @@ CustomInlineHeader_InlineHeaderType_RESPONSE_TRAILER: "RESPONSE_TRAILER"
 
 // :ref:`Disk runtime <config_runtime_local_disk>` layer.
 #RuntimeLayer_DiskLayer: {
+	"@type": "type.googleapis.com/envoy.config.bootstrap.v3.RuntimeLayer_DiskLayer"
 	// The implementation assumes that the file system tree is accessed via a
 	// symbolic link. An atomic link swap is used when a new tree should be
 	// switched to. This parameter specifies the path to the symbolic link.
@@ -498,10 +514,12 @@ CustomInlineHeader_InlineHeaderType_RESPONSE_TRAILER: "RESPONSE_TRAILER"
 
 // :ref:`Admin console runtime <config_runtime_admin>` layer.
 #RuntimeLayer_AdminLayer: {
+	"@type": "type.googleapis.com/envoy.config.bootstrap.v3.RuntimeLayer_AdminLayer"
 }
 
 // :ref:`Runtime Discovery Service (RTDS) <config_runtime_rtds>` layer.
 #RuntimeLayer_RtdsLayer: {
+	"@type": "type.googleapis.com/envoy.config.bootstrap.v3.RuntimeLayer_RtdsLayer"
 	// Resource to subscribe to at *rtds_config* for the RTDS layer.
 	name?: string
 	// RTDS configuration source.

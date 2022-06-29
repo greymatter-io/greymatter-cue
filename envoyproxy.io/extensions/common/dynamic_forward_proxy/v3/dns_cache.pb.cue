@@ -8,6 +8,7 @@ import (
 
 // Configuration of circuit breakers for resolver.
 #DnsCacheCircuitBreakers: {
+	"@type": "type.googleapis.com/envoy.extensions.common.dynamic_forward_proxy.v3.DnsCacheCircuitBreakers"
 	// The maximum number of pending requests that Envoy will allow to the
 	// resolver. If not specified, the default is 1024.
 	max_pending_requests?: uint32
@@ -17,6 +18,7 @@ import (
 // <arch_overview_http_dynamic_forward_proxy>` for more information.
 // [#next-free-field: 15]
 #DnsCacheConfig: {
+	"@type": "type.googleapis.com/envoy.extensions.common.dynamic_forward_proxy.v3.DnsCacheConfig"
 	// The name of the cache. Multiple named caches allow independent dynamic forward proxy
 	// configurations to operate within a single Envoy process using different configurations. All
 	// configurations with the same name *must* otherwise have the same settings when referenced

@@ -2,6 +2,7 @@ package v2
 
 // [#next-free-field: 10]
 #GrpcJsonTranscoder: {
+	"@type": "type.googleapis.com/envoy.config.filter.http.transcoder.v2.GrpcJsonTranscoder"
 	// Supplies the filename of
 	// :ref:`the proto descriptor set <config_grpc_json_generate_proto_descriptor_set>` for the gRPC
 	// services.
@@ -108,6 +109,7 @@ package v2
 }
 
 #GrpcJsonTranscoder_PrintOptions: {
+	"@type": "type.googleapis.com/envoy.config.filter.http.transcoder.v2.GrpcJsonTranscoder_PrintOptions"
 	// Whether to add spaces, line breaks and indentation to make the JSON
 	// output easy to read. Defaults to false.
 	add_whitespace?: bool

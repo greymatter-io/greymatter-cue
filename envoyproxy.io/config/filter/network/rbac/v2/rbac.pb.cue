@@ -14,6 +14,7 @@ RBAC_EnforcementType_CONTINUOUS:             "CONTINUOUS"
 // Header should not be used in rules/shadow_rules in RBAC network filter as
 // this information is only available in :ref:`RBAC http filter <config_http_filters_rbac>`.
 #RBAC: {
+	"@type": "type.googleapis.com/envoy.config.filter.network.rbac.v2.RBAC"
 	// Specify the RBAC rules to be applied globally.
 	// If absent, no enforcing RBAC policy will be applied.
 	rules?: v2.#RBAC

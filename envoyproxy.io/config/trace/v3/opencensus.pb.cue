@@ -17,6 +17,7 @@ OpenCensusConfig_TraceContext_B3:                  "B3"
 // [#next-free-field: 15]
 // [#extension: envoy.tracers.opencensus]
 #OpenCensusConfig: {
+	"@type": "type.googleapis.com/envoy.config.trace.v3.OpenCensusConfig"
 	// Configures tracing, e.g. the sampler, max number of annotations, etc.
 	trace_config?: v1.#TraceConfig
 	// Enables the stdout exporter if set to true. This is intended for debugging

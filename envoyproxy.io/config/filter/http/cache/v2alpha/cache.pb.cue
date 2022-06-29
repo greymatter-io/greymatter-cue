@@ -1,14 +1,14 @@
 package v2alpha
 
 import (
-	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 	matcher "envoyproxy.io/type/matcher"
 	route "envoyproxy.io/api/v2/route"
 )
 
 #CacheConfig: {
+	"@type": "type.googleapis.com/envoy.config.filter.http.cache.v2alpha.CacheConfig"
 	// Config specific to the cache storage implementation.
-	typed_config?: any.#Any
+	typed_config?: _
 	// List of matching rules that defines allowed *Vary* headers.
 	//
 	// The *vary* response header holds a list of header names that affect the
@@ -38,6 +38,7 @@ import (
 // [#not-implemented-hide:]
 // Modifies cache key creation by restricting which parts of the URL are included.
 #CacheConfig_KeyCreatorParams: {
+	"@type": "type.googleapis.com/envoy.config.filter.http.cache.v2alpha.CacheConfig_KeyCreatorParams"
 	// If true, exclude the URL scheme from the cache key. Set to true if your origins always
 	// produce the same response for http and https requests.
 	exclude_scheme?: bool

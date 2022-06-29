@@ -3,6 +3,7 @@ package matcher
 // Specifies the way to match a string.
 // [#next-free-field: 7]
 #StringMatcher: {
+	"@type": "type.googleapis.com/envoy.type.matcher.StringMatcher"
 	// The input string must match exactly the string specified here.
 	//
 	// Examples:
@@ -49,5 +50,6 @@ package matcher
 
 // Specifies a list of ways to match a string.
 #ListStringMatcher: {
+	"@type": "type.googleapis.com/envoy.type.matcher.ListStringMatcher"
 	patterns?: [...#StringMatcher]
 }

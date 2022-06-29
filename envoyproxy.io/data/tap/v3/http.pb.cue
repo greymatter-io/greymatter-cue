@@ -6,6 +6,7 @@ import (
 
 // A fully buffered HTTP trace message.
 #HttpBufferedTrace: {
+	"@type": "type.googleapis.com/envoy.data.tap.v3.HttpBufferedTrace"
 	// Request message.
 	request?: #HttpBufferedTrace_Message
 	// Response message.
@@ -15,6 +16,7 @@ import (
 // A streamed HTTP trace segment. Multiple segments make up a full trace.
 // [#next-free-field: 8]
 #HttpStreamedTraceSegment: {
+	"@type": "type.googleapis.com/envoy.data.tap.v3.HttpStreamedTraceSegment"
 	// Trace ID unique to the originating Envoy only. Trace IDs can repeat and should not be used
 	// for long term stable uniqueness.
 	trace_id?: uint64
@@ -34,6 +36,7 @@ import (
 
 // HTTP message wrapper.
 #HttpBufferedTrace_Message: {
+	"@type": "type.googleapis.com/envoy.data.tap.v3.HttpBufferedTrace_Message"
 	// Message headers.
 	headers?: [...v3.#HeaderValue]
 	// Message body.

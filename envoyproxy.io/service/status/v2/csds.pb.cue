@@ -17,6 +17,7 @@ ConfigStatus_ERROR:    "ERROR"
 
 // Request for client status of clients identified by a list of NodeMatchers.
 #ClientStatusRequest: {
+	"@type": "type.googleapis.com/envoy.service.status.v2.ClientStatusRequest"
 	// Management server can use these match criteria to identify clients.
 	// The match follows OR semantics.
 	node_matchers?: [...matcher.#NodeMatcher]
@@ -25,6 +26,7 @@ ConfigStatus_ERROR:    "ERROR"
 // Detailed config (per xDS) with status.
 // [#next-free-field: 6]
 #PerXdsConfig: {
+	"@type":              "type.googleapis.com/envoy.service.status.v2.PerXdsConfig"
 	status?:              #ConfigStatus
 	listener_config?:     v2alpha.#ListenersConfigDump
 	cluster_config?:      v2alpha.#ClustersConfigDump
@@ -34,12 +36,14 @@ ConfigStatus_ERROR:    "ERROR"
 
 // All xds configs for a particular client.
 #ClientConfig: {
+	"@type": "type.googleapis.com/envoy.service.status.v2.ClientConfig"
 	// Node for a particular client.
 	node?: core.#Node
 	xds_config?: [...#PerXdsConfig]
 }
 
 #ClientStatusResponse: {
+	"@type": "type.googleapis.com/envoy.service.status.v2.ClientStatusResponse"
 	// Client configs for the clients specified in the ClientStatusRequest.
 	config?: [...#ClientConfig]
 }
@@ -56,6 +60,7 @@ ConfigStatus_ERROR:    "ERROR"
 
 // UnimplementedClientStatusDiscoveryServiceServer can be embedded to have forward compatible implementations.
 #UnimplementedClientStatusDiscoveryServiceServer: {
+	"@type": "type.googleapis.com/envoy.service.status.v2.UnimplementedClientStatusDiscoveryServiceServer"
 }
 
 #ClientStatusDiscoveryService_StreamClientStatusServer: _

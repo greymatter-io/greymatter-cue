@@ -7,6 +7,7 @@ import (
 // Configuration for the OpenTelemetry tracer.
 //  [#extension: envoy.tracers.opentelemetry]
 #OpenTelemetryConfig: {
+	"@type": "type.googleapis.com/envoy.config.trace.v3.OpenTelemetryConfig"
 	// The upstream gRPC cluster that will receive OTLP traces.
 	// Note that the tracer drops traces if the server does not read data fast enough.
 	grpc_service?: v3.#GrpcService

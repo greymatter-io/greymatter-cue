@@ -7,6 +7,7 @@ import (
 
 // CSRF filter config.
 #CsrfPolicy: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.csrf.v3.CsrfPolicy"
 	// Specifies the % of requests for which the CSRF filter is enabled.
 	//
 	// If :ref:`runtime_key <envoy_v3_api_field_config.core.v3.RuntimeFractionalPercent.runtime_key>` is specified,

@@ -17,21 +17,25 @@ Capability_Protocol_REDIS: "REDIS"
 // Defines supported protocols etc, so the management server can assign proper
 // endpoints to healthcheck.
 #Capability: {
+	"@type": "type.googleapis.com/envoy.service.health.v3.Capability"
 	health_check_protocols?: [...#Capability_Protocol]
 }
 
 #HealthCheckRequest: {
+	"@type":     "type.googleapis.com/envoy.service.health.v3.HealthCheckRequest"
 	node?:       v3.#Node
 	capability?: #Capability
 }
 
 #EndpointHealth: {
+	"@type":        "type.googleapis.com/envoy.service.health.v3.EndpointHealth"
 	endpoint?:      v31.#Endpoint
 	health_status?: v3.#HealthStatus
 }
 
 // Group endpoint health by locality under each cluster.
 #LocalityEndpointsHealth: {
+	"@type":   "type.googleapis.com/envoy.service.health.v3.LocalityEndpointsHealth"
 	locality?: v3.#Locality
 	endpoints_health?: [...#EndpointHealth]
 }
@@ -39,11 +43,13 @@ Capability_Protocol_REDIS: "REDIS"
 // The health status of endpoints in a cluster. The cluster name and locality
 // should match the corresponding fields in ClusterHealthCheck message.
 #ClusterEndpointsHealth: {
+	"@type":       "type.googleapis.com/envoy.service.health.v3.ClusterEndpointsHealth"
 	cluster_name?: string
 	locality_endpoints_health?: [...#LocalityEndpointsHealth]
 }
 
 #EndpointHealthResponse: {
+	"@type": "type.googleapis.com/envoy.service.health.v3.EndpointHealthResponse"
 	// Deprecated - Flat list of endpoint health information.
 	//
 	// Deprecated: Do not use.
@@ -53,11 +59,13 @@ Capability_Protocol_REDIS: "REDIS"
 }
 
 #HealthCheckRequestOrEndpointHealthResponse: {
+	"@type":                   "type.googleapis.com/envoy.service.health.v3.HealthCheckRequestOrEndpointHealthResponse"
 	health_check_request?:     #HealthCheckRequest
 	endpoint_health_response?: #EndpointHealthResponse
 }
 
 #LocalityEndpoints: {
+	"@type":   "type.googleapis.com/envoy.service.health.v3.LocalityEndpoints"
 	locality?: v3.#Locality
 	endpoints?: [...v31.#Endpoint]
 }
@@ -67,6 +75,7 @@ Capability_Protocol_REDIS: "REDIS"
 // Envoy instance (outside of HDS). For maximum usefulness, it should match the
 // same cluster structure as that provided by EDS.
 #ClusterHealthCheck: {
+	"@type":       "type.googleapis.com/envoy.service.health.v3.ClusterHealthCheck"
 	cluster_name?: string
 	health_checks?: [...v3.#HealthCheck]
 	locality_endpoints?: [...#LocalityEndpoints]
@@ -77,6 +86,7 @@ Capability_Protocol_REDIS: "REDIS"
 }
 
 #HealthCheckSpecifier: {
+	"@type": "type.googleapis.com/envoy.service.health.v3.HealthCheckSpecifier"
 	cluster_health_checks?: [...#ClusterHealthCheck]
 	// The default is 1 second.
 	interval?: string
@@ -85,6 +95,7 @@ Capability_Protocol_REDIS: "REDIS"
 // [#not-implemented-hide:] Not configuration. Workaround c++ protobuf issue with importing
 // services: https://github.com/google/protobuf/issues/4221 and protoxform to upgrade the file.
 #HdsDummy: {
+	"@type": "type.googleapis.com/envoy.service.health.v3.HdsDummy"
 }
 
 // HealthDiscoveryServiceClient is the client API for HealthDiscoveryService service.
@@ -99,6 +110,7 @@ Capability_Protocol_REDIS: "REDIS"
 
 // UnimplementedHealthDiscoveryServiceServer can be embedded to have forward compatible implementations.
 #UnimplementedHealthDiscoveryServiceServer: {
+	"@type": "type.googleapis.com/envoy.service.health.v3.UnimplementedHealthDiscoveryServiceServer"
 }
 
 #HealthDiscoveryService_StreamHealthCheckServer: _

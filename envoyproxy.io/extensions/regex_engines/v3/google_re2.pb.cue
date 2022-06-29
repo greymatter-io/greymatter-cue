@@ -8,4 +8,5 @@ package v3
 // which records the program size, and the counter `re2.exceeded_warn_level`, which is incremented
 // each time the program size exceeds the warn level threshold.
 #GoogleRE2: {
+	"@type": "type.googleapis.com/envoy.extensions.regex_engines.v3.GoogleRE2"
 }

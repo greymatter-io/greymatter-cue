@@ -7,6 +7,7 @@ import (
 // [#not-implemented-hide:]
 // [#next-free-field: 6]
 #MetaProtocolProxy: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.network.meta_protocol_proxy.v3.MetaProtocolProxy"
 	// The human readable prefix to use when emitting statistics.
 	stat_prefix?: string
 	// The application protocol built on top of the meta protocol proxy.
@@ -23,6 +24,7 @@ import (
 
 // [#not-implemented-hide:]
 #ApplicationProtocol: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.network.meta_protocol_proxy.v3.ApplicationProtocol"
 	// The name of the application protocol.
 	name?: string
 	// The codec which encodes and decodes the application protocol.
@@ -31,6 +33,7 @@ import (
 
 // [#not-implemented-hide:]
 #MetaRds: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.network.meta_protocol_proxy.v3.MetaRds"
 	// Configuration source specifier for RDS.
 	config_source?: v3.#ConfigSource
 	// The name of the route configuration. This name will be passed to the RDS API. This allows an

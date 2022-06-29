@@ -10,4 +10,5 @@ package emptypb
 //
 // The JSON representation for `Empty` is empty JSON object `{}`.
 #Empty: {
+	"@type": "type.googleapis.com/google.golang.org.protobuf.types.known.emptypb.Empty"
 }

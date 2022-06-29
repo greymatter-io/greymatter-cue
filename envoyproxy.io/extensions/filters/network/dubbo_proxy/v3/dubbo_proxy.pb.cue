@@ -1,7 +1,6 @@
 package v3
 
 import (
-	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 	v3 "envoyproxy.io/config/core/v3"
 )
 
@@ -16,6 +15,7 @@ ProtocolType_Dubbo: "Dubbo"
 SerializationType_Hessian2: "Hessian2"
 
 #Drds: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.network.dubbo_proxy.v3.Drds"
 	// Configuration source specifier.
 	// In case of *api_config_source* only aggregated *api_type* is supported.
 	config_source?: v3.#ConfigSource
@@ -27,6 +27,7 @@ SerializationType_Hessian2: "Hessian2"
 
 // [#next-free-field: 8]
 #DubboProxy: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.network.dubbo_proxy.v3.DubboProxy"
 	// The human readable prefix to use when emitting statistics.
 	stat_prefix?: string
 	// Configure the protocol used.
@@ -53,10 +54,11 @@ SerializationType_Hessian2: "Hessian2"
 
 // DubboFilter configures a Dubbo filter.
 #DubboFilter: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.network.dubbo_proxy.v3.DubboFilter"
 	// The name of the filter to instantiate. The name must match a supported
 	// filter.
 	name?: string
 	// Filter specific configuration which depends on the filter being
 	// instantiated. See the supported filters for further documentation.
-	config?: any.#Any
+	config?: _
 }

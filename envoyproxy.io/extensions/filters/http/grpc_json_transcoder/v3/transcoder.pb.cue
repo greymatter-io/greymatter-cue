@@ -16,6 +16,7 @@ GrpcJsonTranscoder_UrlUnescapeSpec_ALL_CHARACTERS:                 "ALL_CHARACTE
 // request - for per-route grpc transcoder configs, the original path should be matched, while
 // in other cases, the grpc-like path is expected (the one AFTER the filter is applied).
 #GrpcJsonTranscoder: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.grpc_json_transcoder.v3.GrpcJsonTranscoder"
 	// Supplies the filename of
 	// :ref:`the proto descriptor set <config_grpc_json_generate_proto_descriptor_set>` for the gRPC
 	// services.
@@ -162,6 +163,7 @@ GrpcJsonTranscoder_UrlUnescapeSpec_ALL_CHARACTERS:                 "ALL_CHARACTE
 }
 
 #GrpcJsonTranscoder_PrintOptions: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.grpc_json_transcoder.v3.GrpcJsonTranscoder_PrintOptions"
 	// Whether to add spaces, line breaks and indentation to make the JSON
 	// output easy to read. Defaults to false.
 	add_whitespace?: bool
@@ -181,6 +183,7 @@ GrpcJsonTranscoder_UrlUnescapeSpec_ALL_CHARACTERS:                 "ALL_CHARACTE
 }
 
 #GrpcJsonTranscoder_RequestValidationOptions: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.grpc_json_transcoder.v3.GrpcJsonTranscoder_RequestValidationOptions"
 	// By default, a request that cannot be mapped to any specified gRPC
 	// :ref:`services <envoy_v3_api_field_extensions.filters.http.grpc_json_transcoder.v3.GrpcJsonTranscoder.services>`
 	// will pass-through this filter.
@@ -196,4 +199,9 @@ GrpcJsonTranscoder_UrlUnescapeSpec_ALL_CHARACTERS:                 "ALL_CHARACTE
 	// :ref:`ignored_query_parameters <envoy_v3_api_field_extensions.filters.http.grpc_json_transcoder.v3.GrpcJsonTranscoder.ignored_query_parameters>`
 	// have priority over this strict validation behavior.
 	reject_unknown_query_parameters?: bool
+	// "id: 456" in the body will override "id=123" in the binding.
+	//
+	// If this field is set to true, the request will be rejected if the binding
+	// value is different from the body value.
+	reject_binding_body_field_collisions?: bool
 }

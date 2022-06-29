@@ -8,6 +8,7 @@ import (
 
 // [#next-free-field: 6]
 #FaultAbort: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.fault.v3.FaultAbort"
 	// HTTP status code to use to abort the HTTP request.
 	http_status?: uint32
 	// gRPC status code to use to abort the gRPC request.
@@ -21,6 +22,7 @@ import (
 
 // [#next-free-field: 16]
 #HTTPFault: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.fault.v3.HTTPFault"
 	// If specified, the filter will inject delays based on the values in the
 	// object.
 	delay?: v31.#FaultDelay
@@ -101,4 +103,5 @@ import (
 // :ref:`HTTP fault filter <config_http_filters_fault_injection_http_header>` documentation for
 // more information.
 #FaultAbort_HeaderAbort: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.fault.v3.FaultAbort_HeaderAbort"
 }

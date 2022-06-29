@@ -19,6 +19,7 @@ HealthCheckerType_REDIS: "REDIS"
 
 // [#next-free-field: 10]
 #HealthCheckEvent: {
+	"@type":              "type.googleapis.com/envoy.data.core.v2alpha.HealthCheckEvent"
 	health_checker_type?: #HealthCheckerType
 	host?:                core.#Address
 	cluster_name?:        string
@@ -37,11 +38,13 @@ HealthCheckerType_REDIS: "REDIS"
 }
 
 #HealthCheckEjectUnhealthy: {
+	"@type": "type.googleapis.com/envoy.data.core.v2alpha.HealthCheckEjectUnhealthy"
 	// The type of failure that caused this ejection.
 	failure_type?: #HealthCheckFailureType
 }
 
 #HealthCheckAddHealthy: {
+	"@type": "type.googleapis.com/envoy.data.core.v2alpha.HealthCheckAddHealthy"
 	// Whether this addition is the result of the first ever health check on a host, in which case
 	// the configured :ref:`healthy threshold <envoy_api_field_core.HealthCheck.healthy_threshold>`
 	// is bypassed and the host is immediately added.
@@ -49,6 +52,7 @@ HealthCheckerType_REDIS: "REDIS"
 }
 
 #HealthCheckFailure: {
+	"@type": "type.googleapis.com/envoy.data.core.v2alpha.HealthCheckFailure"
 	// The type of failure that caused this event.
 	failure_type?: #HealthCheckFailureType
 	// Whether this event is the result of the first ever health check on a host.
@@ -56,7 +60,9 @@ HealthCheckerType_REDIS: "REDIS"
 }
 
 #DegradedHealthyHost: {
+	"@type": "type.googleapis.com/envoy.data.core.v2alpha.DegradedHealthyHost"
 }
 
 #NoLongerDegradedHost: {
+	"@type": "type.googleapis.com/envoy.data.core.v2alpha.NoLongerDegradedHost"
 }

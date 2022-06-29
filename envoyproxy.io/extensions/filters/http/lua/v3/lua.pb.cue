@@ -5,6 +5,7 @@ import (
 )
 
 #Lua: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.lua.v3.Lua"
 	// The Lua code that Envoy will execute. This can be a very small script that
 	// further loads code from disk if desired. Note that if JSON configuration is used, the code must
 	// be properly escaped. YAML configuration may be easier to read since YAML supports multi-line
@@ -31,6 +32,7 @@ import (
 }
 
 #LuaPerRoute: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.lua.v3.LuaPerRoute"
 	// Disable the Lua filter for this particular vhost or route. If disabled is specified in
 	// multiple per-filter-configs, the most specific one will be used.
 	disabled?: bool

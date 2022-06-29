@@ -9,6 +9,7 @@ PreserveCaseFormatterConfig_FormatterTypeOnEnvoyHeaders_PROPER_CASE: "PROPER_CAS
 // See the :ref:`header casing <config_http_conn_man_header_casing>` configuration guide for more
 // information.
 #PreserveCaseFormatterConfig: {
+	"@type": "type.googleapis.com/envoy.extensions.http.header_formatters.preserve_case.v3.PreserveCaseFormatterConfig"
 	// Allows forwarding reason phrase text.
 	// This is off by default, and a standard reason phrase is used for a corresponding HTTP response code.
 	forward_reason_phrase?: bool

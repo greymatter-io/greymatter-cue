@@ -5,6 +5,7 @@ import (
 )
 
 #ClientSSLAuth: {
+	"@type": "type.googleapis.com/envoy.config.filter.network.client_ssl_auth.v2.ClientSSLAuth"
 	// The :ref:`cluster manager <arch_overview_cluster_manager>` cluster that runs
 	// the authentication service. The filter will connect to the service every 60s to fetch the list
 	// of principals. The service must support the expected :ref:`REST API

@@ -7,6 +7,7 @@ import (
 
 // Configuration for the DNS filter.
 #DnsFilterConfig: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.udp.dns_filter.v3.DnsFilterConfig"
 	// The stat prefix used when emitting DNS filter statistics
 	stat_prefix?: string
 	// Server context configuration contains the data that the filter uses to respond
@@ -22,6 +23,7 @@ import (
 // in a server context. This message will contain the virtual hosts and
 // associated addresses with which Envoy will respond to queries
 #DnsFilterConfig_ServerContextConfig: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.udp.dns_filter.v3.DnsFilterConfig_ServerContextConfig"
 	// Load the configuration specified from the control plane
 	inline_dns_table?: v3.#DnsTable
 	// Seed the filter configuration from an external path. This source
@@ -37,6 +39,7 @@ import (
 //
 // [#next-free-field: 6]
 #DnsFilterConfig_ClientContextConfig: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.udp.dns_filter.v3.DnsFilterConfig_ClientContextConfig"
 	// Sets the maximum time we will wait for the upstream query to complete
 	// We allow 5s for the upstream resolution to complete, so the minimum
 	// value here is 1. Note that the total latency for a failed query is the

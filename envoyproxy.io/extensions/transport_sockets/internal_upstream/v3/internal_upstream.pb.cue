@@ -25,6 +25,7 @@ import (
 //  prevent sharing of an upstream internal connection between different source
 //  IPs.
 #InternalUpstreamTransport: {
+	"@type": "type.googleapis.com/envoy.extensions.transport_sockets.internal_upstream.v3.InternalUpstreamTransport"
 	// Specifies the metadata namespaces and values to insert into the downstream
 	// internal connection dynamic metadata when an internal address is used as a
 	// host. If the destination name is repeated across two metadata source
@@ -45,6 +46,7 @@ import (
 // If the metadata with the given name is not present at the source location,
 // then no metadata is passed through for this particular instance.
 #InternalUpstreamTransport_MetadataValueSource: {
+	"@type": "type.googleapis.com/envoy.extensions.transport_sockets.internal_upstream.v3.InternalUpstreamTransport_MetadataValueSource"
 	// Specifies what kind of metadata.
 	kind?: v31.#MetadataKind
 	// Name is the filter namespace used in the dynamic metadata.
@@ -53,6 +55,7 @@ import (
 
 // Describes the location of the imported filter state object from the downstream connection.
 #InternalUpstreamTransport_FilterStateSource: {
+	"@type": "type.googleapis.com/envoy.extensions.transport_sockets.internal_upstream.v3.InternalUpstreamTransport_FilterStateSource"
 	// Name is the imported filter state object name.
 	name?: string
 }

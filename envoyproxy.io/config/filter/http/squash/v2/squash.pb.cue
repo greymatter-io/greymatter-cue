@@ -6,6 +6,7 @@ import (
 
 // [#next-free-field: 6]
 #Squash: {
+	"@type": "type.googleapis.com/envoy.config.filter.http.squash.v2.Squash"
 	// The name of the cluster that hosts the Squash server.
 	cluster?: string
 	// When the filter requests the Squash server to create a DebugAttachment, it will use this

@@ -24,6 +24,7 @@ HeaderValidatorConfig_UriPathNormalizationOptions_PathWithEscapedSlashesAction_U
 //    without `case normalization <https://datatracker.ietf.org/doc/html/rfc3986#section-6.2.2.1>`_
 //
 #HeaderValidatorConfig: {
+	"@type":                 "type.googleapis.com/envoy.extensions.http.header_validators.envoy_default.v3.HeaderValidatorConfig"
 	http1_protocol_options?: #HeaderValidatorConfig_Http1ProtocolOptions
 	// The URI path normalization options.
 	// By default Envoy normalizes URI path using the default values of the :ref:`UriPathNormalizationOptions
@@ -40,6 +41,7 @@ HeaderValidatorConfig_UriPathNormalizationOptions_PathWithEscapedSlashesAction_U
 }
 
 #HeaderValidatorConfig_UriPathNormalizationOptions: {
+	"@type": "type.googleapis.com/envoy.extensions.http.header_validators.envoy_default.v3.HeaderValidatorConfig_UriPathNormalizationOptions"
 	// Should paths be normalized according to RFC 3986?
 	// This operation overwrites the original request URI path and the new path is used for processing of
 	// the request by HTTP filters and proxied to the upstream service.
@@ -70,6 +72,7 @@ HeaderValidatorConfig_UriPathNormalizationOptions_PathWithEscapedSlashesAction_U
 }
 
 #HeaderValidatorConfig_Http1ProtocolOptions: {
+	"@type": "type.googleapis.com/envoy.extensions.http.header_validators.envoy_default.v3.HeaderValidatorConfig_Http1ProtocolOptions"
 	// Allows Envoy to process HTTP/1 requests/responses with both ``Content-Length`` and ``Transfer-Encoding``
 	// headers set. By default such messages are rejected, but if option is enabled - Envoy will
 	// remove the ``Content-Length`` header and process the message.

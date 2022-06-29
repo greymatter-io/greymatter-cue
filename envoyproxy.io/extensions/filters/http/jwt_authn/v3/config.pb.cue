@@ -38,6 +38,7 @@ import (
 //
 // [#next-free-field: 15]
 #JwtProvider: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.jwt_authn.v3.JwtProvider"
 	// Specify the `principal <https://tools.ietf.org/html/rfc7519#section-4.1.1>`_ that issued
 	// the JWT, usually a URL or an email address.
 	//
@@ -241,12 +242,14 @@ import (
 
 // This message specifies JWT Cache configuration.
 #JwtCacheConfig: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.jwt_authn.v3.JwtCacheConfig"
 	// The unit is number of JWT tokens, default to 100.
 	jwt_cache_size?: uint32
 }
 
 // This message specifies how to fetch JWKS from remote and how to cache it.
 #RemoteJwks: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.jwt_authn.v3.RemoteJwks"
 	// The HTTP URI to fetch the JWKS. For example:
 	//
 	// .. code-block:: yaml
@@ -313,6 +316,7 @@ import (
 // When the Jwks is expired in the cache, it is fetched again in the main thread.
 // The fetched Jwks from the main thread can be used by all worker threads.
 #JwksAsyncFetch: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.jwt_authn.v3.JwksAsyncFetch"
 	// If false, the listener is activated after the initial fetch is completed.
 	// The initial fetch result can be either successful or failed.
 	// If true, it is activated without waiting for the initial fetch to complete.
@@ -322,6 +326,7 @@ import (
 
 // This message specifies a header location to extract JWT token.
 #JwtHeader: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.jwt_authn.v3.JwtHeader"
 	// The HTTP header name.
 	name?: string
 	// The value prefix. The value format is "value_prefix<token>"
@@ -332,6 +337,7 @@ import (
 
 // Specify a required provider with audiences.
 #ProviderWithAudiences: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.jwt_authn.v3.ProviderWithAudiences"
 	// Specify a required provider name.
 	provider_name?: string
 	// This field overrides the one specified in the JwtProvider.
@@ -396,6 +402,7 @@ import (
 //
 // [#next-free-field: 7]
 #JwtRequirement: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.jwt_authn.v3.JwtRequirement"
 	// Specify a required provider name.
 	provider_name?: string
 	// Specify a required provider with audiences.
@@ -421,6 +428,7 @@ import (
 // This message specifies a list of RequiredProvider.
 // Their results are OR-ed; if any one of them passes, the result is passed
 #JwtRequirementOrList: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.jwt_authn.v3.JwtRequirementOrList"
 	// Specify a list of JwtRequirement.
 	requirements?: [...#JwtRequirement]
 }
@@ -428,6 +436,7 @@ import (
 // This message specifies a list of RequiredProvider.
 // Their results are AND-ed; all of them must pass, if one of them fails or missing, it fails.
 #JwtRequirementAndList: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.jwt_authn.v3.JwtRequirementAndList"
 	// Specify a list of JwtRequirement.
 	requirements?: [...#JwtRequirement]
 }
@@ -454,6 +463,7 @@ import (
 // In above example, all requests matched the path prefix require jwt authentication
 // from "provider-A".
 #RequirementRule: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.jwt_authn.v3.RequirementRule"
 	// The route matching parameter. Only when the match is satisfied, the "requires" field will
 	// apply.
 	//
@@ -492,6 +502,7 @@ import (
 // If a filter set "jwt_selector" with "issuer_1" to FilterState for a request,
 // jwt_authn filter will use JwtRequirement{"provider_name": "issuer1"} to verify.
 #FilterStateRule: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.jwt_authn.v3.FilterStateRule"
 	// The filter state name to retrieve the `Router::StringAccessor` object.
 	name?: string
 	// A map of string keys to requirements. The string key is the string value
@@ -543,6 +554,7 @@ import (
 //
 // [#next-free-field: 6]
 #JwtAuthentication: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.jwt_authn.v3.JwtAuthentication"
 	// Map of provider names to JwtProviders.
 	//
 	// .. code-block:: yaml
@@ -611,6 +623,7 @@ import (
 
 // Specify per-route config.
 #PerRouteConfig: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.http.jwt_authn.v3.PerRouteConfig"
 	// Disable Jwt Authentication for this route.
 	disabled?: bool
 	// Use requirement_name to specify a JwtRequirement.

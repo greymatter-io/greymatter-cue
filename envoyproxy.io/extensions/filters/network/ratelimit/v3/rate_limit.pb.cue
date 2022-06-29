@@ -7,6 +7,7 @@ import (
 
 // [#next-free-field: 7]
 #RateLimit: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.network.ratelimit.v3.RateLimit"
 	// The prefix to use when emitting :ref:`statistics <config_network_filters_rate_limit_stats>`.
 	stat_prefix?: string
 	// The rate limit domain to use in the rate limit service request.

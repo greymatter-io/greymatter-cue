@@ -20,6 +20,7 @@ ApiConfigSource_ApiType_DELTA_GRPC:              "DELTA_GRPC"
 // will use to fetch an xDS API.
 // [#next-free-field: 9]
 #ApiConfigSource: {
+	"@type": "type.googleapis.com/envoy.api.v2.core.ApiConfigSource"
 	// API type (gRPC, REST, delta gRPC)
 	api_type?: #ApiConfigSource_ApiType
 	// API version for xDS transport protocol. This describes the xDS gRPC/REST
@@ -52,6 +53,7 @@ ApiConfigSource_ApiType_DELTA_GRPC:              "DELTA_GRPC"
 // set in :ref:`ConfigSource <envoy_api_msg_core.ConfigSource>` can be used to
 // specify that ADS is to be used.
 #AggregatedConfigSource: {
+	"@type": "type.googleapis.com/envoy.api.v2.core.AggregatedConfigSource"
 }
 
 // [#not-implemented-hide:]
@@ -59,6 +61,7 @@ ApiConfigSource_ApiType_DELTA_GRPC:              "DELTA_GRPC"
 // set in :ref:`ConfigSource <envoy_api_msg_core.ConfigSource>` can be used to
 // specify that other data can be obtained from the same server.
 #SelfConfigSource: {
+	"@type": "type.googleapis.com/envoy.api.v2.core.SelfConfigSource"
 	// API version for xDS transport protocol. This describes the xDS gRPC/REST
 	// endpoint and version of [Delta]DiscoveryRequest/Response used on the wire.
 	transport_api_version?: #ApiVersion
@@ -66,6 +69,7 @@ ApiConfigSource_ApiType_DELTA_GRPC:              "DELTA_GRPC"
 
 // Rate Limit settings to be applied for discovery requests made by Envoy.
 #RateLimitSettings: {
+	"@type": "type.googleapis.com/envoy.api.v2.core.RateLimitSettings"
 	// Maximum number of tokens to be used for rate limiting discovery request calls. If not set, a
 	// default value of 100 will be used.
 	max_tokens?: uint32
@@ -82,6 +86,7 @@ ApiConfigSource_ApiType_DELTA_GRPC:              "DELTA_GRPC"
 // inotify for updates.
 // [#next-free-field: 7]
 #ConfigSource: {
+	"@type": "type.googleapis.com/envoy.api.v2.core.ConfigSource"
 	// Path on the filesystem to source and watch for configuration updates.
 	// When sourcing configuration for :ref:`secret <envoy_api_msg_auth.Secret>`,
 	// the certificate and key files are also watched for updates.

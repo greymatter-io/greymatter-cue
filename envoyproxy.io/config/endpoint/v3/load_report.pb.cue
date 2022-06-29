@@ -10,6 +10,7 @@ import (
 // Stats per upstream region/zone and optionally per subzone.
 // [#next-free-field: 9]
 #UpstreamLocalityStats: {
+	"@type": "type.googleapis.com/envoy.config.endpoint.v3.UpstreamLocalityStats"
 	// Name of zone, region and optionally endpoint group these metrics were
 	// collected from. Zone and region names could be empty if unknown.
 	locality?: v3.#Locality
@@ -38,6 +39,7 @@ import (
 
 // [#next-free-field: 8]
 #UpstreamEndpointStats: {
+	"@type": "type.googleapis.com/envoy.config.endpoint.v3.UpstreamEndpointStats"
 	// Upstream host address.
 	address?: v3.#Address
 	// Opaque and implementation dependent metadata of the
@@ -70,6 +72,7 @@ import (
 }
 
 #EndpointLoadMetricStats: {
+	"@type": "type.googleapis.com/envoy.config.endpoint.v3.EndpointLoadMetricStats"
 	// Name of the metric; may be empty.
 	metric_name?: string
 	// Number of calls that finished and included this metric.
@@ -84,6 +87,7 @@ import (
 // Next ID: 7
 // [#next-free-field: 7]
 #ClusterStats: {
+	"@type": "type.googleapis.com/envoy.config.endpoint.v3.ClusterStats"
 	// The name of the cluster.
 	cluster_name?: string
 	// The eds_cluster_config service_name of the cluster.
@@ -110,6 +114,7 @@ import (
 }
 
 #ClusterStats_DroppedRequests: {
+	"@type": "type.googleapis.com/envoy.config.endpoint.v3.ClusterStats_DroppedRequests"
 	// Identifier for the policy specifying the drop.
 	category?: string
 	// Total number of deliberately dropped requests for the category.

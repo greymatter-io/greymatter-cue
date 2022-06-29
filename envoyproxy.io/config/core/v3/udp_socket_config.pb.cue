@@ -2,6 +2,7 @@ package v3
 
 // Generic UDP socket configuration.
 #UdpSocketConfig: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.UdpSocketConfig"
 	// The maximum size of received UDP datagrams. Using a larger size will cause Envoy to allocate
 	// more memory per socket. Received datagrams above this size will be dropped. If not set
 	// defaults to 1500 bytes.

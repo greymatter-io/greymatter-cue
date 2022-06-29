@@ -34,11 +34,13 @@ import (
 // - :ref:`match_typed_subject_alt_names <envoy_v3_api_field_extensions.transport_sockets.tls.v3.CertificateValidationContext.match_typed_subject_alt_names>` to match **URI** SAN of certificates. Unlike the default validator, SPIFFE validator only matches **URI** SAN (which equals to SVID in SPIFFE terminology) and ignore other SAN types.
 //
 #SPIFFECertValidatorConfig: {
+	"@type": "type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.SPIFFECertValidatorConfig"
 	// This field specifies trust domains used for validating incoming X.509-SVID(s).
 	trust_domains?: [...#SPIFFECertValidatorConfig_TrustDomain]
 }
 
 #SPIFFECertValidatorConfig_TrustDomain: {
+	"@type": "type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.SPIFFECertValidatorConfig_TrustDomain"
 	// Name of the trust domain, `example.com`, `foo.bar.gov` for example.
 	// Note that this must *not* have "spiffe://" prefix.
 	name?: string

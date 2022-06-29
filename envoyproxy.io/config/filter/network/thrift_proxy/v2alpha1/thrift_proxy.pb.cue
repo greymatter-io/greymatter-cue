@@ -2,7 +2,6 @@ package v2alpha1
 
 import (
 	_struct "envoyproxy.io/deps/golang/protobuf/ptypes/struct"
-	any "envoyproxy.io/deps/golang/protobuf/ptypes/any"
 )
 
 // Thrift transport types supported by Envoy.
@@ -24,6 +23,7 @@ ProtocolType_TWITTER:       "TWITTER"
 
 // [#next-free-field: 6]
 #ThriftProxy: {
+	"@type": "type.googleapis.com/envoy.config.filter.network.thrift_proxy.v2alpha1.ThriftProxy"
 	// Supplies the type of transport that the Thrift proxy should use. Defaults to
 	// :ref:`AUTO_TRANSPORT<envoy_api_enum_value_config.filter.network.thrift_proxy.v2alpha1.TransportType.AUTO_TRANSPORT>`.
 	transport?: #TransportType
@@ -43,6 +43,7 @@ ProtocolType_TWITTER:       "TWITTER"
 
 // ThriftFilter configures a Thrift filter.
 #ThriftFilter: {
+	"@type": "type.googleapis.com/envoy.config.filter.network.thrift_proxy.v2alpha1.ThriftFilter"
 	// The name of the filter to instantiate. The name must match a supported
 	// filter. The built-in filters are:
 	//
@@ -52,7 +53,7 @@ ProtocolType_TWITTER:       "TWITTER"
 	name?: string
 	// Deprecated: Do not use.
 	config?:       _struct.#Struct
-	typed_config?: any.#Any
+	typed_config?: _
 }
 
 // ThriftProtocolOptions specifies Thrift upstream protocol options. This object is used in
@@ -60,6 +61,7 @@ ProtocolType_TWITTER:       "TWITTER"
 // :ref:`typed_extension_protocol_options<envoy_api_field_Cluster.typed_extension_protocol_options>`,
 // keyed by the name `envoy.filters.network.thrift_proxy`.
 #ThriftProtocolOptions: {
+	"@type": "type.googleapis.com/envoy.config.filter.network.thrift_proxy.v2alpha1.ThriftProtocolOptions"
 	// Supplies the type of transport that the Thrift proxy should use for upstream connections.
 	// Selecting
 	// :ref:`AUTO_TRANSPORT<envoy_api_enum_value_config.filter.network.thrift_proxy.v2alpha1.TransportType.AUTO_TRANSPORT>`,

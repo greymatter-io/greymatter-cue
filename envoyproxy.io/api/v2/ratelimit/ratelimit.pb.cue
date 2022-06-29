@@ -42,11 +42,13 @@ package ratelimit
 // The idea behind the API is that (1)/(2)/(3) and (4)/(5) can be sent in 1 request if desired.
 // This enables building complex application scenarios with a generic backend.
 #RateLimitDescriptor: {
+	"@type": "type.googleapis.com/envoy.api.v2.ratelimit.RateLimitDescriptor"
 	// Descriptor entries.
 	entries?: [...#RateLimitDescriptor_Entry]
 }
 
 #RateLimitDescriptor_Entry: {
+	"@type": "type.googleapis.com/envoy.api.v2.ratelimit.RateLimitDescriptor_Entry"
 	// Descriptor key.
 	key?: string
 	// Descriptor value.

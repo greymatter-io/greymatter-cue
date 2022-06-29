@@ -12,6 +12,7 @@ ZipkinConfig_CollectorEndpointVersion_GRPC:                                  "GR
 // [#extension: envoy.tracers.zipkin]
 // [#next-free-field: 7]
 #ZipkinConfig: {
+	"@type": "type.googleapis.com/envoy.config.trace.v3.ZipkinConfig"
 	// The cluster manager cluster that hosts the Zipkin collectors.
 	collector_cluster?: string
 	// The API endpoint of the Zipkin service where the spans will be sent. When

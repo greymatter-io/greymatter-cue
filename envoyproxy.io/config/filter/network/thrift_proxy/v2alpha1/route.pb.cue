@@ -6,6 +6,7 @@ import (
 )
 
 #RouteConfiguration: {
+	"@type": "type.googleapis.com/envoy.config.filter.network.thrift_proxy.v2alpha1.RouteConfiguration"
 	// The name of the route configuration. Reserved for future use in asynchronous route discovery.
 	name?: string
 	// The list of routes that will be matched, in order, against incoming requests. The first route
@@ -14,6 +15,7 @@ import (
 }
 
 #Route: {
+	"@type": "type.googleapis.com/envoy.config.filter.network.thrift_proxy.v2alpha1.Route"
 	// Route matching parameters.
 	match?: #RouteMatch
 	// Route request to some upstream cluster.
@@ -21,6 +23,7 @@ import (
 }
 
 #RouteMatch: {
+	"@type": "type.googleapis.com/envoy.config.filter.network.thrift_proxy.v2alpha1.RouteMatch"
 	// If specified, the route must exactly match the request method name. As a special case, an
 	// empty string matches any request method name.
 	method_name?: string
@@ -51,6 +54,7 @@ import (
 
 // [#next-free-field: 7]
 #RouteAction: {
+	"@type": "type.googleapis.com/envoy.config.filter.network.thrift_proxy.v2alpha1.RouteAction"
 	// Indicates a single upstream cluster to which the request should be routed
 	// to.
 	cluster?: string
@@ -84,11 +88,13 @@ import (
 // percentage of traffic to be forwarded to each cluster. The router selects an upstream cluster
 // based on these weights.
 #WeightedCluster: {
+	"@type": "type.googleapis.com/envoy.config.filter.network.thrift_proxy.v2alpha1.WeightedCluster"
 	// Specifies one or more upstream clusters associated with the route.
 	clusters?: [...#WeightedCluster_ClusterWeight]
 }
 
 #WeightedCluster_ClusterWeight: {
+	"@type": "type.googleapis.com/envoy.config.filter.network.thrift_proxy.v2alpha1.WeightedCluster_ClusterWeight"
 	// Name of the upstream cluster.
 	name?: string
 	// When a request matches the route, the choice of an upstream cluster is determined by its

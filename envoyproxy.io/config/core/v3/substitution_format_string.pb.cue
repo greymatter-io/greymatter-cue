@@ -8,6 +8,7 @@ import (
 // to generate a new string in either plain text or JSON format.
 // [#next-free-field: 7]
 #SubstitutionFormatString: {
+	"@type": "type.googleapis.com/envoy.config.core.v3.SubstitutionFormatString"
 	// Specify a format with command operators to form a text string.
 	// Its details is described in :ref:`format string<config_access_log_format_strings>`.
 	//

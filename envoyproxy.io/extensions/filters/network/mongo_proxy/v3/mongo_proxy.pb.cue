@@ -6,6 +6,7 @@ import (
 
 // [#next-free-field: 6]
 #MongoProxy: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.network.mongo_proxy.v3.MongoProxy"
 	// The human readable prefix to use when emitting :ref:`statistics
 	// <config_network_filters_mongo_proxy_stats>`.
 	stat_prefix?: string

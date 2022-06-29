@@ -8,6 +8,7 @@ import (
 // :ref:`Circuit breaking<arch_overview_circuit_break>` settings can be
 // specified individually for each defined priority.
 #CircuitBreakers: {
+	"@type": "type.googleapis.com/envoy.config.cluster.v3.CircuitBreakers"
 	// If multiple :ref:`Thresholds<envoy_v3_api_msg_config.cluster.v3.CircuitBreakers.Thresholds>`
 	// are defined with the same :ref:`RoutingPriority<envoy_v3_api_enum_config.core.v3.RoutingPriority>`,
 	// the first one in the list is used. If no Thresholds is defined for a given
@@ -32,6 +33,7 @@ import (
 // :ref:`RoutingPriority<envoy_v3_api_enum_config.core.v3.RoutingPriority>`.
 // [#next-free-field: 9]
 #CircuitBreakers_Thresholds: {
+	"@type": "type.googleapis.com/envoy.config.cluster.v3.CircuitBreakers_Thresholds"
 	// The :ref:`RoutingPriority<envoy_v3_api_enum_config.core.v3.RoutingPriority>`
 	// the specified CircuitBreaker settings apply to.
 	priority?: v3.#RoutingPriority
@@ -75,6 +77,7 @@ import (
 }
 
 #CircuitBreakers_Thresholds_RetryBudget: {
+	"@type": "type.googleapis.com/envoy.config.cluster.v3.CircuitBreakers_Thresholds_RetryBudget"
 	// Specifies the limit on concurrent retries as a percentage of the sum of active requests and
 	// active pending requests. For example, if there are 100 active requests and the
 	// budget_percent is set to 25, there may be 25 active retries.

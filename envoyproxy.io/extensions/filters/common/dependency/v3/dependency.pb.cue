@@ -8,6 +8,7 @@ Dependency_DependencyType_DYNAMIC_METADATA: "DYNAMIC_METADATA"
 
 // Dependency specification and string identifier.
 #Dependency: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.common.dependency.v3.Dependency"
 	// The kind of dependency.
 	type?: #Dependency_DependencyType
 	// The string identifier for the dependency.
@@ -17,6 +18,7 @@ Dependency_DependencyType_DYNAMIC_METADATA: "DYNAMIC_METADATA"
 // Dependency specification for a filter. For a filter chain to be valid, any
 // dependency that is required must be provided by an earlier filter.
 #FilterDependencies: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.common.dependency.v3.FilterDependencies"
 	// A list of dependencies required on the decode path.
 	decode_required?: [...#Dependency]
 	// A list of dependencies provided on the encode path.
@@ -34,10 +36,12 @@ Dependency_DependencyType_DYNAMIC_METADATA: "DYNAMIC_METADATA"
 // requirements to the filter factories, allowing for config rejection if the requirements are
 // not satisfied.
 #MatchingRequirements: {
+	"@type":                "type.googleapis.com/envoy.extensions.filters.common.dependency.v3.MatchingRequirements"
 	data_input_allow_list?: #MatchingRequirements_DataInputAllowList
 }
 
 #MatchingRequirements_DataInputAllowList: {
+	"@type": "type.googleapis.com/envoy.extensions.filters.common.dependency.v3.MatchingRequirements_DataInputAllowList"
 	// An explicit list of data inputs that are allowed to be used with this filter.
 	type_url?: [...string]
 }
