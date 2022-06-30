@@ -70,7 +70,8 @@ import (
 	"@type": "type.googleapis.com/envoy.extensions.filters.http.file_system_buffer.v3.FileSystemBufferFilterConfig"
 	// A configuration for an AsyncFileManager.
 	//
-	// If unset in route, vhost and listener, an exception will be thrown.
+	// If unset in route, vhost and listener, and the behavior is not ``bypass``
+	// in both directions, an Internal Server Error response will be sent.
 	manager_config?: v3.#AsyncFileManagerConfig
 	// An optional path to which the unlinked files should be written - this may
 	// determine which physical storage device will be used.

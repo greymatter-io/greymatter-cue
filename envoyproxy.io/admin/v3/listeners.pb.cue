@@ -7,7 +7,7 @@ import (
 // Admin endpoint uses this wrapper for `/listeners` to display listener status information.
 // See :ref:`/listeners <operations_admin_interface_listeners>` for more information.
 #Listeners: {
-	"@type": "type.googleapis.com/envoy.config.bootstrap.v3.Listeners"
+	"@type": "type.googleapis.com/envoy.admin.v3.Listeners"
 	// List of listener statuses.
 	listener_statuses?: [...#ListenerStatus]
 }

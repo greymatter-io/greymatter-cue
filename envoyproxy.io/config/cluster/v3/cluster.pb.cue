@@ -100,7 +100,7 @@ Cluster_RingHashLbConfig_HashFunction_MURMUR_HASH_2: "MURMUR_HASH_2"
 // Configuration for a single upstream cluster.
 // [#next-free-field: 57]
 #Cluster: {
-	"@type": "type.googleapis.com/envoy.config.core.v3.Cluster"
+	"@type": "type.googleapis.com/envoy.config.cluster.v3.Cluster"
 	// Configuration to use different transport sockets for different endpoints.
 	// The entry of *envoy.transport_socket_match* in the
 	// :ref:`LbEndpoint.Metadata <envoy_v3_api_field_config.endpoint.v3.LbEndpoint.metadata>`

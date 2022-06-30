@@ -13,7 +13,7 @@ FilterChainMatch_ConnectionSourceType_EXTERNAL:            "EXTERNAL"
 
 // [#next-free-field: 6]
 #Filter: {
-	"@type": "type.googleapis.com/envoy.config.accesslog.v3.Filter"
+	"@type": "type.googleapis.com/envoy.config.listener.v3.Filter"
 	// The name of the filter configuration.
 	name?: string
 	// Filter specific configuration which depends on the filter being
