@@ -1,7 +1,7 @@
 package v3
 
 #Filter: {
-	"@type": "type.googleapis.com/envoy.type.matcher.v3.Filter"
+	"@type": "type.googleapis.com/envoy.config.cluster.v3.Filter"
 	// The name of the filter configuration.
 	name?: string
 	// Filter specific configuration which depends on the filter being

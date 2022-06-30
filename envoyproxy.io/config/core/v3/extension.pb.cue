@@ -3,7 +3,7 @@ package v3
 // Message type for extension configuration.
 // [#next-major-version: revisit all existing typed_config that doesn't use this wrapper.].
 #TypedExtensionConfig: {
-	"@type": "type.googleapis.com/github.com.cncf.xds.go.xds.core.v3.TypedExtensionConfig"
+	"@type": "type.googleapis.com/envoy.config.core.v3.TypedExtensionConfig"
 	// The name of an extension. This is not used to select the extension, instead
 	// it serves the role of an opaque identifier.
 	name?: string
