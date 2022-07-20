@@ -337,6 +337,8 @@ import (
 }
 
 #HTTPFilters: {
+	//Important: If your filter is multiple words, make it a quoted field
+	//so that gm-control can pick up the configuration 
 	gm_metrics?:               http.#MetricsConfig
 	gm_impersonation?:         http.#ImpersonationConfig
 	gm_inheaders?:             http.#InheadersConfig
@@ -430,6 +432,82 @@ import (
 	org_key?: string
 }
 
+// Catalog
+
+#CatalogService: {
+	mesh_id:                    string
+	service_id:                 string
+	name:                       string
+	api_endpoint?:              string
+	api_spec_endpoint?:         string
+	description?:               string
+	enable_instance_metrics?:   bool
+	enable_historical_metrics?: bool
+	business_impact?:           string
+	version?:                   string
+	owner?:                     string
+	owner_url?:                 string
+	capability?:                string
+	runtime?:                   string
+	documentation?:             string
+	prometheus_job?:            string
+	external_links?: [...#ExternalLink]
+}
+
+#SessionConfig: {
+	url:        string
+	use_tls?:   bool
+	cert_path?: string
+	key_path?:  string
+	ca_path?:   string
+	cluster?:   string
+	region?:    string
+	zone:       string
+	sub_zone?:  string
+}
+
+#ExternalLink: {
+	title: string
+	url:   string
+}
+
+#MetricsReceiverSessionConfig: {
+	client_type:       string
+	connection_string: string
+	cert_path?:        string
+	key_path?:         string
+	ca_path?:          string
+}
+
+#Metrics: {
+	sessions:               #MetricsReceiverSessionConfig
+	event_window_minutes?:  int
+	event_timeout_minutes?: int
+}
+
+#Lad: {
+	url:        string
+	use_tls?:   bool
+	cert_path?: string
+	key_path?:  string
+	ca_path?:   string
+}
+
+#Extension: {
+	metrics?: #Metrics
+	lad?:     #Lad
+}
+
+#MeshConfig: {
+	mesh_id:     string
+	mesh_type:   string
+	name:        string
+	sessions?:   #SessionConfig
+	labels?:     string
+	extensions?: #Extension
+	externallinks?: [...#ExternalLink]
+}
+
 // Common
 
 #Metadata: [...#Metadatum]
@@ -451,6 +529,16 @@ import (
 }
 
 #ClientCertDetails: URI: bool
+
+#SSLConfig: {
+	cipher_filter?: string
+	protocols?: [...string]
+	cert_key_pairs?: [...#CertKeyPathPair]
+	require_client_certs?: bool
+	trust_file?:           string
+	sni?:                  [...string] | string
+	crl?:                  #DataSource
+}
 
 #CertKeyPathPair: {
 	certificate_path?: string
@@ -537,4 +625,12 @@ import (
 	retry_policy?:    #RetryPolicy | *null
 	org_key?:         string
 	checksum?:        string
+}
+
+// Zone
+
+#Zone: {
+	zone_key: string
+	name:     string
+	org_key?: string
 }
