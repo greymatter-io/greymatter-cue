@@ -16,24 +16,26 @@ import (
 	dns_type?:    string
 	instances?: [...#Instance]
 	health_checks?: [...#HealthCheck]
-	outlier_detection?:     #OutlierDetection
-	circuit_breakers?:      #CircuitBreakersThresholds
-	ring_hash_lb_conf?:     #RingHashLbConfig
-	original_dst_lb_conf?:  #OriginalDstLbConfig
-	least_request_lb_conf?: #LeastRequestLbConfig
-	common_lb_conf?:        #CommonLbConfig
+	outlier_detection?:       #OutlierDetection
+	circuit_breakers?:        #CircuitBreakersThresholds
+	ring_hash_lb_config?:     #RingHashLbConfig
+	original_dst_lb_config?:  #OriginalDstLbConfig
+	least_request_lb_config?: #LeastRequestLbConfig
+	common_lb_config?:        #CommonLbConfig
 
 	// common.cue
 	secret?:                 #Secret
-	ssl_config?:             #SSLConfig
+	ssl_config?:             #ClusterSSLConfig
 	http_protocol_options?:  #HTTPProtocolOptions
 	http2_protocol_options?: #HTTP2ProtocolOptions
+	checksum?:               string
+	org_key?:                string
+	protocol_selection?:     string
 }
 
 #Instance: {
 	host: string
 	port: int32
-	metadata?: [...#Metadata]
 }
 
 #HealthCheck: {
@@ -71,8 +73,8 @@ import (
 	interval_msec?:                         int64
 	base_ejection_time_msec?:               int64
 	max_ejection_percent?:                  int64
-	consecutive5xx?:                        int64
-	enforcing_consecutive5xx?:              int64
+	consecutive_5xx?:                       int64
+	enforcing_consecutive_5xx?:             int64
 	enforcing_success_rate?:                int64
 	success_rate_minimum_hosts?:            int64
 	success_rate_request_volume?:           int64
@@ -82,11 +84,6 @@ import (
 }
 
 #CircuitBreakersThresholds: {
-	#CircuitBreakers
-	high?: #CircuitBreakers
-}
-
-#CircuitBreakers: {
 	max_connections?:      int64
 	max_pending_requests?: int64
 	max_requests?:         int64
@@ -107,9 +104,8 @@ import (
 
 #CommonLbConfig: {
 	healthy_panic_threshold?:              #Percent
-	zone_aware_lb_conf?:                   #ZoneAwareLbConfig
-	locality_weighted_lb_conf?:            #LocalityWeightedLbConfig
-	consistent_hashing_lb_conf?:           #ConsistentHashingLbConfig
+	zone_aware_lb_config?:                 #ZoneAwareLbConfig
+	consistent_hashing_lb_config?:         #ConsistentHashingLbConfig
 	update_merge_window?:                  #Duration
 	ignore_new_hosts_until_first_hc?:      bool
 	close_connections_on_host_set_change?: bool
@@ -121,9 +117,6 @@ import (
 	routing_enabled?:       #Percent
 	min_cluster_size?:      uint64
 	fail_traffic_on_panic?: bool
-}
-
-#LocalityWeightedLbConfig: {
 }
 
 #ConsistentHashingLbConfig: use_hostname_for_hashing?: bool
@@ -140,7 +133,7 @@ import (
 	domain_key:      string
 	zone_key:        string
 	prefix_rewrite?: string
-	cohort_seed?:    string
+	cohort_seed?:    #CohortSeed
 	high_priority?:  bool
 	timeout?:        string
 	idle_timeout?:   string
@@ -167,8 +160,8 @@ import (
 	rule_key?: string
 	methods?: [...string]
 	matches?: [...#Match]
-	constraints?: #Constraints
-	cohort_seed?: string
+	constraints?: #AllConstraints
+	cohort_seed?: #CohortSeed
 }
 
 #Match: {
@@ -206,13 +199,15 @@ import (
 }
 
 #CookieDatum: {
-	response_datum?: #ResponseDatum
-	expires_in_sec?: uint32
-	domain?:         string
-	path?:           string
-	secure?:         bool
-	http_only?:      bool
-	same_site?:      string
+	expires_in_sec?:   uint32
+	domain?:           string
+	path?:             string
+	secure?:           bool
+	http_only?:        bool
+	same_site?:        string
+	name?:             string
+	value?:            string
+	value_is_literal?: bool
 }
 
 #RetryPolicy: {
@@ -270,13 +265,35 @@ import (
 	aliases?: [...string]
 
 	// common.cue
-	ssl_config?: #SSLConfig
+	ssl_config?: #ListenerSSLConfig
 	redirects?: [...#Redirect]
 	custom_headers?: [...#Metadatum]
+	checksum?:     string
+	gzip_enabled?: bool
+	org_key?:      string
+}
+
+#ListenerSSLConfig: {
+	cert_key_pairs?: [...#CertKeyPathPair]
+	cipher_filter?: string
+	crl?:           #DataSource
+	protocols?: [...string]
+	require_client_certs?: bool
+	sni?: [...string]
+	trust_file?: string
+}
+
+#ClusterSSLConfig: {
+	cert_key_pairs?: [...#CertKeyPathPair]
+	cipher_filter?: string
+	crl?:           #DataSource
+	protocols?: [...string]
+	sni?: [...string]
+	trust_file?: string
 }
 
 #CorsConfig: {
-	allowed_origins?: [...#AllowOriginStringMatchItem]
+	allowed_origins?: [...#CORSAllowedOrigins]
 	allow_credentials?: bool
 	exposed_headers?: [...string]
 	max_age?: int64
@@ -284,7 +301,7 @@ import (
 	allowed_headers?: [...string]
 }
 
-#AllowOriginStringMatchItem: {
+#CORSAllowedOrigins: {
 	match_type?: string
 	value?:      string
 }
@@ -293,7 +310,7 @@ import (
 
 #Listener: {
 	name:         string
-	listener_key: name
+	listener_key: string
 	zone_key:     string
 	ip:           string
 	port:         int32
@@ -315,6 +332,8 @@ import (
 	secret?:                 #Secret
 	http_protocol_options?:  #HTTPProtocolOptions
 	http2_protocol_options?: #HTTP2ProtocolOptions
+	checksum?:               string
+	org_key?:                string
 }
 
 #HTTPFilters: {
@@ -331,6 +350,19 @@ import (
 	"gm_oidc-authentication"?: http.#AuthenticationConfig
 	"gm_oidc-validation"?:     http.#ValidationConfig
 	...
+}
+
+#CatalogService: {
+	mesh_id:                   string
+	service_id:                string
+	name:                      string
+	api_endpoint?:             string
+	api_spec_endpoint?:        string
+	description?:              string
+	enable_instance_metrics:   bool
+	enable_historical_metrics: bool
+	business_impact:           string
+	version?:                  string
 }
 
 #NetworkFilters: {
@@ -358,7 +390,7 @@ import (
 #Loggers: {
 	disabled?: bool
 	file_loggers?: [...#FileAccessLog]
-	h_ttpgrpc_access_loggers?: [...#HTTPGRPCAccessLog]
+	http_grpc_access_loggers?: [...#HTTPGRPCAccessLog]
 }
 
 #FileAccessLog: {
@@ -370,14 +402,14 @@ import (
 
 #HTTPGRPCAccessLog: {
 	common_config?: #GRPCCommonConfig
-	additional_request_headers?: [...string]
-	additional_response_headers?: [...string]
-	additional_response_trailers?: [...string]
+	additional_request_headers_to_log?: [...string]
+	additional_response_headers_to_log?: [...string]
+	additional_response_trailers_to_log?: [...string]
 }
 
 #GRPCCommonConfig: {
-	log_name?:      string
-	g_rpc_service?: #GRPCService
+	log_name?:     string
+	grpc_service?: #GRPCService
 }
 
 #GRPCService: {
@@ -393,6 +425,11 @@ import (
 	domain_keys: [...string]
 	listener_keys: [...string]
 	upgrades?: string
+	active_filters?: [...string]
+	checksum?: string
+	filters:   #HttpFilters
+	listeners: [...#Listener]
+	org_key?: string
 }
 
 // Catalog
@@ -487,10 +524,11 @@ import (
 	subject_names?: [...string]
 	ecdh_curves?: [...string]
 	forward_client_cert_details?:     string
-	set_current_client_cert_details?: #SetCurrentClientCertDetails
+	set_current_client_cert_details?: #ClientCertDetails
+	checksum?:                        string
 }
 
-#SetCurrentClientCertDetails: uri: bool
+#ClientCertDetails: URI: bool
 
 #SSLConfig: {
 	cipher_filter?: string
@@ -513,11 +551,11 @@ import (
 }
 
 #HTTPProtocolOptions: {
-	allow_absolute_url?:      bool
-	accept_http10?:           bool
-	default_host_for_http10?: string
-	header_key_format?:       #HeaderKeyFormat
-	enable_trailers?:         bool
+	allow_absolute_url?:       bool
+	accept_http_10?:           bool
+	default_host_for_http_10?: string
+	header_key_format?:        #HeaderKeyFormat
+	enable_trailers?:          bool
 }
 
 #HeaderKeyFormat: proper_case_words?: bool
@@ -559,20 +597,20 @@ import (
 	tap?:   [...#ClusterConstraint] | *null
 }
 
-#Constraints: {
-	light?: [...#ClusterConstraint]
-	dark?: [...#ClusterConstraint]
-	tap?: [...#ClusterConstraint]
-}
-
 #ClusterConstraint: {
 	constraint_key?: string
-	cluster_key:     string
-	metadata?:       [...#Metadata] | *null
-	properties?:     [...#Metadata] | *null
+	cluster_key?:    string
+	metadata?:       #Metadata | *null
+	properties?:     #Metadata | *null
 	response_data?:  #ResponseData
 	// We probably do not want to default the weight value
-	weight: uint32
+	weight?: uint32
+}
+
+#CohortSeed: {
+	name?:                string
+	type?:                string
+	use_zero_value_seed?: bool
 }
 
 #SharedRules: {
@@ -582,10 +620,11 @@ import (
 	default:          #AllConstraints
 	rules:            [...#Rule] | *null
 	response_data:    #ResponseData
-	cohort_seed?:     string | *null
-	properties?:      [...#Metadata] | *null
+	cohort_seed?:     #CohortSeed | *null
+	properties?:      #Metadata | *null
 	retry_policy?:    #RetryPolicy | *null
 	org_key?:         string
+	checksum?:        string
 }
 
 // Zone
